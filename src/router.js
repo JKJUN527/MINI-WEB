@@ -15,4 +15,13 @@ module.exports = new Router({
     },
     {
       path: '/login',
-    
+      name: 'login',
+      component: Login
+    },
+    {
+      path: '/personalInfo',
+      name: 'personalInfo',
+      component: PersonalInfo
+    }
+  ]
+})

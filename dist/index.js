@@ -100,10 +100,14 @@ var _login = __webpack_require__(5);
 
 var _login2 = _interopRequireDefault(_login);
 
+var _personalInfo = __webpack_require__(12);
+
+var _personalInfo2 = _interopRequireDefault(_personalInfo);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-Vue.use(_vueRouter2.default); /* global Vue */
-
+/* global Vue */
+Vue.use(_vueRouter2.default);
 
 module.exports = new _vueRouter2.default({
   routes: [{
@@ -114,6 +118,10 @@ module.exports = new _vueRouter2.default({
     path: '/login',
     name: 'login',
     component: _login2.default
+  }, {
+    path: '/personalInfo',
+    name: 'personalInfo',
+    component: _personalInfo2.default
   }]
 });
 
@@ -2988,6 +2996,37 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_vm._v("test")]), _c('router-view')], 1)
 },staticRenderFns: []}
 module.exports.render._withStripped = true
+
+/***/ }),
+/* 12 */
+/***/ (function(module, exports) {
+
+var __vue_exports__, __vue_options__
+var __vue_styles__ = []
+__vue_options__ = __vue_exports__ = __vue_exports__ || {}
+if (
+  typeof __vue_exports__.default === "object" ||
+  typeof __vue_exports__.default === "function"
+) {
+if (Object.keys(__vue_exports__).some(function (key) { return key !== "default" && key !== "__esModule" })) {console.error("named exports are not supported in *.vue files.")}
+__vue_options__ = __vue_exports__ = __vue_exports__.default
+}
+if (typeof __vue_options__ === "function") {
+  __vue_options__ = __vue_options__.options
+}
+__vue_options__.__file = "D:\\workspace\\test\\fof\\src\\components\\personalInfo.vue"
+__vue_options__.style = __vue_options__.style || {}
+__vue_styles__.forEach(function (module) {
+  for (var name in module) {
+    __vue_options__.style[name] = module[name]
+  }
+})
+if (typeof __register_static_styles__ === "function") {
+  __register_static_styles__(__vue_options__._scopeId, __vue_styles__)
+}
+
+module.exports = __vue_exports__
+
 
 /***/ })
 /******/ ]);
