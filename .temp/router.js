@@ -3,7 +3,9 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import HelloWorld from '@/components/HelloWorld'
 import Login from '@/components/login'
-import PersonalInfo from '@/components/personalInfo'
+import Match from '@/components/match'
+import otherInfo from '@/components/otherInfo'
+import ownInfo from '@/components/ownInfo'
 import PersonalEdit from '@/components/personalEdit'
 Vue.use(Router)
 
@@ -20,9 +22,19 @@ module.exports = new Router({
       component: Login
     },
     {
-      path: '/personalInfo',
-      name: 'personalInfo',
-      component: PersonalInfo
+      path: '/otherInfo',
+      name: 'otherInfo',
+      component: otherInfo
+    },
+    {
+      path: '/ownInfo',
+      name: 'ownInfo',
+      component: ownInfo
+    },
+    {
+      path: '/match',
+      name: 'match',
+      component: Match
     },
     {
       path: '/personalEdit',

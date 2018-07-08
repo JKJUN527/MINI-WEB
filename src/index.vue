@@ -1,7 +1,7 @@
 <template>
   <div class="wrapper">
-    <router-link :to="{name: 'personalInfo'}" class="base-font-size">
-      哈哈哈
+    <router-link :to="{name: 'match'}" class="base-font-size">
+      papapa
     </router-link>
     <router-view/>
   </div>
@@ -17,9 +17,6 @@ export default {
     }
   },
   methods: {
-    wxcButtonClicked () {
-      alert('hahah')
-    }
   }
 }
 </script>
@@ -31,6 +28,10 @@ export default {
 .base-font-size {
     font-size: 48px;
 }
+.little-font-size {
+    font-size: 24px;
+}
+
 .base-flex {
     flex-direction: row;
     align-items: center;
@@ -50,5 +51,9 @@ export default {
 
 .cell-h {
     margin-right: 40px;
+}
+
+.color-white {
+  color: white
 }
 </style>

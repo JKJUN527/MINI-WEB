@@ -123,6 +123,14 @@ const webConfig = {
         exclude: config.excludeModuleReg
       },
       {
+        test: /\.css$/,  
+        use: ['style-loader', 'css-loader']  
+      },
+      {
+        test: /\.(gif|png|jpg|woff|svg|eot|ttf)\??.*$/i,
+        use: 'url-loader'
+      },
+      {
         test: /\.vue(\?[^?]+)?$/,
         use: [{
           loader: 'vue-loader',
