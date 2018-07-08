@@ -1,8 +1,6 @@
 <template>
   <div class="wrapper">
-      <wxc-button text="试试">
-      </wxc-button>
-    <router-link :to="{name: 'personalEdit'}" class="router">
+    <router-link :to="{name: 'personalInfo'}" class="base-font-size">
       哈哈哈
     </router-link>
     <router-view/>
@@ -25,16 +23,32 @@ export default {
   }
 }
 </script>
-
-<style scoped>
-  .router {
-    font-size: 2rem;
-  }
-  .wrapper {
+<style>
+* {
+    margin: 0;
+    padding: 0
+}
+.base-font-size {
+    font-size: 48px;
+}
+.base-flex {
+    flex-direction: row;
+    align-items: center;
+}
+.wrapper {
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-  }
+}
+.cell {
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 40px;
+}
+
+.cell-h {
+    margin-right: 40px;
+}
 </style>

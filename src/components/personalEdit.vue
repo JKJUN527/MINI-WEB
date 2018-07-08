@@ -4,37 +4,36 @@
             <image />
         </div>
         <div class="user-info">
-            <wxc-cell title="昵称"
-                :has-arrow="false"
-                :has-top-border="true">
-                <input type="text" class="text">
-            </wxc-cell>
-            <wxc-cell title="昵称"
-                :has-arrow="false"
-                :has-top-border="true">
-                <div>
-                    <input type="radio" class="radio">
-                    <text>男</text>
+            <div class="base-flex cell">
+                <text class="base-font-size cell-h">昵称</text>
+                <input type="text">
+            </div>
+            <div class="base-flex cell">
+                <text class="base-font-size cell-h">性别</text>
+                <div class="base-flex">
+                    <div class="base-flex">
+                        <input type="radio">
+                        <text class="base-font-size">男</text>
+                    </div>
+                    <div class="base-flex">
+                        <input type="radio">
+                        <text class="base-font-size">女</text>
+                    </div>
                 </div>
-                <div>
-                    <input type="radio" class="radio">
-                    <text>女</text>
-                </div>
-            </wxc-cell>
-            <wxc-cell title="昵称"
-                :has-arrow="false"
-                :has-top-border="true">
+            </div>
+            <div class="base-flex cell">
+                <text class="base-font-size cell-h">坐标</text>
                 <div class="btn" @click="showListCity">
-                    <text class="btn-txt">城市选择</text>
+                    <text class="btn-txt base-font-size">城市选择</text>
                 </div>
-            </wxc-cell>
-            <div class="user-sex input">
-                <text>生日</text>
+            </div>
+            <div class="base-flex cell">
+                <text class="base-font-size cell-h">生日</text>
                 <input type="date">
             </div>
-            <div class="user-sex input">
-                <text>签名</text>
-                <textarea id="" cols="30" rows="10"></textarea>
+            <div class="base-flex cell" :style="{'align-items': 'flex-start'}">
+                <text class="base-font-size cell-h">签名</text>
+                <textarea></textarea>
             </div>
         </div>
         <scroller class="scroller">
@@ -51,14 +50,14 @@
     </div>
 </template>
 <script>
-// import sourceData from './data.js'
 import { WxcCity, WxcCell } from 'weex-ui'
 export default {
   components: { WxcCity, WxcCell },
   data: () => ({
     animationType: 'push',
     currentCity: '',
-    cityStyleType: 'list'
+    cityStyleType: 'list',
+    value: ''
   }),
   mounted () {
     // 模拟定位
@@ -81,21 +80,23 @@ export default {
 </script>
 
 <style scoped>
-#personalEdit {
-  padding: 0 20px;
-}
-.user-name {
-  font-size: 1rem;
-}
-.input {
-    flex-direction: row;
-    font-size: 0.5rem;
-}
 
-.text {
-    border: 1px solid black;
-    display: inline-block;
-    width: 6rem;
-    height: 1rem;
-}
+    input[type='text'],
+    input[type='date'] {
+        width: 500px;
+        height: 60px;
+        line-height: 100px;
+        font-size: 48px;
+        border: solid 1px black;
+    }
+    input[type='radio'] {
+        width: 50px;
+        height: 50px;
+    }
+
+    textarea {
+        width: 500px;
+        height: 300px;
+        border: solid 1px black
+    }
 </style>

@@ -6,14 +6,14 @@ var ax = axios.create({
 })
 
 function makePost(path, data) {
-    return ax.post(path, qs.stringify(data))
+  return ax.post(path, qs.stringify(data))
 }
 
 function makeGet(path, params) {
-    return ax.get(path, { params })
+  return ax.get(path, { params })
 }
 
 export default {
-    makePost,
-    makeGet
+  makePost,
+  makeGet
 }

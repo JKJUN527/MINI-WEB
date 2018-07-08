@@ -3296,15 +3296,17 @@ module.exports = {
   },
   "user-header": {
     "marginTop": 2,
-    "flexDirection": "row",
-    "alignItems": "center",
-    "justifyContent": "space-around"
+    "alignItems": "center"
   },
   "user-img": {
-    "width": 2,
-    "height": 2,
+    "width": 3.5,
+    "height": 3.5,
     "borderRadius": 50,
-    "background": "red"
+    "background": "white"
+  },
+  "user-name": {
+    "fontSize": "48",
+    "color": "#FFFFFF"
   },
   "user-label": {
     "marginTop": 0.5,
@@ -3315,15 +3317,11 @@ module.exports = {
     "justifyContent": "space-between"
   },
   "label-item": {
-    "background": "red",
-    "paddingTop": "10",
-    "paddingRight": "20",
-    "paddingBottom": "10",
-    "paddingLeft": "20"
-  },
-  "image": {
-    "width": 100,
-    "height": "700"
+    "minWidth": 2,
+    "textAlign": "center",
+    "color": "#FFFFFF",
+    "borderRadius": "20",
+    "background": "#807773"
   },
   "slider": {
     "marginTop": "25",
@@ -3351,44 +3349,62 @@ module.exports = {
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
+
+var _wxcEpSlider = __webpack_require__(75);
+
+var _wxcEpSlider2 = _interopRequireDefault(_wxcEpSlider);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 exports.default = {
-  props: ['value'],
+  components: { WxcEpSlider: _wxcEpSlider2.default },
   data: function data() {
     return {
       labels: ['北京', '20岁', '双子座', '男'],
-      imageList: [{ src: 'https://gd2.alicdn.com/bao/uploaded/i2/T14H1LFwBcXXXXXXXX_!!0-item_pic.jpg' }, { src: 'https://gd1.alicdn.com/bao/uploaded/i1/TB1PXJCJFXXXXciXFXXXXXXXXXX_!!0-item_pic.jpg' }, { src: 'https://gd3.alicdn.com/bao/uploaded/i3/TB1x6hYLXXXXXazXVXXXXXXXXXX_!!0-item_pic.jpg' }]
+      showVideoList: 'works',
+      sliderId: 1,
+      cardLength: 5,
+      cardSize: {
+        width: 400,
+        height: 300,
+        spacing: 0,
+        scale: 0.8
+      }
     };
   }
-};
+}; //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /***/ }),
 /* 12 */
@@ -3399,42 +3415,26 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "id": "personalInfo"
     }
-  }, [_c('div', {
-    staticClass: ["edit"]
-  }, [_vm._v("编辑")]), _vm._m(0), _c('div', {
+  }, [_vm._m(0), _c('div', {
     staticClass: ["user-label"]
   }, _vm._l((_vm.labels), function(label, key) {
     return _c('text', {
       key: key,
       staticClass: ["label-item"]
     }, [_vm._v(_vm._s(label))])
-  })), _vm._m(1), _c('div', {
-    staticClass: ["video-slider"]
-  }, [_c('slider', {
-    staticClass: ["slider"],
+  })), _c('div', {
+    staticClass: ["video"]
+  }, [_vm._m(1), (_vm.showVideoList == 'works') ? _c('wxc-ep-slider', {
     attrs: {
-      "interval": "3000",
-      "autoPlay": "true"
+      "sliderId": _vm.sliderId,
+      "cardLength": _vm.cardLength,
+      "cardS": _vm.cardSize,
+      "selectIndex": 2
+    },
+    on: {
+      "wxcEpSliderCurrentIndexSelected": _vm.wxcEpSliderCurrentIndexSelected
     }
-  }, _vm._l((_vm.imageList), function(img, idx) {
-    return _c('div', {
-      key: idx,
-      staticClass: ["frame"]
-    }, [_c('image', {
-      staticClass: ["image"],
-      attrs: {
-        "resize": "cover",
-        "src": img.src
-      }
-    }), _c('text', {
-      staticStyle: {
-        left: "20px",
-        top: "20px",
-        color: "red",
-        position: "absolute"
-      }
-    }, [_vm._v(_vm._s(idx))])])
-  }))])])
+  }) : _vm._e()], 1)])
 },staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
     staticClass: ["user-header"]
@@ -3444,13 +3444,17 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "src": ""
     }
-  })]), _c('div', {
+  })]), _c('text', {
     staticClass: ["user-name"]
-  }, [_c('text', [_vm._v("XXX(昵称)")])])])
+  }, [_vm._v("user name")])])
 },function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
-    staticClass: ["user-signature"]
-  }, [_c('text', [_vm._v("个人签名")]), _c('text', [_vm._v("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")])])
+    staticClass: ["tab-group"]
+  }, [_c('text', {
+    staticClass: ["tab"]
+  }, [_vm._v("作品")]), _c('text', [_vm._v("|")]), _c('text', {
+    staticClass: ["tab"]
+  }, [_vm._v("Like")])])
 }]}
 module.exports.render._withStripped = true
 
@@ -3502,21 +3506,7 @@ module.exports = __vue_exports__
 /* 14 */
 /***/ (function(module, exports) {
 
-module.exports = {
-  "user-name": {
-    "fontSize": 1
-  },
-  "input": {
-    "flexDirection": "row",
-    "fontSize": 0.5
-  },
-  "text": {
-    "border": "1px solid black",
-    "display": "inline-block",
-    "width": 6,
-    "height": 1
-  }
-}
+module.exports = {}
 
 /***/ }),
 /* 15 */
@@ -3545,7 +3535,8 @@ exports.default = {
     return {
       animationType: 'push',
       currentCity: '',
-      cityStyleType: 'list'
+      cityStyleType: 'list',
+      value: ''
     };
   },
   mounted: function mounted() {
@@ -3617,9 +3608,6 @@ exports.default = {
 //
 //
 //
-//
-
-// import sourceData from './data.js'
 
 /***/ }),
 /* 16 */
@@ -6853,47 +6841,25 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_vm._m(0), _c('div', {
     staticClass: ["user-info"]
-  }, [_c('wxc-cell', {
-    attrs: {
-      "title": "昵称",
-      "hasArrow": false,
-      "hasTopBorder": true
-    }
-  }, [_c('input', {
-    staticClass: ["text"],
-    attrs: {
-      "type": "text"
-    }
-  })]), _c('wxc-cell', {
-    attrs: {
-      "title": "昵称",
-      "hasArrow": false,
-      "hasTopBorder": true
-    }
-  }, [_c('div', [_c('input', {
-    staticClass: ["radio"],
-    attrs: {
-      "type": "radio"
-    }
-  }), _c('text', [_vm._v("男")])]), _c('div', [_c('input', {
-    staticClass: ["radio"],
-    attrs: {
-      "type": "radio"
-    }
-  }), _c('text', [_vm._v("女")])])]), _c('wxc-cell', {
-    attrs: {
-      "title": "昵称",
-      "hasArrow": false,
-      "hasTopBorder": true
-    }
-  }, [_c('div', {
+  }, [_vm._m(1), _vm._m(2), _c('div', {
+    staticClass: ["base-flex", "cell"]
+  }, [_c('text', {
+    staticClass: ["base-font-size", "cell-h"]
+  }, [_vm._v("坐标")]), _c('div', {
     staticClass: ["btn"],
     on: {
       "click": _vm.showListCity
     }
   }, [_c('text', {
-    staticClass: ["btn-txt"]
-  }, [_vm._v("城市选择")])])]), _vm._m(1), _vm._m(2)], 1), _c('scroller', {
+    staticClass: ["btn-txt", "base-font-size"]
+  }, [_vm._v("城市选择")])])]), _vm._m(3), _c('div', {
+    staticClass: ["base-flex", "cell"],
+    style: {
+      'align-items': 'flex-start'
+    }
+  }, [_c('text', {
+    staticClass: ["base-font-size", "cell-h"]
+  }, [_vm._v("签名")]), _c('textarea')])]), _c('scroller', {
     staticClass: ["scroller"]
   }, [_c('div', {
     staticClass: ["panel"]
@@ -6917,20 +6883,46 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_c('image')])
 },function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
-    staticClass: ["user-sex", "input"]
-  }, [_c('text', [_vm._v("生日")]), _c('input', {
+    staticClass: ["base-flex", "cell"]
+  }, [_c('text', {
+    staticClass: ["base-font-size", "cell-h"]
+  }, [_vm._v("昵称")]), _c('input', {
     attrs: {
-      "type": "date"
+      "type": "text"
     }
   })])
 },function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
-    staticClass: ["user-sex", "input"]
-  }, [_c('text', [_vm._v("签名")]), _c('textarea', {
+    staticClass: ["base-flex", "cell"]
+  }, [_c('text', {
+    staticClass: ["base-font-size", "cell-h"]
+  }, [_vm._v("性别")]), _c('div', {
+    staticClass: ["base-flex"]
+  }, [_c('div', {
+    staticClass: ["base-flex"]
+  }, [_c('input', {
     attrs: {
-      "id": "",
-      "cols": "30",
-      "rows": "10"
+      "type": "radio"
+    }
+  }), _c('text', {
+    staticClass: ["base-font-size"]
+  }, [_vm._v("男")])]), _c('div', {
+    staticClass: ["base-flex"]
+  }, [_c('input', {
+    attrs: {
+      "type": "radio"
+    }
+  }), _c('text', {
+    staticClass: ["base-font-size"]
+  }, [_vm._v("女")])])])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: ["base-flex", "cell"]
+  }, [_c('text', {
+    staticClass: ["base-font-size", "cell-h"]
+  }, [_vm._v("生日")]), _c('input', {
+    attrs: {
+      "type": "date"
     }
   })])
 }]}
@@ -6985,8 +6977,12 @@ module.exports = __vue_exports__
 /***/ (function(module, exports) {
 
 module.exports = {
-  "router": {
-    "fontSize": 2
+  "base-font-size": {
+    "fontSize": "48"
+  },
+  "base-flex": {
+    "flexDirection": "row",
+    "alignItems": "center"
   },
   "wrapper": {
     "position": "absolute",
@@ -6994,6 +6990,14 @@ module.exports = {
     "left": 0,
     "right": 0,
     "bottom": 0
+  },
+  "cell": {
+    "flexDirection": "row",
+    "alignItems": "center",
+    "marginBottom": "40"
+  },
+  "cell-h": {
+    "marginRight": "40"
   }
 }
 
@@ -7031,8 +7035,6 @@ exports.default = {
     }
   }
 }; //
-//
-//
 //
 //
 //
@@ -7898,18 +7900,1439 @@ module.exports.render._withStripped = true
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
     staticClass: ["wrapper"]
-  }, [_c('wxc-button', {
-    attrs: {
-      "text": "试试"
-    }
-  }), _c('router-link', {
-    staticClass: ["router"],
+  }, [_c('router-link', {
+    staticClass: ["base-font-size"],
     attrs: {
       "to": {
-        name: 'personalEdit'
+        name: 'personalInfo'
       }
     }
   }, [_vm._v("\n    哈哈哈\n  ")]), _c('router-view')], 1)
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+
+/***/ }),
+/* 74 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+var __WEBPACK_AMD_DEFINE_RESULT__;
+
+var _typeof2 = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
+;(function (fn) {
+  if (( false ? "undefined" : _typeof2(exports)) === "object" && typeof module !== "undefined") {
+    module.exports = fn();
+  } else if (true) {
+    !(__WEBPACK_AMD_DEFINE_RESULT__ = (function (require, exports, module) {
+      module.exports = fn();
+    }).call(exports, __webpack_require__, exports, module),
+				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+  } else {
+    var root;
+    if (typeof window !== "undefined") {
+      root = window;
+    } else if (typeof self !== "undefined") {
+      root = self;
+    } else if (typeof global !== "undefined") {
+      root = global;
+    } else {
+      // NOTICE: In JavaScript strict mode, this is null
+      root = this;
+    }
+    root["index"] = fn();
+  }
+})(function () {
+  return (/******/function (modules) {
+      // webpackBootstrap
+      /******/ // The module cache
+      /******/var installedModules = {};
+      /******/
+      /******/ // The require function
+      /******/function __webpack_require__(moduleId) {
+        /******/
+        /******/ // Check if module is in cache
+        /******/if (installedModules[moduleId]) {
+          /******/return installedModules[moduleId].exports;
+          /******/
+        }
+        /******/ // Create a new module (and put it into the cache)
+        /******/var module = installedModules[moduleId] = {
+          /******/i: moduleId,
+          /******/l: false,
+          /******/exports: {}
+          /******/ };
+        /******/
+        /******/ // Execute the module function
+        /******/modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+        /******/
+        /******/ // Flag the module as loaded
+        /******/module.l = true;
+        /******/
+        /******/ // Return the exports of the module
+        /******/return module.exports;
+        /******/
+      }
+      /******/
+      /******/
+      /******/ // expose the modules object (__webpack_modules__)
+      /******/__webpack_require__.m = modules;
+      /******/
+      /******/ // expose the module cache
+      /******/__webpack_require__.c = installedModules;
+      /******/
+      /******/ // define getter function for harmony exports
+      /******/__webpack_require__.d = function (exports, name, getter) {
+        /******/if (!__webpack_require__.o(exports, name)) {
+          /******/Object.defineProperty(exports, name, {
+            /******/configurable: false,
+            /******/enumerable: true,
+            /******/get: getter
+            /******/ });
+          /******/
+        }
+        /******/
+      };
+      /******/
+      /******/ // getDefaultExport function for compatibility with non-harmony modules
+      /******/__webpack_require__.n = function (module) {
+        /******/var getter = module && module.__esModule ?
+        /******/function getDefault() {
+          return module['default'];
+        } :
+        /******/function getModuleExports() {
+          return module;
+        };
+        /******/__webpack_require__.d(getter, 'a', getter);
+        /******/return getter;
+        /******/
+      };
+      /******/
+      /******/ // Object.prototype.hasOwnProperty.call
+      /******/__webpack_require__.o = function (object, property) {
+        return Object.prototype.hasOwnProperty.call(object, property);
+      };
+      /******/
+      /******/ // __webpack_public_path__
+      /******/__webpack_require__.p = "";
+      /******/
+      /******/ // Load entry module and return exports
+      /******/return __webpack_require__(__webpack_require__.s = 0);
+      /******/
+    }(
+    /************************************************************************/
+    /******/[
+    /* 0 */
+    /***/function (module, exports, __webpack_require__) {
+
+      "use strict";
+      /**
+       Copyright 2018 Alibaba Group
+      
+       Licensed under the Apache License, Version 2.0 (the "License");
+       you may not use this file except in compliance with the License.
+       You may obtain a copy of the License at
+      
+       http://www.apache.org/licenses/LICENSE-2.0
+      
+       Unless required by applicable law or agreed to in writing, software
+       distributed under the License is distributed on an "AS IS" BASIS,
+       WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+       See the License for the specific language governing permissions and
+       limitations under the License.
+       */
+
+      Object.defineProperty(exports, "__esModule", {
+        value: true
+      });
+
+      var _typeof = typeof Symbol === "function" && _typeof2(Symbol.iterator) === "symbol" ? function (obj) {
+        return typeof obj === "undefined" ? "undefined" : _typeof2(obj);
+      } : function (obj) {
+        return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj === "undefined" ? "undefined" : _typeof2(obj);
+      };
+
+      var _bindingxParser = __webpack_require__(1);
+
+      var isWeb = false;
+      var isWeex = true;
+
+      function requireModule(moduleName) {
+        try {
+          if ((typeof weex === 'undefined' ? 'undefined' : _typeof(weex)) !== undefined && weex.requireModule) {
+            // eslint-disable-line
+            return weex.requireModule(moduleName); // eslint-disable-line
+          }
+        } catch (err) {}
+        return window.require('@weex-module/' + moduleName);
+      }
+
+      var isSupportNewBinding = true;
+      var isSupportBinding = true;
+      var WeexBinding = void 0;
+      var WebBinding = {};
+
+      try {
+        WeexBinding = requireModule('bindingx');
+        isSupportNewBinding = true;
+      } catch (e) {
+        isSupportNewBinding = false;
+      }
+      if (!WeexBinding || !WeexBinding.bind) {
+        try {
+          WeexBinding = requireModule('binding');
+          isSupportNewBinding = true;
+        } catch (e) {
+          isSupportNewBinding = false;
+        }
+      }
+      isSupportNewBinding = !!(WeexBinding && WeexBinding.bind && WeexBinding.unbind);
+      if (!isSupportNewBinding) {
+        try {
+          WeexBinding = requireModule('expressionBinding');
+          isSupportBinding = true;
+        } catch (err) {
+          isSupportBinding = false;
+        }
+      }
+      isSupportBinding = !!(WeexBinding && (WeexBinding.bind || WeexBinding.createBinding));
+
+      function formatExpression(expression) {
+        if (expression === undefined) return;
+        try {
+          expression = JSON.parse(expression);
+        } catch (err) {}
+        var resultExpression = {};
+        if (typeof expression === 'string') {
+          resultExpression.origin = expression;
+        } else if (expression) {
+          resultExpression.origin = expression.origin;
+          resultExpression.transformed = expression.transformed;
+        }
+        if (!resultExpression.transformed && !resultExpression.origin) return;
+        resultExpression.transformed = resultExpression.transformed || (0, _bindingxParser.parse)(resultExpression.origin);
+        return resultExpression;
+      }
+
+      // 统一回调参数
+      function fixCallback(callback) {
+        return function () {
+          var params = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+
+          if (typeof callback === 'function') {
+            return callback({
+              state: params.state === 'end' ? 'exit' : params.state,
+              t: params.t !== undefined ? params.t : params.deltaT
+            });
+          }
+        };
+      }
+
+      exports.default = {
+        // 是否支持新版本的binding
+        isSupportNewBinding: isSupportNewBinding,
+        // 是否支持binding
+        isSupportBinding: isSupportBinding,
+        _bindingInstances: [],
+        /**
+         * 绑定
+         * @param options 参数
+         * @example
+         {
+           anchor:blockRef,
+           eventType:'pan',
+           props: [
+           {
+             element:blockRef,
+             property:'transform.translateX',
+             expression:{
+               origin:"x+1",
+               transformed:"{\"type\":\"+\",\"children\":[{\"type\":\"Identifier\",\"value\":\"x\"},{\"type\":\"NumericLiteral\",\"value\":1}]}"
+             }
+           }
+          ]
+         }
+         */
+        bind: function bind(options) {
+          var callback = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : function () {};
+
+          if (!options) {
+            throw new Error('should pass options for binding');
+          }
+
+          options.exitExpression = formatExpression(options.exitExpression);
+
+          if (options.props) {
+            options.props.forEach(function (prop) {
+              prop.expression = formatExpression(prop.expression);
+            });
+          }
+
+          if (WeexBinding && isSupportBinding) {
+            if (isSupportNewBinding) {
+              return WeexBinding.bind(options, options && options.eventType === 'timing' ? fixCallback(callback) : callback);
+            } else {
+              WeexBinding.enableBinding(options.anchor, options.eventType);
+              // 处理expression的参数格式
+              var expressionArgs = options.props.map(function (prop) {
+                return {
+                  element: prop.element,
+                  property: prop.property,
+                  expression: prop.expression.transformed
+                };
+              });
+              WeexBinding.createBinding(options.anchor, options.eventType, '', expressionArgs, callback);
+            }
+          }
+        },
+
+        /**
+         *  @param {object} options
+         *  @example
+         *  {eventType:'pan',
+         *   token:self.gesToken}
+         */
+        unbind: function unbind(options) {
+          if (!options) {
+            throw new Error('should pass options for binding');
+          }
+
+          if (WeexBinding && isSupportBinding) {
+            if (isSupportNewBinding) {
+              return WeexBinding.unbind(options);
+            } else {
+              return WeexBinding.disableBinding(options.anchor, options.eventType);
+            }
+          }
+        },
+        unbindAll: function unbindAll() {
+          if (WeexBinding && isSupportBinding) {
+            if (isSupportNewBinding) {
+              return WeexBinding.unbindAll();
+            } else {
+              return WeexBinding.disableAll();
+            }
+          }
+        },
+        prepare: function prepare(options) {
+          if (WeexBinding && isSupportBinding) {
+            if (isSupportNewBinding) {
+              return WeexBinding.prepare(options);
+            } else {
+              return WeexBinding.enableBinding(options.anchor, options.eventType);
+            }
+          }
+        },
+        getComputedStyle: function getComputedStyle(el) {
+          if (isSupportNewBinding) {
+            return WeexBinding.getComputedStyle(el);
+          } else {
+            return {};
+          }
+        }
+      };
+      module.exports = exports['default'];
+
+      /***/
+    },
+    /* 1 */
+    /***/function (module, exports, __webpack_require__) {
+
+      "use strict";
+
+      module.exports = __webpack_require__(2);
+
+      /***/
+    },
+    /* 2 */
+    /***/function (module, exports, __webpack_require__) {
+
+      "use strict";
+
+      var lex = {
+        InputElementDiv: '<WhiteSpace>|<LineTerminator>|<ReservedWord>|<Identifier>|<NumericLiteral>|<Punctuator>|<StringLiteral>',
+        InputElementRegExp: '<WhiteSpace>|<LineTerminator>|<ReservedWord>|<Identifier>|<NumericLiteral>|<Punctuator>|<StringLiteral>',
+        ReservedWord: '<Keyword>|<NullLiteral>|<BooleanLiteral>',
+        WhiteSpace: /[\t\v\f\u0020\u00A0\u1680\u180E\u2000-\u200A\u202F\u205f\u3000\uFEFF]/,
+        LineTerminator: /[\n\r\u2028\u2029]/,
+        Keyword: /new(?![_$a-zA-Z0-9])|void(?![_$a-zA-Z0-9])|delete(?![_$a-zA-Z0-9])|in(?![_$a-zA-Z0-9])|instanceof(?![_$a-zA-Z0-9])|typeof(?![_$a-zA-Z0-9])/,
+        NullLiteral: /null(?![_$a-zA-Z0-9])/,
+        BooleanLiteral: /(?:true|false)(?![_$a-zA-Z0-9])/,
+        Identifier: /[_$a-zA-Z][_$a-zA-Z0-9]*/,
+        Punctuator: /\/|=>|\*\*|>>>=|>>=|<<=|===|!==|>>>|<<|%=|\*=|-=|\+=|<=|>=|==|!=|\^=|\|=|\|\||&&|&=|>>|\+\+|--|\:|}|\*|&|\||\^|!|~|-|\+|\?|%|=|>|<|,|;|\.(?![0-9])|\]|\[|\)|\(|{/,
+        DivPunctuator: /\/=|\//,
+        NumericLiteral: /(?:0[xX][0-9a-fA-F]*|\.[0-9]+|(?:[1-9]+[0-9]*|0)(?:\.[0-9]*|\.)?)(?:[eE][+-]{0,1}[0-9]+)?(?![_$a-zA-Z0-9])/,
+        StringLiteral: /"(?:[^"\n\\\r\u2028\u2029]|\\(?:['"\\bfnrtv\n\r\u2028\u2029]|\r\n)|\\x[0-9a-fA-F]{2}|\\u[0-9a-fA-F]{4}|\\[^0-9ux'"\\bfnrtv\n\\\r\u2028\u2029])*"|'(?:[^'\n\\\r\u2028\u2029]|\\(?:['"\\bfnrtv\n\r\u2028\u2029]|\r\n)|\\x[0-9a-fA-F]{2}|\\u[0-9a-fA-F]{4}|\\[^0-9ux'"\\bfnrtv\n\\\r\u2028\u2029])*'/,
+        RegularExpressionLiteral: /\/(?:\[(?:\\[\s\S]|[^\]])*\]|[^*\/\\\n\r\u2028\u2029]|\\[^\n\r\u2028\u2029])(?:\[(?:\\[\s\S]|[^\]])*\]|[^\/\\\n\r\u2028\u2029]|\\[^\n\r\u2028\u2029])*\/[0-9a-zA-Z]*/
+      };
+
+      function XRegExp(xregexps, rootname, flag) {
+        var expnames = [rootname];
+
+        function buildRegExp(source) {
+          var regexp = new RegExp();
+          regexp.compile(source.replace(/<([^>]+)>/g, function (all, expname) {
+            if (!xregexps[expname]) return '';
+            expnames.push(expname);
+            if (xregexps[expname] instanceof RegExp) return '(' + xregexps[expname].source + ')';
+            return '(' + buildRegExp(xregexps[expname]).source + ')';
+          }), flag);
+          return regexp;
+        }
+
+        var regexp = buildRegExp(xregexps[rootname]);
+        this.exec = function (string) {
+          var matches = regexp.exec(string);
+          if (matches == null) return null;
+          var result = new String(matches[0]);
+          for (var i = 0; i < expnames.length; i++) {
+            if (matches[i]) result[expnames[i]] = matches[i];
+          }return result;
+        };
+        Object.defineProperty(this, 'lastIndex', {
+          'get': function get() {
+            return regexp.lastIndex;
+          },
+          'set': function set(v) {
+            regexp.lastIndex = v;
+          }
+        });
+      }
+
+      function LexicalParser() {
+        var inputElementDiv = new XRegExp(lex, 'InputElementDiv', 'g');
+        var inputElementRegExp = new XRegExp(lex, 'InputElementRegExp', 'g');
+        var source;
+        Object.defineProperty(this, 'source', {
+          'get': function get() {
+            return source;
+          },
+          'set': function set(v) {
+            source = v;
+            inputElementDiv.lastIndex = 0;
+            inputElementRegExp.lastIndex = 0;
+          }
+        });
+        this.reset = function () {
+          inputElementDiv.lastIndex = 0;
+          inputElementRegExp.lastIndex = 0;
+        };
+        this.getNextToken = function (useDiv) {
+          var lastIndex = inputElementDiv.lastIndex;
+          var inputElement;
+          if (useDiv) inputElement = inputElementDiv;else inputElement = inputElementRegExp;
+          var token = inputElement.exec(source);
+          if (token && inputElement.lastIndex - lastIndex > token.length) {
+            throw new SyntaxError('Unexpected token ILLEGAL');
+          }
+          inputElementDiv.lastIndex = inputElement.lastIndex;
+          inputElementRegExp.lastIndex = inputElement.lastIndex;
+          return token;
+        };
+      }
+
+      var rules = {
+        'IdentifierName': [['Identifier']],
+        'Literal': [['NullLiteral'], ['BooleanLiteral'], ['NumericLiteral'], ['StringLiteral'], ['RegularExpressionLiteral']],
+        'PrimaryExpression': [['Identifier'], ['Literal'], ['(', 'Expression', ')']],
+        'CallExpression': [['PrimaryExpression', 'Arguments'], ['CallExpression', 'Arguments']],
+        'Arguments': [['(', ')'], ['(', 'ArgumentList', ')']],
+        'ArgumentList': [['ConditionalExpression'], ['ArgumentList', ',', 'ConditionalExpression']],
+        'LeftHandSideExpression': [['PrimaryExpression'], ['CallExpression']],
+        'UnaryExpression': [['LeftHandSideExpression'], ['void', 'UnaryExpression'], ['+', 'UnaryExpression'], ['-', 'UnaryExpression'], ['~', 'UnaryExpression'], ['!', 'UnaryExpression']],
+        'ExponentiationExpression': [['UnaryExpression'], ['ExponentiationExpression', '**', 'UnaryExpression']],
+        'MultiplicativeExpression': [['MultiplicativeExpression', '/', 'ExponentiationExpression'], ['ExponentiationExpression'], ['MultiplicativeExpression', '*', 'ExponentiationExpression'], ['MultiplicativeExpression', '%', 'ExponentiationExpression']],
+        'AdditiveExpression': [['MultiplicativeExpression'], ['AdditiveExpression', '+', 'MultiplicativeExpression'], ['AdditiveExpression', '-', 'MultiplicativeExpression']],
+        'ShiftExpression': [['AdditiveExpression'], ['ShiftExpression', '<<', 'AdditiveExpression'], ['ShiftExpression', '>>', 'AdditiveExpression'], ['ShiftExpression', '>>>', 'AdditiveExpression']],
+        'RelationalExpression': [['ShiftExpression'], ['RelationalExpression', '<', 'ShiftExpression'], ['RelationalExpression', '>', 'ShiftExpression'], ['RelationalExpression', '<=', 'ShiftExpression'], ['RelationalExpression', '>=', 'ShiftExpression'], ['RelationalExpression', 'instanceof', 'ShiftExpression'], ['RelationalExpression', 'in', 'ShiftExpression']],
+        'EqualityExpression': [['RelationalExpression'], ['EqualityExpression', '==', 'RelationalExpression'], ['EqualityExpression', '!=', 'RelationalExpression'], ['EqualityExpression', '===', 'RelationalExpression'], ['EqualityExpression', '!==', 'RelationalExpression']],
+        'BitwiseANDExpression': [['EqualityExpression'], ['BitwiseANDExpression', '&', 'EqualityExpression']],
+        'BitwiseXORExpression': [['BitwiseANDExpression'], ['BitwiseXORExpression', '^', 'BitwiseANDExpression']],
+        'BitwiseORExpression': [['BitwiseXORExpression'], ['BitwiseORExpression', '|', 'BitwiseXORExpression']],
+        'LogicalANDExpression': [['BitwiseORExpression'], ['LogicalANDExpression', '&&', 'BitwiseORExpression']],
+        'LogicalORExpression': [['LogicalANDExpression'], ['LogicalORExpression', '||', 'LogicalANDExpression']],
+        'ConditionalExpression': [['LogicalORExpression'], ['LogicalORExpression', '?', 'LogicalORExpression', ':', 'LogicalORExpression']],
+        'Expression': [['ConditionalExpression'], ['Expression', ',', 'ConditionalExpression']],
+        'Program': [['Expression']]
+
+      };
+
+      function _Symbol(symbolName, token) {
+        this.name = symbolName;
+        this.token = token;
+        this.childNodes = [];
+        this.toString = function (indent) {
+          if (!indent) indent = '';
+          if (this.childNodes.length == 1) return this.childNodes[0].toString(indent);
+          var str = indent + this.name + (this.token != undefined && this.name != this.token ? ':' + this.token : '') + '\n';
+          for (var i = 0; i < this.childNodes.length; i++) {
+            str += this.childNodes[i].toString(indent + '    ');
+          }return str;
+        };
+      }
+
+      function SyntacticalParser() {
+        var currentRule;
+        var root = {
+          Program: '$'
+        };
+        var hash = {};
+
+        function closureNode(node) {
+
+          hash[JSON.stringify(node)] = node;
+
+          var queue = Object.getOwnPropertyNames(node);
+          while (queue.length) {
+            var symbolName = queue.shift();
+            if (!rules[symbolName]) continue;
+            rules[symbolName].forEach(function (rule) {
+              if (!node[rule[0]]) queue.push(rule[0]);
+              var rulenode = node;
+              var lastnode = null;
+              rule.forEach(function (symbol) {
+                if (!rulenode[symbol]) rulenode[symbol] = {};
+                lastnode = rulenode;
+                rulenode = rulenode[symbol];
+              });
+              if (node[symbolName].$div) rulenode.$div = true;
+              rulenode.$reduce = symbolName;
+              rulenode.$count = rule.length;
+            });
+          }
+
+          for (var p in node) {
+            if (_typeof2(node[p]) != 'object' || p.charAt(0) == '$' || node[p].$closure) continue;
+            if (hash[JSON.stringify(node[p])]) node[p] = hash[JSON.stringify(node[p])];else {
+              closureNode(node[p]);
+            }
+          }
+          node.$closure = true;
+        }
+
+        closureNode(root);
+        var symbolStack = [];
+        var statusStack = [root];
+        var current = root;
+        this.insertSymbol = function insertSymbol(symbol, haveLineTerminator) {
+          while (!current[symbol.name] && current.$reduce) {
+            var count = current.$count;
+            var newsymbol = new _Symbol(current.$reduce);
+            while (count--) {
+              newsymbol.childNodes.push(symbolStack.pop()), statusStack.pop();
+            }current = statusStack[statusStack.length - 1];
+            this.insertSymbol(newsymbol);
+          }
+          current = current[symbol.name];
+          symbolStack.push(symbol), statusStack.push(current);
+          if (!current) throw new Error();
+          return current.$div;
+        };
+        this.reset = function () {
+          current = root;
+          symbolStack = [];
+          statusStack = [root];
+        };
+        Object.defineProperty(this, 'grammarTree', {
+          'get': function get() {
+            try {
+              while (current.$reduce) {
+                var count = current.$count;
+                var newsymbol = new _Symbol(current.$reduce);
+                while (count--) {
+                  newsymbol.childNodes.push(symbolStack.pop()), statusStack.pop();
+                }current = statusStack[statusStack.length - 1];
+                this.insertSymbol(newsymbol);
+              }
+              if (symbolStack.length > 0 && current[';']) {
+                this.insertSymbol(new _Symbol(';', ';'));
+                return this.grammarTree;
+              }
+              if (symbolStack.length != 1 || symbolStack[0].name != 'Program') throw new Error();
+            } catch (e) {
+              throw new SyntaxError('Unexpected end of input');
+            }
+            return symbolStack[0];
+          }
+        });
+      }
+
+      function Parser() {
+        this.lexicalParser = new LexicalParser();
+        this.syntacticalParser = new SyntacticalParser();
+        var terminalSymbols = ['NullLiteral', 'BooleanLiteral', 'NumericLiteral', 'StringLiteral', 'RegularExpressionLiteral', 'Identifier', '**', '=>', '{', '}', '(', ')', '[', ']', '.', ';', ',', '<', '>', '<=', '>=', '==', '!=', '===', '!==', '+', '-', '*', '%', '++', '--', '<<', '>>', '>>>', '&', '|', '^', '!', '~', '&&', '||', '?', ':', '=', '+=', '-=', '*=', '%=', '<<=', '>>=', '>>>=', '&=', '|=', '^=', '/', '/=', 'instanceof', 'typeof', 'new', 'void', 'debugger', 'this', 'delete', 'in'];
+        var terminalSymbolIndex = {};
+        terminalSymbols.forEach(function (e) {
+          Object.defineProperty(terminalSymbolIndex, e, {});
+        });
+        this.reset = function () {
+          this.lexicalParser.reset();
+          this.syntacticalParser.reset();
+        };
+        this.parse = function (source, onInputElement) {
+          var _this = this;
+
+          var token;
+          var haveLineTerminator = false;
+          this.lexicalParser.source = source;
+          var useDiv = false;
+          while (token = this.lexicalParser.getNextToken(useDiv)) {
+            if (onInputElement) onInputElement(token);
+            try {
+              if (Object.getOwnPropertyNames(token).some(function (e) {
+                if (terminalSymbolIndex.hasOwnProperty(e)) {
+                  useDiv = _this.syntacticalParser.insertSymbol(new _Symbol(e, token), haveLineTerminator);
+                  haveLineTerminator = false;
+                  return true;
+                } else return false;
+              })) continue;
+              if ((token.Keyword || token.Punctuator || token.DivPunctuator) && terminalSymbolIndex.hasOwnProperty(token.toString())) {
+                useDiv = this.syntacticalParser.insertSymbol(new _Symbol(token.toString(), token), haveLineTerminator);
+              }
+            } catch (e) {
+              throw new SyntaxError('Unexpected token ' + token);
+            }
+          }
+          return this.syntacticalParser.grammarTree;
+        };
+      }
+
+      var parser = new Parser();
+
+      function JavaScriptExpression(text) {
+        parser.reset();
+        this.tree = parser.parse(text);
+        this.paths = [];
+        var context = Object.create(null);
+        var me = this;
+        var pathIndex = Object.create(null);
+        this.isSimple;
+        this.isConst;
+        walk(this.tree);
+        checkSimple(this.tree);
+        if (this.paths.length === 0) {
+          this.isConst = true;
+        }
+        this.setter = function (path) {
+          var curr = context;
+          for (var i = 0; i < path.length - 1; i++) {
+            if (!curr[path[i]]) curr[path[i]] = Object.create(null);
+            curr = curr[path[i]];
+          }
+          return {
+            isCompleted: function isCompleted() {
+              for (var p in pathIndex) {
+                if (!pathIndex[p]) return false;
+              }return true;
+            },
+            set: function set(value) {
+              if (!pathIndex[path.join('.')]) {
+                pathIndex[path.join('.')] = true;
+              }
+              curr[path[i]] = value;
+              if (this.isCompleted()) {
+                return me.exec();
+              } else {
+                return undefined;
+              }
+            }
+          };
+        };
+
+        this.valueOf = this.exec = function () {
+          try {
+            return function () {
+              return eval(text);
+            }.call(context);
+          } catch (e) {}
+        };
+
+        function checkSimple(symbol) {
+
+          var curr = symbol;
+          while (curr.childNodes.length <= 1 && curr.name !== 'MemberExpression') {
+            curr = curr.childNodes[0];
+          }
+          // TODO: need to point out "[……]"
+          if (curr.name === 'MemberExpression') {
+            me.isSimple = true;
+          } else {
+            me.isSimple = false;
+          }
+        }
+
+        function walk(symbol) {
+          if (symbol.name === 'CallExpression' && symbol.childNodes[symbol.childNodes.length - 1].name !== 'CallExpression') {
+            var path = getPath(symbol.childNodes[1]);
+            walk(symbol.childNodes[0]);
+          } else if (symbol.name === 'NewExpression' && symbol.childNodes.length === 1) {
+            var path = getPath(symbol.childNodes[0]);
+          } else if (symbol.name === 'MemberExpression' && symbol.childNodes.length === 1) {
+            var path = getPath(symbol);
+          } else {
+            for (var i = 0; i < symbol.childNodes.length; i++) {
+              walk(symbol.childNodes[i]);
+            }
+          }
+        }
+
+        function getPath(symbol) {
+          // [["PrimaryExpression"], ["MemberExpression", "[", "Expression", "]"], ["MemberExpression", ".", "IdentifierName"], ["new", "MemberExpression", "Arguments"]],
+
+          if (symbol.childNodes[0].name === 'IdentifierName') {
+            // MemberExpression : MemberExpression "." IdentifierName
+            var path = getPath(symbol.childNodes[2]);
+            if (path) path = path.concat(symbol.childNodes[0].childNodes[0].token.toString());
+            createPath(path);
+            return path;
+          } else if (symbol.childNodes[0].name === 'PrimaryExpression') {
+            // MemberExpression : PrimaryExpression
+            if (symbol.childNodes[0].childNodes[0].name === 'Identifier') {
+              var path = [symbol.childNodes[0].childNodes[0].token.toString()];
+              createPath(path);
+              return path;
+            } else {
+              return null;
+            }
+          } else if (symbol.childNodes[0].name === ']') {
+            // MemberExpression : MemberExpression "[" Expression "]"
+            getPath(symbol.childNodes[3]);
+            walk(symbol.childNodes[1]);
+            return null;
+          } else if (symbol.childNodes[0].name === 'Arguments') {
+            // MemberExpression : "new" MemberExpression Arguments
+            walk(symbol.childNodes[0]);
+            walk(symbol.childNodes[1]);
+            return null;
+          } else {
+            for (var i = 0; i < symbol.childNodes.length; i++) {
+              walk(symbol.childNodes[i]);
+            }
+          }
+        }
+
+        function createPath(path) {
+          var curr = context;
+          for (var i = 0; i < path.length - 1; i++) {
+            if (!curr[path[i]]) curr[path[i]] = Object.create(null);
+            curr = curr[path[i]];
+          }
+          me.paths.push(path);
+          pathIndex[path.join('.')] = false;
+        }
+      }
+
+      function visit(tree) {
+        var childNodes = tree.childNodes.slice().reverse();
+        var children = childNodes.filter(function (e) {
+          return !e.token || !e.token.Punctuator;
+        });
+        if (tree.name === 'UnaryExpression') {
+          // negative number support
+          if (childNodes.length === 2 && childNodes[0].name === '-' && children.length === 1) {
+            var res = visit(children[0]);
+            res.value = -res.value;
+            return res;
+          }
+        }
+
+        if (tree.name === 'Arguments') {
+          var argumentList = [];
+          var listNode = children[0];
+          while (listNode) {
+            if (listNode.childNodes.length === 3) {
+              argumentList.unshift(listNode.childNodes[0]);
+              listNode = listNode.childNodes[2];
+            }
+            if (listNode.childNodes.length === 1) {
+              argumentList.unshift(listNode.childNodes[0]);
+              listNode = null;
+            }
+          }
+          return {
+            type: 'Arguments',
+            children: argumentList.map(function (e) {
+              return visit(e);
+            })
+          };
+        }
+
+        if (children && children.length === 1) {
+          var res = visit(children[0]);
+          return res;
+        }
+
+        if (tree.token && ['NullLiteral', 'BooleanLiteral', 'NumericLiteral', 'StringLiteral', 'Identifier'].some(function (e) {
+          return tree.token[e];
+        })) {
+          var type = Object.keys(tree.token).filter(function (e) {
+            return e.match(/Literal/) || e.match(/Identifier/);
+          })[0];
+          var value = {
+            'NullLiteral': null,
+            'BooleanLiteral': Boolean(tree.token),
+            'NumericLiteral': Number(tree.token),
+            'StringLiteral': tree.token,
+            'Identifier': tree.token
+          }[type];
+
+          return {
+            type: type,
+            value: value
+          };
+        }
+
+        if (tree.name === 'CallExpression') return {
+          type: 'CallExpression',
+          children: [visit(childNodes[0]), visit(childNodes[1])]
+        };
+
+        return {
+          type: childNodes.filter(function (e) {
+            return e.token && e.token.Punctuator;
+          })[0].name,
+          children: childNodes.filter(function (e) {
+            return !e.token || !e.token.Punctuator;
+          }).map(function (e) {
+            return visit(e);
+          })
+        };
+      }
+
+      function parse(originExp) {
+        var exp = new JavaScriptExpression(originExp);
+        return JSON.stringify(visit(exp.tree), null);
+      }
+
+      module.exports = {
+        parse: parse
+      };
+
+      /***/
+    }]
+    /******/)
+  );
+});;
+
+/***/ }),
+/* 75 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _index = __webpack_require__(76);
+
+Object.defineProperty(exports, 'default', {
+  enumerable: true,
+  get: function get() {
+    return _interopRequireDefault(_index).default;
+  }
+});
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+/***/ }),
+/* 76 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var __vue_exports__, __vue_options__
+var __vue_styles__ = []
+
+/* styles */
+__vue_styles__.push(__webpack_require__(77)
+)
+
+/* script */
+__vue_exports__ = __webpack_require__(78)
+
+/* template */
+var __vue_template__ = __webpack_require__(80)
+__vue_options__ = __vue_exports__ = __vue_exports__ || {}
+if (
+  typeof __vue_exports__.default === "object" ||
+  typeof __vue_exports__.default === "function"
+) {
+if (Object.keys(__vue_exports__).some(function (key) { return key !== "default" && key !== "__esModule" })) {console.error("named exports are not supported in *.vue files.")}
+__vue_options__ = __vue_exports__ = __vue_exports__.default
+}
+if (typeof __vue_options__ === "function") {
+  __vue_options__ = __vue_options__.options
+}
+__vue_options__.__file = "D:\\workspace\\test\\fof\\node_modules\\weex-ui\\packages\\wxc-ep-slider\\index.vue"
+__vue_options__.render = __vue_template__.render
+__vue_options__.staticRenderFns = __vue_template__.staticRenderFns
+__vue_options__._scopeId = "data-v-72f597b3"
+__vue_options__.style = __vue_options__.style || {}
+__vue_styles__.forEach(function (module) {
+  for (var name in module) {
+    __vue_options__.style[name] = module[name]
+  }
+})
+if (typeof __register_static_styles__ === "function") {
+  __register_static_styles__(__vue_options__._scopeId, __vue_styles__)
+}
+
+module.exports = __vue_exports__
+
+
+/***/ }),
+/* 77 */
+/***/ (function(module, exports) {
+
+module.exports = {
+  "slider": {
+    "position": "absolute",
+    "top": 0
+  }
+}
+
+/***/ }),
+/* 78 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _utils = __webpack_require__(0);
+
+var _utils2 = _interopRequireDefault(_utils);
+
+var _bindEnv = __webpack_require__(79);
+
+var _bindEnv2 = _interopRequireDefault(_bindEnv);
+
+var _indexWeex = __webpack_require__(74);
+
+var _indexWeex2 = _interopRequireDefault(_indexWeex);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+var swipeBack = weex.requireModule('swipeBack');
+var animation = weex.requireModule('animation');
+exports.default = {
+  props: {
+    sliderId: {
+      type: [String, Number],
+      default: 1
+    },
+    panOffset: {
+      type: Number,
+      default: 80
+    },
+    cardLength: {
+      type: Number,
+      default: 1
+    },
+    selectIndex: {
+      type: Number,
+      default: 0
+    },
+    enableSwipe: {
+      type: Boolean,
+      default: true
+    },
+    containerS: {
+      type: Object,
+      default: function _default() {
+        return {
+          position: 'relative',
+          width: 750,
+          height: 352
+        };
+      }
+    },
+    cardS: {
+      type: Object,
+      default: function _default() {
+        return {
+          width: 360,
+          height: 300,
+          spacing: 0,
+          scale: 0.75
+        };
+      }
+    },
+    autoPlay: {
+      type: Boolean,
+      default: false
+    },
+    interval: {
+      type: [Number, String],
+      default: 1200
+    }
+  },
+  data: function data() {
+    return {
+      isMoving: false,
+      gesToken: 0,
+      startX: 0,
+      startTime: 0,
+      currentIndex: 0,
+      autoPlayTimer: null
+    };
+  },
+  computed: {
+    cardList: function cardList() {
+      return new Array(this.cardLength + 1).join().split('');
+    },
+    cardWidth: function cardWidth() {
+      return (this.cardLength - 1) * this.cardS.width + this.containerS.width + 235;
+    }
+  },
+  created: function created() {
+    this.currentIndex = this.selectIndex;
+  },
+  mounted: function mounted() {
+    var _this = this;
+
+    // ios和页面返回冲突，组件里面将ios系统横滑返回禁止
+    if (swipeBack && swipeBack.forbidSwipeBack) {
+      swipeBack.forbidSwipeBack(true);
+    }
+
+    setTimeout(function () {
+      var sliderCtn = _this.$refs['sliderCtn_' + _this.sliderId];
+      if (_bindEnv2.default.supportsEB() && sliderCtn && sliderCtn.ref) {
+        _indexWeex2.default.prepare && _indexWeex2.default.prepare({
+          anchor: sliderCtn.ref,
+          eventType: 'pan'
+        });
+      }
+    }, 20);
+    this.checkNeedAutoPlay();
+  },
+
+  methods: {
+    onPanStart: function onPanStart(e) {
+      if (_bindEnv2.default.supportsEB()) {
+        return;
+      }
+      this.clearAutoPlay();
+      this.startX = e.changedTouches[0].clientX;
+      this.startTime = Date.now();
+    },
+    onPanMove: function onPanMove(e) {
+      if (_bindEnv2.default.supportsEB()) {
+        return;
+      }
+      var moveX = e.changedTouches[0].clientX - this.startX;
+      var index = this.loopedIndex(this.currentIndex, this.cardLength);
+      var cardLength = this.cardLength;
+      var currentCardLeft = this.currentIndex * (this.cardS.width + this.cardS.spacing);
+
+      var sliderCtn = this.$refs['sliderCtn_' + this.sliderId];
+      sliderCtn && animation.transition(sliderCtn, {
+        styles: {
+          transform: 'translateX(' + (moveX - currentCardLeft) + 'px)'
+        },
+        timingFunction: 'ease',
+        delay: 0,
+        duration: 0
+      }, function () {});
+
+      if (this.cardS.scale !== 1) {
+        var currentCard = this.$refs['card' + this.loopedIndex(index, cardLength) + '_' + this.sliderId][0];
+        currentCard && animation.transition(currentCard, {
+          styles: {
+            transform: 'scale(' + (1 - Math.abs(moveX) / this.cardS.width * (1 - this.cardS.scale)) + ')'
+          },
+          timingFunction: 'ease',
+          delay: 0,
+          duration: 0
+        }, function () {});
+        // 左边的卡片
+        var leftCard = this.$refs['card' + this.loopedIndex(index - 1, cardLength) + '_' + this.sliderId][0];
+        // loop 函数负数返回 0，这里有点冲突
+        if (leftCard && index !== 0) {
+          animation.transition(leftCard, {
+            styles: {
+              transform: 'scale(' + (1 - Math.abs(moveX - this.cardS.width) / this.cardS.width * (1 - this.cardS.scale)) + ')'
+            },
+            timingFunction: 'ease',
+            delay: 0,
+            duration: 0
+          }, function () {});
+        }
+        // 右边卡片
+        var rightCard = this.$refs['card' + this.loopedIndex(index + 1, cardLength) + '_' + this.sliderId][0];
+        rightCard && animation.transition(rightCard, {
+          styles: {
+            transform: 'scale(' + (1 - Math.abs(this.cardS.width + moveX) / this.cardS.width * (1 - this.cardS.scale)) + ')'
+          },
+          timingFunction: 'ease',
+          delay: 0,
+          duration: 0
+        }, function () {});
+      }
+    },
+    onEpPanStart: function onEpPanStart(e) {
+      var _this2 = this;
+
+      if (_bindEnv2.default.supportsEB() && e.state === 'start') {
+        this.clearAutoPlay();
+        setTimeout(function () {
+          var sliderCtn = _this2.$refs['sliderCtn_' + _this2.sliderId];
+          _this2.bindExp(sliderCtn);
+        }, 0);
+      }
+    },
+    onPanEnd: function onPanEnd(e) {
+      if (_bindEnv2.default.supportsEB()) {
+        return;
+      }
+      this.panEnd(e);
+    },
+    panEnd: function panEnd(e) {
+      var _this3 = this;
+
+      this.isMoving = true;
+      var moveX = e.deltaX;
+
+      if (_utils2.default.env.isWeb()) {
+        moveX = e.changedTouches[0].clientX - this.startX;
+      }
+
+      var originIndex = this.currentIndex;
+      var selectIndex = originIndex;
+      var duration = Date.now() - this.startTime;
+      var panOffset = this.panOffset || this.cardS.width / 2;
+      var isPullMore = selectIndex === this.cardLength - 1 && (moveX < -68 || moveX < -10 && duration < 200);
+
+      if (isPullMore) {
+        this.$emit('wxcEpSliderPullMore', { currentIndex: selectIndex });
+      }
+
+      if (moveX < -panOffset || moveX < -10 && duration < 200) {
+        if (selectIndex !== this.cardLength - 1) {
+          selectIndex++;
+        }
+      } else if (moveX > panOffset || moveX > 10 && duration < 500) {
+        if (selectIndex !== 0) {
+          selectIndex--;
+        }
+      }
+
+      this.slideTo(originIndex, selectIndex);
+      setTimeout(function () {
+        _this3.checkNeedAutoPlay();
+      }, 3000);
+    },
+    slideTo: function slideTo(originIndex, selectIndex) {
+      var _this4 = this;
+
+      var currentCardScale = 1;
+      var rightCardScale = this.cardS.scale;
+      var leftCardScale = this.cardS.scale;
+      var duration = selectIndex === 0 && originIndex === this.cardLength - 1 && this.cardLength !== 2 ? 0.00001 : 300;
+      this.$emit('wxcEpSliderCurrentIndexSelected', { currentIndex: selectIndex });
+      if (originIndex < selectIndex) {
+        currentCardScale = this.cardS.scale;
+        rightCardScale = 1;
+      } else if (originIndex > selectIndex) {
+        currentCardScale = this.cardS.scale;
+        leftCardScale = 1;
+      }
+      var currentCard = this.$refs['card' + this.loopedIndex(originIndex, this.cardLength) + '_' + this.sliderId][0];
+      currentCard && animation.transition(currentCard, {
+        styles: {
+          transform: 'scale(' + currentCardScale + ')'
+        },
+        timingFunction: 'ease',
+        duration: duration
+      }, function () {});
+
+      var leftCard = this.$refs['card' + this.loopedIndex(originIndex - 1, this.cardLength) + '_' + this.sliderId][0];
+      if (this.isMoving && leftCard && originIndex !== 0) {
+        animation.transition(leftCard, {
+          styles: {
+            transform: 'scale(' + leftCardScale + ')'
+          },
+          timingFunction: 'ease',
+          duration: duration
+        }, function () {});
+      }
+      var rightCard = this.$refs['card' + this.loopedIndex(originIndex + 1, this.cardLength) + '_' + this.sliderId][0];
+      if (rightCard && originIndex !== this.cardLength - 1) {
+        animation.transition(rightCard, {
+          styles: {
+            transform: 'scale(' + rightCardScale + ')'
+          },
+          timingFunction: 'ease',
+          duration: duration
+        }, function () {});
+      }
+
+      var sliderCtn = this.$refs['sliderCtn_' + this.sliderId];
+      sliderCtn && animation.transition(sliderCtn, {
+        styles: {
+          transform: 'translateX(-' + selectIndex * (this.cardS.width + this.cardS.spacing) + 'px)'
+        },
+        timingFunction: 'ease',
+        duration: duration
+      }, function () {
+        _this4.isMoving = false;
+        if (originIndex !== selectIndex) {
+          _this4.currentIndex = selectIndex;
+        }
+      });
+    },
+
+    // 使index维持在0-length之间循环
+    loopedIndex: function loopedIndex(index, total) {
+      if (index < 0) {
+        index = index + (1 - index / total) * total;
+      }
+      return index % total;
+    },
+    bindExp: function bindExp(element) {
+      var _this5 = this;
+
+      if (element && element.ref) {
+
+        if (this.isMoving && this.gesToken !== 0) {
+          _indexWeex2.default.unbind({
+            eventType: 'pan',
+            token: this.gesToken
+          });
+          this.gesToken = 0;
+          return;
+        }
+
+        this.startTime = Date.now();
+        var index = this.loopedIndex(this.currentIndex, this.cardLength);
+        var sliderCtn = this.$refs['sliderCtn_' + this.sliderId];
+        var currentCard = this.$refs['card' + index + '_' + this.sliderId][0];
+        var rightCard = null;
+        var leftCard = null;
+        var currentCardLeft = this.currentIndex * (this.cardS.width + this.cardS.spacing);
+
+        // 卡片容器
+        var sliderCtnExp = 'x - ' + currentCardLeft;
+        var args = [{
+          element: sliderCtn.ref,
+          property: 'transform.translateX',
+          expression: sliderCtnExp
+        }];
+
+        if (this.cardS.scale !== 1) {
+
+          var currentCardExp = '1-abs(x)/' + this.cardS.width + '*' + (1 - this.cardS.scale);
+          var leftCardExp = '1-abs(x-' + this.cardS.width + ')/' + this.cardS.width + '*' + (1 - this.cardS.scale);
+          var rightCardExp = '1-abs(' + this.cardS.width + '+x)/' + this.cardS.width + '*' + (1 - this.cardS.scale);
+
+          args.push({
+            element: currentCard.ref,
+            property: 'transform.scale',
+            expression: currentCardExp
+          });
+
+          if (index === 0 && this.$refs['card' + (index + 1) + '_' + this.sliderId]) {
+
+            rightCard = this.$refs['card' + (index + 1) + '_' + this.sliderId][0];
+            args.push({
+              element: rightCard.ref,
+              property: 'transform.scale',
+              expression: rightCardExp
+            });
+          } else if (index === this.cardLength - 1 && this.$refs['card' + (index - 1) + '_' + this.sliderId]) {
+            leftCard = this.$refs['card' + (index - 1) + '_' + this.sliderId][0];
+            args.push({
+              element: leftCard.ref,
+              property: 'transform.scale',
+              expression: leftCardExp
+            });
+          } else if (this.$refs['card' + (index - 1) + '_' + this.sliderId]) {
+            // 左边卡片
+            leftCard = this.$refs['card' + (index - 1) + '_' + this.sliderId][0];
+            args.push({
+              element: leftCard.ref,
+              property: 'transform.scale',
+              expression: leftCardExp
+            });
+            // 右边卡片
+            rightCard = this.$refs['card' + (index + 1) + '_' + this.sliderId][0];
+            args.push({
+              element: rightCard.ref,
+              property: 'transform.scale',
+              expression: rightCardExp
+            });
+          }
+        }
+
+        var gesTokenObj = _indexWeex2.default.bind({
+          anchor: element.ref,
+          eventType: 'pan',
+          props: args
+        }, function (e) {
+          if (!_this5.isMoving && (e.state === 'end' || e.state === 'cancel' || e.state === 'exit')) {
+            _this5.panEnd(e);
+          }
+        });
+
+        this.gesToken = gesTokenObj.token;
+      }
+    },
+    checkNeedAutoPlay: function checkNeedAutoPlay() {
+      var _this6 = this;
+
+      if (this.autoPlay) {
+        this.clearAutoPlay();
+        this.autoPlayTimer = setInterval(function () {
+          _this6.slideTo(_this6.currentIndex, _this6.loopedIndex(_this6.currentIndex + 1, _this6.cardLength));
+        }, parseInt(this.interval));
+      }
+    },
+    clearAutoPlay: function clearAutoPlay() {
+      this.autoPlayTimer && clearInterval(this.autoPlayTimer);
+    },
+    rebind: function rebind() {
+      var sliderCtn = this.$refs['sliderCtn_' + this.sliderId];
+      if (sliderCtn && sliderCtn.ref) {
+        _indexWeex2.default.unbind({
+          eventType: 'pan',
+          token: this.gesToken
+        });
+        this.gesToken = 0;
+        this.bindExp(sliderCtn);
+      }
+    },
+    manualSetPage: function manualSetPage(selectIndex) {
+      var _this7 = this;
+
+      this.clearAutoPlay();
+      var step = this.currentIndex < selectIndex ? 1 : -1;
+      this.slideTo(this.loopedIndex(selectIndex - step, this.cardLength), selectIndex);
+      setTimeout(function () {
+        _this7.checkNeedAutoPlay();
+      }, 3000);
+    }
+  }
+};
+
+/***/ }),
+/* 79 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _indexWeex = __webpack_require__(74);
+
+var _indexWeex2 = _interopRequireDefault(_indexWeex);
+
+var _index = __webpack_require__(0);
+
+var _index2 = _interopRequireDefault(_index);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+/**
+ * CopyRight (C) 2017-2022 Alibaba Group Holding Limited.
+ * Created by Tw93 on 18/03/22
+ */
+var BindEnv = {
+  supportsEB: function supportsEB() {
+    return _indexWeex2.default.isSupportBinding && !_index2.default.env.isWeb();
+  },
+
+
+  /**
+   * 判断Android容器是否支持是否支持expressionBinding(处理方式很不一致)
+   * @returns {boolean}
+   */
+  supportsEBForAndroid: function supportsEBForAndroid() {
+    return _index2.default.env.isAndroid() && BindEnv.supportsEB();
+  },
+
+
+  /**
+   * 判断IOS容器是否支持是否支持expressionBinding
+   * @returns {boolean}
+   */
+  supportsEBForIos: function supportsEBForIos() {
+    return _index2.default.env.isIOS() && BindEnv.supportsEB();
+  }
+};
+
+exports.default = BindEnv;
+
+/***/ }),
+/* 80 */
+/***/ (function(module, exports) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    style: _vm.containerS
+  }, [_c('div', {
+    ref: ("sliderCtn_" + _vm.sliderId),
+    style: {
+      width: _vm.cardWidth + 'px',
+      height: _vm.cardS.height + 'px',
+      transform: ("translateX(-" + (_vm.currentIndex * (_vm.cardS.width + _vm.cardS.spacing)) + "px)")
+    },
+    on: {
+      "panstart": _vm.onPanStart,
+      "panmove": _vm.onPanMove,
+      "panend": _vm.onPanEnd,
+      "horizontalpan": _vm.onEpPanStart
+    }
+  }, [_vm._l((_vm.cardList), function(v, index) {
+    return _c('div', {
+      ref: ("card" + index + "_" + _vm.sliderId),
+      refInFor: true,
+      staticClass: ["slider"],
+      style: {
+        transform: ("scale(" + (index===_vm.currentIndex ? 1 : _vm.cardS.scale) + ")"),
+        left: ((index * (_vm.cardS.width+_vm.cardS.spacing)) + "px"),
+        marginLeft: (((_vm.containerS.width - _vm.cardS.width) / 2) + "px"),
+        width: _vm.cardS.width + 'px',
+        height: _vm.cardS.height + 'px'
+      }
+    }, [_vm._t(("card" + index + "_" + _vm.sliderId))], 2)
+  }), _vm._t("pull-more")], 2)])
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 
