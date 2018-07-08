@@ -1,24 +1,29 @@
 <template>
     <div class="login-form">
-        <images src="/src/asset/img/qq.jpg"></images>
+        <image src="/src/asset/img/qq.jpg"></image>
         <text v-on:click="loginEvent">QQ一键登录</text>
     </div>
 </template>
 <script>
+import server from '../ajax/index'
 export default {
     data () {
         return {}
     },
     methods: {
         loginEvent: function (event) {
-            // `this` 在方法里指向当前 Vue 实例
-            alert('login')
+            server.login({
+                'pic':"test.jpg"
+
+            })
+                    .then(data => {console.log(data)})
+                    .catch(err => {console.log(err)})
         }
     }
 }
 </script>
-<style>
-    .login-form images{
+<style scoped>
+    .login-form figure{
         width: 200px;
         height: 200px;
         margin-left: 33%;

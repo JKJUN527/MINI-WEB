@@ -1,7 +1,8 @@
 import axios from 'axios'
 import qs from 'qs'
+const LOGIN = '/'
 var ax = axios.create({
-  baseURL: 'https://some-domain.com/api/',
+  baseURL: 'http://111.231.233.254:8012',
   timeout: 1000
 })
 
@@ -13,7 +14,12 @@ function makeGet(path, params) {
   return ax.get(path, { params })
 }
 
+function login(data) {
+    return makeGet(LOGIN, data)
+}
+
 export default {
   makePost,
-  makeGet
+  makeGet,
+  login
 }
