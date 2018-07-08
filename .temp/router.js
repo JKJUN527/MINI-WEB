@@ -7,6 +7,7 @@ import Match from '@/components/match'
 import otherInfo from '@/components/otherInfo'
 import ownInfo from '@/components/ownInfo'
 import PersonalEdit from '@/components/personalEdit'
+import Msglist from '@/components/msglist'
 Vue.use(Router)
 
 module.exports = new Router({
@@ -40,6 +41,11 @@ module.exports = new Router({
       path: '/personalEdit',
       name: 'personalEdit',
       component: PersonalEdit
+    },
+    {
+      path: '/msglist',
+      name: 'msglist',
+      component: Msglist
     }
   ]
 })
