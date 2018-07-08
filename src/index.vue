@@ -1,41 +1,40 @@
 <template>
   <div class="wrapper">
-    <image :src="logo" class="logo" />
-    <text class="greeting">The environment is ready!</text>
-    <router-link :to="{name: 'login'}">test</router-link>
+      <wxc-button text="试试">
+      </wxc-button>
+    <router-link :to="{name: 'personalEdit'}" class="router">
+      哈哈哈
+    </router-link>
     <router-view/>
   </div>
 </template>
 
 <script>
+import { WxcButton, WxcPopup } from 'weex-ui'
 export default {
+  components: { WxcButton, WxcPopup },
   name: 'App',
   data () {
     return {
-      logo: 'https://gw.alicdn.com/tfs/TB1yopEdgoQMeJjy1XaXXcSsFXa-640-302.png'
+    }
+  },
+  methods: {
+    wxcButtonClicked () {
+      alert('hahah')
     }
   }
 }
 </script>
 
 <style scoped>
+  .router {
+    font-size: 2rem;
+  }
   .wrapper {
-    justify-content: center;
-    align-items: center;
-  }
-  .logo {
-    width: 424px;
-    height: 200px;
-  }
-  .greeting {
-    text-align: center;
-    margin-top: 70px;
-    font-size: 50px;
-    color: #41B883;
-  }
-  .message {
-    margin: 30px;
-    font-size: 32px;
-    color: #727272;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
   }
 </style>

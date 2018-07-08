@@ -24,7 +24,7 @@ module.exports = {
   ],
   // add your custom rules here
   rules: {
-    'vue/no-parsing-error':  [4, {
+    'vue/no-parsing-error':  [1, {
       "x-invalid-end-tag": false
     }],
     // allow async-await
