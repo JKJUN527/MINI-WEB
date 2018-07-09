@@ -4,6 +4,9 @@
           <chat-own :msg='chat.msg' v-if="chat.type === 1"></chat-own>
           <chat-other :msg='chat.msg' v-else></chat-other>
         </div>
+        <div>
+          
+        </div>
     </div>
 </template>
 <script>

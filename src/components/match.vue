@@ -73,7 +73,7 @@ export default {
 
 .btn {
   margin: 30px 0;
-  width: 600px;
+  width: 550px;
   height: 120px;
   line-height: 120px;
   color: white;
@@ -87,6 +87,7 @@ export default {
 }
 
 .next {
+  width: 585px;
   height: 130px;
   line-height: 130px;
   background: url('../asset/img/继续滑动来配对.png');
