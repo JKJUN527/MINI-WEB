@@ -1,6 +1,6 @@
 <template>
   <div class="wrapper">
-    <router-link :to="{name: 'match'}" class="base-font-size">
+    <router-link :to="{name: 'personalEdit'}" class="base-font-size">
       papapa
     </router-link>
     <router-view/>
