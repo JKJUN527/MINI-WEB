@@ -5,6 +5,15 @@
         </div>
         <hr />
         <div class="user-info">
+            <wxc-cell title="这里是标题"
+                :has-arrow="false"
+                :has-top-border="true">
+                <switch slot="value"></switch>
+            </wxc-cell>
+            <wxc-cell title="标题"
+                :has-arrow="false"
+                @wxcCellClicked="wxcCellClicked"
+                :has-top-border="true"></wxc-cell>
             <div class="base-flex cell">
                 <text class="base-font-size cell-h color-white">昵称</text>
                 <input type="text">
@@ -170,7 +179,7 @@ hr {
   margin-bottom: 10px;
 }
 
-input[type="text"],
+/* input[type="text"],
 input[type="date"] {
   width: 500px;
   height: 60px;
@@ -195,5 +204,5 @@ textarea {
 
 .btn-style {
   margin: 5px 0;
-}
+} */
 </style>

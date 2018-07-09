@@ -7,6 +7,9 @@ import otherInfo from '@/components/otherInfo'
 import ownInfo from '@/components/ownInfo'
 import PersonalEdit from '@/components/personalEdit'
 import Msglist from '@/components/msglist'
+import Shoot from '@/components/shoot'
+import Chat from '@/components/chat/chat'
+
 Vue.use(Router)
 
 module.exports = new Router({
@@ -45,6 +48,16 @@ module.exports = new Router({
       path: '/msglist',
       name: 'msglist',
       component: Msglist
+    },
+    {
+      path: '/shoot',
+      name: 'shoot',
+      component: Shoot
+    },
+    {
+      path: '/chat',
+      name: 'chat',
+      component: Chat
     }
   ]
 })

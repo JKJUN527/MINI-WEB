@@ -6,16 +6,16 @@ var ax = axios.create({
   timeout: 1000
 })
 
-function makePost(path, data) {
+function makePost (path, data) {
   return ax.post(path, qs.stringify(data))
 }
 
-function makeGet(path, params) {
+function makeGet (path, params) {
   return ax.get(path, { params })
 }
 
-function login(data) {
-    return makeGet(LOGIN, data)
+function login (data) {
+  return makeGet(LOGIN, data)
 }
 
 export default {
