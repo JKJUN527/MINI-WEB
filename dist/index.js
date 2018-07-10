@@ -12444,6 +12444,17 @@ module.exports = __vue_exports__
 /***/ (function(module, exports) {
 
 module.exports = {
+  "like-notice": {
+    "paddingTop": "25",
+    "paddingRight": "25",
+    "paddingBottom": "25",
+    "paddingLeft": "25",
+    "background": "url(\"/src/asset/img/like-bg.png\") no-repeat",
+    "backgroundSize": "cover",
+    "borderRadius": "20",
+    "width": 80,
+    "minHeight": 1.7
+  },
   "like-time": {
     "textAlign": "center",
     "color": "#FFFFFF",
@@ -12456,18 +12467,59 @@ module.exports = {
     "paddingLeft": "25",
     "backgroundColor": "#f2f3f4",
     "borderRadius": "20",
-    "opacity": 0.5,
     "width": 80,
     "minHeight": 3,
-    "backgroundImage": "url(/src/asset/img/user-info-bg.png)"
+    "background": "url(/src/asset/img/superlike.png) no-repeat",
+    "backgroundSize": "cover"
+  },
+  "msg-name": {
+    "left": 2.5,
+    "top": 0.2,
+    "fontSize": 0.5
+  },
+  "msg-content": {
+    "left": 2.5,
+    "top": 1.3,
+    "fontSize": 0.35,
+    "opacity": 0.8
+  },
+  "msg-time": {
+    "top": 0.2,
+    "right": 0.3,
+    "fontSize": 0.39,
+    "opacity": 0.8
+  },
+  "msg-num": {
+    "background": "url(/src/asset/img/msg-num.png) no-repeat",
+    "backgroundSize": "cover",
+    "width": 0.8,
+    "height": 0.8,
+    "borderRadius": 0.4,
+    "textAlign": "center",
+    "fontSize": 0.45,
+    "top": 1.2,
+    "right": 0.3,
+    "paddingTop": 0.1
   },
   "item-container": {
     "width": "750",
     "backgroundColor": "#000000"
   },
+  "border-cell": {
+    "backgroundColor": "#000000",
+    "width": "750",
+    "alignItems": "center",
+    "justifyContent": "center"
+  },
   "cell": {
-    "backgroundColor": "#ffffff",
     "marginBottom": 0
+  },
+  "content": {
+    "width": "750",
+    "height": 5,
+    "alignItems": "center",
+    "justifyContent": "center",
+    "backgroundColor": "#000000"
   }
 }
 
@@ -12509,6 +12561,31 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
 // https://github.com/alibaba/weex-ui/blob/master/example/tab-page/config.js
 
 
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -13373,42 +13450,12 @@ exports.default = {
         title: '消息'
         // icon: 'https://gw.alicdn.com/tfs/TB1ARoKSXXXXXc9XVXXXXXXXXXX-72-72.png',
         // activeIcon: 'https://gw.alicdn.com/tfs/TB19Z72SXXXXXamXFXXXXXXXXXX-72-72.png'
-
-        // {
-        //     title: '四川跟团',
-        //     icon: 'https://gw.alicdn.com/tfs/TB1VKMISXXXXXbyaXXXXXXXXXXX-72-72.png',
-        //     activeIcon: 'https://gw.alicdn.com/tfs/TB1aTgZSXXXXXazXFXXXXXXXXXX-72-72.png'
-        // },
-        // {
-        //     title: '海南跟团',
-        //     icon: 'https://gw.alicdn.com/tfs/TB1Do3tSXXXXXXMaFXXXXXXXXXX-72-72.png',
-        //     activeIcon: 'https://gw.alicdn.com/tfs/TB1LiNhSpXXXXaWXXXXXXXXXXXX-72-72.png'
-        // },
-        // {
-        //     title: '北京跟团',
-        //     icon: 'https://gw.alicdn.com/tfs/TB1jFsLSXXXXXX_aXXXXXXXXXXX-72-72.png',
-        //     activeIcon: 'https://gw.alicdn.com/tfs/TB1_Kc.SXXXXXa8XpXXXXXXXXXX-72-72.png'
-        // },
-        // {
-        //     title: '出境跟团',
-        //     icon: 'https://gw.alicdn.com/tfs/TB199sPSXXXXXb4XVXXXXXXXXXX-72-72.png',
-        //     activeIcon: 'https://gw.alicdn.com/tfs/TB1DR.3SXXXXXc2XpXXXXXXXXXX-72-72.png'
-        // }, {
-        //     title: '出境日游',
-        //     icon: 'https://gw.alicdn.com/tfs/TB1hedfSpXXXXchXXXXXXXXXXXX-72-72.png',
-        //     activeIcon: 'https://gw.alicdn.com/tfs/TB1mrXaSpXXXXaqXpXXXXXXXXXX-72-72.png'
-        // },
-        // {
-        //     title: '邮轮',
-        //     icon: 'https://gw.alicdn.com/tfs/TB1twhkSpXXXXXLXXXXXXXXXXXX-72-72.png',
-        //     activeIcon: 'https://gw.alicdn.com/tfs/TB1dhlhSpXXXXa8XXXXXXXXXXXX-72-72.png'
-        // }
     }],
     tabStyles: {
-        bgColor: '#000000',
+        bgColor: '#161824',
         titleColor: '#7D7D7D',
         activeTitleColor: '#FFFFFF',
-        activeBgColor: '#00000',
+        activeBgColor: '#161824',
         isActiveTitleBold: true,
         iconWidth: 0,
         iconHeight: 0,
@@ -13793,7 +13840,6 @@ var _chatOther2 = _interopRequireDefault(_chatOther);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-//
 //
 //
 //

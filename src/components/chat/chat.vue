@@ -5,7 +5,6 @@
           <chat-other :msg='chat.msg' v-else></chat-other>
         </div>
         <div>
-          
         </div>
     </div>
 </template>
