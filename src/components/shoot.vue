@@ -2,13 +2,17 @@
     <div class="shoot">
         <div class="video"></div>
         <div class="footer">
-            <div class="uploadFile">
-                <input type="file" id="upload">
-                <label for="upload"><text>上传</text></label>
+            <div class="shoot-controller"></div>
+            <div class="btn-group">
+                <div class="btn uploadFile">
+                    <input type="file" id="upload">
+                    <label for="upload"></label>
+                </div>
+                <div class="btn">
+                    <button></button>
+                </div>
             </div>
-            <div class="start-shoot"></div>
         </div>
-        <img src="../asset/img/按钮.png" alt="">
     </div>
 </template>
 <script>
@@ -20,12 +24,27 @@ export default {
         flex-grow: 1;
         position: relative;
     }
+
+    .video {
+        width: 100%;
+        height: 1000px;
+        background-color: black;
+    }
+
     .footer {
         width: 100%;
-        height: 100px;
         position: absolute;
-        bottom: 100px
+        bottom: 0px
     }
+
+    .shoot-controller {
+        margin: 0 auto;
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+        background-color: black
+    }
+
     .uploadFile {
         position: relative;
     }
@@ -40,11 +59,15 @@ export default {
         opacity: 0;
     }
 
-    .start-shoot {
-        width: 200px;
-        height: 200px;
-        background-size: contain;
-        background-image: url('../asset/img/按钮.png');
-        margin: 0 auto
+    .btn-group {
+        flex-direction: row;
+        justify-content: center;
+    }
+
+    .btn {
+        margin: 30px 100px;
+        width: 40px;
+        height: 40px;
+        background-color: black;
     }
 </style>

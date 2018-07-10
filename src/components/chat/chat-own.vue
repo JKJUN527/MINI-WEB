@@ -25,11 +25,11 @@ export default {
   }
 
   .own-msg {
-    padding: 15px 10px;
-    max-width: 400px;
+    padding: 25px 20px;
+    max-width: 550px;
     color: white;
     background-color: white;
-    border-radius: 10px;
+    border-radius: 24px;
     background: url('../../asset/img/发送消息.png');
     background-size: 100% 100%;
   }

@@ -15,8 +15,8 @@
             </div>
         </div>
         <div class="btn-group">
-          <button class="btn chat">发送消息</button>
-          <button class="btn next">继续滑动配对</button>
+          <button class="btn chat" style="background-size: 100% 100%">发送消息</button>
+          <button class="btn next" style="background-size: 100% 100%">继续滑动配对</button>
         </div>
     </div>
 </template>
@@ -43,16 +43,16 @@ export default {
 }
 
 .match-success-font {
-  font-size: 64px;
+  font-size: 48px;
   color: white;
 }
 
 .user-group {
-  margin: 40px;
-  justify-content: space-around
+  justify-content: center
 }
 
 .user-img {
+  margin: 0 40px;
   width: 200px;
   height: 200px;
   border-radius: 50%;
@@ -67,17 +67,18 @@ export default {
 }
 
 .btn-group {
+  margin-top: 40px;
   align-items: center;
   justify-content: space-around
 }
 
 .btn {
   margin: 30px 0;
-  width: 550px;
-  height: 120px;
-  line-height: 120px;
+  width: 400px;
+  height: 80px;
+  line-height: 80px;
   color: white;
-  font-size: 48px;
+  font-size: 36px;
   text-align: center;
   border-radius: 10px;
 }
@@ -87,9 +88,6 @@ export default {
 }
 
 .next {
-  width: 585px;
-  height: 130px;
-  line-height: 130px;
   background: url('../asset/img/继续滑动来配对.png');
 }
 </style>

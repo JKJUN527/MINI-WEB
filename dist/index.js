@@ -2254,7 +2254,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 /* weex initialized here, please do not move this line */
 var router = __webpack_require__(15);
-var App = __webpack_require__(139);
+var App = __webpack_require__(150);
 /* eslint-disable no-new */
 new Vue(Vue.util.extend({ el: '#root', router: router }, App));
 router.push('/');
@@ -2294,15 +2294,15 @@ var _personalEdit = __webpack_require__(58);
 
 var _personalEdit2 = _interopRequireDefault(_personalEdit);
 
-var _msglist = __webpack_require__(124);
+var _msglist = __webpack_require__(119);
 
 var _msglist2 = _interopRequireDefault(_msglist);
 
-var _shoot = __webpack_require__(143);
+var _shoot = __webpack_require__(134);
 
 var _shoot2 = _interopRequireDefault(_shoot);
 
-var _chat = __webpack_require__(147);
+var _chat = __webpack_require__(138);
 
 var _chat2 = _interopRequireDefault(_chat);
 
@@ -5002,7 +5002,7 @@ __vue_options__ = __vue_exports__ = __vue_exports__.default
 if (typeof __vue_options__ === "function") {
   __vue_options__ = __vue_options__.options
 }
-__vue_options__.__file = "E:\\MINI-WEB\\src\\components\\HelloWorld.vue"
+__vue_options__.__file = "D:\\MINI-WEB\\src\\components\\HelloWorld.vue"
 __vue_options__.render = __vue_template__.render
 __vue_options__.staticRenderFns = __vue_template__.staticRenderFns
 __vue_options__.style = __vue_options__.style || {}
@@ -5110,10 +5110,10 @@ __vue_options__ = __vue_exports__ = __vue_exports__.default
 if (typeof __vue_options__ === "function") {
   __vue_options__ = __vue_options__.options
 }
-__vue_options__.__file = "E:\\MINI-WEB\\src\\components\\login.vue"
+__vue_options__.__file = "D:\\MINI-WEB\\src\\components\\login.vue"
 __vue_options__.render = __vue_template__.render
 __vue_options__.staticRenderFns = __vue_template__.staticRenderFns
-__vue_options__._scopeId = "data-v-1439c800"
+__vue_options__._scopeId = "data-v-c00ae0be"
 __vue_options__.style = __vue_options__.style || {}
 __vue_styles__.forEach(function (module) {
   for (var name in module) {
@@ -6568,10 +6568,10 @@ __vue_options__ = __vue_exports__ = __vue_exports__.default
 if (typeof __vue_options__ === "function") {
   __vue_options__ = __vue_options__.options
 }
-__vue_options__.__file = "E:\\MINI-WEB\\src\\components\\match.vue"
+__vue_options__.__file = "D:\\MINI-WEB\\src\\components\\match.vue"
 __vue_options__.render = __vue_template__.render
 __vue_options__.staticRenderFns = __vue_template__.staticRenderFns
-__vue_options__._scopeId = "data-v-c165b748"
+__vue_options__._scopeId = "data-v-2b0debfd"
 __vue_options__.style = __vue_options__.style || {}
 __vue_styles__.forEach(function (module) {
   for (var name in module) {
@@ -6603,17 +6603,17 @@ module.exports = {
     "alignItems": "center"
   },
   "match-success-font": {
-    "fontSize": "64",
+    "fontSize": "48",
     "color": "#FFFFFF"
   },
   "user-group": {
-    "marginTop": "40",
-    "marginRight": "40",
-    "marginBottom": "40",
-    "marginLeft": "40",
-    "justifyContent": "space-around"
+    "justifyContent": "center"
   },
   "user-img": {
+    "marginTop": 0,
+    "marginRight": "40",
+    "marginBottom": 0,
+    "marginLeft": "40",
     "width": "200",
     "height": "200",
     "borderRadius": 50,
@@ -6626,6 +6626,7 @@ module.exports = {
     "color": "#FFFFFF"
   },
   "btn-group": {
+    "marginTop": "40",
     "alignItems": "center",
     "justifyContent": "space-around"
   },
@@ -6634,11 +6635,11 @@ module.exports = {
     "marginRight": 0,
     "marginBottom": "30",
     "marginLeft": 0,
-    "width": "550",
-    "height": "120",
-    "lineHeight": "120",
+    "width": "400",
+    "height": "80",
+    "lineHeight": "80",
     "color": "#FFFFFF",
-    "fontSize": "48",
+    "fontSize": "36",
     "textAlign": "center",
     "borderRadius": "10"
   },
@@ -6646,9 +6647,6 @@ module.exports = {
     "background": "url('../asset/img/发送消息.png')"
   },
   "next": {
-    "width": "585",
-    "height": "130",
-    "lineHeight": "130",
     "background": "url('../asset/img/继续滑动来配对.png')"
   }
 }
@@ -6704,9 +6702,15 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_vm._m(0), _vm._m(1), _c('div', {
     staticClass: ["btn-group"]
   }, [_c('button', {
-    staticClass: ["btn", "chat"]
+    staticClass: ["btn", "chat"],
+    staticStyle: {
+      backgroundSize: "100% 100%"
+    }
   }, [_vm._v("发送消息")]), _c('button', {
-    staticClass: ["btn", "next"]
+    staticClass: ["btn", "next"],
+    staticStyle: {
+      backgroundSize: "100% 100%"
+    }
   }, [_vm._v("继续滑动配对")])], 1)])
 },staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
@@ -6762,10 +6766,10 @@ __vue_options__ = __vue_exports__ = __vue_exports__.default
 if (typeof __vue_options__ === "function") {
   __vue_options__ = __vue_options__.options
 }
-__vue_options__.__file = "E:\\MINI-WEB\\src\\components\\otherInfo.vue"
+__vue_options__.__file = "D:\\MINI-WEB\\src\\components\\otherInfo.vue"
 __vue_options__.render = __vue_template__.render
 __vue_options__.staticRenderFns = __vue_template__.staticRenderFns
-__vue_options__._scopeId = "data-v-e4fee316"
+__vue_options__._scopeId = "data-v-36629d96"
 __vue_options__.style = __vue_options__.style || {}
 __vue_styles__.forEach(function (module) {
   for (var name in module) {
@@ -6785,7 +6789,7 @@ module.exports = __vue_exports__
 
 module.exports = {
   "user-header": {
-    "marginTop": 1.5,
+    "marginTop": 1.3,
     "alignItems": "center"
   },
   "user-img": {
@@ -6796,21 +6800,28 @@ module.exports = {
   },
   "user-name": {
     "color": "#FFFFFF",
-    "marginTop": "25"
+    "marginTop": "20"
   },
   "user-label": {
     "marginTop": 0.5,
     "marginRight": 0,
-    "marginBottom": 0.5,
+    "marginBottom": 1,
     "marginLeft": 0,
     "flexDirection": "row",
-    "justifyContent": "space-around"
+    "justifyContent": "center"
   },
   "label-item": {
-    "minWidth": 2,
+    "marginTop": 0,
+    "marginRight": "10",
+    "marginBottom": 0,
+    "marginLeft": "10",
+    "paddingTop": 0,
+    "paddingRight": "20",
+    "paddingBottom": 0,
+    "paddingLeft": "20",
     "textAlign": "center",
     "color": "#FFFFFF",
-    "borderRadius": "20",
+    "borderRadius": "10",
     "background": "#807773"
   },
   "video-block": {
@@ -6907,7 +6918,7 @@ exports.default = {
 /* 53 */
 /***/ (function(module, exports) {
 
-throw new Error("Module build failed: SyntaxError: Unexpected token (38:10)\n    at Parser.pp$4.raise (E:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:2610:13)\n    at Parser.pp.unexpected (E:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:637:8)\n    at Parser.pp$3.parseIdent (E:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:2565:10)\n    at Parser.pp$3.parsePropertyName (E:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:2362:105)\n    at Parser.parseObj (E:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:4463:14)\n    at Parser.pp$3.parseExprAtom (E:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:2077:17)\n    at Parser.parseExprAtom (E:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:4372:24)\n    at Parser.pp$3.parseExprSubscripts (E:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:1955:19)\n    at Parser.pp$3.parseMaybeUnary (E:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:1932:17)\n    at Parser.pp$3.parseExprOps (E:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:1874:19)\n    at Parser.pp$3.parseMaybeConditional (E:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:1857:19)\n    at Parser.pp$3.parseMaybeAssign (E:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:1832:19)\n    at Parser.pp$3.parsePropertyValue (E:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:2310:87)\n    at Parser.parseObj (E:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:4472:14)\n    at Parser.pp$3.parseExprAtom (E:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:2077:17)\n    at Parser.parseExprAtom (E:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:4372:24)");
+throw new Error("Module build failed: SyntaxError: Unexpected token (38:10)\n    at Parser.pp$4.raise (D:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:2610:13)\n    at Parser.pp.unexpected (D:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:637:8)\n    at Parser.pp$3.parseIdent (D:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:2565:10)\n    at Parser.pp$3.parsePropertyName (D:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:2362:105)\n    at Parser.parseObj (D:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:4463:14)\n    at Parser.pp$3.parseExprAtom (D:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:2077:17)\n    at Parser.parseExprAtom (D:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:4372:24)\n    at Parser.pp$3.parseExprSubscripts (D:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:1955:19)\n    at Parser.pp$3.parseMaybeUnary (D:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:1932:17)\n    at Parser.pp$3.parseExprOps (D:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:1874:19)\n    at Parser.pp$3.parseMaybeConditional (D:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:1857:19)\n    at Parser.pp$3.parseMaybeAssign (D:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:1832:19)\n    at Parser.pp$3.parsePropertyValue (D:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:2310:87)\n    at Parser.parseObj (D:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:4472:14)\n    at Parser.pp$3.parseExprAtom (D:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:2077:17)\n    at Parser.parseExprAtom (D:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:4372:24)");
 
 /***/ }),
 /* 54 */
@@ -6936,10 +6947,10 @@ __vue_options__ = __vue_exports__ = __vue_exports__.default
 if (typeof __vue_options__ === "function") {
   __vue_options__ = __vue_options__.options
 }
-__vue_options__.__file = "E:\\MINI-WEB\\src\\components\\ownInfo.vue"
+__vue_options__.__file = "D:\\MINI-WEB\\src\\components\\ownInfo.vue"
 __vue_options__.render = __vue_template__.render
 __vue_options__.staticRenderFns = __vue_template__.staticRenderFns
-__vue_options__._scopeId = "data-v-82b0c6aa"
+__vue_options__._scopeId = "data-v-5d55000c"
 __vue_options__.style = __vue_options__.style || {}
 __vue_styles__.forEach(function (module) {
   for (var name in module) {
@@ -6966,8 +6977,8 @@ module.exports = {
     "marginRight": "20",
     "marginBottom": 0,
     "marginLeft": "20",
-    "width": 2,
-    "height": 2,
+    "width": 2.3,
+    "height": 2.3,
     "borderRadius": 50,
     "background": "white"
   },
@@ -6987,11 +6998,13 @@ module.exports = {
     "marginRight": "10",
     "marginBottom": 0,
     "marginLeft": "10",
-    "minWidth": 1.5,
-    "fontSize": "24",
+    "paddingTop": 0,
+    "paddingRight": "20",
+    "paddingBottom": 0,
+    "paddingLeft": "20",
     "textAlign": "center",
     "color": "#FFFFFF",
-    "borderRadius": "20",
+    "borderRadius": "10",
     "background": "#807773"
   },
   "user-signature": {
@@ -6999,7 +7012,7 @@ module.exports = {
     "paddingRight": "40",
     "paddingBottom": 0,
     "paddingLeft": "40",
-    "marginTop": "40"
+    "marginTop": "100"
   },
   "edit-block": {
     "marginTop": "20",
@@ -7009,12 +7022,13 @@ module.exports = {
     "alignItems": "flex-end"
   },
   "edit-btn": {
+    "marginTop": "30",
     "marginRight": "20",
-    "paddingTop": "5",
+    "paddingTop": 0,
     "paddingRight": "10",
-    "paddingBottom": "5",
+    "paddingBottom": 0,
     "paddingLeft": "10",
-    "fontSize": "36",
+    "borderRadius": "10",
     "color": "#FFFFFF",
     "background": "#143640"
   },
@@ -7022,18 +7036,18 @@ module.exports = {
     "flexGrow": 1
   },
   "tab-group": {
-    "paddingTop": "20",
+    "paddingTop": "15",
     "paddingRight": 0,
-    "paddingBottom": "20",
+    "paddingBottom": "15",
     "paddingLeft": 0,
     "justifyContent": "center",
     "background": "#010813"
   },
   "tab": {
     "marginTop": 0,
-    "marginRight": "40",
+    "marginRight": "60",
     "marginBottom": 0,
-    "marginLeft": "40"
+    "marginLeft": "60"
   },
   "video-list": {
     "flexGrow": 1,
@@ -7118,7 +7132,7 @@ exports.default = {
 /* 57 */
 /***/ (function(module, exports) {
 
-throw new Error("Module build failed: SyntaxError: Unexpected token (46:10)\n    at Parser.pp$4.raise (E:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:2610:13)\n    at Parser.pp.unexpected (E:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:637:8)\n    at Parser.pp$3.parseIdent (E:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:2565:10)\n    at Parser.pp$3.parsePropertyName (E:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:2362:105)\n    at Parser.parseObj (E:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:4463:14)\n    at Parser.pp$3.parseExprAtom (E:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:2077:17)\n    at Parser.parseExprAtom (E:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:4372:24)\n    at Parser.pp$3.parseExprSubscripts (E:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:1955:19)\n    at Parser.pp$3.parseMaybeUnary (E:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:1932:17)\n    at Parser.pp$3.parseExprOps (E:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:1874:19)\n    at Parser.pp$3.parseMaybeConditional (E:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:1857:19)\n    at Parser.pp$3.parseMaybeAssign (E:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:1832:19)\n    at Parser.pp$3.parsePropertyValue (E:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:2310:87)\n    at Parser.parseObj (E:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:4472:14)\n    at Parser.pp$3.parseExprAtom (E:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:2077:17)\n    at Parser.parseExprAtom (E:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:4372:24)");
+throw new Error("Module build failed: SyntaxError: Unexpected token (46:10)\n    at Parser.pp$4.raise (D:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:2610:13)\n    at Parser.pp.unexpected (D:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:637:8)\n    at Parser.pp$3.parseIdent (D:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:2565:10)\n    at Parser.pp$3.parsePropertyName (D:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:2362:105)\n    at Parser.parseObj (D:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:4463:14)\n    at Parser.pp$3.parseExprAtom (D:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:2077:17)\n    at Parser.parseExprAtom (D:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:4372:24)\n    at Parser.pp$3.parseExprSubscripts (D:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:1955:19)\n    at Parser.pp$3.parseMaybeUnary (D:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:1932:17)\n    at Parser.pp$3.parseExprOps (D:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:1874:19)\n    at Parser.pp$3.parseMaybeConditional (D:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:1857:19)\n    at Parser.pp$3.parseMaybeAssign (D:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:1832:19)\n    at Parser.pp$3.parsePropertyValue (D:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:2310:87)\n    at Parser.parseObj (D:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:4472:14)\n    at Parser.pp$3.parseExprAtom (D:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:2077:17)\n    at Parser.parseExprAtom (D:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:4372:24)");
 
 /***/ }),
 /* 58 */
@@ -7135,7 +7149,7 @@ __vue_styles__.push(__webpack_require__(59)
 __vue_exports__ = __webpack_require__(60)
 
 /* template */
-var __vue_template__ = __webpack_require__(123)
+var __vue_template__ = __webpack_require__(118)
 __vue_options__ = __vue_exports__ = __vue_exports__ || {}
 if (
   typeof __vue_exports__.default === "object" ||
@@ -7147,10 +7161,10 @@ __vue_options__ = __vue_exports__ = __vue_exports__.default
 if (typeof __vue_options__ === "function") {
   __vue_options__ = __vue_options__.options
 }
-__vue_options__.__file = "E:\\MINI-WEB\\src\\components\\personalEdit.vue"
+__vue_options__.__file = "D:\\MINI-WEB\\src\\components\\personalEdit.vue"
 __vue_options__.render = __vue_template__.render
 __vue_options__.staticRenderFns = __vue_template__.staticRenderFns
-__vue_options__._scopeId = "data-v-741f52ba"
+__vue_options__._scopeId = "data-v-3ea2303c"
 __vue_options__.style = __vue_options__.style || {}
 __vue_styles__.forEach(function (module) {
   for (var name in module) {
@@ -7180,27 +7194,27 @@ module.exports = {
     "marginRight": 0,
     "marginBottom": "30",
     "marginLeft": 0,
-    "width": "200",
-    "height": "200",
+    "width": "160",
+    "height": "160",
     "borderRadius": 50,
     "backgroundColor": "#FFFFFF"
   },
   "user-info": {
+    "marginTop": "30",
     "width": 100
   },
   "cell": {
     "width": 100,
-    "paddingTop": 0,
+    "paddingTop": "20",
     "paddingRight": "80",
-    "paddingBottom": 0,
+    "paddingBottom": "20",
     "paddingLeft": "80",
     "flexDirection": "row",
     "alignItems": "center",
     "backgroundColor": "#161824"
   },
   "cell-h": {
-    "marginRight": "40",
-    "fontSize": "24"
+    "marginRight": "40"
   },
   "sex-content": {
     "alignItems": "center"
@@ -7236,7 +7250,7 @@ var _wxcPopup = __webpack_require__(13);
 
 var _wxcPopup2 = _interopRequireDefault(_wxcPopup);
 
-var _wxcCity = __webpack_require__(94);
+var _wxcCity = __webpack_require__(89);
 
 var _wxcCity2 = _interopRequireDefault(_wxcCity);
 
@@ -7439,10 +7453,10 @@ __vue_options__ = __vue_exports__ = __vue_exports__.default
 if (typeof __vue_options__ === "function") {
   __vue_options__ = __vue_options__.options
 }
-__vue_options__.__file = "E:\\MINI-WEB\\node_modules\\weex-ui\\packages\\wxc-page-calendar\\index.vue"
+__vue_options__.__file = "D:\\MINI-WEB\\node_modules\\weex-ui\\packages\\wxc-page-calendar\\index.vue"
 __vue_options__.render = __vue_template__.render
 __vue_options__.staticRenderFns = __vue_template__.staticRenderFns
-__vue_options__._scopeId = "data-v-b502ed5e"
+__vue_options__._scopeId = "data-v-97a60c60"
 __vue_options__.style = __vue_options__.style || {}
 __vue_styles__.forEach(function (module) {
   for (var name in module) {
@@ -8789,10 +8803,10 @@ __vue_options__ = __vue_exports__ = __vue_exports__.default
 if (typeof __vue_options__ === "function") {
   __vue_options__ = __vue_options__.options
 }
-__vue_options__.__file = "E:\\MINI-WEB\\node_modules\\weex-ui\\packages\\wxc-minibar\\index.vue"
+__vue_options__.__file = "D:\\MINI-WEB\\node_modules\\weex-ui\\packages\\wxc-minibar\\index.vue"
 __vue_options__.render = __vue_template__.render
 __vue_options__.staticRenderFns = __vue_template__.staticRenderFns
-__vue_options__._scopeId = "data-v-d729ab9e"
+__vue_options__._scopeId = "data-v-be48b420"
 __vue_options__.style = __vue_options__.style || {}
 __vue_styles__.forEach(function (module) {
   for (var name in module) {
@@ -9143,10 +9157,10 @@ __vue_options__ = __vue_exports__ = __vue_exports__.default
 if (typeof __vue_options__ === "function") {
   __vue_options__ = __vue_options__.options
 }
-__vue_options__.__file = "E:\\MINI-WEB\\node_modules\\weex-ui\\packages\\wxc-button\\index.vue"
+__vue_options__.__file = "D:\\MINI-WEB\\node_modules\\weex-ui\\packages\\wxc-button\\index.vue"
 __vue_options__.render = __vue_template__.render
 __vue_options__.staticRenderFns = __vue_template__.staticRenderFns
-__vue_options__._scopeId = "data-v-24e253ce"
+__vue_options__._scopeId = "data-v-5950667a"
 __vue_options__.style = __vue_options__.style || {}
 __vue_styles__.forEach(function (module) {
   for (var name in module) {
@@ -9393,10 +9407,10 @@ __vue_options__ = __vue_exports__ = __vue_exports__.default
 if (typeof __vue_options__ === "function") {
   __vue_options__ = __vue_options__.options
 }
-__vue_options__.__file = "E:\\MINI-WEB\\node_modules\\weex-ui\\packages\\wxc-popup\\index.vue"
+__vue_options__.__file = "D:\\MINI-WEB\\node_modules\\weex-ui\\packages\\wxc-popup\\index.vue"
 __vue_options__.render = __vue_template__.render
 __vue_options__.staticRenderFns = __vue_template__.staticRenderFns
-__vue_options__._scopeId = "data-v-68578f7e"
+__vue_options__._scopeId = "data-v-115e97c0"
 __vue_options__.style = __vue_options__.style || {}
 __vue_styles__.forEach(function (module) {
   for (var name in module) {
@@ -9718,10 +9732,10 @@ __vue_options__ = __vue_exports__ = __vue_exports__.default
 if (typeof __vue_options__ === "function") {
   __vue_options__ = __vue_options__.options
 }
-__vue_options__.__file = "E:\\MINI-WEB\\node_modules\\weex-ui\\packages\\wxc-overlay\\index.vue"
+__vue_options__.__file = "D:\\MINI-WEB\\node_modules\\weex-ui\\packages\\wxc-overlay\\index.vue"
 __vue_options__.render = __vue_template__.render
 __vue_options__.staticRenderFns = __vue_template__.staticRenderFns
-__vue_options__._scopeId = "data-v-54c8adb6"
+__vue_options__._scopeId = "data-v-3be7b638"
 __vue_options__.style = __vue_options__.style || {}
 __vue_styles__.forEach(function (module) {
   for (var name in module) {
@@ -9922,12 +9936,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 module.exports.render._withStripped = true
 
 /***/ }),
-/* 89 */,
-/* 90 */,
-/* 91 */,
-/* 92 */,
-/* 93 */,
-/* 94 */
+/* 89 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -9937,7 +9946,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _index = __webpack_require__(95);
+var _index = __webpack_require__(90);
 
 Object.defineProperty(exports, 'default', {
   enumerable: true,
@@ -9949,21 +9958,21 @@ Object.defineProperty(exports, 'default', {
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /***/ }),
-/* 95 */
+/* 90 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __vue_exports__, __vue_options__
 var __vue_styles__ = []
 
 /* styles */
-__vue_styles__.push(__webpack_require__(96)
+__vue_styles__.push(__webpack_require__(91)
 )
 
 /* script */
-__vue_exports__ = __webpack_require__(97)
+__vue_exports__ = __webpack_require__(92)
 
 /* template */
-var __vue_template__ = __webpack_require__(122)
+var __vue_template__ = __webpack_require__(117)
 __vue_options__ = __vue_exports__ = __vue_exports__ || {}
 if (
   typeof __vue_exports__.default === "object" ||
@@ -9975,10 +9984,10 @@ __vue_options__ = __vue_exports__ = __vue_exports__.default
 if (typeof __vue_options__ === "function") {
   __vue_options__ = __vue_options__.options
 }
-__vue_options__.__file = "E:\\MINI-WEB\\node_modules\\weex-ui\\packages\\wxc-city\\index.vue"
+__vue_options__.__file = "D:\\MINI-WEB\\node_modules\\weex-ui\\packages\\wxc-city\\index.vue"
 __vue_options__.render = __vue_template__.render
 __vue_options__.staticRenderFns = __vue_template__.staticRenderFns
-__vue_options__._scopeId = "data-v-3640915c"
+__vue_options__._scopeId = "data-v-4248281a"
 __vue_options__.style = __vue_options__.style || {}
 __vue_styles__.forEach(function (module) {
   for (var name in module) {
@@ -9993,7 +10002,7 @@ module.exports = __vue_exports__
 
 
 /***/ }),
-/* 96 */
+/* 91 */
 /***/ (function(module, exports) {
 
 module.exports = {
@@ -10005,7 +10014,7 @@ module.exports = {
 }
 
 /***/ }),
-/* 97 */
+/* 92 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10049,11 +10058,11 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 
-var _defaultData = __webpack_require__(98);
+var _defaultData = __webpack_require__(93);
 
 var _defaultData2 = _interopRequireDefault(_defaultData);
 
-var _util = __webpack_require__(99);
+var _util = __webpack_require__(94);
 
 var Util = _interopRequireWildcard(_util);
 
@@ -10061,19 +10070,19 @@ var _utils = __webpack_require__(1);
 
 var _utils2 = _interopRequireDefault(_utils);
 
-var _tab = __webpack_require__(100);
+var _tab = __webpack_require__(95);
 
 var _tab2 = _interopRequireDefault(_tab);
 
-var _wxcSearchbar = __webpack_require__(104);
+var _wxcSearchbar = __webpack_require__(99);
 
 var _wxcSearchbar2 = _interopRequireDefault(_wxcSearchbar);
 
-var _wxcResult = __webpack_require__(110);
+var _wxcResult = __webpack_require__(105);
 
 var _wxcResult2 = _interopRequireDefault(_wxcResult);
 
-var _wxcIndexlist = __webpack_require__(116);
+var _wxcIndexlist = __webpack_require__(111);
 
 var _wxcIndexlist2 = _interopRequireDefault(_wxcIndexlist);
 
@@ -10258,7 +10267,7 @@ exports.default = {
 };
 
 /***/ }),
-/* 98 */
+/* 93 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10276,7 +10285,7 @@ exports.default = {
 };
 
 /***/ }),
-/* 99 */
+/* 94 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10345,21 +10354,21 @@ function query(source, text) {
 }
 
 /***/ }),
-/* 100 */
+/* 95 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __vue_exports__, __vue_options__
 var __vue_styles__ = []
 
 /* styles */
-__vue_styles__.push(__webpack_require__(101)
+__vue_styles__.push(__webpack_require__(96)
 )
 
 /* script */
-__vue_exports__ = __webpack_require__(102)
+__vue_exports__ = __webpack_require__(97)
 
 /* template */
-var __vue_template__ = __webpack_require__(103)
+var __vue_template__ = __webpack_require__(98)
 __vue_options__ = __vue_exports__ = __vue_exports__ || {}
 if (
   typeof __vue_exports__.default === "object" ||
@@ -10371,10 +10380,10 @@ __vue_options__ = __vue_exports__ = __vue_exports__.default
 if (typeof __vue_options__ === "function") {
   __vue_options__ = __vue_options__.options
 }
-__vue_options__.__file = "E:\\MINI-WEB\\node_modules\\weex-ui\\packages\\wxc-city\\tab.vue"
+__vue_options__.__file = "D:\\MINI-WEB\\node_modules\\weex-ui\\packages\\wxc-city\\tab.vue"
 __vue_options__.render = __vue_template__.render
 __vue_options__.staticRenderFns = __vue_template__.staticRenderFns
-__vue_options__._scopeId = "data-v-6e574e95"
+__vue_options__._scopeId = "data-v-3d2b9114"
 __vue_options__.style = __vue_options__.style || {}
 __vue_styles__.forEach(function (module) {
   for (var name in module) {
@@ -10389,7 +10398,7 @@ module.exports = __vue_exports__
 
 
 /***/ }),
-/* 101 */
+/* 96 */
 /***/ (function(module, exports) {
 
 module.exports = {
@@ -10432,7 +10441,7 @@ module.exports = {
 }
 
 /***/ }),
-/* 102 */
+/* 97 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10532,7 +10541,7 @@ exports.default = {
 };
 
 /***/ }),
-/* 103 */
+/* 98 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -10562,7 +10571,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 module.exports.render._withStripped = true
 
 /***/ }),
-/* 104 */
+/* 99 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10572,7 +10581,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _index = __webpack_require__(105);
+var _index = __webpack_require__(100);
 
 Object.defineProperty(exports, 'default', {
   enumerable: true,
@@ -10584,21 +10593,21 @@ Object.defineProperty(exports, 'default', {
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /***/ }),
-/* 105 */
+/* 100 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __vue_exports__, __vue_options__
 var __vue_styles__ = []
 
 /* styles */
-__vue_styles__.push(__webpack_require__(106)
+__vue_styles__.push(__webpack_require__(101)
 )
 
 /* script */
-__vue_exports__ = __webpack_require__(107)
+__vue_exports__ = __webpack_require__(102)
 
 /* template */
-var __vue_template__ = __webpack_require__(109)
+var __vue_template__ = __webpack_require__(104)
 __vue_options__ = __vue_exports__ = __vue_exports__ || {}
 if (
   typeof __vue_exports__.default === "object" ||
@@ -10610,10 +10619,10 @@ __vue_options__ = __vue_exports__ = __vue_exports__.default
 if (typeof __vue_options__ === "function") {
   __vue_options__ = __vue_options__.options
 }
-__vue_options__.__file = "E:\\MINI-WEB\\node_modules\\weex-ui\\packages\\wxc-searchbar\\index.vue"
+__vue_options__.__file = "D:\\MINI-WEB\\node_modules\\weex-ui\\packages\\wxc-searchbar\\index.vue"
 __vue_options__.render = __vue_template__.render
 __vue_options__.staticRenderFns = __vue_template__.staticRenderFns
-__vue_options__._scopeId = "data-v-57af9ec0"
+__vue_options__._scopeId = "data-v-09f026bf"
 __vue_options__.style = __vue_options__.style || {}
 __vue_styles__.forEach(function (module) {
   for (var name in module) {
@@ -10628,7 +10637,7 @@ module.exports = __vue_exports__
 
 
 /***/ }),
-/* 106 */
+/* 101 */
 /***/ (function(module, exports) {
 
 module.exports = {
@@ -10741,7 +10750,7 @@ module.exports = {
 }
 
 /***/ }),
-/* 107 */
+/* 102 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10751,7 +10760,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _type = __webpack_require__(108);
+var _type = __webpack_require__(103);
 
 exports.default = {
   props: {
@@ -11091,7 +11100,7 @@ exports.default = {
 //
 
 /***/ }),
-/* 108 */
+/* 103 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11110,7 +11119,7 @@ var CLOSE_ICON = exports.CLOSE_ICON = "https://gw.alicdn.com/tfs/TB1sZB.pwMPMeJj
 var ARROW_ICON = exports.ARROW_ICON = "https://gw.alicdn.com/tfs/TB1vZB.pwMPMeJjy1XdXXasrXXa-24-24.png";
 
 /***/ }),
-/* 109 */
+/* 104 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -11211,7 +11220,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 module.exports.render._withStripped = true
 
 /***/ }),
-/* 110 */
+/* 105 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11221,7 +11230,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _index = __webpack_require__(111);
+var _index = __webpack_require__(106);
 
 Object.defineProperty(exports, 'default', {
   enumerable: true,
@@ -11233,21 +11242,21 @@ Object.defineProperty(exports, 'default', {
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /***/ }),
-/* 111 */
+/* 106 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __vue_exports__, __vue_options__
 var __vue_styles__ = []
 
 /* styles */
-__vue_styles__.push(__webpack_require__(112)
+__vue_styles__.push(__webpack_require__(107)
 )
 
 /* script */
-__vue_exports__ = __webpack_require__(113)
+__vue_exports__ = __webpack_require__(108)
 
 /* template */
-var __vue_template__ = __webpack_require__(115)
+var __vue_template__ = __webpack_require__(110)
 __vue_options__ = __vue_exports__ = __vue_exports__ || {}
 if (
   typeof __vue_exports__.default === "object" ||
@@ -11259,10 +11268,10 @@ __vue_options__ = __vue_exports__ = __vue_exports__.default
 if (typeof __vue_options__ === "function") {
   __vue_options__ = __vue_options__.options
 }
-__vue_options__.__file = "E:\\MINI-WEB\\node_modules\\weex-ui\\packages\\wxc-result\\index.vue"
+__vue_options__.__file = "D:\\MINI-WEB\\node_modules\\weex-ui\\packages\\wxc-result\\index.vue"
 __vue_options__.render = __vue_template__.render
 __vue_options__.staticRenderFns = __vue_template__.staticRenderFns
-__vue_options__._scopeId = "data-v-483ae578"
+__vue_options__._scopeId = "data-v-47a41da5"
 __vue_options__.style = __vue_options__.style || {}
 __vue_styles__.forEach(function (module) {
   for (var name in module) {
@@ -11277,7 +11286,7 @@ module.exports = __vue_exports__
 
 
 /***/ }),
-/* 112 */
+/* 107 */
 /***/ (function(module, exports) {
 
 module.exports = {
@@ -11331,7 +11340,7 @@ module.exports = {
 }
 
 /***/ }),
-/* 113 */
+/* 108 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11341,7 +11350,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _type = __webpack_require__(114);
+var _type = __webpack_require__(109);
 
 var _type2 = _interopRequireDefault(_type);
 
@@ -11488,7 +11497,7 @@ exports.default = {
 };
 
 /***/ }),
-/* 114 */
+/* 109 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11530,7 +11539,7 @@ exports.default = {
 };
 
 /***/ }),
-/* 115 */
+/* 110 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -11567,7 +11576,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 module.exports.render._withStripped = true
 
 /***/ }),
-/* 116 */
+/* 111 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11577,7 +11586,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _index = __webpack_require__(117);
+var _index = __webpack_require__(112);
 
 Object.defineProperty(exports, 'default', {
   enumerable: true,
@@ -11589,21 +11598,21 @@ Object.defineProperty(exports, 'default', {
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /***/ }),
-/* 117 */
+/* 112 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __vue_exports__, __vue_options__
 var __vue_styles__ = []
 
 /* styles */
-__vue_styles__.push(__webpack_require__(118)
+__vue_styles__.push(__webpack_require__(113)
 )
 
 /* script */
-__vue_exports__ = __webpack_require__(119)
+__vue_exports__ = __webpack_require__(114)
 
 /* template */
-var __vue_template__ = __webpack_require__(121)
+var __vue_template__ = __webpack_require__(116)
 __vue_options__ = __vue_exports__ = __vue_exports__ || {}
 if (
   typeof __vue_exports__.default === "object" ||
@@ -11615,10 +11624,10 @@ __vue_options__ = __vue_exports__ = __vue_exports__.default
 if (typeof __vue_options__ === "function") {
   __vue_options__ = __vue_options__.options
 }
-__vue_options__.__file = "E:\\MINI-WEB\\node_modules\\weex-ui\\packages\\wxc-indexlist\\index.vue"
+__vue_options__.__file = "D:\\MINI-WEB\\node_modules\\weex-ui\\packages\\wxc-indexlist\\index.vue"
 __vue_options__.render = __vue_template__.render
 __vue_options__.staticRenderFns = __vue_template__.staticRenderFns
-__vue_options__._scopeId = "data-v-53ddb0f6"
+__vue_options__._scopeId = "data-v-ef5ca0f8"
 __vue_options__.style = __vue_options__.style || {}
 __vue_styles__.forEach(function (module) {
   for (var name in module) {
@@ -11633,7 +11642,7 @@ module.exports = __vue_exports__
 
 
 /***/ }),
-/* 118 */
+/* 113 */
 /***/ (function(module, exports) {
 
 module.exports = {
@@ -11761,7 +11770,7 @@ module.exports = {
 }
 
 /***/ }),
-/* 119 */
+/* 114 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11771,7 +11780,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _format = __webpack_require__(120);
+var _format = __webpack_require__(115);
 
 var Format = _interopRequireWildcard(_format);
 
@@ -12012,7 +12021,7 @@ exports.default = {
 };
 
 /***/ }),
-/* 120 */
+/* 115 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12087,7 +12096,7 @@ function getSpecialData(data) {
 }
 
 /***/ }),
-/* 121 */
+/* 116 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -12203,7 +12212,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 module.exports.render._withStripped = true
 
 /***/ }),
-/* 122 */
+/* 117 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -12252,7 +12261,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 module.exports.render._withStripped = true
 
 /***/ }),
-/* 123 */
+/* 118 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -12265,7 +12274,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_c('text', {
     staticClass: ["base-font-size", "cell-h", "color-white"]
   }, [_vm._v("昵称")]), _c('input', {
-    staticClass: ["color-white"],
+    staticClass: ["color-gray"],
     attrs: {
       "type": "text",
       "value": (_vm.name)
@@ -12285,7 +12294,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_vm._v("性别")]), _c('div', {
     staticClass: ["base-flex"]
   }, [_c('text', {
-    staticClass: ["color-white"]
+    staticClass: ["color-gray"]
   }, [_vm._v(_vm._s(_vm._f("sexTranslate")(_vm.sex)))])])]), _c('div', {
     staticClass: ["base-flex", "cell"],
     on: {
@@ -12296,7 +12305,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_vm._v("坐标")]), _c('div', {
     staticClass: ["btn"]
   }, [_c('text', {
-    staticClass: ["btn-txt", "color-white"]
+    staticClass: ["btn-txt", "color-gray"]
   }, [_vm._v(_vm._s(_vm.currentCity.cityName || '选择城市'))])])]), _c('div', {
     staticClass: ["base-flex", "cell"],
     on: {
@@ -12305,7 +12314,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_c('text', {
     staticClass: ["base-font-size", "cell-h", "color-white"]
   }, [_vm._v("生日")]), _c('text', {
-    staticClass: ["base-font-size", "cell-h", "color-white"],
+    staticClass: ["base-font-size", "color-gray"],
     on: {
       "click": _vm.showCalendar
     }
@@ -12316,7 +12325,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_c('text', {
     staticClass: ["base-font-size", "cell-h", "color-white"]
-  }, [_vm._v("签名")]), _c('textarea')])]), _c('wxc-popup', {
+  }, [_vm._v("签名")]), _c('textarea', {
+    staticClass: ["color-gray"]
+  })])]), _c('wxc-popup', {
     attrs: {
       "popupColor": "gray",
       "show": _vm.isBottomShow,
@@ -12396,21 +12407,21 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 module.exports.render._withStripped = true
 
 /***/ }),
-/* 124 */
+/* 119 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __vue_exports__, __vue_options__
 var __vue_styles__ = []
 
 /* styles */
-__vue_styles__.push(__webpack_require__(125)
+__vue_styles__.push(__webpack_require__(120)
 )
 
 /* script */
-__vue_exports__ = __webpack_require__(126)
+__vue_exports__ = __webpack_require__(121)
 
 /* template */
-var __vue_template__ = __webpack_require__(138)
+var __vue_template__ = __webpack_require__(133)
 __vue_options__ = __vue_exports__ = __vue_exports__ || {}
 if (
   typeof __vue_exports__.default === "object" ||
@@ -12422,10 +12433,10 @@ __vue_options__ = __vue_exports__ = __vue_exports__.default
 if (typeof __vue_options__ === "function") {
   __vue_options__ = __vue_options__.options
 }
-__vue_options__.__file = "E:\\MINI-WEB\\src\\components\\msglist.vue"
+__vue_options__.__file = "D:\\MINI-WEB\\src\\components\\msglist.vue"
 __vue_options__.render = __vue_template__.render
 __vue_options__.staticRenderFns = __vue_template__.staticRenderFns
-__vue_options__._scopeId = "data-v-10ce4d14"
+__vue_options__._scopeId = "data-v-d3738652"
 __vue_options__.style = __vue_options__.style || {}
 __vue_styles__.forEach(function (module) {
   for (var name in module) {
@@ -12440,7 +12451,7 @@ module.exports = __vue_exports__
 
 
 /***/ }),
-/* 125 */
+/* 120 */
 /***/ (function(module, exports) {
 
 module.exports = {
@@ -12524,7 +12535,7 @@ module.exports = {
 }
 
 /***/ }),
-/* 126 */
+/* 121 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12534,7 +12545,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _bindEnv = __webpack_require__(127);
+var _bindEnv = __webpack_require__(122);
 
 var _bindEnv2 = _interopRequireDefault(_bindEnv);
 
@@ -12542,15 +12553,15 @@ var _utils = __webpack_require__(1);
 
 var _utils2 = _interopRequireDefault(_utils);
 
-var _wxcPanItem = __webpack_require__(128);
+var _wxcPanItem = __webpack_require__(123);
 
 var _wxcPanItem2 = _interopRequireDefault(_wxcPanItem);
 
-var _wxcTabPage = __webpack_require__(132);
+var _wxcTabPage = __webpack_require__(127);
 
 var _wxcTabPage2 = _interopRequireDefault(_wxcTabPage);
 
-var _config = __webpack_require__(137);
+var _config = __webpack_require__(132);
 
 var _config2 = _interopRequireDefault(_config);
 
@@ -12669,7 +12680,7 @@ exports.default = {
 };
 
 /***/ }),
-/* 127 */
+/* 122 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12691,7 +12702,7 @@ Object.defineProperty(exports, 'default', {
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /***/ }),
-/* 128 */
+/* 123 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12701,7 +12712,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _index = __webpack_require__(129);
+var _index = __webpack_require__(124);
 
 Object.defineProperty(exports, 'default', {
   enumerable: true,
@@ -12713,17 +12724,17 @@ Object.defineProperty(exports, 'default', {
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /***/ }),
-/* 129 */
+/* 124 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __vue_exports__, __vue_options__
 var __vue_styles__ = []
 
 /* script */
-__vue_exports__ = __webpack_require__(130)
+__vue_exports__ = __webpack_require__(125)
 
 /* template */
-var __vue_template__ = __webpack_require__(131)
+var __vue_template__ = __webpack_require__(126)
 __vue_options__ = __vue_exports__ = __vue_exports__ || {}
 if (
   typeof __vue_exports__.default === "object" ||
@@ -12735,7 +12746,7 @@ __vue_options__ = __vue_exports__ = __vue_exports__.default
 if (typeof __vue_options__ === "function") {
   __vue_options__ = __vue_options__.options
 }
-__vue_options__.__file = "E:\\MINI-WEB\\node_modules\\weex-ui\\packages\\wxc-pan-item\\index.vue"
+__vue_options__.__file = "D:\\MINI-WEB\\node_modules\\weex-ui\\packages\\wxc-pan-item\\index.vue"
 __vue_options__.render = __vue_template__.render
 __vue_options__.staticRenderFns = __vue_template__.staticRenderFns
 __vue_options__.style = __vue_options__.style || {}
@@ -12752,7 +12763,7 @@ module.exports = __vue_exports__
 
 
 /***/ }),
-/* 130 */
+/* 125 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12857,7 +12868,7 @@ exports.default = {
 //
 
 /***/ }),
-/* 131 */
+/* 126 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -12879,7 +12890,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 module.exports.render._withStripped = true
 
 /***/ }),
-/* 132 */
+/* 127 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12889,7 +12900,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _index = __webpack_require__(133);
+var _index = __webpack_require__(128);
 
 Object.defineProperty(exports, 'default', {
   enumerable: true,
@@ -12901,21 +12912,21 @@ Object.defineProperty(exports, 'default', {
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /***/ }),
-/* 133 */
+/* 128 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __vue_exports__, __vue_options__
 var __vue_styles__ = []
 
 /* styles */
-__vue_styles__.push(__webpack_require__(134)
+__vue_styles__.push(__webpack_require__(129)
 )
 
 /* script */
-__vue_exports__ = __webpack_require__(135)
+__vue_exports__ = __webpack_require__(130)
 
 /* template */
-var __vue_template__ = __webpack_require__(136)
+var __vue_template__ = __webpack_require__(131)
 __vue_options__ = __vue_exports__ = __vue_exports__ || {}
 if (
   typeof __vue_exports__.default === "object" ||
@@ -12927,10 +12938,10 @@ __vue_options__ = __vue_exports__ = __vue_exports__.default
 if (typeof __vue_options__ === "function") {
   __vue_options__ = __vue_options__.options
 }
-__vue_options__.__file = "E:\\MINI-WEB\\node_modules\\weex-ui\\packages\\wxc-tab-page\\index.vue"
+__vue_options__.__file = "D:\\MINI-WEB\\node_modules\\weex-ui\\packages\\wxc-tab-page\\index.vue"
 __vue_options__.render = __vue_template__.render
 __vue_options__.staticRenderFns = __vue_template__.staticRenderFns
-__vue_options__._scopeId = "data-v-396e3fa4"
+__vue_options__._scopeId = "data-v-64e7dc4f"
 __vue_options__.style = __vue_options__.style || {}
 __vue_styles__.forEach(function (module) {
   for (var name in module) {
@@ -12945,7 +12956,7 @@ module.exports = __vue_exports__
 
 
 /***/ }),
-/* 134 */
+/* 129 */
 /***/ (function(module, exports) {
 
 module.exports = {
@@ -12980,7 +12991,7 @@ module.exports = {
 }
 
 /***/ }),
-/* 135 */
+/* 130 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13334,7 +13345,7 @@ exports.default = {
 };
 
 /***/ }),
-/* 136 */
+/* 131 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -13427,7 +13438,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 module.exports.render._withStripped = true
 
 /***/ }),
-/* 137 */
+/* 132 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13506,27 +13517,27 @@ exports.default = {
 };
 
 /***/ }),
-/* 138 */
+/* 133 */
 /***/ (function(module, exports) {
 
 module.exports={render:function(){},staticRenderFns:[]}
 
 /***/ }),
-/* 139 */
+/* 134 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __vue_exports__, __vue_options__
 var __vue_styles__ = []
 
 /* styles */
-__vue_styles__.push(__webpack_require__(140)
+__vue_styles__.push(__webpack_require__(135)
 )
 
 /* script */
-__vue_exports__ = __webpack_require__(141)
+__vue_exports__ = __webpack_require__(136)
 
 /* template */
-var __vue_template__ = __webpack_require__(142)
+var __vue_template__ = __webpack_require__(137)
 __vue_options__ = __vue_exports__ = __vue_exports__ || {}
 if (
   typeof __vue_exports__.default === "object" ||
@@ -13538,10 +13549,10 @@ __vue_options__ = __vue_exports__ = __vue_exports__.default
 if (typeof __vue_options__ === "function") {
   __vue_options__ = __vue_options__.options
 }
-__vue_options__.__file = "E:\\MINI-WEB\\src\\index.vue"
+__vue_options__.__file = "D:\\MINI-WEB\\src\\components\\shoot.vue"
 __vue_options__.render = __vue_template__.render
 __vue_options__.staticRenderFns = __vue_template__.staticRenderFns
-__vue_options__._scopeId = "data-v-52dee076"
+__vue_options__._scopeId = "data-v-ef164d52"
 __vue_options__.style = __vue_options__.style || {}
 __vue_styles__.forEach(function (module) {
   for (var name in module) {
@@ -13556,15 +13567,534 @@ module.exports = __vue_exports__
 
 
 /***/ }),
+/* 135 */
+/***/ (function(module, exports) {
+
+module.exports = {
+  "shoot": {
+    "flexGrow": 1,
+    "position": "relative"
+  },
+  "video": {
+    "width": 100,
+    "height": "1000",
+    "backgroundColor": "#000000"
+  },
+  "footer": {
+    "width": 100,
+    "position": "absolute",
+    "bottom": "0"
+  },
+  "shoot-controller": {
+    "marginTop": 0,
+    "marginBottom": 0,
+    "width": "200",
+    "height": "200",
+    "borderRadius": 50,
+    "backgroundColor": "#000000"
+  },
+  "uploadFile": {
+    "position": "relative"
+  },
+  "btn-group": {
+    "flexDirection": "row",
+    "justifyContent": "center"
+  },
+  "btn": {
+    "marginTop": "30",
+    "marginRight": "100",
+    "marginBottom": "30",
+    "marginLeft": "100",
+    "width": "40",
+    "height": "40",
+    "backgroundColor": "#000000"
+  }
+}
+
+/***/ }),
+/* 136 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+exports.default = {};
+
+/***/ }),
+/* 137 */
+/***/ (function(module, exports) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: ["shoot"]
+  }, [_c('div', {
+    staticClass: ["video"]
+  }), _c('div', {
+    staticClass: ["footer"]
+  }, [_c('div', {
+    staticClass: ["shoot-controller"]
+  }), _c('div', {
+    staticClass: ["btn-group"]
+  }, [_c('div', {
+    staticClass: ["btn", "uploadFile"]
+  }, [_c('input', {
+    attrs: {
+      "type": "file",
+      "id": "upload"
+    }
+  }), _c('label', {
+    attrs: {
+      "for": "upload"
+    }
+  })], 1), _c('div', {
+    staticClass: ["btn"]
+  }, [_c('button')], 1)])])])
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+
+/***/ }),
+/* 138 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var __vue_exports__, __vue_options__
+var __vue_styles__ = []
+
+/* styles */
+__vue_styles__.push(__webpack_require__(139)
+)
+
+/* script */
+__vue_exports__ = __webpack_require__(140)
+
+/* template */
+var __vue_template__ = __webpack_require__(149)
+__vue_options__ = __vue_exports__ = __vue_exports__ || {}
+if (
+  typeof __vue_exports__.default === "object" ||
+  typeof __vue_exports__.default === "function"
+) {
+if (Object.keys(__vue_exports__).some(function (key) { return key !== "default" && key !== "__esModule" })) {console.error("named exports are not supported in *.vue files.")}
+__vue_options__ = __vue_exports__ = __vue_exports__.default
+}
+if (typeof __vue_options__ === "function") {
+  __vue_options__ = __vue_options__.options
+}
+__vue_options__.__file = "D:\\MINI-WEB\\src\\components\\chat\\chat.vue"
+__vue_options__.render = __vue_template__.render
+__vue_options__.staticRenderFns = __vue_template__.staticRenderFns
+__vue_options__._scopeId = "data-v-734d2814"
+__vue_options__.style = __vue_options__.style || {}
+__vue_styles__.forEach(function (module) {
+  for (var name in module) {
+    __vue_options__.style[name] = module[name]
+  }
+})
+if (typeof __register_static_styles__ === "function") {
+  __register_static_styles__(__vue_options__._scopeId, __vue_styles__)
+}
+
+module.exports = __vue_exports__
+
+
+/***/ }),
+/* 139 */
+/***/ (function(module, exports) {
+
+module.exports = {
+  "chatting": {
+    "paddingTop": "30",
+    "paddingRight": 0,
+    "paddingBottom": 0,
+    "paddingLeft": 0,
+    "flexGrow": 1,
+    "backgroundColor": "#000000"
+  }
+}
+
+/***/ }),
 /* 140 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _chatOwn = __webpack_require__(141);
+
+var _chatOwn2 = _interopRequireDefault(_chatOwn);
+
+var _chatOther = __webpack_require__(145);
+
+var _chatOther2 = _interopRequireDefault(_chatOther);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+exports.default = {
+  components: { ChatOwn: _chatOwn2.default, ChatOther: _chatOther2.default },
+  data: function data() {
+    return {
+      data: [{
+        type: 1,
+        msg: '哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈'
+      }, {
+        type: 2,
+        msg: 'hi,认识你很高兴，你是哪个班的？'
+      }, {
+        type: 2,
+        msg: '1111111111111111111111'
+      }]
+    };
+  }
+};
+
+/***/ }),
+/* 141 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var __vue_exports__, __vue_options__
+var __vue_styles__ = []
+
+/* styles */
+__vue_styles__.push(__webpack_require__(142)
+)
+
+/* script */
+__vue_exports__ = __webpack_require__(143)
+
+/* template */
+var __vue_template__ = __webpack_require__(144)
+__vue_options__ = __vue_exports__ = __vue_exports__ || {}
+if (
+  typeof __vue_exports__.default === "object" ||
+  typeof __vue_exports__.default === "function"
+) {
+if (Object.keys(__vue_exports__).some(function (key) { return key !== "default" && key !== "__esModule" })) {console.error("named exports are not supported in *.vue files.")}
+__vue_options__ = __vue_exports__ = __vue_exports__.default
+}
+if (typeof __vue_options__ === "function") {
+  __vue_options__ = __vue_options__.options
+}
+__vue_options__.__file = "D:\\MINI-WEB\\src\\components\\chat\\chat-own.vue"
+__vue_options__.render = __vue_template__.render
+__vue_options__.staticRenderFns = __vue_template__.staticRenderFns
+__vue_options__._scopeId = "data-v-636569cd"
+__vue_options__.style = __vue_options__.style || {}
+__vue_styles__.forEach(function (module) {
+  for (var name in module) {
+    __vue_options__.style[name] = module[name]
+  }
+})
+if (typeof __register_static_styles__ === "function") {
+  __register_static_styles__(__vue_options__._scopeId, __vue_styles__)
+}
+
+module.exports = __vue_exports__
+
+
+/***/ }),
+/* 142 */
+/***/ (function(module, exports) {
+
+module.exports = {
+  "chat-own": {
+    "marginTop": 0,
+    "marginRight": 0,
+    "marginBottom": "30",
+    "marginLeft": 0,
+    "flexDirection": "row",
+    "justifyContent": "flex-end",
+    "alignItems": "flex-start"
+  },
+  "own-img": {
+    "marginTop": 0,
+    "marginRight": "20",
+    "marginBottom": 0,
+    "marginLeft": "20",
+    "width": "70",
+    "height": "70",
+    "borderRadius": 50,
+    "background": "white"
+  },
+  "own-msg": {
+    "paddingTop": "25",
+    "paddingRight": "20",
+    "paddingBottom": "25",
+    "paddingLeft": "20",
+    "maxWidth": "550",
+    "color": "#FFFFFF",
+    "backgroundColor": "#FFFFFF",
+    "borderRadius": "24",
+    "background": "url('../../asset/img/发送消息.png')",
+    "backgroundSize": "100% 100%"
+  }
+}
+
+/***/ }),
+/* 143 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+//
+//
+//
+//
+//
+//
+
+exports.default = {
+  props: ['imgurl', 'msg']
+};
+
+/***/ }),
+/* 144 */
+/***/ (function(module, exports) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: ["chat-own"]
+  }, [_c('div', {
+    staticClass: ["own-msg"]
+  }, [_vm._v(_vm._s(_vm.msg))]), _c('div', {
+    staticClass: ["own-img"]
+  })])
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+
+/***/ }),
+/* 145 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var __vue_exports__, __vue_options__
+var __vue_styles__ = []
+
+/* styles */
+__vue_styles__.push(__webpack_require__(146)
+)
+
+/* script */
+__vue_exports__ = __webpack_require__(147)
+
+/* template */
+var __vue_template__ = __webpack_require__(148)
+__vue_options__ = __vue_exports__ = __vue_exports__ || {}
+if (
+  typeof __vue_exports__.default === "object" ||
+  typeof __vue_exports__.default === "function"
+) {
+if (Object.keys(__vue_exports__).some(function (key) { return key !== "default" && key !== "__esModule" })) {console.error("named exports are not supported in *.vue files.")}
+__vue_options__ = __vue_exports__ = __vue_exports__.default
+}
+if (typeof __vue_options__ === "function") {
+  __vue_options__ = __vue_options__.options
+}
+__vue_options__.__file = "D:\\MINI-WEB\\src\\components\\chat\\chat-other.vue"
+__vue_options__.render = __vue_template__.render
+__vue_options__.staticRenderFns = __vue_template__.staticRenderFns
+__vue_options__._scopeId = "data-v-082b7497"
+__vue_options__.style = __vue_options__.style || {}
+__vue_styles__.forEach(function (module) {
+  for (var name in module) {
+    __vue_options__.style[name] = module[name]
+  }
+})
+if (typeof __register_static_styles__ === "function") {
+  __register_static_styles__(__vue_options__._scopeId, __vue_styles__)
+}
+
+module.exports = __vue_exports__
+
+
+/***/ }),
+/* 146 */
+/***/ (function(module, exports) {
+
+module.exports = {
+  "chat-other": {
+    "marginTop": 0,
+    "marginRight": 0,
+    "marginBottom": "30",
+    "marginLeft": 0,
+    "flexDirection": "row",
+    "justifyContent": "flex-start",
+    "alignItems": "flex-start"
+  },
+  "other-img": {
+    "marginTop": 0,
+    "marginRight": "20",
+    "marginBottom": 0,
+    "marginLeft": "20",
+    "width": "70",
+    "height": "70",
+    "borderRadius": 50,
+    "background": "white"
+  },
+  "other-msg": {
+    "paddingTop": "25",
+    "paddingRight": "20",
+    "paddingBottom": "25",
+    "paddingLeft": "20",
+    "maxWidth": "550",
+    "backgroundColor": "#FFFFFF",
+    "borderRadius": "24"
+  }
+}
+
+/***/ }),
+/* 147 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+//
+//
+//
+//
+//
+//
+
+exports.default = {
+  props: ['imgurl', 'msg']
+};
+
+/***/ }),
+/* 148 */
+/***/ (function(module, exports) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: ["chat-other"]
+  }, [_c('div', {
+    staticClass: ["other-img"]
+  }), _c('div', {
+    staticClass: ["other-msg"]
+  }, [_vm._v(_vm._s(_vm.msg))])])
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+
+/***/ }),
+/* 149 */
+/***/ (function(module, exports) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: ["chatting"]
+  }, [_vm._l((_vm.data), function(chat, index) {
+    return _c('div', {
+      key: index
+    }, [(chat.type === 1) ? _c('chat-own', {
+      attrs: {
+        "msg": chat.msg
+      }
+    }) : _c('chat-other', {
+      attrs: {
+        "msg": chat.msg
+      }
+    })], 1)
+  }), _c('div')], 2)
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+
+/***/ }),
+/* 150 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var __vue_exports__, __vue_options__
+var __vue_styles__ = []
+
+/* styles */
+__vue_styles__.push(__webpack_require__(151)
+)
+
+/* script */
+__vue_exports__ = __webpack_require__(152)
+
+/* template */
+var __vue_template__ = __webpack_require__(153)
+__vue_options__ = __vue_exports__ = __vue_exports__ || {}
+if (
+  typeof __vue_exports__.default === "object" ||
+  typeof __vue_exports__.default === "function"
+) {
+if (Object.keys(__vue_exports__).some(function (key) { return key !== "default" && key !== "__esModule" })) {console.error("named exports are not supported in *.vue files.")}
+__vue_options__ = __vue_exports__ = __vue_exports__.default
+}
+if (typeof __vue_options__ === "function") {
+  __vue_options__ = __vue_options__.options
+}
+__vue_options__.__file = "D:\\MINI-WEB\\src\\index.vue"
+__vue_options__.render = __vue_template__.render
+__vue_options__.staticRenderFns = __vue_template__.staticRenderFns
+__vue_options__._scopeId = "data-v-526042c4"
+__vue_options__.style = __vue_options__.style || {}
+__vue_styles__.forEach(function (module) {
+  for (var name in module) {
+    __vue_options__.style[name] = module[name]
+  }
+})
+if (typeof __register_static_styles__ === "function") {
+  __register_static_styles__(__vue_options__._scopeId, __vue_styles__)
+}
+
+module.exports = __vue_exports__
+
+
+/***/ }),
+/* 151 */
 /***/ (function(module, exports) {
 
 module.exports = {
   "base-font-size": {
-    "fontSize": "48"
+    "fontSize": "42"
   },
-  "little-font-size": {
-    "fontSize": "24"
+  "mini-font-size": {
+    "fontSize": "16"
+  },
+  "middle-font-size": {
+    "fontSize": "16"
   },
   "base-flex": {
     "flexDirection": "row",
@@ -13579,11 +14109,14 @@ module.exports = {
   },
   "color-white": {
     "color": "#FFFFFF"
+  },
+  "color-gray": {
+    "color": "#98989a"
   }
 }
 
 /***/ }),
-/* 141 */
+/* 152 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13619,509 +14152,13 @@ exports.default = {
 //
 
 /***/ }),
-/* 142 */
+/* 153 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
     staticClass: ["wrapper"]
   }, [_c('router-view')], 1)
-},staticRenderFns: []}
-module.exports.render._withStripped = true
-
-/***/ }),
-/* 143 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var __vue_exports__, __vue_options__
-var __vue_styles__ = []
-
-/* styles */
-__vue_styles__.push(__webpack_require__(144)
-)
-
-/* script */
-__vue_exports__ = __webpack_require__(145)
-
-/* template */
-var __vue_template__ = __webpack_require__(146)
-__vue_options__ = __vue_exports__ = __vue_exports__ || {}
-if (
-  typeof __vue_exports__.default === "object" ||
-  typeof __vue_exports__.default === "function"
-) {
-if (Object.keys(__vue_exports__).some(function (key) { return key !== "default" && key !== "__esModule" })) {console.error("named exports are not supported in *.vue files.")}
-__vue_options__ = __vue_exports__ = __vue_exports__.default
-}
-if (typeof __vue_options__ === "function") {
-  __vue_options__ = __vue_options__.options
-}
-__vue_options__.__file = "E:\\MINI-WEB\\src\\components\\shoot.vue"
-__vue_options__.render = __vue_template__.render
-__vue_options__.staticRenderFns = __vue_template__.staticRenderFns
-__vue_options__._scopeId = "data-v-0697dc94"
-__vue_options__.style = __vue_options__.style || {}
-__vue_styles__.forEach(function (module) {
-  for (var name in module) {
-    __vue_options__.style[name] = module[name]
-  }
-})
-if (typeof __register_static_styles__ === "function") {
-  __register_static_styles__(__vue_options__._scopeId, __vue_styles__)
-}
-
-module.exports = __vue_exports__
-
-
-/***/ }),
-/* 144 */
-/***/ (function(module, exports) {
-
-module.exports = {
-  "shoot": {
-    "flexGrow": 1,
-    "position": "relative"
-  },
-  "footer": {
-    "width": 100,
-    "height": "100",
-    "position": "absolute",
-    "bottom": "100"
-  },
-  "uploadFile": {
-    "position": "relative"
-  },
-  "start-shoot": {
-    "width": "200",
-    "height": "200",
-    "backgroundSize": "contain",
-    "backgroundImage": "url('../asset/img/按钮.png')",
-    "marginTop": 0,
-    "marginBottom": 0
-  }
-}
-
-/***/ }),
-/* 145 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-exports.default = {};
-
-/***/ }),
-/* 146 */
-/***/ (function(module, exports) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: ["shoot"]
-  }, [_c('div', {
-    staticClass: ["video"]
-  }), _c('div', {
-    staticClass: ["footer"]
-  }, [_c('div', {
-    staticClass: ["uploadFile"]
-  }, [_c('input', {
-    attrs: {
-      "type": "file",
-      "id": "upload"
-    }
-  }), _c('label', {
-    attrs: {
-      "for": "upload"
-    }
-  }, [_c('text', [_vm._v("上传")])])], 1), _c('div', {
-    staticClass: ["start-shoot"]
-  })]), _c('img', {
-    attrs: {
-      "src": "../asset/img/按钮.png",
-      "alt": ""
-    }
-  })])
-},staticRenderFns: []}
-module.exports.render._withStripped = true
-
-/***/ }),
-/* 147 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var __vue_exports__, __vue_options__
-var __vue_styles__ = []
-
-/* styles */
-__vue_styles__.push(__webpack_require__(148)
-)
-
-/* script */
-__vue_exports__ = __webpack_require__(149)
-
-/* template */
-var __vue_template__ = __webpack_require__(158)
-__vue_options__ = __vue_exports__ = __vue_exports__ || {}
-if (
-  typeof __vue_exports__.default === "object" ||
-  typeof __vue_exports__.default === "function"
-) {
-if (Object.keys(__vue_exports__).some(function (key) { return key !== "default" && key !== "__esModule" })) {console.error("named exports are not supported in *.vue files.")}
-__vue_options__ = __vue_exports__ = __vue_exports__.default
-}
-if (typeof __vue_options__ === "function") {
-  __vue_options__ = __vue_options__.options
-}
-__vue_options__.__file = "E:\\MINI-WEB\\src\\components\\chat\\chat.vue"
-__vue_options__.render = __vue_template__.render
-__vue_options__.staticRenderFns = __vue_template__.staticRenderFns
-__vue_options__._scopeId = "data-v-6b29ce1a"
-__vue_options__.style = __vue_options__.style || {}
-__vue_styles__.forEach(function (module) {
-  for (var name in module) {
-    __vue_options__.style[name] = module[name]
-  }
-})
-if (typeof __register_static_styles__ === "function") {
-  __register_static_styles__(__vue_options__._scopeId, __vue_styles__)
-}
-
-module.exports = __vue_exports__
-
-
-/***/ }),
-/* 148 */
-/***/ (function(module, exports) {
-
-module.exports = {
-  "chatting": {
-    "paddingTop": "30",
-    "paddingRight": 0,
-    "paddingBottom": 0,
-    "paddingLeft": 0,
-    "flexGrow": 1,
-    "backgroundColor": "#000000"
-  }
-}
-
-/***/ }),
-/* 149 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _chatOwn = __webpack_require__(150);
-
-var _chatOwn2 = _interopRequireDefault(_chatOwn);
-
-var _chatOther = __webpack_require__(154);
-
-var _chatOther2 = _interopRequireDefault(_chatOther);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-exports.default = {
-  components: { ChatOwn: _chatOwn2.default, ChatOther: _chatOther2.default },
-  data: function data() {
-    return {
-      data: [{
-        type: 1,
-        msg: '哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈'
-      }, {
-        type: 2,
-        msg: '1111111111111111111111'
-      }, {
-        type: 2,
-        msg: '1111111111111111111111'
-      }]
-    };
-  }
-};
-
-/***/ }),
-/* 150 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var __vue_exports__, __vue_options__
-var __vue_styles__ = []
-
-/* styles */
-__vue_styles__.push(__webpack_require__(151)
-)
-
-/* script */
-__vue_exports__ = __webpack_require__(152)
-
-/* template */
-var __vue_template__ = __webpack_require__(153)
-__vue_options__ = __vue_exports__ = __vue_exports__ || {}
-if (
-  typeof __vue_exports__.default === "object" ||
-  typeof __vue_exports__.default === "function"
-) {
-if (Object.keys(__vue_exports__).some(function (key) { return key !== "default" && key !== "__esModule" })) {console.error("named exports are not supported in *.vue files.")}
-__vue_options__ = __vue_exports__ = __vue_exports__.default
-}
-if (typeof __vue_options__ === "function") {
-  __vue_options__ = __vue_options__.options
-}
-__vue_options__.__file = "E:\\MINI-WEB\\src\\components\\chat\\chat-own.vue"
-__vue_options__.render = __vue_template__.render
-__vue_options__.staticRenderFns = __vue_template__.staticRenderFns
-__vue_options__._scopeId = "data-v-2651d32c"
-__vue_options__.style = __vue_options__.style || {}
-__vue_styles__.forEach(function (module) {
-  for (var name in module) {
-    __vue_options__.style[name] = module[name]
-  }
-})
-if (typeof __register_static_styles__ === "function") {
-  __register_static_styles__(__vue_options__._scopeId, __vue_styles__)
-}
-
-module.exports = __vue_exports__
-
-
-/***/ }),
-/* 151 */
-/***/ (function(module, exports) {
-
-module.exports = {
-  "chat-own": {
-    "marginTop": 0,
-    "marginRight": 0,
-    "marginBottom": "30",
-    "marginLeft": 0,
-    "flexDirection": "row",
-    "justifyContent": "flex-end",
-    "alignItems": "flex-start"
-  },
-  "own-img": {
-    "marginTop": 0,
-    "marginRight": "20",
-    "marginBottom": 0,
-    "marginLeft": "20",
-    "width": "70",
-    "height": "70",
-    "borderRadius": 50,
-    "background": "white"
-  },
-  "own-msg": {
-    "paddingTop": "15",
-    "paddingRight": "10",
-    "paddingBottom": "15",
-    "paddingLeft": "10",
-    "maxWidth": "400",
-    "color": "#FFFFFF",
-    "backgroundColor": "#FFFFFF",
-    "borderRadius": "10",
-    "background": "url('../../asset/img/发送消息.png')",
-    "backgroundSize": "100% 100%"
-  }
-}
-
-/***/ }),
-/* 152 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-//
-//
-//
-//
-//
-//
-
-exports.default = {
-  props: ['imgurl', 'msg']
-};
-
-/***/ }),
-/* 153 */
-/***/ (function(module, exports) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: ["chat-own"]
-  }, [_c('div', {
-    staticClass: ["own-msg"]
-  }, [_vm._v(_vm._s(_vm.msg))]), _c('div', {
-    staticClass: ["own-img"]
-  })])
-},staticRenderFns: []}
-module.exports.render._withStripped = true
-
-/***/ }),
-/* 154 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var __vue_exports__, __vue_options__
-var __vue_styles__ = []
-
-/* styles */
-__vue_styles__.push(__webpack_require__(155)
-)
-
-/* script */
-__vue_exports__ = __webpack_require__(156)
-
-/* template */
-var __vue_template__ = __webpack_require__(157)
-__vue_options__ = __vue_exports__ = __vue_exports__ || {}
-if (
-  typeof __vue_exports__.default === "object" ||
-  typeof __vue_exports__.default === "function"
-) {
-if (Object.keys(__vue_exports__).some(function (key) { return key !== "default" && key !== "__esModule" })) {console.error("named exports are not supported in *.vue files.")}
-__vue_options__ = __vue_exports__ = __vue_exports__.default
-}
-if (typeof __vue_options__ === "function") {
-  __vue_options__ = __vue_options__.options
-}
-__vue_options__.__file = "E:\\MINI-WEB\\src\\components\\chat\\chat-other.vue"
-__vue_options__.render = __vue_template__.render
-__vue_options__.staticRenderFns = __vue_template__.staticRenderFns
-__vue_options__._scopeId = "data-v-7cb9fb94"
-__vue_options__.style = __vue_options__.style || {}
-__vue_styles__.forEach(function (module) {
-  for (var name in module) {
-    __vue_options__.style[name] = module[name]
-  }
-})
-if (typeof __register_static_styles__ === "function") {
-  __register_static_styles__(__vue_options__._scopeId, __vue_styles__)
-}
-
-module.exports = __vue_exports__
-
-
-/***/ }),
-/* 155 */
-/***/ (function(module, exports) {
-
-module.exports = {
-  "chat-other": {
-    "marginTop": 0,
-    "marginRight": 0,
-    "marginBottom": "30",
-    "marginLeft": 0,
-    "flexDirection": "row",
-    "justifyContent": "flex-start",
-    "alignItems": "flex-start"
-  },
-  "other-img": {
-    "marginTop": 0,
-    "marginRight": "20",
-    "marginBottom": 0,
-    "marginLeft": "20",
-    "width": "70",
-    "height": "70",
-    "borderRadius": 50,
-    "background": "white"
-  },
-  "other-msg": {
-    "paddingTop": "15",
-    "paddingRight": "10",
-    "paddingBottom": "15",
-    "paddingLeft": "10",
-    "maxWidth": "400",
-    "backgroundColor": "#FFFFFF",
-    "borderRadius": "10"
-  }
-}
-
-/***/ }),
-/* 156 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-//
-//
-//
-//
-//
-//
-
-exports.default = {
-  props: ['imgurl', 'msg']
-};
-
-/***/ }),
-/* 157 */
-/***/ (function(module, exports) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: ["chat-other"]
-  }, [_c('div', {
-    staticClass: ["other-img"]
-  }), _c('div', {
-    staticClass: ["other-msg"]
-  }, [_vm._v(_vm._s(_vm.msg))])])
-},staticRenderFns: []}
-module.exports.render._withStripped = true
-
-/***/ }),
-/* 158 */
-/***/ (function(module, exports) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: ["chatting"]
-  }, [_vm._l((_vm.data), function(chat, index) {
-    return _c('div', {
-      key: index
-    }, [(chat.type === 1) ? _c('chat-own', {
-      attrs: {
-        "msg": chat.msg
-      }
-    }) : _c('chat-other', {
-      attrs: {
-        "msg": chat.msg
-      }
-    })], 1)
-  }), _c('div')], 2)
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 
