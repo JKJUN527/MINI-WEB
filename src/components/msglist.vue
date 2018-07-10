@@ -14,15 +14,24 @@
                   class="cell"
                   :key="key">
                 <wxc-pan-item :ext-id="'1-' + (v) + '-' + (key)"
-                              url="https://h5.m.taobao.com/trip/ticket/detail/index.html?scenicId=2675"
+                              url=""
                               @wxcPanItemPan="wxcPanItemPan">
                     <div class="content" v-if="key%2 === 0">
                         <div class="like-notice">
                             <text>{{key}}你收到一个like</text>
                         </div>
-                        <!--<div class="super-like-notice" v-if="key%2 != 0">-->
-                            <!--<text>{{key}}</text>-->
-                        <!--</div>-->
+                        <text class="like-time">13:05</text>
+                    </div>
+                    <div class="content" v-if="key%2 != 0">
+                        <div class="super-like-notice">
+                            <image src="/src/asset/img/qq.jpg"></image>
+                            <text class="super-like-name">jkjun</text>
+                            <br>
+                            <br>
+                            <text class="super-like-content">好喜欢你的视频，超级喜欢你</text>
+                            <button>123</button>
+                        </div>
+                        <text class="like-time">13:05</text>
                     </div>
                 </wxc-pan-item>
             </cell>
@@ -82,7 +91,38 @@
     }
     .like-notice p{
         color: #000000;
-        /*font-size: 0.6rem;*/
+        font-size: 0.5rem;
+        text-align: center;
+    }
+    .like-time{
+        text-align: center;
+        color: white;
+        margin-top: 0.4rem;
+    }
+    .super-like-notice{
+        padding: 25px;
+        background-color:#f2f3f4;
+        border-radius:20px;
+        opacity: 0.5;
+        width: 80%;
+        min-height: 3rem;
+        height: auto;
+        background-image:url(/src/asset/img/user-info-bg.png);
+    }
+    .super-like-notice figure{
+        width: 1.8rem;
+        height: 1.8rem;
+        border-radius: 0.9rem;
+        position: absolute;
+        top: -1rem;
+        left: 3.1rem;
+    }
+    .super-like-notice .super-like-name{
+        text-align: center;
+        top:0.6rem;
+    }
+    .super-like-notice .super-like-content{
+        font-size: 0.5rem;
         text-align: center;
     }
     .item-container {
@@ -109,7 +149,7 @@
 
     .content{
         width:750px;
-        height:300px;
+        height:5rem;
         /*border-bottom-width:1px;*/
         align-items: center;
         justify-content: center;
