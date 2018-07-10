@@ -12,16 +12,16 @@ export default {
   },
   methods: {
     loginEvent: function (event) {
-      server
-        .login({
-          pic: 'test.jpg'
-        })
-        .then(data => {
-          console.log(data)
-        })
-        .catch(err => {
-          console.log(err)
-        })
+        window.location.href="http://mini.jkjun.cn/loginqq"
+//      server.login({
+//          pic: 'test.jpg'
+//        })
+//        .then(data => {
+//          console.log(data)
+//        })
+//        .catch(err => {
+//          console.log(err)
+//        })
     }
   }
 }
