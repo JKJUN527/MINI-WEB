@@ -5,13 +5,13 @@
             <div class="user-img">
                 <image src='' />
             </div>
-            <text class="user-name base-font-size">user name</text>
+            <text class="user-name base-font-size">User name</text>
         </div>
         <div class="user-signature">
-            <text class="little-font-size color-white" style="{text-align: center}">个性签名： XXXXXXXXXXXXXXXXXXXXXXXXX</text>
+            <text class="mini-font-size color-white" style="{text-align: center}">个性签名： XXXXXXXXXXXXXXXXXXXXXXXXX</text>
         </div>
         <div class="user-label">
-            <text v-for="(label, key) in labels" :key="key" class="label-item base-font-size" >{{ label }}</text>
+            <text v-for="(label, key) in labels" :key="key" class="label-item middle-font-size" >{{ label }}</text>
         </div>
         <div class="video-block">
             <div class="tab-group base-flex">
@@ -78,7 +78,7 @@ export default {
     }
 
     .user-header {
-        margin-top: 1.5rem;
+        margin-top: 1.3rem;
         align-items: center;
     }
 
@@ -90,19 +90,20 @@ export default {
     }
     .user-name {
         color: white;
-        margin-top: 25px;
+        margin-top: 20px;
     }
     .user-label {
-        margin: 0.5rem 0;
+        margin: 0.5rem 0 1rem;
         flex-direction: row;
-        justify-content: space-around
+        justify-content: center
     }
 
     .label-item {
-        min-width: 2rem;
+        margin: 0 10px;
+        padding: 0 20px;
         text-align: center;
         color: white;
-        border-radius: 20px;
+        border-radius: 10px;
         background: #807773;
     }
 

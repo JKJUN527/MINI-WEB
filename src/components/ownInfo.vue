@@ -8,16 +8,16 @@
             <div class="user-base-info">
                 <text class="user-name base-font-size">user name</text>
                 <div class="user-label">
-                    <text v-for="(label, key) in labels" :key="key" class="label-item" >{{ label }}</text>
+                    <text v-for="(label, key) in labels" :key="key" class="label-item middle-font-size" >{{ label }}</text>
                 </div>
             </div>
         </div>
         <div class="user-signature">
-            <text class="base-font-size color-white">个性签名</text>
+            <text class="color-white">个性签名</text>
             <text class="color-white" style="{text-align: center}">xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</text>
         </div>
         <div class="edit-block">
-            <button class="edit-btn">编辑资料</button>
+            <button class="edit-btn middle-font-size">编辑资料</button>
         </div>
         <div class="video-block">
             <div class="tab-group base-flex">
@@ -114,8 +114,8 @@ export default {
 
     .user-img {
         margin: 0 20px;
-        width: 2rem;
-        height: 2rem;
+        width: 2.3rem;
+        height: 2.3rem;
         border-radius: 50%;
         background: white
     }
@@ -130,17 +130,16 @@ export default {
 
     .label-item {
         margin: 0 10px;
-        min-width: 1.5rem;
-        font-size: 24px;
+        padding: 0 20px;
         text-align: center;
         color: white;
-        border-radius: 20px;
+        border-radius: 10px;
         background: #807773;
     }
 
     .user-signature  {
         padding: 0 40px;
-        margin-top: 40px;
+        margin-top: 100px;
     }
 
     .edit-block {
@@ -149,9 +148,10 @@ export default {
     }
 
     .edit-btn {
+        margin-top: 30px;
         margin-right: 20px;
-        padding: 5px 10px;
-        font-size: 36px;
+        padding: 0 10px;
+        border-radius: 10px;
         color: white;
         background: #143640;
     }
@@ -161,13 +161,13 @@ export default {
     }
 
     .tab-group {
-        padding: 20px 0;
+        padding: 15px 0;
         justify-content: center;
         background: #010813
     }
 
     .tab {
-        margin: 0 40px;
+        margin: 0 60px;
     }
 
     .video-list {

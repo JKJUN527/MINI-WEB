@@ -7,27 +7,27 @@
         <div class="user-info">
             <div class="base-flex cell">
                 <text class="base-font-size cell-h color-white">昵称</text>
-                <input type="text" class="color-white" v-model="name">
+                <input type="text" class="color-gray" v-model="name">
             </div>
             <div class="base-flex cell" @click="openBottomPopup">
                 <text class="base-font-size cell-h color-white">性别</text>
                 <div class="base-flex">
-                    <text class="color-white">{{ sex | sexTranslate }}</text>
+                    <text class="color-gray">{{ sex | sexTranslate }}</text>
                 </div>
             </div>
             <div class="base-flex cell" @click="showListCity">
                 <text class="base-font-size cell-h color-white">坐标</text>
                 <div class="btn">
-                    <text class="btn-txt color-white">{{ currentCity.cityName || '选择城市' }}</text>
+                    <text class="btn-txt color-gray">{{ currentCity.cityName || '选择城市' }}</text>
                 </div>
             </div>
             <div class="base-flex cell" @click="showCalendar">
                 <text class="base-font-size cell-h color-white">生日</text>
-                <text class="base-font-size cell-h color-white" @click="showCalendar">{{selectedDate[0]}}</text>
+                <text class="base-font-size color-gray" @click="showCalendar">{{selectedDate[0]}}</text>
             </div>
             <div class="base-flex cell" :style="{'align-items': 'flex-start'}">
                 <text class="base-font-size cell-h color-white">签名</text>
-                <textarea></textarea>
+                <textarea class="color-gray"></textarea>
             </div>
         </div>
         <wxc-popup popup-color="gray"
@@ -158,19 +158,20 @@ export default {
 
 .user-img {
   margin: 30px 0;
-  width: 200px;
-  height: 200px;
+  width: 160px;
+  height: 160px;
   border-radius: 50%;
   background-color: white;
 }
 
 .user-info {
+  margin-top: 30px;
   width: 100%
 }
 
 .cell {
     width: 100%;
-    padding: 0 80px;
+    padding: 20px 80px;
     flex-direction: row;
     align-items: center;
     background-color: #161824
@@ -178,7 +179,6 @@ export default {
 
 .cell-h {
     margin-right: 40px;
-    font-size: 24px;
 }
 input[type="text"]{
   width: 500px;

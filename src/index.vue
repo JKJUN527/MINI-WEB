@@ -23,10 +23,14 @@ export default {
     padding: 0
 }
 .base-font-size {
-    font-size: 48px;
+    font-size: 42px;
 }
-.little-font-size {
-    font-size: 24px;
+.mini-font-size {
+    font-size: 16px;
+}
+
+.middle-font-size {
+    font-size: 16px;
 }
 
 .base-flex {
@@ -43,5 +47,9 @@ export default {
 
 .color-white {
   color: white
+}
+
+.color-gray {
+  color: #98989a
 }
 </style>
