@@ -78,7 +78,7 @@ export default {
     }
 
     .user-header {
-        margin-top: 1.3rem;
+        margin-top: 0.64rem;
         align-items: center;
     }
 
@@ -141,7 +141,7 @@ export default {
 
     .slider {
         width: 5rem;
-        height: 8.5rem;
+        height: 8rem;
         margin-top: 0.5rem;
         background-color: #C3413D;
         align-items: center;

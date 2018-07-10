@@ -190,7 +190,7 @@ export default {
 
     .slider {
         width: 5rem;
-        height: 8.5rem;
+        height: 8rem;
         margin-top: 0.5rem;
         background-color: #C3413D;
         align-items: center;

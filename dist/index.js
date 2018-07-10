@@ -6610,17 +6610,17 @@ module.exports = {
     "alignItems": "center"
   },
   "match-success-font": {
-    "fontSize": "64",
+    "fontSize": "48",
     "color": "#FFFFFF"
   },
   "user-group": {
-    "marginTop": "40",
-    "marginRight": "40",
-    "marginBottom": "40",
-    "marginLeft": "40",
-    "justifyContent": "space-around"
+    "justifyContent": "center"
   },
   "user-img": {
+    "marginTop": 0,
+    "marginRight": "40",
+    "marginBottom": 0,
+    "marginLeft": "40",
     "width": "200",
     "height": "200",
     "borderRadius": 50,
@@ -6633,6 +6633,7 @@ module.exports = {
     "color": "#FFFFFF"
   },
   "btn-group": {
+    "marginTop": "40",
     "alignItems": "center",
     "justifyContent": "space-around"
   },
@@ -6641,11 +6642,11 @@ module.exports = {
     "marginRight": 0,
     "marginBottom": "30",
     "marginLeft": 0,
-    "width": "550",
-    "height": "120",
-    "lineHeight": "120",
+    "width": "400",
+    "height": "80",
+    "lineHeight": "80",
     "color": "#FFFFFF",
-    "fontSize": "48",
+    "fontSize": "36",
     "textAlign": "center",
     "borderRadius": "10"
   },
@@ -6653,9 +6654,6 @@ module.exports = {
     "background": "url('../asset/img/发送消息.png')"
   },
   "next": {
-    "width": "585",
-    "height": "130",
-    "lineHeight": "130",
     "background": "url('../asset/img/继续滑动来配对.png')"
   }
 }
@@ -6711,9 +6709,15 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_vm._m(0), _vm._m(1), _c('div', {
     staticClass: ["btn-group"]
   }, [_c('button', {
-    staticClass: ["btn", "chat"]
+    staticClass: ["btn", "chat"],
+    staticStyle: {
+      backgroundSize: "100% 100%"
+    }
   }, [_vm._v("发送消息")]), _c('button', {
-    staticClass: ["btn", "next"]
+    staticClass: ["btn", "next"],
+    staticStyle: {
+      backgroundSize: "100% 100%"
+    }
   }, [_vm._v("继续滑动配对")])], 1)])
 },staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
@@ -6792,7 +6796,7 @@ module.exports = __vue_exports__
 
 module.exports = {
   "user-header": {
-    "marginTop": 1.5,
+    "marginTop": 0.64,
     "alignItems": "center"
   },
   "user-img": {
@@ -6803,21 +6807,28 @@ module.exports = {
   },
   "user-name": {
     "color": "#FFFFFF",
-    "marginTop": "25"
+    "marginTop": "20"
   },
   "user-label": {
     "marginTop": 0.5,
     "marginRight": 0,
-    "marginBottom": 0.5,
+    "marginBottom": 1,
     "marginLeft": 0,
     "flexDirection": "row",
-    "justifyContent": "space-around"
+    "justifyContent": "center"
   },
   "label-item": {
-    "minWidth": 2,
+    "marginTop": 0,
+    "marginRight": "10",
+    "marginBottom": 0,
+    "marginLeft": "10",
+    "paddingTop": 0,
+    "paddingRight": "20",
+    "paddingBottom": 0,
+    "paddingLeft": "20",
     "textAlign": "center",
     "color": "#FFFFFF",
-    "borderRadius": "20",
+    "borderRadius": "10",
     "background": "#807773"
   },
   "video-block": {
@@ -6854,7 +6865,7 @@ module.exports = {
   },
   "slider": {
     "width": 5,
-    "height": 8.5,
+    "height": 8,
     "marginTop": 0.5,
     "backgroundColor": "#C3413D",
     "alignItems": "center",
@@ -6884,7 +6895,15 @@ module.exports = {
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+
+var _wxcEpSlider = __webpack_require__(57);
+
+var _wxcEpSlider2 = _interopRequireDefault(_wxcEpSlider);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
 exports.default = {
+  components: { WxcEpSlider: _wxcEpSlider2.default },
   data: function data() {
     return {
       labels: ['北京', '20岁', '双子座', '男'],
@@ -7016,8 +7035,8 @@ module.exports = {
     "marginRight": "20",
     "marginBottom": 0,
     "marginLeft": "20",
-    "width": 2,
-    "height": 2,
+    "width": 2.3,
+    "height": 2.3,
     "borderRadius": 50,
     "background": "white"
   },
@@ -7037,11 +7056,13 @@ module.exports = {
     "marginRight": "10",
     "marginBottom": 0,
     "marginLeft": "10",
-    "minWidth": 1.5,
-    "fontSize": "24",
+    "paddingTop": 0,
+    "paddingRight": "20",
+    "paddingBottom": 0,
+    "paddingLeft": "20",
     "textAlign": "center",
     "color": "#FFFFFF",
-    "borderRadius": "20",
+    "borderRadius": "10",
     "background": "#807773"
   },
   "user-signature": {
@@ -7049,7 +7070,7 @@ module.exports = {
     "paddingRight": "40",
     "paddingBottom": 0,
     "paddingLeft": "40",
-    "marginTop": "40"
+    "marginTop": "100"
   },
   "edit-block": {
     "marginTop": "20",
@@ -7059,12 +7080,13 @@ module.exports = {
     "alignItems": "flex-end"
   },
   "edit-btn": {
+    "marginTop": "30",
     "marginRight": "20",
-    "paddingTop": "5",
+    "paddingTop": 0,
     "paddingRight": "10",
-    "paddingBottom": "5",
+    "paddingBottom": 0,
     "paddingLeft": "10",
-    "fontSize": "36",
+    "borderRadius": "10",
     "color": "#FFFFFF",
     "background": "#143640"
   },
@@ -7072,18 +7094,18 @@ module.exports = {
     "flexGrow": 1
   },
   "tab-group": {
-    "paddingTop": "20",
+    "paddingTop": "15",
     "paddingRight": 0,
-    "paddingBottom": "20",
+    "paddingBottom": "15",
     "paddingLeft": 0,
     "justifyContent": "center",
     "background": "#010813"
   },
   "tab": {
     "marginTop": 0,
-    "marginRight": "40",
+    "marginRight": "60",
     "marginBottom": 0,
-    "marginLeft": "40"
+    "marginLeft": "60"
   },
   "video-list": {
     "flexGrow": 1,
@@ -7102,7 +7124,7 @@ module.exports = {
   },
   "slider": {
     "width": 5,
-    "height": 8.5,
+    "height": 8,
     "marginTop": 0.5,
     "backgroundColor": "#C3413D",
     "alignItems": "center",
@@ -8424,27 +8446,27 @@ module.exports = {
     "marginRight": 0,
     "marginBottom": "30",
     "marginLeft": 0,
-    "width": "200",
-    "height": "200",
+    "width": "160",
+    "height": "160",
     "borderRadius": 50,
     "backgroundColor": "#FFFFFF"
   },
   "user-info": {
+    "marginTop": "30",
     "width": 100
   },
   "cell": {
     "width": 100,
-    "paddingTop": 0,
+    "paddingTop": "20",
     "paddingRight": "80",
-    "paddingBottom": 0,
+    "paddingBottom": "20",
     "paddingLeft": "80",
     "flexDirection": "row",
     "alignItems": "center",
     "backgroundColor": "#161824"
   },
   "cell-h": {
-    "marginRight": "40",
-    "fontSize": "24"
+    "marginRight": "40"
   },
   "sex-content": {
     "alignItems": "center"
@@ -12957,7 +12979,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_c('text', {
     staticClass: ["base-font-size", "cell-h", "color-white"]
   }, [_vm._v("昵称")]), _c('input', {
-    staticClass: ["color-white"],
+    staticClass: ["color-gray"],
     attrs: {
       "type": "text",
       "value": (_vm.name)
@@ -12977,7 +12999,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_vm._v("性别")]), _c('div', {
     staticClass: ["base-flex"]
   }, [_c('text', {
-    staticClass: ["color-white"]
+    staticClass: ["color-gray"]
   }, [_vm._v(_vm._s(_vm._f("sexTranslate")(_vm.sex)))])])]), _c('div', {
     staticClass: ["base-flex", "cell"],
     on: {
@@ -12988,7 +13010,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_vm._v("坐标")]), _c('div', {
     staticClass: ["btn"]
   }, [_c('text', {
-    staticClass: ["btn-txt", "color-white"]
+    staticClass: ["btn-txt", "color-gray"]
   }, [_vm._v(_vm._s(_vm.currentCity.cityName || '选择城市'))])])]), _c('div', {
     staticClass: ["base-flex", "cell"],
     on: {
@@ -12997,7 +13019,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_c('text', {
     staticClass: ["base-font-size", "cell-h", "color-white"]
   }, [_vm._v("生日")]), _c('text', {
-    staticClass: ["base-font-size", "cell-h", "color-white"],
+    staticClass: ["base-font-size", "color-gray"],
     on: {
       "click": _vm.showCalendar
     }
@@ -13008,7 +13030,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_c('text', {
     staticClass: ["base-font-size", "cell-h", "color-white"]
-  }, [_vm._v("签名")]), _c('textarea')])]), _c('wxc-popup', {
+  }, [_vm._v("签名")]), _c('textarea', {
+    staticClass: ["color-gray"]
+  })])]), _c('wxc-popup', {
     attrs: {
       "popupColor": "gray",
       "show": _vm.isBottomShow,
@@ -14256,22 +14280,39 @@ module.exports = {
     "flexGrow": 1,
     "position": "relative"
   },
+  "video": {
+    "width": 100,
+    "height": "1000",
+    "backgroundColor": "#000000"
+  },
   "footer": {
     "width": 100,
-    "height": "100",
     "position": "absolute",
-    "bottom": "100"
+    "bottom": "0"
+  },
+  "shoot-controller": {
+    "marginTop": 0,
+    "marginBottom": 0,
+    "width": "200",
+    "height": "200",
+    "borderRadius": 50,
+    "backgroundColor": "#000000"
   },
   "uploadFile": {
     "position": "relative"
   },
-  "start-shoot": {
-    "width": "200",
-    "height": "200",
-    "backgroundSize": "contain",
-    "backgroundImage": "url('../asset/img/按钮.png')",
-    "marginTop": 0,
-    "marginBottom": 0
+  "btn-group": {
+    "flexDirection": "row",
+    "justifyContent": "center"
+  },
+  "btn": {
+    "marginTop": "30",
+    "marginRight": "100",
+    "marginBottom": "30",
+    "marginLeft": "100",
+    "width": "40",
+    "height": "40",
+    "backgroundColor": "#000000"
   }
 }
 
@@ -14285,6 +14326,10 @@ module.exports = {
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+//
+//
+//
+//
 //
 //
 //
@@ -14313,7 +14358,11 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }), _c('div', {
     staticClass: ["footer"]
   }, [_c('div', {
-    staticClass: ["uploadFile"]
+    staticClass: ["shoot-controller"]
+  }), _c('div', {
+    staticClass: ["btn-group"]
+  }, [_c('div', {
+    staticClass: ["btn", "uploadFile"]
   }, [_c('input', {
     attrs: {
       "type": "file",
@@ -14323,14 +14372,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "for": "upload"
     }
-  }, [_c('text', [_vm._v("上传")])])], 1), _c('div', {
-    staticClass: ["start-shoot"]
-  })]), _c('img', {
-    attrs: {
-      "src": "../asset/img/按钮.png",
-      "alt": ""
-    }
-  })])
+  })], 1), _c('div', {
+    staticClass: ["btn"]
+  }, [_c('button')], 1)])])])
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 
@@ -14434,7 +14478,7 @@ exports.default = {
         msg: '哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈'
       }, {
         type: 2,
-        msg: '1111111111111111111111'
+        msg: 'hi,认识你很高兴，你是哪个班的？'
       }, {
         type: 2,
         msg: '1111111111111111111111'
@@ -14512,14 +14556,14 @@ module.exports = {
     "background": "white"
   },
   "own-msg": {
-    "paddingTop": "15",
-    "paddingRight": "10",
-    "paddingBottom": "15",
-    "paddingLeft": "10",
-    "maxWidth": "400",
+    "paddingTop": "25",
+    "paddingRight": "20",
+    "paddingBottom": "25",
+    "paddingLeft": "20",
+    "maxWidth": "550",
     "color": "#FFFFFF",
     "backgroundColor": "#FFFFFF",
-    "borderRadius": "10",
+    "borderRadius": "24",
     "background": "url('../../asset/img/发送消息.png')",
     "backgroundSize": "100% 100%"
   }
@@ -14630,13 +14674,13 @@ module.exports = {
     "background": "white"
   },
   "other-msg": {
-    "paddingTop": "15",
-    "paddingRight": "10",
-    "paddingBottom": "15",
-    "paddingLeft": "10",
-    "maxWidth": "400",
+    "paddingTop": "25",
+    "paddingRight": "20",
+    "paddingBottom": "25",
+    "paddingLeft": "20",
+    "maxWidth": "550",
     "backgroundColor": "#FFFFFF",
-    "borderRadius": "10"
+    "borderRadius": "24"
   }
 }
 
@@ -14749,10 +14793,13 @@ module.exports = __vue_exports__
 
 module.exports = {
   "base-font-size": {
-    "fontSize": "48"
+    "fontSize": "42"
   },
-  "little-font-size": {
-    "fontSize": "24"
+  "mini-font-size": {
+    "fontSize": "16"
+  },
+  "middle-font-size": {
+    "fontSize": "16"
   },
   "base-flex": {
     "flexDirection": "row",
@@ -14767,6 +14814,9 @@ module.exports = {
   },
   "color-white": {
     "color": "#FFFFFF"
+  },
+  "color-gray": {
+    "color": "#98989a"
   }
 }
 
