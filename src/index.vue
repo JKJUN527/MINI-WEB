@@ -1,8 +1,5 @@
 <template>
   <div class="wrapper">
-    <router-link :to="{name: 'match'}" class="base-font-size">
-      papapa
-    </router-link>
     <router-view/>
   </div>
 </template>
@@ -42,15 +39,6 @@ export default {
     left: 0;
     right: 0;
     bottom: 0;
-}
-.cell {
-    flex-direction: row;
-    align-items: center;
-    margin-bottom: 40px;
-}
-
-.cell-h {
-    margin-right: 40px;
 }
 
 .color-white {

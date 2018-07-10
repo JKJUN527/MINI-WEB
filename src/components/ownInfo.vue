@@ -26,11 +26,9 @@
                 <text class="base-font-size color-white tab">Like</text>
             </div>
             <div v-if="showVideoList == 'works'" class="color-white video-list">
-                <!-- <img src="../asset/img/user-info-bg.png" alt="" class="bg" /> -->
                 作品集
             </div>
             <div v-if="showVideoList == 'like'" class="color-white video-list">
-                <!-- <img src="../asset/img/user-info-bg.png" alt="" class="bg" /> -->
                 喜欢集
             </div>
         </div>
@@ -106,7 +104,7 @@ export default {
         padding: 5px 10px;
         font-size: 36px;
         color: white;
-        background: yellow;
+        background: #143640;
     }
 
     .video-block {

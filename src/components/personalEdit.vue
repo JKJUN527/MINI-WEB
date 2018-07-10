@@ -7,23 +7,23 @@
         <div class="user-info">
             <div class="base-flex cell">
                 <text class="base-font-size cell-h color-white">昵称</text>
-                <input type="text">
+                <input type="text" class="color-white" v-model="name">
             </div>
-            <div class="base-flex cell">
+            <div class="base-flex cell" @click="openBottomPopup">
                 <text class="base-font-size cell-h color-white">性别</text>
                 <div class="base-flex">
-                    <text @click="openBottomPopup" class="base-font-size color-white">{{ sex | sexTranslate }}</text>
+                    <text class="color-white">{{ sex | sexTranslate }}</text>
                 </div>
             </div>
-            <div class="base-flex cell">
+            <div class="base-flex cell" @click="showListCity">
                 <text class="base-font-size cell-h color-white">坐标</text>
-                <div class="btn" @click="showListCity">
-                    <text class="btn-txt base-font-size">城市选择</text>
+                <div class="btn">
+                    <text class="btn-txt color-white">{{ currentCity.cityName || '选择城市' }}</text>
                 </div>
             </div>
-            <div class="base-flex cell">
+            <div class="base-flex cell" @click="showCalendar">
                 <text class="base-font-size cell-h color-white">生日</text>
-                <text class="base-font-size cell-h color-white" @click="showCalendar">color{{selectedDate[0]}}</text>
+                <text class="base-font-size cell-h color-white" @click="showCalendar">{{selectedDate[0]}}</text>
             </div>
             <div class="base-flex cell" :style="{'align-items': 'flex-start'}">
                 <text class="base-font-size cell-h color-white">签名</text>
@@ -71,14 +71,14 @@
 <script>
 import {
   WxcCity,
-  WxcCell,
   WxcPopup,
   WxcButton,
   WxcPageCalendar
 } from 'weex-ui'
 export default {
-  components: { WxcCity, WxcCell, WxcPopup, WxcButton, WxcPageCalendar },
+  components: { WxcCity, WxcPopup, WxcButton, WxcPageCalendar },
   data: () => ({
+    name: '董宇辰',
     animationType: 'push',
     currentCity: '',
     cityStyleType: 'list',
@@ -164,29 +164,35 @@ export default {
   background-color: white;
 }
 
-hr {
-  width: 300px;
-  border: solid 3px white;
-  margin-bottom: 10px;
+.user-info {
+  width: 100%
 }
 
-input[type="text"],
-input[type="date"] {
+.cell {
+    width: 100%;
+    padding: 0 80px;
+    flex-direction: row;
+    align-items: center;
+    background-color: #161824
+}
+
+.cell-h {
+    margin-right: 40px;
+    font-size: 24px;
+}
+input[type="text"]{
   width: 500px;
   height: 60px;
   line-height: 100px;
   font-size: 48px;
-  border: solid 1px black;
-}
-input[type="radio"] {
-  width: 50px;
-  height: 50px;
+  opacity: 0;
 }
 
 textarea {
   width: 500px;
   height: 300px;
   border: solid 1px black;
+  opacity: 0;
 }
 
 .sex-content {

@@ -15,23 +15,30 @@
             </div>
         </div>
         <div class="btn-group">
-          <button class="btn" style="background: url('../asset/img/user-info-bg.png');">发送消息</button>
-          <button class="btn">继续滑动配对</button>
+          <button class="btn chat">发送消息</button>
+          <button class="btn next">继续滑动配对</button>
         </div>
     </div>
 </template>
 <script>
 export default {
+  data () {
+    return {
+      test: ''
+    }
+  }
 }
 </script>
 <style scoped>
 
 .match-content {
   flex-grow: 1;
+  justify-content: center;
   background-color: black
 }
 
 .match-success {
+  margin: 60px;
   align-items: center;
 }
 
@@ -41,6 +48,7 @@ export default {
 }
 
 .user-group {
+  margin: 40px;
   justify-content: space-around
 }
 
@@ -64,11 +72,24 @@ export default {
 }
 
 .btn {
-  width: 400px;
-  height: 100px;
-  line-height: 100px;
+  margin: 30px 0;
+  width: 550px;
+  height: 120px;
+  line-height: 120px;
+  color: white;
   font-size: 48px;
   text-align: center;
   border-radius: 10px;
+}
+
+.chat {
+  background: url('../asset/img/发送消息.png');
+}
+
+.next {
+  width: 585px;
+  height: 130px;
+  line-height: 130px;
+  background: url('../asset/img/继续滑动来配对.png');
 }
 </style>
