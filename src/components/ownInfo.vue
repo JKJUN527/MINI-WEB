@@ -21,31 +21,80 @@
         </div>
         <div class="video-block">
             <div class="tab-group base-flex">
-                <text class="base-font-size color-white tab">作品</text>
+                <text class="base-font-size color-white tab" v-click="changeTap">作品</text>
                 <text class="base-font-size color-white tab">|</text>
                 <text class="base-font-size color-white tab">Like</text>
             </div>
             <div v-if="showVideoList == 'works'" class="color-white video-list">
-                作品集
+                <div>
+                    <wxc-ep-slider :slider-id="sliderId"
+                                   :card-length='cardLength'
+                                   :card-s="cardSize"
+                                   :select-index="2"
+                                   @wxcEpSliderCurrentIndexSelected="wxcEpSliderCurrentIndexSelected">
+                        <!--自动生成demo-->
+                        <div v-for="(v,index) in [1,2,3,4,5]"
+                             :key="index"
+                             :slot="`card${index}_${sliderId}`"
+                             :class="['slider',`slider${index}`]">
+                            <text>这里是第{{index + 1}}个滑块</text>
+                        </div>
+                    </wxc-ep-slider>
+                </div>
             </div>
             <div v-if="showVideoList == 'like'" class="color-white video-list">
-                喜欢集
+                <div>
+                    <wxc-ep-slider :slider-id="sliderId"
+                                   :card-length='cardLength'
+                                   :card-s="cardSize"
+                                   :select-index="2"
+                                   @wxcEpSliderCurrentIndexSelected="wxcEpSliderCurrentIndexSelected">
+                        <!--自动生成demo-->
+                        <div v-for="(v,index) in [1,2,3,4,5]"
+                             :key="index"
+                             :slot="`card${index}_${sliderId}`"
+                             :class="['slider',`slider${index}`]">
+                            <text>这里是第{{index + 1}}个滑块</text>
+                        </div>
+                    </wxc-ep-slider>
+                </div>
             </div>
         </div>
     </div>
 </template>
 <script>
+import { WxcEpSlider } from 'weex-ui'
 export default {
+  components: { WxcEpSlider },
   data () {
     return {
       labels: ['北京', '20岁', '双子座', '男'],
-      showVideoList: 'works'
+      showVideoList: 'works',
+      sliderId: 1,
+      cardLength: 5,
+      cardSize: {
+          width: 400,
+          height: 300,
+          spacing: 0,
+          scale: 0.8
+      }
     }
   },
   methods: {
-    doListChange (msg) {
-      this.showVideoList = msg
-    }
+      doListChange (msg) {
+          this.showVideoList = msg
+      },
+      wxcEpSliderCurrentIndexSelected (e) {
+          const index = e.currentIndex;
+          console.log(index);
+      },
+      changeTap () {
+        if (this.showVideoList === 'works'){
+            this.showVideoList = 'like'
+        }else{
+            this.showVideoList = 'works'
+        }
+      }
   },
   watch: {
     showVideoList: function () {}
@@ -133,6 +182,35 @@ export default {
         top: 0;
         right: 0;
         bottom: 0
+    }
+
+    .wrapper {
+        padding-top: 100px;
+    }
+
+    .slider {
+        width: 5rem;
+        height: 8.5rem;
+        margin-top: 0.5rem;
+        background-color: #C3413D;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .slider1 {
+        background-color: #635147;
+    }
+
+    .slider2 {
+        background-color: #FFC302;
+    }
+
+    .slider3 {
+        background-color: #FF9090;
+    }
+
+    .slider4 {
+        background-color: #546E7A;
     }
 
 </style>

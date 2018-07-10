@@ -244,12 +244,9 @@ export default {
         justify-content: center;
         background-color: #000000;
     }
-    /*.msg-content{*/
-        /*width:750px;*/
-        /*height:3rem;*/
-        /*!*border-bottom-width:1px;*!*/
-        /*!*align-items: center;*!*/
-        /*!*justify-content: center;*!*/
-        /*background-color: #000000;*/
-    /*}*/
+    .title-item .border-bottom{
+        width: 0.3rem !important;
+        height: 0.3rem !important;
+        background: url(/src/asset/img/right-page.png) no-repeat transparent !important;
+    }
 </style>
