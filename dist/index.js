@@ -391,7 +391,7 @@ var _typeof2 = typeof Symbol === "function" && typeof Symbol.iterator === "symbo
                                                                                                                                                                                                                                                                                 * Created by Tw93 on 17/11/01
                                                                                                                                                                                                                                                                                 */
 
-var _urlParse = __webpack_require__(66);
+var _urlParse = __webpack_require__(61);
 
 var _urlParse2 = _interopRequireDefault(_urlParse);
 
@@ -736,114 +736,11 @@ exports.default = Utils;
 "use strict";
 
 
-var utils = __webpack_require__(0);
-var normalizeHeaderName = __webpack_require__(27);
-
-var DEFAULT_CONTENT_TYPE = {
-  'Content-Type': 'application/x-www-form-urlencoded'
-};
-
-function setContentTypeIfUnset(headers, value) {
-  if (!utils.isUndefined(headers) && utils.isUndefined(headers['Content-Type'])) {
-    headers['Content-Type'] = value;
-  }
-}
-
-function getDefaultAdapter() {
-  var adapter;
-  if (typeof XMLHttpRequest !== 'undefined') {
-    // For browsers use XHR adapter
-    adapter = __webpack_require__(6);
-  } else if (typeof process !== 'undefined') {
-    // For node use HTTP adapter
-    adapter = __webpack_require__(6);
-  }
-  return adapter;
-}
-
-var defaults = {
-  adapter: getDefaultAdapter(),
-
-  transformRequest: [function transformRequest(data, headers) {
-    normalizeHeaderName(headers, 'Content-Type');
-    if (utils.isFormData(data) ||
-      utils.isArrayBuffer(data) ||
-      utils.isBuffer(data) ||
-      utils.isStream(data) ||
-      utils.isFile(data) ||
-      utils.isBlob(data)
-    ) {
-      return data;
-    }
-    if (utils.isArrayBufferView(data)) {
-      return data.buffer;
-    }
-    if (utils.isURLSearchParams(data)) {
-      setContentTypeIfUnset(headers, 'application/x-www-form-urlencoded;charset=utf-8');
-      return data.toString();
-    }
-    if (utils.isObject(data)) {
-      setContentTypeIfUnset(headers, 'application/json;charset=utf-8');
-      return JSON.stringify(data);
-    }
-    return data;
-  }],
-
-  transformResponse: [function transformResponse(data) {
-    /*eslint no-param-reassign:0*/
-    if (typeof data === 'string') {
-      try {
-        data = JSON.parse(data);
-      } catch (e) { /* Ignore */ }
-    }
-    return data;
-  }],
-
-  /**
-   * A timeout in milliseconds to abort a request. If set to 0 (default) a
-   * timeout is not created.
-   */
-  timeout: 0,
-
-  xsrfCookieName: 'XSRF-TOKEN',
-  xsrfHeaderName: 'X-XSRF-TOKEN',
-
-  maxContentLength: -1,
-
-  validateStatus: function validateStatus(status) {
-    return status >= 200 && status < 300;
-  }
-};
-
-defaults.headers = {
-  common: {
-    'Accept': 'application/json, text/plain, */*'
-  }
-};
-
-utils.forEach(['delete', 'get', 'head'], function forEachMethodNoData(method) {
-  defaults.headers[method] = {};
-});
-
-utils.forEach(['post', 'put', 'patch'], function forEachMethodWithData(method) {
-  defaults.headers[method] = utils.merge(DEFAULT_CONTENT_TYPE);
-});
-
-module.exports = defaults;
-
-
-/***/ }),
-/* 3 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _indexWeex = __webpack_require__(4);
+var _indexWeex = __webpack_require__(3);
 
 var _indexWeex2 = _interopRequireDefault(_indexWeex);
 
@@ -884,7 +781,7 @@ var BindEnv = {
 exports.default = BindEnv;
 
 /***/ }),
-/* 4 */
+/* 3 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1687,6 +1584,109 @@ var _typeof2 = typeof Symbol === "function" && typeof Symbol.iterator === "symbo
 });;
 
 /***/ }),
+/* 4 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var utils = __webpack_require__(0);
+var normalizeHeaderName = __webpack_require__(27);
+
+var DEFAULT_CONTENT_TYPE = {
+  'Content-Type': 'application/x-www-form-urlencoded'
+};
+
+function setContentTypeIfUnset(headers, value) {
+  if (!utils.isUndefined(headers) && utils.isUndefined(headers['Content-Type'])) {
+    headers['Content-Type'] = value;
+  }
+}
+
+function getDefaultAdapter() {
+  var adapter;
+  if (typeof XMLHttpRequest !== 'undefined') {
+    // For browsers use XHR adapter
+    adapter = __webpack_require__(6);
+  } else if (typeof process !== 'undefined') {
+    // For node use HTTP adapter
+    adapter = __webpack_require__(6);
+  }
+  return adapter;
+}
+
+var defaults = {
+  adapter: getDefaultAdapter(),
+
+  transformRequest: [function transformRequest(data, headers) {
+    normalizeHeaderName(headers, 'Content-Type');
+    if (utils.isFormData(data) ||
+      utils.isArrayBuffer(data) ||
+      utils.isBuffer(data) ||
+      utils.isStream(data) ||
+      utils.isFile(data) ||
+      utils.isBlob(data)
+    ) {
+      return data;
+    }
+    if (utils.isArrayBufferView(data)) {
+      return data.buffer;
+    }
+    if (utils.isURLSearchParams(data)) {
+      setContentTypeIfUnset(headers, 'application/x-www-form-urlencoded;charset=utf-8');
+      return data.toString();
+    }
+    if (utils.isObject(data)) {
+      setContentTypeIfUnset(headers, 'application/json;charset=utf-8');
+      return JSON.stringify(data);
+    }
+    return data;
+  }],
+
+  transformResponse: [function transformResponse(data) {
+    /*eslint no-param-reassign:0*/
+    if (typeof data === 'string') {
+      try {
+        data = JSON.parse(data);
+      } catch (e) { /* Ignore */ }
+    }
+    return data;
+  }],
+
+  /**
+   * A timeout in milliseconds to abort a request. If set to 0 (default) a
+   * timeout is not created.
+   */
+  timeout: 0,
+
+  xsrfCookieName: 'XSRF-TOKEN',
+  xsrfHeaderName: 'X-XSRF-TOKEN',
+
+  maxContentLength: -1,
+
+  validateStatus: function validateStatus(status) {
+    return status >= 200 && status < 300;
+  }
+};
+
+defaults.headers = {
+  common: {
+    'Accept': 'application/json, text/plain, */*'
+  }
+};
+
+utils.forEach(['delete', 'get', 'head'], function forEachMethodNoData(method) {
+  defaults.headers[method] = {};
+});
+
+utils.forEach(['post', 'put', 'patch'], function forEachMethodWithData(method) {
+  defaults.headers[method] = utils.merge(DEFAULT_CONTENT_TYPE);
+});
+
+module.exports = defaults;
+
+
+/***/ }),
 /* 5 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -2210,7 +2210,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _index = __webpack_require__(75);
+var _index = __webpack_require__(80);
 
 Object.defineProperty(exports, 'default', {
   enumerable: true,
@@ -2232,7 +2232,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _index = __webpack_require__(80);
+var _index = __webpack_require__(85);
 
 Object.defineProperty(exports, 'default', {
   enumerable: true,
@@ -2254,7 +2254,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 /* weex initialized here, please do not move this line */
 var router = __webpack_require__(15);
-var App = __webpack_require__(150);
+var App = __webpack_require__(155);
 /* eslint-disable no-new */
 new Vue(Vue.util.extend({ el: '#root', router: router }, App));
 router.push('/');
@@ -2290,19 +2290,19 @@ var _ownInfo = __webpack_require__(54);
 
 var _ownInfo2 = _interopRequireDefault(_ownInfo);
 
-var _personalEdit = __webpack_require__(58);
+var _personalEdit = __webpack_require__(66);
 
 var _personalEdit2 = _interopRequireDefault(_personalEdit);
 
-var _msglist = __webpack_require__(119);
+var _msglist = __webpack_require__(124);
 
 var _msglist2 = _interopRequireDefault(_msglist);
 
-var _shoot = __webpack_require__(134);
+var _shoot = __webpack_require__(139);
 
 var _shoot2 = _interopRequireDefault(_shoot);
 
-var _chat = __webpack_require__(138);
+var _chat = __webpack_require__(143);
 
 var _chat2 = _interopRequireDefault(_chat);
 
@@ -5002,7 +5002,7 @@ __vue_options__ = __vue_exports__ = __vue_exports__.default
 if (typeof __vue_options__ === "function") {
   __vue_options__ = __vue_options__.options
 }
-__vue_options__.__file = "D:\\MINI-WEB\\src\\components\\HelloWorld.vue"
+__vue_options__.__file = "E:\\MINI-WEB\\src\\components\\HelloWorld.vue"
 __vue_options__.render = __vue_template__.render
 __vue_options__.staticRenderFns = __vue_template__.staticRenderFns
 __vue_options__.style = __vue_options__.style || {}
@@ -5110,10 +5110,10 @@ __vue_options__ = __vue_exports__ = __vue_exports__.default
 if (typeof __vue_options__ === "function") {
   __vue_options__ = __vue_options__.options
 }
-__vue_options__.__file = "D:\\MINI-WEB\\src\\components\\login.vue"
+__vue_options__.__file = "E:\\MINI-WEB\\src\\components\\login.vue"
 __vue_options__.render = __vue_template__.render
 __vue_options__.staticRenderFns = __vue_template__.staticRenderFns
-__vue_options__._scopeId = "data-v-c00ae0be"
+__vue_options__._scopeId = "data-v-1439c800"
 __vue_options__.style = __vue_options__.style || {}
 __vue_styles__.forEach(function (module) {
   for (var name in module) {
@@ -5131,7 +5131,14 @@ module.exports = __vue_exports__
 /* 20 */
 /***/ (function(module, exports) {
 
-module.exports = {}
+module.exports = {
+  "login-form": {
+    "height": 100,
+    "background": "url(\"/src/asset/img/login-bg.png\") no-repeat",
+    "backgroundSize": "cover",
+    "backgroundColor": "#000000"
+  }
+}
 
 /***/ }),
 /* 21 */
@@ -5157,13 +5164,16 @@ exports.default = {
 
   methods: {
     loginEvent: function loginEvent(event) {
-      _index2.default.login({
-        pic: 'test.jpg'
-      }).then(function (data) {
-        console.log(data);
-      }).catch(function (err) {
-        console.log(err);
-      });
+      window.location.href = "http://mini.jkjun.cn/loginqq";
+      //      server.login({
+      //          pic: 'test.jpg'
+      //        })
+      //        .then(data => {
+      //          console.log(data)
+      //        })
+      //        .catch(err => {
+      //          console.log(err)
+      //        })
     }
   }
 }; //
@@ -5234,7 +5244,7 @@ module.exports = __webpack_require__(24);
 var utils = __webpack_require__(0);
 var bind = __webpack_require__(5);
 var Axios = __webpack_require__(26);
-var defaults = __webpack_require__(2);
+var defaults = __webpack_require__(4);
 
 /**
  * Create an instance of Axios
@@ -5317,7 +5327,7 @@ function isSlowBuffer (obj) {
 "use strict";
 
 
-var defaults = __webpack_require__(2);
+var defaults = __webpack_require__(4);
 var utils = __webpack_require__(0);
 var InterceptorManager = __webpack_require__(35);
 var dispatchRequest = __webpack_require__(36);
@@ -5856,7 +5866,7 @@ module.exports = InterceptorManager;
 var utils = __webpack_require__(0);
 var transformData = __webpack_require__(37);
 var isCancel = __webpack_require__(8);
-var defaults = __webpack_require__(2);
+var defaults = __webpack_require__(4);
 var isAbsoluteURL = __webpack_require__(38);
 var combineURLs = __webpack_require__(39);
 
@@ -6533,11 +6543,11 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "src": "/src/asset/img/qq.jpg"
     }
-  }), _c('text', {
+  }), _c('button', {
     on: {
       "click": _vm.loginEvent
     }
-  }, [_vm._v("QQ一键登录")])])
+  }, [_vm._v("QQ一键登录")])], 1)
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 
@@ -6568,10 +6578,10 @@ __vue_options__ = __vue_exports__ = __vue_exports__.default
 if (typeof __vue_options__ === "function") {
   __vue_options__ = __vue_options__.options
 }
-__vue_options__.__file = "D:\\MINI-WEB\\src\\components\\match.vue"
+__vue_options__.__file = "E:\\MINI-WEB\\src\\components\\match.vue"
 __vue_options__.render = __vue_template__.render
 __vue_options__.staticRenderFns = __vue_template__.staticRenderFns
-__vue_options__._scopeId = "data-v-2b0debfd"
+__vue_options__._scopeId = "data-v-c165b748"
 __vue_options__.style = __vue_options__.style || {}
 __vue_styles__.forEach(function (module) {
   for (var name in module) {
@@ -6766,10 +6776,10 @@ __vue_options__ = __vue_exports__ = __vue_exports__.default
 if (typeof __vue_options__ === "function") {
   __vue_options__ = __vue_options__.options
 }
-__vue_options__.__file = "D:\\MINI-WEB\\src\\components\\otherInfo.vue"
+__vue_options__.__file = "E:\\MINI-WEB\\src\\components\\otherInfo.vue"
 __vue_options__.render = __vue_template__.render
 __vue_options__.staticRenderFns = __vue_template__.staticRenderFns
-__vue_options__._scopeId = "data-v-36629d96"
+__vue_options__._scopeId = "data-v-e4fee316"
 __vue_options__.style = __vue_options__.style || {}
 __vue_styles__.forEach(function (module) {
   for (var name in module) {
@@ -6789,7 +6799,7 @@ module.exports = __vue_exports__
 
 module.exports = {
   "user-header": {
-    "marginTop": 1.3,
+    "marginTop": 0.64,
     "alignItems": "center"
   },
   "user-img": {
@@ -6852,6 +6862,29 @@ module.exports = {
     "top": 0,
     "right": 0,
     "bottom": 0
+  },
+  "wrapper": {
+    "paddingTop": "100"
+  },
+  "slider": {
+    "width": 5,
+    "height": 8,
+    "marginTop": 0.5,
+    "backgroundColor": "#C3413D",
+    "alignItems": "center",
+    "justifyContent": "center"
+  },
+  "slider1": {
+    "backgroundColor": "#635147"
+  },
+  "slider2": {
+    "backgroundColor": "#FFC302"
+  },
+  "slider3": {
+    "backgroundColor": "#FF9090"
+  },
+  "slider4": {
+    "backgroundColor": "#546E7A"
   }
 }
 
@@ -6895,12 +6928,36 @@ Object.defineProperty(exports, "__esModule", {
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
+//import { WxcEpSlider } from 'weex-ui'
 exports.default = {
+  //  components: { WxcEpSlider },
   data: function data() {
     return {
       labels: ['北京', '20岁', '双子座', '男'],
-      showVideoList: 'works'
+      showVideoList: 'works',
+      sliderId: 1,
+      cardLength: 5,
+      cardSize: {
+        width: 400,
+        height: 300,
+        spacing: 0,
+        scale: 0.8
+      }
     };
   },
 
@@ -6918,7 +6975,7 @@ exports.default = {
 /* 53 */
 /***/ (function(module, exports) {
 
-throw new Error("Module build failed: SyntaxError: Unexpected token (38:10)\n    at Parser.pp$4.raise (D:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:2610:13)\n    at Parser.pp.unexpected (D:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:637:8)\n    at Parser.pp$3.parseIdent (D:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:2565:10)\n    at Parser.pp$3.parsePropertyName (D:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:2362:105)\n    at Parser.parseObj (D:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:4463:14)\n    at Parser.pp$3.parseExprAtom (D:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:2077:17)\n    at Parser.parseExprAtom (D:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:4372:24)\n    at Parser.pp$3.parseExprSubscripts (D:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:1955:19)\n    at Parser.pp$3.parseMaybeUnary (D:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:1932:17)\n    at Parser.pp$3.parseExprOps (D:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:1874:19)\n    at Parser.pp$3.parseMaybeConditional (D:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:1857:19)\n    at Parser.pp$3.parseMaybeAssign (D:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:1832:19)\n    at Parser.pp$3.parsePropertyValue (D:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:2310:87)\n    at Parser.parseObj (D:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:4472:14)\n    at Parser.pp$3.parseExprAtom (D:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:2077:17)\n    at Parser.parseExprAtom (D:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:4372:24)");
+throw new Error("Module build failed: SyntaxError: Unexpected token (38:10)\n    at Parser.pp$4.raise (E:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:2610:13)\n    at Parser.pp.unexpected (E:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:637:8)\n    at Parser.pp$3.parseIdent (E:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:2565:10)\n    at Parser.pp$3.parsePropertyName (E:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:2362:105)\n    at Parser.parseObj (E:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:4463:14)\n    at Parser.pp$3.parseExprAtom (E:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:2077:17)\n    at Parser.parseExprAtom (E:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:4372:24)\n    at Parser.pp$3.parseExprSubscripts (E:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:1955:19)\n    at Parser.pp$3.parseMaybeUnary (E:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:1932:17)\n    at Parser.pp$3.parseExprOps (E:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:1874:19)\n    at Parser.pp$3.parseMaybeConditional (E:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:1857:19)\n    at Parser.pp$3.parseMaybeAssign (E:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:1832:19)\n    at Parser.pp$3.parsePropertyValue (E:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:2310:87)\n    at Parser.parseObj (E:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:4472:14)\n    at Parser.pp$3.parseExprAtom (E:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:2077:17)\n    at Parser.parseExprAtom (E:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:4372:24)");
 
 /***/ }),
 /* 54 */
@@ -6935,7 +6992,7 @@ __vue_styles__.push(__webpack_require__(55)
 __vue_exports__ = __webpack_require__(56)
 
 /* template */
-var __vue_template__ = __webpack_require__(57)
+var __vue_template__ = __webpack_require__(65)
 __vue_options__ = __vue_exports__ = __vue_exports__ || {}
 if (
   typeof __vue_exports__.default === "object" ||
@@ -6947,10 +7004,10 @@ __vue_options__ = __vue_exports__ = __vue_exports__.default
 if (typeof __vue_options__ === "function") {
   __vue_options__ = __vue_options__.options
 }
-__vue_options__.__file = "D:\\MINI-WEB\\src\\components\\ownInfo.vue"
+__vue_options__.__file = "E:\\MINI-WEB\\src\\components\\ownInfo.vue"
 __vue_options__.render = __vue_template__.render
 __vue_options__.staticRenderFns = __vue_template__.staticRenderFns
-__vue_options__._scopeId = "data-v-5d55000c"
+__vue_options__._scopeId = "data-v-82b0c6aa"
 __vue_options__.style = __vue_options__.style || {}
 __vue_styles__.forEach(function (module) {
   for (var name in module) {
@@ -7060,6 +7117,29 @@ module.exports = {
     "top": 0,
     "right": 0,
     "bottom": 0
+  },
+  "wrapper": {
+    "paddingTop": "100"
+  },
+  "slider": {
+    "width": 5,
+    "height": 8,
+    "marginTop": 0.5,
+    "backgroundColor": "#C3413D",
+    "alignItems": "center",
+    "justifyContent": "center"
+  },
+  "slider1": {
+    "backgroundColor": "#635147"
+  },
+  "slider2": {
+    "backgroundColor": "#FFC302"
+  },
+  "slider3": {
+    "backgroundColor": "#FF9090"
+  },
+  "slider4": {
+    "backgroundColor": "#546E7A"
   }
 }
 
@@ -7071,268 +7151,51 @@ module.exports = {
 
 
 Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-exports.default = {
-  data: function data() {
-    return {
-      labels: ['北京', '20岁', '双子座', '男'],
-      showVideoList: 'works'
-    };
-  },
-
-  methods: {
-    doListChange: function doListChange(msg) {
-      this.showVideoList = msg;
-    }
-  },
-  watch: {
-    showVideoList: function showVideoList() {}
-  }
-};
-
-/***/ }),
-/* 57 */
-/***/ (function(module, exports) {
-
-throw new Error("Module build failed: SyntaxError: Unexpected token (46:10)\n    at Parser.pp$4.raise (D:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:2610:13)\n    at Parser.pp.unexpected (D:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:637:8)\n    at Parser.pp$3.parseIdent (D:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:2565:10)\n    at Parser.pp$3.parsePropertyName (D:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:2362:105)\n    at Parser.parseObj (D:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:4463:14)\n    at Parser.pp$3.parseExprAtom (D:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:2077:17)\n    at Parser.parseExprAtom (D:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:4372:24)\n    at Parser.pp$3.parseExprSubscripts (D:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:1955:19)\n    at Parser.pp$3.parseMaybeUnary (D:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:1932:17)\n    at Parser.pp$3.parseExprOps (D:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:1874:19)\n    at Parser.pp$3.parseMaybeConditional (D:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:1857:19)\n    at Parser.pp$3.parseMaybeAssign (D:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:1832:19)\n    at Parser.pp$3.parsePropertyValue (D:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:2310:87)\n    at Parser.parseObj (D:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:4472:14)\n    at Parser.pp$3.parseExprAtom (D:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:2077:17)\n    at Parser.parseExprAtom (D:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:4372:24)");
-
-/***/ }),
-/* 58 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var __vue_exports__, __vue_options__
-var __vue_styles__ = []
-
-/* styles */
-__vue_styles__.push(__webpack_require__(59)
-)
-
-/* script */
-__vue_exports__ = __webpack_require__(60)
-
-/* template */
-var __vue_template__ = __webpack_require__(118)
-__vue_options__ = __vue_exports__ = __vue_exports__ || {}
-if (
-  typeof __vue_exports__.default === "object" ||
-  typeof __vue_exports__.default === "function"
-) {
-if (Object.keys(__vue_exports__).some(function (key) { return key !== "default" && key !== "__esModule" })) {console.error("named exports are not supported in *.vue files.")}
-__vue_options__ = __vue_exports__ = __vue_exports__.default
-}
-if (typeof __vue_options__ === "function") {
-  __vue_options__ = __vue_options__.options
-}
-__vue_options__.__file = "D:\\MINI-WEB\\src\\components\\personalEdit.vue"
-__vue_options__.render = __vue_template__.render
-__vue_options__.staticRenderFns = __vue_template__.staticRenderFns
-__vue_options__._scopeId = "data-v-3ea2303c"
-__vue_options__.style = __vue_options__.style || {}
-__vue_styles__.forEach(function (module) {
-  for (var name in module) {
-    __vue_options__.style[name] = module[name]
-  }
-})
-if (typeof __register_static_styles__ === "function") {
-  __register_static_styles__(__vue_options__._scopeId, __vue_styles__)
-}
-
-module.exports = __vue_exports__
-
-
-/***/ }),
-/* 59 */
-/***/ (function(module, exports) {
-
-module.exports = {
-  "infoEdit": {
-    "flexGrow": 1,
-    "alignItems": "center",
-    "backgroundColor": "#000000",
-    "color": "#FFFFFF"
-  },
-  "user-img": {
-    "marginTop": "30",
-    "marginRight": 0,
-    "marginBottom": "30",
-    "marginLeft": 0,
-    "width": "160",
-    "height": "160",
-    "borderRadius": 50,
-    "backgroundColor": "#FFFFFF"
-  },
-  "user-info": {
-    "marginTop": "30",
-    "width": 100
-  },
-  "cell": {
-    "width": 100,
-    "paddingTop": "20",
-    "paddingRight": "80",
-    "paddingBottom": "20",
-    "paddingLeft": "80",
-    "flexDirection": "row",
-    "alignItems": "center",
-    "backgroundColor": "#161824"
-  },
-  "cell-h": {
-    "marginRight": "40"
-  },
-  "sex-content": {
-    "alignItems": "center"
-  },
-  "btn-style": {
-    "marginTop": "5",
-    "marginRight": 0,
-    "marginBottom": "5",
-    "marginLeft": 0
-  }
-}
-
-/***/ }),
-/* 60 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
+    value: true
 });
 
-var _wxcPageCalendar = __webpack_require__(61);
+var _wxcEpSlider = __webpack_require__(57);
 
-var _wxcPageCalendar2 = _interopRequireDefault(_wxcPageCalendar);
-
-var _wxcButton = __webpack_require__(12);
-
-var _wxcButton2 = _interopRequireDefault(_wxcButton);
-
-var _wxcPopup = __webpack_require__(13);
-
-var _wxcPopup2 = _interopRequireDefault(_wxcPopup);
-
-var _wxcCity = __webpack_require__(89);
-
-var _wxcCity2 = _interopRequireDefault(_wxcCity);
+var _wxcEpSlider2 = _interopRequireDefault(_wxcEpSlider);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 exports.default = {
-  components: { WxcCity: _wxcCity2.default, WxcPopup: _wxcPopup2.default, WxcButton: _wxcButton2.default, WxcPageCalendar: _wxcPageCalendar2.default },
-  data: function data() {
-    return {
-      name: '董宇辰',
-      animationType: 'push',
-      currentCity: '',
-      cityStyleType: 'list',
-      value: '',
-      sex: 'man',
-      isBottomShow: false,
-      currentDate: '',
-      selectedDate: [],
-      isRange: false,
-      calendarTitle: '选择日期',
-      dateRange: ['2017-06-10', '2018-06-10'],
-      selectedNote: ['生日'],
-      minibarCfg: {
-        title: '日期选择'
-      },
-      descList: []
-    };
-  },
-  mounted: function mounted() {
-    // 模拟定位
-  },
+    components: { WxcEpSlider: _wxcEpSlider2.default },
+    data: function data() {
+        return {
+            labels: ['北京', '20岁', '双子座', '男'],
+            showVideoList: 'works',
+            sliderId: 1,
+            cardLength: 5,
+            cardSize: {
+                width: 400,
+                height: 300,
+                spacing: 0,
+                scale: 0.8
+            }
+        };
+    },
 
-  methods: {
-    showListCity: function showListCity() {
-      this.cityStyleType = 'list';
-      this.$refs['wxcCity'].show();
+    methods: {
+        doListChange: function doListChange(msg) {
+            this.showVideoList = msg;
+        },
+        wxcEpSliderCurrentIndexSelected: function wxcEpSliderCurrentIndexSelected(e) {
+            var index = e.currentIndex;
+            console.log(index);
+        },
+        changeTap: function changeTap() {
+            if (this.showVideoList === 'works') {
+                this.showVideoList = 'like';
+            } else {
+                this.showVideoList = 'works';
+            }
+        }
     },
-    showGroupCity: function showGroupCity() {
-      this.cityStyleType = 'group';
-      this.$refs['wxcCity'].show();
-    },
-    citySelect: function citySelect(e) {
-      this.currentCity = e.item;
-    },
-    onInput: function onInput(e) {},
-    openBottomPopup: function openBottomPopup() {
-      this.isBottomShow = true;
-    },
-    popupOverlayBottomClick: function popupOverlayBottomClick() {
-      this.isBottomShow = false;
-    },
-    handleSexChange: function handleSexChange(sex) {
-      this.sex = sex === '' ? this.sex : sex;
-      this.isBottomShow = false;
-    },
-    wxcPageCalendarDateSelected: function wxcPageCalendarDateSelected(e) {
-      this.selectedDate = e.date;
-      this.currentDate = e.date;
-    },
-    wxcPageCalendarBackClicked: function wxcPageCalendarBackClicked() {},
-    showCalendar: function showCalendar() {
-      var _this = this;
-
-      this.isRange = false;
-      setTimeout(function () {
-        _this.$refs['wxcPageCalendar'].show();
-      }, 10);
-    },
-    showReturnCalendar: function showReturnCalendar() {
-      var _this2 = this;
-
-      this.isRange = true;
-      setTimeout(function () {
-        _this2.$refs['wxcPageCalendar'].show();
-      }, 10);
+    watch: {
+        showVideoList: function showVideoList() {}
     }
-  },
-  filters: {
-    sexTranslate: function sexTranslate(sex) {
-      return sex === 'man' ? '男' : '女';
-    }
-  }
 }; //
 //
 //
@@ -7397,15 +7260,9 @@ exports.default = {
 //
 //
 //
-//
-//
-//
-//
-//
-//
 
 /***/ }),
-/* 61 */
+/* 57 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -7415,7 +7272,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _index = __webpack_require__(62);
+var _index = __webpack_require__(58);
 
 Object.defineProperty(exports, 'default', {
   enumerable: true,
@@ -7427,21 +7284,21 @@ Object.defineProperty(exports, 'default', {
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /***/ }),
-/* 62 */
+/* 58 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __vue_exports__, __vue_options__
 var __vue_styles__ = []
 
 /* styles */
-__vue_styles__.push(__webpack_require__(63)
+__vue_styles__.push(__webpack_require__(59)
 )
 
 /* script */
-__vue_exports__ = __webpack_require__(64)
+__vue_exports__ = __webpack_require__(60)
 
 /* template */
-var __vue_template__ = __webpack_require__(74)
+var __vue_template__ = __webpack_require__(64)
 __vue_options__ = __vue_exports__ = __vue_exports__ || {}
 if (
   typeof __vue_exports__.default === "object" ||
@@ -7453,10 +7310,10 @@ __vue_options__ = __vue_exports__ = __vue_exports__.default
 if (typeof __vue_options__ === "function") {
   __vue_options__ = __vue_options__.options
 }
-__vue_options__.__file = "D:\\MINI-WEB\\node_modules\\weex-ui\\packages\\wxc-page-calendar\\index.vue"
+__vue_options__.__file = "E:\\MINI-WEB\\node_modules\\weex-ui\\packages\\wxc-ep-slider\\index.vue"
 __vue_options__.render = __vue_template__.render
 __vue_options__.staticRenderFns = __vue_template__.staticRenderFns
-__vue_options__._scopeId = "data-v-97a60c60"
+__vue_options__._scopeId = "data-v-1014eb98"
 __vue_options__.style = __vue_options__.style || {}
 __vue_styles__.forEach(function (module) {
   for (var name in module) {
@@ -7471,118 +7328,18 @@ module.exports = __vue_exports__
 
 
 /***/ }),
-/* 63 */
+/* 59 */
 /***/ (function(module, exports) {
 
 module.exports = {
-  "wxc-page-calendar": {
-    "position": "fixed",
-    "width": "750",
-    "color": "#333333",
-    "backgroundColor": "#ffffff"
-  },
-  "flex-item": {
-    "flex": 1,
-    "textAlign": "center"
-  },
-  "calendar-weekday": {
-    "height": "60",
-    "backgroundColor": "#ffffff",
-    "borderBottomWidth": "1",
-    "borderTopWidth": "1",
-    "borderColor": "#e2e2e2",
-    "flexDirection": "row",
-    "justifyContent": "space-around",
-    "alignItems": "center"
-  },
-  "weekday-text": {
-    "color": "#000000",
-    "flex": 1,
-    "fontSize": "24",
-    "textAlign": "center"
-  },
-  "calendar-list": {
-    "flex": 1
-  },
-  "month-text": {
-    "fontSize": "32",
-    "height": "60",
-    "lineHeight": "60",
-    "width": "750",
-    "textAlign": "center",
-    "alignItems": "center",
-    "backgroundColor": "#f2f3f4"
-  },
-  "calendar-row": {
-    "height": "140",
-    "flexDirection": "row",
-    "backgroundColor": "#ffffff",
-    "borderBottomWidth": "1",
-    "borderColor": "#f2f3f4",
-    "alignItems": "center",
-    "justifyContent": "space-between"
-  },
-  "row-item": {
-    "flex": 1,
-    "height": "140",
-    "paddingTop": "10",
-    "paddingBottom": "10",
-    "justifyContent": "center",
-    "alignItems": "center"
-  },
-  "iphone-x": {
-    "height": "68"
-  },
-  "calendar-note": {
-    "height": "36",
-    "lineHeight": "36",
-    "fontSize": "24",
-    "color": "#000000",
-    "textAlign": "center"
-  },
-  "calendar-day": {
-    "height": "48",
-    "lineHeight": "48",
-    "fontSize": "36",
-    "color": "#000000",
-    "textAlign": "center"
-  },
-  "calendar-ext": {
-    "height": "36",
-    "lineHeight": "36",
-    "color": "#999999",
-    "textAlign": "center",
-    "fontSize": "24",
-    "textOverflow": "ellipsis"
-  },
-  "calendar-holiday": {
-    "color": "#FF5000"
-  },
-  "calendar-rest": {
-    "color": "#FF5000"
-  },
-  "item-row-selected": {
-    "color": "#ffffff",
-    "backgroundColor": "#FFC900",
-    "textAlign": "center"
-  },
-  "item-text-selected": {
-    "color": "#3d3d3d",
-    "textAlign": "center"
-  },
-  "calendar-disabled": {
-    "color": "#CCCCCC"
-  },
-  "cell-disabled": {
-    "backgroundColor": "#FBFBFB"
-  },
-  "calendar-day-include": {
-    "backgroundColor": "#FFF7D6"
+  "slider": {
+    "position": "absolute",
+    "top": 0
   }
 }
 
 /***/ }),
-/* 64 */
+/* 60 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -7591,35 +7348,21 @@ module.exports = {
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-
-var _format = __webpack_require__(65);
-
-var Format = _interopRequireWildcard(_format);
 
 var _utils = __webpack_require__(1);
 
 var _utils2 = _interopRequireDefault(_utils);
 
-var _wxcMinibar = __webpack_require__(69);
+var _bindEnv = __webpack_require__(2);
 
-var _wxcMinibar2 = _interopRequireDefault(_wxcMinibar);
+var _bindEnv2 = _interopRequireDefault(_bindEnv);
+
+var _indexWeex = __webpack_require__(3);
+
+var _indexWeex2 = _interopRequireDefault(_indexWeex);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
-
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -7650,572 +7393,417 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 //
 //
 
-var isWeb = _utils2.default.env.isWeb();
-
-var dom = weex.requireModule('dom');
-
+var swipeBack = weex.requireModule('swipeBack');
+var animation = weex.requireModule('animation');
 exports.default = {
-  components: { WxcMinibar: _wxcMinibar2.default },
   props: {
-    selectedDate: Array,
-    animationType: {
-      type: String,
-      default: 'push'
+    sliderId: {
+      type: [String, Number],
+      default: 1
     },
-    dateRange: {
-      type: Array,
-      required: true,
-      default: function _default() {
-        return [];
-      }
+    panOffset: {
+      type: Number,
+      default: 80
     },
-    minibarCfg: {
+    cardLength: {
+      type: Number,
+      default: 1
+    },
+    selectIndex: {
+      type: Number,
+      default: 0
+    },
+    enableSwipe: {
+      type: Boolean,
+      default: true
+    },
+    containerS: {
       type: Object,
       default: function _default() {
         return {
-          'title': '选择日期',
-          'background-color': '#FFC900',
-          'text-color': '#3D3D3D'
+          position: 'relative',
+          width: 750,
+          height: 352
         };
       }
     },
-    showHeader: {
-      type: Boolean,
-      default: false
-    },
-    selectedNote: {
-      type: Array,
+    cardS: {
+      type: Object,
       default: function _default() {
-        return ['开始', '到达', '往返'];
+        return {
+          width: 360,
+          height: 300,
+          spacing: 0,
+          scale: 0.75
+        };
       }
     },
-    isRange: {
+    autoPlay: {
       type: Boolean,
       default: false
     },
-    needDestroy: {
-      type: Boolean,
-      default: false
-    },
-    descList: {
-      type: Array,
-      default: function _default() {
-        return [];
-      }
+    interval: {
+      type: [Number, String],
+      default: 1200
     }
   },
   data: function data() {
     return {
-      isShow: false,
-      reSelect: true,
-      today: Format.getToDay(),
-      departDate: '',
-      arriveDate: ''
+      isMoving: false,
+      gesToken: 0,
+      startX: 0,
+      startTime: 0,
+      currentIndex: 0,
+      autoPlayTimer: null
     };
   },
   computed: {
-    calendarExtendStyle: function calendarExtendStyle() {
-      return _utils2.default.uiStyle.pageTransitionAnimationStyle(this.animationType);
+    cardList: function cardList() {
+      return new Array(this.cardLength + 1).join().split('');
     },
-    monthsArray: function monthsArray() {
-      var range = this.dateRange,
-          today = this.today,
-          departDate = this.departDate,
-          arriveDate = this.arriveDate,
-          selectedNote = this.selectedNote,
-          descList = this.descList;
-
-      var param = { range: range, today: today, departDate: departDate, arriveDate: arriveDate, selectedNote: selectedNote, descList: descList };
-      return Format.generateDateCell(param);
+    cardWidth: function cardWidth() {
+      return (this.cardLength - 1) * this.cardS.width + this.containerS.width + 235;
     }
   },
   created: function created() {
-    this.isIPhoneX = _utils2.default.env.isIPhoneX();
-    this.showTitle = isWeb || this.showHeader;
-    this.detectShow();
+    this.currentIndex = this.selectIndex;
   },
   mounted: function mounted() {
     var _this = this;
 
-    var needDestroy = this.needDestroy;
+    // ios和页面返回冲突，组件里面将ios系统横滑返回禁止
+    if (swipeBack && swipeBack.forbidSwipeBack) {
+      swipeBack.forbidSwipeBack(true);
+    }
 
-    var hold = isWeb ? 700 : 100;
-    !needDestroy && setTimeout(function () {
-      _this.isShow = true;
-      _this.scrollToDate();
-    }, hold);
+    setTimeout(function () {
+      var sliderCtn = _this.$refs['sliderCtn_' + _this.sliderId];
+      if (_bindEnv2.default.supportsEB() && sliderCtn && sliderCtn.ref) {
+        _indexWeex2.default.prepare && _indexWeex2.default.prepare({
+          anchor: sliderCtn.ref,
+          eventType: 'pan'
+        });
+      }
+    }, 20);
+    this.checkNeedAutoPlay();
   },
 
-  watch: {
-    needDestroy: function needDestroy(newVal, preVal) {
+  methods: {
+    onPanStart: function onPanStart(e) {
+      if (_bindEnv2.default.supportsEB()) {
+        return;
+      }
+      this.clearAutoPlay();
+      this.startX = e.changedTouches[0].clientX;
+      this.startTime = Date.now();
+    },
+    onPanMove: function onPanMove(e) {
+      if (_bindEnv2.default.supportsEB()) {
+        return;
+      }
+      var moveX = e.changedTouches[0].clientX - this.startX;
+      var index = this.loopedIndex(this.currentIndex, this.cardLength);
+      var cardLength = this.cardLength;
+      var currentCardLeft = this.currentIndex * (this.cardS.width + this.cardS.spacing);
+
+      var sliderCtn = this.$refs['sliderCtn_' + this.sliderId];
+      sliderCtn && animation.transition(sliderCtn, {
+        styles: {
+          transform: 'translateX(' + (moveX - currentCardLeft) + 'px)'
+        },
+        timingFunction: 'ease',
+        delay: 0,
+        duration: 0
+      }, function () {});
+
+      if (this.cardS.scale !== 1) {
+        var currentCard = this.$refs['card' + this.loopedIndex(index, cardLength) + '_' + this.sliderId][0];
+        currentCard && animation.transition(currentCard, {
+          styles: {
+            transform: 'scale(' + (1 - Math.abs(moveX) / this.cardS.width * (1 - this.cardS.scale)) + ')'
+          },
+          timingFunction: 'ease',
+          delay: 0,
+          duration: 0
+        }, function () {});
+        // 左边的卡片
+        var leftCard = this.$refs['card' + this.loopedIndex(index - 1, cardLength) + '_' + this.sliderId][0];
+        // loop 函数负数返回 0，这里有点冲突
+        if (leftCard && index !== 0) {
+          animation.transition(leftCard, {
+            styles: {
+              transform: 'scale(' + (1 - Math.abs(moveX - this.cardS.width) / this.cardS.width * (1 - this.cardS.scale)) + ')'
+            },
+            timingFunction: 'ease',
+            delay: 0,
+            duration: 0
+          }, function () {});
+        }
+        // 右边卡片
+        var rightCard = this.$refs['card' + this.loopedIndex(index + 1, cardLength) + '_' + this.sliderId][0];
+        rightCard && animation.transition(rightCard, {
+          styles: {
+            transform: 'scale(' + (1 - Math.abs(this.cardS.width + moveX) / this.cardS.width * (1 - this.cardS.scale)) + ')'
+          },
+          timingFunction: 'ease',
+          delay: 0,
+          duration: 0
+        }, function () {});
+      }
+    },
+    onEpPanStart: function onEpPanStart(e) {
       var _this2 = this;
 
-      if (!newVal && newVal !== preVal) {
+      if (_bindEnv2.default.supportsEB() && e.state === 'start') {
+        this.clearAutoPlay();
         setTimeout(function () {
-          _this2.isShow = true;
-        }, 200);
+          var sliderCtn = _this2.$refs['sliderCtn_' + _this2.sliderId];
+          _this2.bindExp(sliderCtn);
+        }, 0);
       }
-    }
-  },
-  methods: {
-    minibarLeftButtonClick: function minibarLeftButtonClick() {
+    },
+    onPanEnd: function onPanEnd(e) {
+      if (_bindEnv2.default.supportsEB()) {
+        return;
+      }
+      this.panEnd(e);
+    },
+    panEnd: function panEnd(e) {
       var _this3 = this;
 
+      this.isMoving = true;
+      var moveX = e.deltaX;
+
+      if (_utils2.default.env.isWeb()) {
+        moveX = e.changedTouches[0].clientX - this.startX;
+      }
+
+      var originIndex = this.currentIndex;
+      var selectIndex = originIndex;
+      var duration = Date.now() - this.startTime;
+      var panOffset = this.panOffset || this.cardS.width / 2;
+      var isPullMore = selectIndex === this.cardLength - 1 && (moveX < -68 || moveX < -10 && duration < 200);
+
+      if (isPullMore) {
+        this.$emit('wxcEpSliderPullMore', { currentIndex: selectIndex });
+      }
+
+      if (moveX < -panOffset || moveX < -10 && duration < 200) {
+        if (selectIndex !== this.cardLength - 1) {
+          selectIndex++;
+        }
+      } else if (moveX > panOffset || moveX > 10 && duration < 500) {
+        if (selectIndex !== 0) {
+          selectIndex--;
+        }
+      }
+
+      this.slideTo(originIndex, selectIndex);
       setTimeout(function () {
-        _this3.hide();
-        _this3.$emit('wxcPageCalendarBackClicked', {});
-      }, 100);
+        _this3.checkNeedAutoPlay();
+      }, 3000);
     },
-    onClickDate: function onClickDate(datConfig) {
-      var self = this;
-      if (datConfig.disabled || datConfig.isEmpty) return;
-
-      if (self.reSelect) {
-        self.departDate = '';
-        self.arriveDate = '';
-        self.reSelect = false;
-      }
-
-      if (self.isRange) {
-        if (self.departDate && Date.parse(self.departDate) <= Date.parse(datConfig.date)) {
-          self.arriveDate = datConfig.date;
-        } else {
-          self.departDate = datConfig.date;
-        }
-        if (self.departDate && self.arriveDate) {
-          self.dispatchDateChange([self.departDate, self.arriveDate]);
-        }
-      } else {
-        self.departDate = datConfig.date;
-        self.dispatchDateChange([self.departDate]);
-      }
-    },
-    scrollToDate: function scrollToDate() {
+    slideTo: function slideTo(originIndex, selectIndex) {
       var _this4 = this;
 
-      setTimeout(function () {
-        if (_this4.departDate) {
-          var el = _this4.$refs.departDate[0];
-          el && dom.getComponentRect && dom.getComponentRect(el, function (e) {
-            if (e && e.result) {
-              var bottom = e.size.bottom;
-              var env = weex.config.env;
-              // 误差
+      var currentCardScale = 1;
+      var rightCardScale = this.cardS.scale;
+      var leftCardScale = this.cardS.scale;
+      var duration = selectIndex === 0 && originIndex === this.cardLength - 1 && this.cardLength !== 2 ? 0.00001 : 300;
+      this.$emit('wxcEpSliderCurrentIndexSelected', { currentIndex: selectIndex });
+      if (originIndex < selectIndex) {
+        currentCardScale = this.cardS.scale;
+        rightCardScale = 1;
+      } else if (originIndex > selectIndex) {
+        currentCardScale = this.cardS.scale;
+        leftCardScale = 1;
+      }
+      var currentCard = this.$refs['card' + this.loopedIndex(originIndex, this.cardLength) + '_' + this.sliderId][0];
+      currentCard && animation.transition(currentCard, {
+        styles: {
+          transform: 'scale(' + currentCardScale + ')'
+        },
+        timingFunction: 'ease',
+        duration: duration
+      }, function () {});
 
-              var height = env.deviceHeight / env.deviceWidth * 750 - 50;
-              if (bottom > height || bottom === 0) {
-                dom.scrollToElement(el, { offset: -146, animated: false });
-              }
-            }
-          });
+      var leftCard = this.$refs['card' + this.loopedIndex(originIndex - 1, this.cardLength) + '_' + this.sliderId][0];
+      if (this.isMoving && leftCard && originIndex !== 0) {
+        animation.transition(leftCard, {
+          styles: {
+            transform: 'scale(' + leftCardScale + ')'
+          },
+          timingFunction: 'ease',
+          duration: duration
+        }, function () {});
+      }
+      var rightCard = this.$refs['card' + this.loopedIndex(originIndex + 1, this.cardLength) + '_' + this.sliderId][0];
+      if (rightCard && originIndex !== this.cardLength - 1) {
+        animation.transition(rightCard, {
+          styles: {
+            transform: 'scale(' + rightCardScale + ')'
+          },
+          timingFunction: 'ease',
+          duration: duration
+        }, function () {});
+      }
+
+      var sliderCtn = this.$refs['sliderCtn_' + this.sliderId];
+      sliderCtn && animation.transition(sliderCtn, {
+        styles: {
+          transform: 'translateX(-' + selectIndex * (this.cardS.width + this.cardS.spacing) + 'px)'
+        },
+        timingFunction: 'ease',
+        duration: duration
+      }, function () {
+        _this4.isMoving = false;
+        if (originIndex !== selectIndex) {
+          _this4.currentIndex = selectIndex;
         }
-      }, 10);
-    },
-    dispatchDateChange: function dispatchDateChange(dateArr) {
-      var _this5 = this;
-
-      var duration = isWeb ? 400 : 600;
-      setTimeout(function () {
-        _this5.hide();
-      }, duration);
-      this.$emit('wxcPageCalendarDateSelected', {
-        date: dateArr
       });
     },
-    detectShow: function detectShow() {
-      if (this.isRange && this.selectedDate.length >= 2) {
-        this.departDate = this.selectedDate[0];
-        this.arriveDate = this.selectedDate[1];
-      } else if (this.selectedDate.length >= 1) {
-        this.departDate = this.selectedDate[0];
-        this.arriveDate = '';
+
+    // 使index维持在0-length之间循环
+    loopedIndex: function loopedIndex(index, total) {
+      if (index < 0) {
+        index = index + (1 - index / total) * total;
       }
+      return index % total;
     },
-    _animate: function _animate(status) {
-      var callback = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
+    bindExp: function bindExp(element) {
+      var _this5 = this;
 
-      var ref = this.$refs.pageCalendar;
-      if (this.animationType === 'push') {
-        _utils2.default.animation.pageTransitionAnimation(ref, 'translateX(' + (status ? -750 : 750) + 'px)', status, callback);
-      } else if (this.animationType === 'model') {
-        _utils2.default.animation.pageTransitionAnimation(ref, 'translateY(' + (status ? -_utils2.default.env.getScreenHeight() : _utils2.default.env.getScreenHeight()) + 'px)', status, callback);
-      }
-    },
-    show: function show() {
-      var needDestroy = this.needDestroy;
+      if (element && element.ref) {
 
-      needDestroy && (this.isShow = true);
-      this.reSelect = true;
-      this.detectShow();
-      this._animate(true);
-      needDestroy && this.scrollToDate();
-    },
-    hide: function hide() {
-      this.needDestroy && (this.isShow = false);
-      this.reSelect = false;
-      this._animate(false);
-      this.$emit('wxcPageCalendarHide', {});
-    }
-  }
-};
+        if (this.isMoving && this.gesToken !== 0) {
+          _indexWeex2.default.unbind({
+            eventType: 'pan',
+            token: this.gesToken
+          });
+          this.gesToken = 0;
+          return;
+        }
 
-/***/ }),
-/* 65 */
-/***/ (function(module, exports, __webpack_require__) {
+        this.startTime = Date.now();
+        var index = this.loopedIndex(this.currentIndex, this.cardLength);
+        var sliderCtn = this.$refs['sliderCtn_' + this.sliderId];
+        var currentCard = this.$refs['card' + index + '_' + this.sliderId][0];
+        var rightCard = null;
+        var leftCard = null;
+        var currentCardLeft = this.currentIndex * (this.cardS.width + this.cardS.spacing);
 
-"use strict";
+        // 卡片容器
+        var sliderCtnExp = 'x - ' + currentCardLeft;
+        var args = [{
+          element: sliderCtn.ref,
+          property: 'transform.translateX',
+          expression: sliderCtnExp
+        }];
 
+        if (this.cardS.scale !== 1) {
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports._getTraditionalHoliday = _getTraditionalHoliday;
-exports._isDate = _isDate;
-exports._checkHash = _checkHash;
-exports.getTime = getTime;
-exports._isInRange = _isInRange;
-exports._isInSelectRange = _isInSelectRange;
-exports._fixNum = _fixNum;
-exports._isWeekend = _isWeekend;
-exports._isToday = _isToday;
-exports._getMonthDays = _getMonthDays;
-exports._getPadding = _getPadding;
-exports._unique = _unique;
-exports.getToDay = getToDay;
-exports.getWeekRows = getWeekRows;
-exports.generateDateCell = generateDateCell;
+          var currentCardExp = '1-abs(x)/' + this.cardS.width + '*' + (1 - this.cardS.scale);
+          var leftCardExp = '1-abs(x-' + this.cardS.width + ')/' + this.cardS.width + '*' + (1 - this.cardS.scale);
+          var rightCardExp = '1-abs(' + this.cardS.width + '+x)/' + this.cardS.width + '*' + (1 - this.cardS.scale);
 
-function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+          args.push({
+            element: currentCard.ref,
+            property: 'transform.scale',
+            expression: currentCardExp
+          });
 
-/**
- * CopyRight (C) 2017-2022 Alibaba Group Holding Limited.
- * Created by Tw93 on 2017/07/29.
- */
+          if (index === 0 && this.$refs['card' + (index + 1) + '_' + this.sliderId]) {
 
-// 国际节日
-var GLOBAL_HOLIDAY = exports.GLOBAL_HOLIDAY = {
-  '01-01': '元旦',
-  '02-14': '情人',
-  '05-01': '劳动',
-  '06-01': '儿童',
-  '10-01': '国庆',
-  '12-25': '圣诞'
-};
-
-// 传统节日
-var TRADITIONAL_HOLIDAY = {
-  '除夕': ['2015-02-18', '2016-02-07', '2017-01-27', '2018-02-15', '2019-02-04', '2020-01-24'],
-  '春节': ['2015-02-19', '2016-02-08', '2017-01-28', '2018-02-16', '2019-02-05', '2020-01-25'],
-  '元宵': ['2015-03-05', '2016-02-22', '2017-02-11', '2018-03-02', '2019-02-19', '2020-02-08'],
-  '清明': ['2015-04-05', '2016-04-04', '2017-04-04', '2018-04-05', '2019-04-05', '2020-04-04'],
-  '端午': ['2015-06-20', '2016-06-09', '2017-05-30', '2018-06-18', '2019-06-07', '2020-06-25'],
-  '中秋': ['2015-09-27', '2016-09-15', '2017-10-04', '2018-09-24', '2019-09-13', '2020-10-01'],
-  '重阳': ['2015-10-21', '2016-10-09', '2017-10-28', '2018-10-17', '2019-10-07', '2020-10-25']
-};
-
-// 放假日
-var REST_DAYS = ['2017-10-01', '2017-10-02', '2017-10-03', '2017-10-04', '2017-10-05', '2017-10-06', '2017-10-07', '2017-10-08'];
-
-// 工作日
-var WORK_DAYS = ['2017-09-30'];
-
-function _getTraditionalHoliday() {
-  var HOLIDAY_TEMP = {};
-
-  var keys = Object.keys(TRADITIONAL_HOLIDAY);
-  keys.forEach(function (k) {
-    var arr = TRADITIONAL_HOLIDAY[k];
-    arr.forEach(function (i) {
-      HOLIDAY_TEMP[i] = k;
-    });
-  });
-  return HOLIDAY_TEMP;
-}
-
-function _isDate(obj) {
-  var type = obj === null ? String(obj) : {}.toString.call(obj) || 'object';
-  return type === '[object date]';
-}
-
-/**
- * 检测Hash
- *
- * @method _checkHash
- * @private
- */
-function _checkHash(url, hash) {
-  return url && url.match(/#/) && url.replace(/^.*#/, '') === hash;
-}
-
-/**
- * 获取当前日期的毫秒数
- * @method getTime
- * @param {String} date
- * @return {Number}
- */
-function getTime(date) {
-  if (_isDate(date)) {
-    return new Date(date).getTime();
-  } else {
-    try {
-      return new Date(date.replace(/-/g, '/')).getTime();
-    } catch (e) {
-      return 0;
-    }
-  }
-}
-
-function _isInRange(range, date) {
-  var start = getTime(range[0]);
-  var end = getTime(range[1]);
-  var d = getTime(date);
-  return start <= d && end >= d;
-}
-
-function _isInSelectRange(range, date) {
-  var start = getTime(range[0]);
-  var end = getTime(range[1]);
-  var d = getTime(date);
-  return start < d && end > d;
-}
-
-function _fixNum(num) {
-  return (num < 10 ? '0' : '') + num;
-}
-
-/**
- * 是否是周末
- * @method isWeekend
- * @param {String} date
- * @return {Boolean}
- */
-function _isWeekend(date) {
-  var day = new Date(date.replace(/-/g, '/')).getDay();
-  return day === 0 || day === 6;
-}
-
-/**
- * 是否是今天
- * @method isToday
- * @param {String} date
- * @return {Boolean}
- */
-function _isToday(today, date) {
-  return getTime(today) === getTime(date);
-}
-
-/**
- * 检查是否是闰年
- * @method _checkLeapYear
- * @param {Number} y 年份
- * @param {Date} t today
- * @protected
- */
-function _getMonthDays(y, t) {
-  var MONTH_DAYS = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
-  var year = y || t.getFullYear();
-  var isLeapYear = false;
-
-  if (year % 100) {
-    isLeapYear = !(year % 4);
-  } else {
-    isLeapYear = !(year % 400);
-  }
-
-  if (isLeapYear) {
-    MONTH_DAYS[1] = 29;
-  } else {
-    MONTH_DAYS[1] = 28;
-  }
-  return MONTH_DAYS;
-}
-
-/**
- * 当月1号前面有多少空格
- * @method _getPadding
- * @protected
- */
-function _getPadding(year, month) {
-  var date = new Date(year + '/' + month + '/1');
-  return date.getDay();
-}
-
-function _unique(array) {
-  return Array.prototype.filter.call(array, function (item, index) {
-    return array.indexOf(item) === index;
-  });
-}
-
-function getToDay() {
-  return new Date().getFullYear() + '-' + _fixNum(new Date().getMonth() + 1) + '-' + _fixNum(new Date().getDate());
-}
-
-function getWeekRows(y, m, today, dateRange, departDate, arriveDate, selectedNote, descList) {
-  var monthDays = _getMonthDays(y, today);
-  var padding = _getPadding(y, m, 7);
-  var num = monthDays[m - 1] + padding;
-  var rows = Math.ceil(num / 7);
-  var remain = num % 7;
-  var rowsData = [];
-
-  for (var i = 1; i <= rows; i++) {
-    var cells = [];
-
-    for (var j = 1; j <= 7; j++) {
-      var cell = {};
-      // 前后空格
-      if (i === 1 && j <= padding || remain && i === rows && j > remain) {
-        cell.isEmpty = true;
-      } else {
-        (function () {
-          var d = (i - 1) * 7 + j - padding;
-          var date = y + '-' + _fixNum(m) + '-' + _fixNum(d);
-          var cls = [];
-          var ref = '';
-          var cellClass = [];
-          var isInRange = _isInRange(dateRange, date);
-          var disabled = false;
-          var global = _fixNum(m) + '-' + _fixNum(d);
-          var note = '';
-          var ext = '';
-
-          if (descList && descList.length > 0) {
-            var nowDesc = descList.filter(function (item) {
-              return item.date == date;
+            rightCard = this.$refs['card' + (index + 1) + '_' + this.sliderId][0];
+            args.push({
+              element: rightCard.ref,
+              property: 'transform.scale',
+              expression: rightCardExp
             });
-            if (nowDesc && nowDesc.length > 0) {
-              ext = nowDesc[0].value;
-              if (nowDesc[0].emphasize) {
-                cls.push('calendar-holiday');
-              }
-            }
+          } else if (index === this.cardLength - 1 && this.$refs['card' + (index - 1) + '_' + this.sliderId]) {
+            leftCard = this.$refs['card' + (index - 1) + '_' + this.sliderId][0];
+            args.push({
+              element: leftCard.ref,
+              property: 'transform.scale',
+              expression: leftCardExp
+            });
+          } else if (this.$refs['card' + (index - 1) + '_' + this.sliderId]) {
+            // 左边卡片
+            leftCard = this.$refs['card' + (index - 1) + '_' + this.sliderId][0];
+            args.push({
+              element: leftCard.ref,
+              property: 'transform.scale',
+              expression: leftCardExp
+            });
+            // 右边卡片
+            rightCard = this.$refs['card' + (index + 1) + '_' + this.sliderId][0];
+            args.push({
+              element: rightCard.ref,
+              property: 'transform.scale',
+              expression: rightCardExp
+            });
           }
+        }
 
-          // 国际节日
-          if (GLOBAL_HOLIDAY[global]) {
-            note = GLOBAL_HOLIDAY[global];
-            cls.push('calendar-holiday');
+        var gesTokenObj = _indexWeex2.default.bind({
+          anchor: element.ref,
+          eventType: 'pan',
+          props: args
+        }, function (e) {
+          if (!_this5.isMoving && (e.state === 'end' || e.state === 'cancel' || e.state === 'exit')) {
+            _this5.panEnd(e);
           }
+        });
 
-          var tHoliday = _getTraditionalHoliday()[date];
-
-          // 传统节日
-          if (tHoliday) {
-            note = tHoliday;
-            cls.push('calendar-holiday');
-          }
-          // 放假日
-          if (REST_DAYS.indexOf(date) > -1) {
-            cls.push('calendar-holiday');
-          }
-
-          // 工作日
-          if (WORK_DAYS.indexOf(date) > -1) {
-            cls.push('calendar-work');
-          }
-
-          // 周末
-          if (_isWeekend(date)) {
-            cls.push('calendar-holiday');
-          }
-
-          // 今天
-          if (_isToday(today, date)) {
-            cls.push('calendar-today');
-            note = '今天';
-          }
-
-          // 不在日期范围内
-          if (!isInRange) {
-            disabled = true;
-          }
-
-          if (disabled) {
-            cls = [];
-            cls.push('calendar-disabled');
-            cellClass.push('cell-disabled');
-          }
-
-          if (!ext && disabled && isInRange) {
-            ext = '不可选';
-          }
-
-          if (departDate === date || arriveDate === date) {
-            note = departDate === date ? selectedNote[0] : selectedNote[1];
-            ref = departDate === date ? 'departDate' : 'arriveDate';
-            if (departDate === arriveDate && selectedNote.length >= 3) {
-              note = selectedNote[2];
-            }
-            cls.push('item-text-selected');
-            cellClass.push('item-row-selected');
-          }
-
-          if (departDate && arriveDate && _isInSelectRange([departDate, arriveDate], date)) {
-            cellClass.push('calendar-day-include');
-          }
-
-          cell = {
-            isEmpty: false,
-            ref: ref,
-            cls: _unique(cls).join(' '),
-            cellClass: _unique(cellClass).join(' '),
-            note: note,
-            date: date,
-            ext: ext,
-            disabled: disabled,
-            text: d
-          };
-        })();
+        this.gesToken = gesTokenObj.token;
       }
-      cells.push(cell);
+    },
+    checkNeedAutoPlay: function checkNeedAutoPlay() {
+      var _this6 = this;
+
+      if (this.autoPlay) {
+        this.clearAutoPlay();
+        this.autoPlayTimer = setInterval(function () {
+          _this6.slideTo(_this6.currentIndex, _this6.loopedIndex(_this6.currentIndex + 1, _this6.cardLength));
+        }, parseInt(this.interval));
+      }
+    },
+    clearAutoPlay: function clearAutoPlay() {
+      this.autoPlayTimer && clearInterval(this.autoPlayTimer);
+    },
+    rebind: function rebind() {
+      var sliderCtn = this.$refs['sliderCtn_' + this.sliderId];
+      if (sliderCtn && sliderCtn.ref) {
+        _indexWeex2.default.unbind({
+          eventType: 'pan',
+          token: this.gesToken
+        });
+        this.gesToken = 0;
+        this.bindExp(sliderCtn);
+      }
+    },
+    manualSetPage: function manualSetPage(selectIndex) {
+      var _this7 = this;
+
+      this.clearAutoPlay();
+      var step = this.currentIndex < selectIndex ? 1 : -1;
+      this.slideTo(this.loopedIndex(selectIndex - step, this.cardLength), selectIndex);
+      setTimeout(function () {
+        _this7.checkNeedAutoPlay();
+      }, 3000);
     }
-
-    rowsData.push(cells);
   }
-
-  return rowsData;
-}
-
-function generateDateCell(_ref) {
-  var range = _ref.range,
-      today = _ref.today,
-      departDate = _ref.departDate,
-      arriveDate = _ref.arriveDate,
-      selectedNote = _ref.selectedNote,
-      descList = _ref.descList;
-
-  var start = new Date(range[0].replace(/-/g, '/'));
-  var end = new Date(range[1].replace(/-/g, '/'));
-  var startYear = start.getFullYear();
-  var startMonth = start.getMonth() + 1;
-  var endYear = end.getFullYear();
-  var endMonth = end.getMonth() + 1;
-
-  var l = (endYear - startYear) * 12 + endMonth - startMonth + 1;
-  var y = startYear;
-  var n = startMonth;
-  var months = [];
-
-  for (var i = 0; i < l; i++) {
-    if (n > 12) {
-      n = 1;
-      y++;
-    }
-    months.push.apply(months, [{ title: y + '-' + _fixNum(n) }].concat(_toConsumableArray(getWeekRows(y, n, today, range, departDate, arriveDate, selectedNote, descList))));
-    n++;
-  }
-  return months;
-}
+};
 
 /***/ }),
-/* 66 */
+/* 61 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var required = __webpack_require__(67)
-  , qs = __webpack_require__(68)
+var required = __webpack_require__(62)
+  , qs = __webpack_require__(63)
   , protocolre = /^([a-z][a-z0-9.+-]*:)?(\/\/)?([\S\s]*)/i
   , slashes = /^[A-Za-z][A-Za-z0-9+-.]*:\/\//;
 
@@ -8628,7 +8216,7 @@ module.exports = URL;
 
 
 /***/ }),
-/* 67 */
+/* 62 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -8673,7 +8261,7 @@ module.exports = function required(port, protocol) {
 
 
 /***/ }),
-/* 68 */
+/* 63 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -8755,6 +8343,319 @@ exports.parse = querystring;
 
 
 /***/ }),
+/* 64 */
+/***/ (function(module, exports) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    style: _vm.containerS
+  }, [_c('div', {
+    ref: ("sliderCtn_" + _vm.sliderId),
+    style: {
+      width: _vm.cardWidth + 'px',
+      height: _vm.cardS.height + 'px',
+      transform: ("translateX(-" + (_vm.currentIndex * (_vm.cardS.width + _vm.cardS.spacing)) + "px)")
+    },
+    on: {
+      "panstart": _vm.onPanStart,
+      "panmove": _vm.onPanMove,
+      "panend": _vm.onPanEnd,
+      "horizontalpan": _vm.onEpPanStart
+    }
+  }, [_vm._l((_vm.cardList), function(v, index) {
+    return _c('div', {
+      ref: ("card" + index + "_" + _vm.sliderId),
+      refInFor: true,
+      staticClass: ["slider"],
+      style: {
+        transform: ("scale(" + (index===_vm.currentIndex ? 1 : _vm.cardS.scale) + ")"),
+        left: ((index * (_vm.cardS.width+_vm.cardS.spacing)) + "px"),
+        marginLeft: (((_vm.containerS.width - _vm.cardS.width) / 2) + "px"),
+        width: _vm.cardS.width + 'px',
+        height: _vm.cardS.height + 'px'
+      }
+    }, [_vm._t(("card" + index + "_" + _vm.sliderId))], 2)
+  }), _vm._t("pull-more")], 2)])
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+
+/***/ }),
+/* 65 */
+/***/ (function(module, exports) {
+
+throw new Error("Module build failed: SyntaxError: Unexpected token (60:10)\n    at Parser.pp$4.raise (E:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:2610:13)\n    at Parser.pp.unexpected (E:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:637:8)\n    at Parser.pp$3.parseIdent (E:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:2565:10)\n    at Parser.pp$3.parsePropertyName (E:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:2362:105)\n    at Parser.parseObj (E:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:4463:14)\n    at Parser.pp$3.parseExprAtom (E:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:2077:17)\n    at Parser.parseExprAtom (E:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:4372:24)\n    at Parser.pp$3.parseExprSubscripts (E:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:1955:19)\n    at Parser.pp$3.parseMaybeUnary (E:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:1932:17)\n    at Parser.pp$3.parseExprOps (E:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:1874:19)\n    at Parser.pp$3.parseMaybeConditional (E:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:1857:19)\n    at Parser.pp$3.parseMaybeAssign (E:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:1832:19)\n    at Parser.pp$3.parsePropertyValue (E:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:2310:87)\n    at Parser.parseObj (E:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:4472:14)\n    at Parser.pp$3.parseExprAtom (E:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:2077:17)\n    at Parser.parseExprAtom (E:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:4372:24)");
+
+/***/ }),
+/* 66 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var __vue_exports__, __vue_options__
+var __vue_styles__ = []
+
+/* styles */
+__vue_styles__.push(__webpack_require__(67)
+)
+
+/* script */
+__vue_exports__ = __webpack_require__(68)
+
+/* template */
+var __vue_template__ = __webpack_require__(123)
+__vue_options__ = __vue_exports__ = __vue_exports__ || {}
+if (
+  typeof __vue_exports__.default === "object" ||
+  typeof __vue_exports__.default === "function"
+) {
+if (Object.keys(__vue_exports__).some(function (key) { return key !== "default" && key !== "__esModule" })) {console.error("named exports are not supported in *.vue files.")}
+__vue_options__ = __vue_exports__ = __vue_exports__.default
+}
+if (typeof __vue_options__ === "function") {
+  __vue_options__ = __vue_options__.options
+}
+__vue_options__.__file = "E:\\MINI-WEB\\src\\components\\personalEdit.vue"
+__vue_options__.render = __vue_template__.render
+__vue_options__.staticRenderFns = __vue_template__.staticRenderFns
+__vue_options__._scopeId = "data-v-741f52ba"
+__vue_options__.style = __vue_options__.style || {}
+__vue_styles__.forEach(function (module) {
+  for (var name in module) {
+    __vue_options__.style[name] = module[name]
+  }
+})
+if (typeof __register_static_styles__ === "function") {
+  __register_static_styles__(__vue_options__._scopeId, __vue_styles__)
+}
+
+module.exports = __vue_exports__
+
+
+/***/ }),
+/* 67 */
+/***/ (function(module, exports) {
+
+module.exports = {
+  "infoEdit": {
+    "flexGrow": 1,
+    "alignItems": "center",
+    "backgroundColor": "#000000",
+    "color": "#FFFFFF"
+  },
+  "user-img": {
+    "marginTop": "30",
+    "marginRight": 0,
+    "marginBottom": "30",
+    "marginLeft": 0,
+    "width": "160",
+    "height": "160",
+    "borderRadius": 50,
+    "backgroundColor": "#FFFFFF"
+  },
+  "user-info": {
+    "marginTop": "30",
+    "width": 100
+  },
+  "cell": {
+    "width": 100,
+    "paddingTop": "20",
+    "paddingRight": "80",
+    "paddingBottom": "20",
+    "paddingLeft": "80",
+    "flexDirection": "row",
+    "alignItems": "center",
+    "backgroundColor": "#161824"
+  },
+  "cell-h": {
+    "marginRight": "40"
+  },
+  "sex-content": {
+    "alignItems": "center"
+  },
+  "btn-style": {
+    "marginTop": "5",
+    "marginRight": 0,
+    "marginBottom": "5",
+    "marginLeft": 0
+  }
+}
+
+/***/ }),
+/* 68 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _wxcPageCalendar = __webpack_require__(69);
+
+var _wxcPageCalendar2 = _interopRequireDefault(_wxcPageCalendar);
+
+var _wxcButton = __webpack_require__(12);
+
+var _wxcButton2 = _interopRequireDefault(_wxcButton);
+
+var _wxcPopup = __webpack_require__(13);
+
+var _wxcPopup2 = _interopRequireDefault(_wxcPopup);
+
+var _wxcCity = __webpack_require__(94);
+
+var _wxcCity2 = _interopRequireDefault(_wxcCity);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+exports.default = {
+  components: { WxcCity: _wxcCity2.default, WxcPopup: _wxcPopup2.default, WxcButton: _wxcButton2.default, WxcPageCalendar: _wxcPageCalendar2.default },
+  data: function data() {
+    return {
+      name: '董宇辰',
+      animationType: 'push',
+      currentCity: '',
+      cityStyleType: 'list',
+      value: '',
+      sex: 'man',
+      isBottomShow: false,
+      currentDate: '',
+      selectedDate: [],
+      isRange: false,
+      calendarTitle: '选择日期',
+      dateRange: ['2017-06-10', '2018-06-10'],
+      selectedNote: ['生日'],
+      minibarCfg: {
+        title: '日期选择'
+      },
+      descList: []
+    };
+  },
+  mounted: function mounted() {
+    // 模拟定位
+  },
+
+  methods: {
+    showListCity: function showListCity() {
+      this.cityStyleType = 'list';
+      this.$refs['wxcCity'].show();
+    },
+    showGroupCity: function showGroupCity() {
+      this.cityStyleType = 'group';
+      this.$refs['wxcCity'].show();
+    },
+    citySelect: function citySelect(e) {
+      this.currentCity = e.item;
+    },
+    onInput: function onInput(e) {},
+    openBottomPopup: function openBottomPopup() {
+      this.isBottomShow = true;
+    },
+    popupOverlayBottomClick: function popupOverlayBottomClick() {
+      this.isBottomShow = false;
+    },
+    handleSexChange: function handleSexChange(sex) {
+      this.sex = sex === '' ? this.sex : sex;
+      this.isBottomShow = false;
+    },
+    wxcPageCalendarDateSelected: function wxcPageCalendarDateSelected(e) {
+      this.selectedDate = e.date;
+      this.currentDate = e.date;
+    },
+    wxcPageCalendarBackClicked: function wxcPageCalendarBackClicked() {},
+    showCalendar: function showCalendar() {
+      var _this = this;
+
+      this.isRange = false;
+      setTimeout(function () {
+        _this.$refs['wxcPageCalendar'].show();
+      }, 10);
+    },
+    showReturnCalendar: function showReturnCalendar() {
+      var _this2 = this;
+
+      this.isRange = true;
+      setTimeout(function () {
+        _this2.$refs['wxcPageCalendar'].show();
+      }, 10);
+    }
+  },
+  filters: {
+    sexTranslate: function sexTranslate(sex) {
+      return sex === 'man' ? '男' : '女';
+    }
+  }
+}; //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/***/ }),
 /* 69 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -8791,7 +8692,7 @@ __vue_styles__.push(__webpack_require__(71)
 __vue_exports__ = __webpack_require__(72)
 
 /* template */
-var __vue_template__ = __webpack_require__(73)
+var __vue_template__ = __webpack_require__(79)
 __vue_options__ = __vue_exports__ = __vue_exports__ || {}
 if (
   typeof __vue_exports__.default === "object" ||
@@ -8803,10 +8704,10 @@ __vue_options__ = __vue_exports__ = __vue_exports__.default
 if (typeof __vue_options__ === "function") {
   __vue_options__ = __vue_options__.options
 }
-__vue_options__.__file = "D:\\MINI-WEB\\node_modules\\weex-ui\\packages\\wxc-minibar\\index.vue"
+__vue_options__.__file = "E:\\MINI-WEB\\node_modules\\weex-ui\\packages\\wxc-page-calendar\\index.vue"
 __vue_options__.render = __vue_template__.render
 __vue_options__.staticRenderFns = __vue_template__.staticRenderFns
-__vue_options__._scopeId = "data-v-be48b420"
+__vue_options__._scopeId = "data-v-b502ed5e"
 __vue_options__.style = __vue_options__.style || {}
 __vue_styles__.forEach(function (module) {
   for (var name in module) {
@@ -8822,6 +8723,809 @@ module.exports = __vue_exports__
 
 /***/ }),
 /* 71 */
+/***/ (function(module, exports) {
+
+module.exports = {
+  "wxc-page-calendar": {
+    "position": "fixed",
+    "width": "750",
+    "color": "#333333",
+    "backgroundColor": "#ffffff"
+  },
+  "flex-item": {
+    "flex": 1,
+    "textAlign": "center"
+  },
+  "calendar-weekday": {
+    "height": "60",
+    "backgroundColor": "#ffffff",
+    "borderBottomWidth": "1",
+    "borderTopWidth": "1",
+    "borderColor": "#e2e2e2",
+    "flexDirection": "row",
+    "justifyContent": "space-around",
+    "alignItems": "center"
+  },
+  "weekday-text": {
+    "color": "#000000",
+    "flex": 1,
+    "fontSize": "24",
+    "textAlign": "center"
+  },
+  "calendar-list": {
+    "flex": 1
+  },
+  "month-text": {
+    "fontSize": "32",
+    "height": "60",
+    "lineHeight": "60",
+    "width": "750",
+    "textAlign": "center",
+    "alignItems": "center",
+    "backgroundColor": "#f2f3f4"
+  },
+  "calendar-row": {
+    "height": "140",
+    "flexDirection": "row",
+    "backgroundColor": "#ffffff",
+    "borderBottomWidth": "1",
+    "borderColor": "#f2f3f4",
+    "alignItems": "center",
+    "justifyContent": "space-between"
+  },
+  "row-item": {
+    "flex": 1,
+    "height": "140",
+    "paddingTop": "10",
+    "paddingBottom": "10",
+    "justifyContent": "center",
+    "alignItems": "center"
+  },
+  "iphone-x": {
+    "height": "68"
+  },
+  "calendar-note": {
+    "height": "36",
+    "lineHeight": "36",
+    "fontSize": "24",
+    "color": "#000000",
+    "textAlign": "center"
+  },
+  "calendar-day": {
+    "height": "48",
+    "lineHeight": "48",
+    "fontSize": "36",
+    "color": "#000000",
+    "textAlign": "center"
+  },
+  "calendar-ext": {
+    "height": "36",
+    "lineHeight": "36",
+    "color": "#999999",
+    "textAlign": "center",
+    "fontSize": "24",
+    "textOverflow": "ellipsis"
+  },
+  "calendar-holiday": {
+    "color": "#FF5000"
+  },
+  "calendar-rest": {
+    "color": "#FF5000"
+  },
+  "item-row-selected": {
+    "color": "#ffffff",
+    "backgroundColor": "#FFC900",
+    "textAlign": "center"
+  },
+  "item-text-selected": {
+    "color": "#3d3d3d",
+    "textAlign": "center"
+  },
+  "calendar-disabled": {
+    "color": "#CCCCCC"
+  },
+  "cell-disabled": {
+    "backgroundColor": "#FBFBFB"
+  },
+  "calendar-day-include": {
+    "backgroundColor": "#FFF7D6"
+  }
+}
+
+/***/ }),
+/* 72 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _format = __webpack_require__(73);
+
+var Format = _interopRequireWildcard(_format);
+
+var _utils = __webpack_require__(1);
+
+var _utils2 = _interopRequireDefault(_utils);
+
+var _wxcMinibar = __webpack_require__(74);
+
+var _wxcMinibar2 = _interopRequireDefault(_wxcMinibar);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+var isWeb = _utils2.default.env.isWeb();
+
+var dom = weex.requireModule('dom');
+
+exports.default = {
+  components: { WxcMinibar: _wxcMinibar2.default },
+  props: {
+    selectedDate: Array,
+    animationType: {
+      type: String,
+      default: 'push'
+    },
+    dateRange: {
+      type: Array,
+      required: true,
+      default: function _default() {
+        return [];
+      }
+    },
+    minibarCfg: {
+      type: Object,
+      default: function _default() {
+        return {
+          'title': '选择日期',
+          'background-color': '#FFC900',
+          'text-color': '#3D3D3D'
+        };
+      }
+    },
+    showHeader: {
+      type: Boolean,
+      default: false
+    },
+    selectedNote: {
+      type: Array,
+      default: function _default() {
+        return ['开始', '到达', '往返'];
+      }
+    },
+    isRange: {
+      type: Boolean,
+      default: false
+    },
+    needDestroy: {
+      type: Boolean,
+      default: false
+    },
+    descList: {
+      type: Array,
+      default: function _default() {
+        return [];
+      }
+    }
+  },
+  data: function data() {
+    return {
+      isShow: false,
+      reSelect: true,
+      today: Format.getToDay(),
+      departDate: '',
+      arriveDate: ''
+    };
+  },
+  computed: {
+    calendarExtendStyle: function calendarExtendStyle() {
+      return _utils2.default.uiStyle.pageTransitionAnimationStyle(this.animationType);
+    },
+    monthsArray: function monthsArray() {
+      var range = this.dateRange,
+          today = this.today,
+          departDate = this.departDate,
+          arriveDate = this.arriveDate,
+          selectedNote = this.selectedNote,
+          descList = this.descList;
+
+      var param = { range: range, today: today, departDate: departDate, arriveDate: arriveDate, selectedNote: selectedNote, descList: descList };
+      return Format.generateDateCell(param);
+    }
+  },
+  created: function created() {
+    this.isIPhoneX = _utils2.default.env.isIPhoneX();
+    this.showTitle = isWeb || this.showHeader;
+    this.detectShow();
+  },
+  mounted: function mounted() {
+    var _this = this;
+
+    var needDestroy = this.needDestroy;
+
+    var hold = isWeb ? 700 : 100;
+    !needDestroy && setTimeout(function () {
+      _this.isShow = true;
+      _this.scrollToDate();
+    }, hold);
+  },
+
+  watch: {
+    needDestroy: function needDestroy(newVal, preVal) {
+      var _this2 = this;
+
+      if (!newVal && newVal !== preVal) {
+        setTimeout(function () {
+          _this2.isShow = true;
+        }, 200);
+      }
+    }
+  },
+  methods: {
+    minibarLeftButtonClick: function minibarLeftButtonClick() {
+      var _this3 = this;
+
+      setTimeout(function () {
+        _this3.hide();
+        _this3.$emit('wxcPageCalendarBackClicked', {});
+      }, 100);
+    },
+    onClickDate: function onClickDate(datConfig) {
+      var self = this;
+      if (datConfig.disabled || datConfig.isEmpty) return;
+
+      if (self.reSelect) {
+        self.departDate = '';
+        self.arriveDate = '';
+        self.reSelect = false;
+      }
+
+      if (self.isRange) {
+        if (self.departDate && Date.parse(self.departDate) <= Date.parse(datConfig.date)) {
+          self.arriveDate = datConfig.date;
+        } else {
+          self.departDate = datConfig.date;
+        }
+        if (self.departDate && self.arriveDate) {
+          self.dispatchDateChange([self.departDate, self.arriveDate]);
+        }
+      } else {
+        self.departDate = datConfig.date;
+        self.dispatchDateChange([self.departDate]);
+      }
+    },
+    scrollToDate: function scrollToDate() {
+      var _this4 = this;
+
+      setTimeout(function () {
+        if (_this4.departDate) {
+          var el = _this4.$refs.departDate[0];
+          el && dom.getComponentRect && dom.getComponentRect(el, function (e) {
+            if (e && e.result) {
+              var bottom = e.size.bottom;
+              var env = weex.config.env;
+              // 误差
+
+              var height = env.deviceHeight / env.deviceWidth * 750 - 50;
+              if (bottom > height || bottom === 0) {
+                dom.scrollToElement(el, { offset: -146, animated: false });
+              }
+            }
+          });
+        }
+      }, 10);
+    },
+    dispatchDateChange: function dispatchDateChange(dateArr) {
+      var _this5 = this;
+
+      var duration = isWeb ? 400 : 600;
+      setTimeout(function () {
+        _this5.hide();
+      }, duration);
+      this.$emit('wxcPageCalendarDateSelected', {
+        date: dateArr
+      });
+    },
+    detectShow: function detectShow() {
+      if (this.isRange && this.selectedDate.length >= 2) {
+        this.departDate = this.selectedDate[0];
+        this.arriveDate = this.selectedDate[1];
+      } else if (this.selectedDate.length >= 1) {
+        this.departDate = this.selectedDate[0];
+        this.arriveDate = '';
+      }
+    },
+    _animate: function _animate(status) {
+      var callback = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
+
+      var ref = this.$refs.pageCalendar;
+      if (this.animationType === 'push') {
+        _utils2.default.animation.pageTransitionAnimation(ref, 'translateX(' + (status ? -750 : 750) + 'px)', status, callback);
+      } else if (this.animationType === 'model') {
+        _utils2.default.animation.pageTransitionAnimation(ref, 'translateY(' + (status ? -_utils2.default.env.getScreenHeight() : _utils2.default.env.getScreenHeight()) + 'px)', status, callback);
+      }
+    },
+    show: function show() {
+      var needDestroy = this.needDestroy;
+
+      needDestroy && (this.isShow = true);
+      this.reSelect = true;
+      this.detectShow();
+      this._animate(true);
+      needDestroy && this.scrollToDate();
+    },
+    hide: function hide() {
+      this.needDestroy && (this.isShow = false);
+      this.reSelect = false;
+      this._animate(false);
+      this.$emit('wxcPageCalendarHide', {});
+    }
+  }
+};
+
+/***/ }),
+/* 73 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports._getTraditionalHoliday = _getTraditionalHoliday;
+exports._isDate = _isDate;
+exports._checkHash = _checkHash;
+exports.getTime = getTime;
+exports._isInRange = _isInRange;
+exports._isInSelectRange = _isInSelectRange;
+exports._fixNum = _fixNum;
+exports._isWeekend = _isWeekend;
+exports._isToday = _isToday;
+exports._getMonthDays = _getMonthDays;
+exports._getPadding = _getPadding;
+exports._unique = _unique;
+exports.getToDay = getToDay;
+exports.getWeekRows = getWeekRows;
+exports.generateDateCell = generateDateCell;
+
+function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+
+/**
+ * CopyRight (C) 2017-2022 Alibaba Group Holding Limited.
+ * Created by Tw93 on 2017/07/29.
+ */
+
+// 国际节日
+var GLOBAL_HOLIDAY = exports.GLOBAL_HOLIDAY = {
+  '01-01': '元旦',
+  '02-14': '情人',
+  '05-01': '劳动',
+  '06-01': '儿童',
+  '10-01': '国庆',
+  '12-25': '圣诞'
+};
+
+// 传统节日
+var TRADITIONAL_HOLIDAY = {
+  '除夕': ['2015-02-18', '2016-02-07', '2017-01-27', '2018-02-15', '2019-02-04', '2020-01-24'],
+  '春节': ['2015-02-19', '2016-02-08', '2017-01-28', '2018-02-16', '2019-02-05', '2020-01-25'],
+  '元宵': ['2015-03-05', '2016-02-22', '2017-02-11', '2018-03-02', '2019-02-19', '2020-02-08'],
+  '清明': ['2015-04-05', '2016-04-04', '2017-04-04', '2018-04-05', '2019-04-05', '2020-04-04'],
+  '端午': ['2015-06-20', '2016-06-09', '2017-05-30', '2018-06-18', '2019-06-07', '2020-06-25'],
+  '中秋': ['2015-09-27', '2016-09-15', '2017-10-04', '2018-09-24', '2019-09-13', '2020-10-01'],
+  '重阳': ['2015-10-21', '2016-10-09', '2017-10-28', '2018-10-17', '2019-10-07', '2020-10-25']
+};
+
+// 放假日
+var REST_DAYS = ['2017-10-01', '2017-10-02', '2017-10-03', '2017-10-04', '2017-10-05', '2017-10-06', '2017-10-07', '2017-10-08'];
+
+// 工作日
+var WORK_DAYS = ['2017-09-30'];
+
+function _getTraditionalHoliday() {
+  var HOLIDAY_TEMP = {};
+
+  var keys = Object.keys(TRADITIONAL_HOLIDAY);
+  keys.forEach(function (k) {
+    var arr = TRADITIONAL_HOLIDAY[k];
+    arr.forEach(function (i) {
+      HOLIDAY_TEMP[i] = k;
+    });
+  });
+  return HOLIDAY_TEMP;
+}
+
+function _isDate(obj) {
+  var type = obj === null ? String(obj) : {}.toString.call(obj) || 'object';
+  return type === '[object date]';
+}
+
+/**
+ * 检测Hash
+ *
+ * @method _checkHash
+ * @private
+ */
+function _checkHash(url, hash) {
+  return url && url.match(/#/) && url.replace(/^.*#/, '') === hash;
+}
+
+/**
+ * 获取当前日期的毫秒数
+ * @method getTime
+ * @param {String} date
+ * @return {Number}
+ */
+function getTime(date) {
+  if (_isDate(date)) {
+    return new Date(date).getTime();
+  } else {
+    try {
+      return new Date(date.replace(/-/g, '/')).getTime();
+    } catch (e) {
+      return 0;
+    }
+  }
+}
+
+function _isInRange(range, date) {
+  var start = getTime(range[0]);
+  var end = getTime(range[1]);
+  var d = getTime(date);
+  return start <= d && end >= d;
+}
+
+function _isInSelectRange(range, date) {
+  var start = getTime(range[0]);
+  var end = getTime(range[1]);
+  var d = getTime(date);
+  return start < d && end > d;
+}
+
+function _fixNum(num) {
+  return (num < 10 ? '0' : '') + num;
+}
+
+/**
+ * 是否是周末
+ * @method isWeekend
+ * @param {String} date
+ * @return {Boolean}
+ */
+function _isWeekend(date) {
+  var day = new Date(date.replace(/-/g, '/')).getDay();
+  return day === 0 || day === 6;
+}
+
+/**
+ * 是否是今天
+ * @method isToday
+ * @param {String} date
+ * @return {Boolean}
+ */
+function _isToday(today, date) {
+  return getTime(today) === getTime(date);
+}
+
+/**
+ * 检查是否是闰年
+ * @method _checkLeapYear
+ * @param {Number} y 年份
+ * @param {Date} t today
+ * @protected
+ */
+function _getMonthDays(y, t) {
+  var MONTH_DAYS = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+  var year = y || t.getFullYear();
+  var isLeapYear = false;
+
+  if (year % 100) {
+    isLeapYear = !(year % 4);
+  } else {
+    isLeapYear = !(year % 400);
+  }
+
+  if (isLeapYear) {
+    MONTH_DAYS[1] = 29;
+  } else {
+    MONTH_DAYS[1] = 28;
+  }
+  return MONTH_DAYS;
+}
+
+/**
+ * 当月1号前面有多少空格
+ * @method _getPadding
+ * @protected
+ */
+function _getPadding(year, month) {
+  var date = new Date(year + '/' + month + '/1');
+  return date.getDay();
+}
+
+function _unique(array) {
+  return Array.prototype.filter.call(array, function (item, index) {
+    return array.indexOf(item) === index;
+  });
+}
+
+function getToDay() {
+  return new Date().getFullYear() + '-' + _fixNum(new Date().getMonth() + 1) + '-' + _fixNum(new Date().getDate());
+}
+
+function getWeekRows(y, m, today, dateRange, departDate, arriveDate, selectedNote, descList) {
+  var monthDays = _getMonthDays(y, today);
+  var padding = _getPadding(y, m, 7);
+  var num = monthDays[m - 1] + padding;
+  var rows = Math.ceil(num / 7);
+  var remain = num % 7;
+  var rowsData = [];
+
+  for (var i = 1; i <= rows; i++) {
+    var cells = [];
+
+    for (var j = 1; j <= 7; j++) {
+      var cell = {};
+      // 前后空格
+      if (i === 1 && j <= padding || remain && i === rows && j > remain) {
+        cell.isEmpty = true;
+      } else {
+        (function () {
+          var d = (i - 1) * 7 + j - padding;
+          var date = y + '-' + _fixNum(m) + '-' + _fixNum(d);
+          var cls = [];
+          var ref = '';
+          var cellClass = [];
+          var isInRange = _isInRange(dateRange, date);
+          var disabled = false;
+          var global = _fixNum(m) + '-' + _fixNum(d);
+          var note = '';
+          var ext = '';
+
+          if (descList && descList.length > 0) {
+            var nowDesc = descList.filter(function (item) {
+              return item.date == date;
+            });
+            if (nowDesc && nowDesc.length > 0) {
+              ext = nowDesc[0].value;
+              if (nowDesc[0].emphasize) {
+                cls.push('calendar-holiday');
+              }
+            }
+          }
+
+          // 国际节日
+          if (GLOBAL_HOLIDAY[global]) {
+            note = GLOBAL_HOLIDAY[global];
+            cls.push('calendar-holiday');
+          }
+
+          var tHoliday = _getTraditionalHoliday()[date];
+
+          // 传统节日
+          if (tHoliday) {
+            note = tHoliday;
+            cls.push('calendar-holiday');
+          }
+          // 放假日
+          if (REST_DAYS.indexOf(date) > -1) {
+            cls.push('calendar-holiday');
+          }
+
+          // 工作日
+          if (WORK_DAYS.indexOf(date) > -1) {
+            cls.push('calendar-work');
+          }
+
+          // 周末
+          if (_isWeekend(date)) {
+            cls.push('calendar-holiday');
+          }
+
+          // 今天
+          if (_isToday(today, date)) {
+            cls.push('calendar-today');
+            note = '今天';
+          }
+
+          // 不在日期范围内
+          if (!isInRange) {
+            disabled = true;
+          }
+
+          if (disabled) {
+            cls = [];
+            cls.push('calendar-disabled');
+            cellClass.push('cell-disabled');
+          }
+
+          if (!ext && disabled && isInRange) {
+            ext = '不可选';
+          }
+
+          if (departDate === date || arriveDate === date) {
+            note = departDate === date ? selectedNote[0] : selectedNote[1];
+            ref = departDate === date ? 'departDate' : 'arriveDate';
+            if (departDate === arriveDate && selectedNote.length >= 3) {
+              note = selectedNote[2];
+            }
+            cls.push('item-text-selected');
+            cellClass.push('item-row-selected');
+          }
+
+          if (departDate && arriveDate && _isInSelectRange([departDate, arriveDate], date)) {
+            cellClass.push('calendar-day-include');
+          }
+
+          cell = {
+            isEmpty: false,
+            ref: ref,
+            cls: _unique(cls).join(' '),
+            cellClass: _unique(cellClass).join(' '),
+            note: note,
+            date: date,
+            ext: ext,
+            disabled: disabled,
+            text: d
+          };
+        })();
+      }
+      cells.push(cell);
+    }
+
+    rowsData.push(cells);
+  }
+
+  return rowsData;
+}
+
+function generateDateCell(_ref) {
+  var range = _ref.range,
+      today = _ref.today,
+      departDate = _ref.departDate,
+      arriveDate = _ref.arriveDate,
+      selectedNote = _ref.selectedNote,
+      descList = _ref.descList;
+
+  var start = new Date(range[0].replace(/-/g, '/'));
+  var end = new Date(range[1].replace(/-/g, '/'));
+  var startYear = start.getFullYear();
+  var startMonth = start.getMonth() + 1;
+  var endYear = end.getFullYear();
+  var endMonth = end.getMonth() + 1;
+
+  var l = (endYear - startYear) * 12 + endMonth - startMonth + 1;
+  var y = startYear;
+  var n = startMonth;
+  var months = [];
+
+  for (var i = 0; i < l; i++) {
+    if (n > 12) {
+      n = 1;
+      y++;
+    }
+    months.push.apply(months, [{ title: y + '-' + _fixNum(n) }].concat(_toConsumableArray(getWeekRows(y, n, today, range, departDate, arriveDate, selectedNote, descList))));
+    n++;
+  }
+  return months;
+}
+
+/***/ }),
+/* 74 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _index = __webpack_require__(75);
+
+Object.defineProperty(exports, 'default', {
+  enumerable: true,
+  get: function get() {
+    return _interopRequireDefault(_index).default;
+  }
+});
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+/***/ }),
+/* 75 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var __vue_exports__, __vue_options__
+var __vue_styles__ = []
+
+/* styles */
+__vue_styles__.push(__webpack_require__(76)
+)
+
+/* script */
+__vue_exports__ = __webpack_require__(77)
+
+/* template */
+var __vue_template__ = __webpack_require__(78)
+__vue_options__ = __vue_exports__ = __vue_exports__ || {}
+if (
+  typeof __vue_exports__.default === "object" ||
+  typeof __vue_exports__.default === "function"
+) {
+if (Object.keys(__vue_exports__).some(function (key) { return key !== "default" && key !== "__esModule" })) {console.error("named exports are not supported in *.vue files.")}
+__vue_options__ = __vue_exports__ = __vue_exports__.default
+}
+if (typeof __vue_options__ === "function") {
+  __vue_options__ = __vue_options__.options
+}
+__vue_options__.__file = "E:\\MINI-WEB\\node_modules\\weex-ui\\packages\\wxc-minibar\\index.vue"
+__vue_options__.render = __vue_template__.render
+__vue_options__.staticRenderFns = __vue_template__.staticRenderFns
+__vue_options__._scopeId = "data-v-d729ab9e"
+__vue_options__.style = __vue_options__.style || {}
+__vue_styles__.forEach(function (module) {
+  for (var name in module) {
+    __vue_options__.style[name] = module[name]
+  }
+})
+if (typeof __register_static_styles__ === "function") {
+  __register_static_styles__(__vue_options__._scopeId, __vue_styles__)
+}
+
+module.exports = __vue_exports__
+
+
+/***/ }),
+/* 76 */
 /***/ (function(module, exports) {
 
 module.exports = {
@@ -8863,7 +9567,7 @@ module.exports = {
 }
 
 /***/ }),
-/* 72 */
+/* 77 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -9005,7 +9709,7 @@ exports.default = {
 };
 
 /***/ }),
-/* 73 */
+/* 78 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -9059,7 +9763,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 module.exports.render._withStripped = true
 
 /***/ }),
-/* 74 */
+/* 79 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -9131,21 +9835,21 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 module.exports.render._withStripped = true
 
 /***/ }),
-/* 75 */
+/* 80 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __vue_exports__, __vue_options__
 var __vue_styles__ = []
 
 /* styles */
-__vue_styles__.push(__webpack_require__(76)
+__vue_styles__.push(__webpack_require__(81)
 )
 
 /* script */
-__vue_exports__ = __webpack_require__(77)
+__vue_exports__ = __webpack_require__(82)
 
 /* template */
-var __vue_template__ = __webpack_require__(79)
+var __vue_template__ = __webpack_require__(84)
 __vue_options__ = __vue_exports__ = __vue_exports__ || {}
 if (
   typeof __vue_exports__.default === "object" ||
@@ -9157,10 +9861,10 @@ __vue_options__ = __vue_exports__ = __vue_exports__.default
 if (typeof __vue_options__ === "function") {
   __vue_options__ = __vue_options__.options
 }
-__vue_options__.__file = "D:\\MINI-WEB\\node_modules\\weex-ui\\packages\\wxc-button\\index.vue"
+__vue_options__.__file = "E:\\MINI-WEB\\node_modules\\weex-ui\\packages\\wxc-button\\index.vue"
 __vue_options__.render = __vue_template__.render
 __vue_options__.staticRenderFns = __vue_template__.staticRenderFns
-__vue_options__._scopeId = "data-v-5950667a"
+__vue_options__._scopeId = "data-v-24e253ce"
 __vue_options__.style = __vue_options__.style || {}
 __vue_styles__.forEach(function (module) {
   for (var name in module) {
@@ -9175,7 +9879,7 @@ module.exports = __vue_exports__
 
 
 /***/ }),
-/* 76 */
+/* 81 */
 /***/ (function(module, exports) {
 
 module.exports = {
@@ -9196,7 +9900,7 @@ module.exports = {
 }
 
 /***/ }),
-/* 77 */
+/* 82 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -9220,7 +9924,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 
-var _type = __webpack_require__(78);
+var _type = __webpack_require__(83);
 
 exports.default = {
   props: {
@@ -9283,7 +9987,7 @@ exports.default = {
 };
 
 /***/ }),
-/* 78 */
+/* 83 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -9359,7 +10063,7 @@ var TEXT_FONTSIZE_STYLE_MAP = exports.TEXT_FONTSIZE_STYLE_MAP = {
 };
 
 /***/ }),
-/* 79 */
+/* 84 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -9381,21 +10085,21 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 module.exports.render._withStripped = true
 
 /***/ }),
-/* 80 */
+/* 85 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __vue_exports__, __vue_options__
 var __vue_styles__ = []
 
 /* styles */
-__vue_styles__.push(__webpack_require__(81)
+__vue_styles__.push(__webpack_require__(86)
 )
 
 /* script */
-__vue_exports__ = __webpack_require__(82)
+__vue_exports__ = __webpack_require__(87)
 
 /* template */
-var __vue_template__ = __webpack_require__(88)
+var __vue_template__ = __webpack_require__(93)
 __vue_options__ = __vue_exports__ = __vue_exports__ || {}
 if (
   typeof __vue_exports__.default === "object" ||
@@ -9407,10 +10111,10 @@ __vue_options__ = __vue_exports__ = __vue_exports__.default
 if (typeof __vue_options__ === "function") {
   __vue_options__ = __vue_options__.options
 }
-__vue_options__.__file = "D:\\MINI-WEB\\node_modules\\weex-ui\\packages\\wxc-popup\\index.vue"
+__vue_options__.__file = "E:\\MINI-WEB\\node_modules\\weex-ui\\packages\\wxc-popup\\index.vue"
 __vue_options__.render = __vue_template__.render
 __vue_options__.staticRenderFns = __vue_template__.staticRenderFns
-__vue_options__._scopeId = "data-v-115e97c0"
+__vue_options__._scopeId = "data-v-68578f7e"
 __vue_options__.style = __vue_options__.style || {}
 __vue_styles__.forEach(function (module) {
   for (var name in module) {
@@ -9425,7 +10129,7 @@ module.exports = __vue_exports__
 
 
 /***/ }),
-/* 81 */
+/* 86 */
 /***/ (function(module, exports) {
 
 module.exports = {
@@ -9452,7 +10156,7 @@ module.exports = {
 }
 
 /***/ }),
-/* 82 */
+/* 87 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -9466,7 +10170,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
-var _wxcOverlay = __webpack_require__(83);
+var _wxcOverlay = __webpack_require__(88);
 
 var _wxcOverlay2 = _interopRequireDefault(_wxcOverlay);
 
@@ -9684,7 +10388,7 @@ exports.default = {
 };
 
 /***/ }),
-/* 83 */
+/* 88 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -9694,7 +10398,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _index = __webpack_require__(84);
+var _index = __webpack_require__(89);
 
 Object.defineProperty(exports, 'default', {
   enumerable: true,
@@ -9706,21 +10410,21 @@ Object.defineProperty(exports, 'default', {
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /***/ }),
-/* 84 */
+/* 89 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __vue_exports__, __vue_options__
 var __vue_styles__ = []
 
 /* styles */
-__vue_styles__.push(__webpack_require__(85)
+__vue_styles__.push(__webpack_require__(90)
 )
 
 /* script */
-__vue_exports__ = __webpack_require__(86)
+__vue_exports__ = __webpack_require__(91)
 
 /* template */
-var __vue_template__ = __webpack_require__(87)
+var __vue_template__ = __webpack_require__(92)
 __vue_options__ = __vue_exports__ = __vue_exports__ || {}
 if (
   typeof __vue_exports__.default === "object" ||
@@ -9732,10 +10436,10 @@ __vue_options__ = __vue_exports__ = __vue_exports__.default
 if (typeof __vue_options__ === "function") {
   __vue_options__ = __vue_options__.options
 }
-__vue_options__.__file = "D:\\MINI-WEB\\node_modules\\weex-ui\\packages\\wxc-overlay\\index.vue"
+__vue_options__.__file = "E:\\MINI-WEB\\node_modules\\weex-ui\\packages\\wxc-overlay\\index.vue"
 __vue_options__.render = __vue_template__.render
 __vue_options__.staticRenderFns = __vue_template__.staticRenderFns
-__vue_options__._scopeId = "data-v-3be7b638"
+__vue_options__._scopeId = "data-v-54c8adb6"
 __vue_options__.style = __vue_options__.style || {}
 __vue_styles__.forEach(function (module) {
   for (var name in module) {
@@ -9750,7 +10454,7 @@ module.exports = __vue_exports__
 
 
 /***/ }),
-/* 85 */
+/* 90 */
 /***/ (function(module, exports) {
 
 module.exports = {
@@ -9765,7 +10469,7 @@ module.exports = {
 }
 
 /***/ }),
-/* 86 */
+/* 91 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -9885,7 +10589,7 @@ exports.default = {
 };
 
 /***/ }),
-/* 87 */
+/* 92 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -9904,7 +10608,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 module.exports.render._withStripped = true
 
 /***/ }),
-/* 88 */
+/* 93 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -9936,7 +10640,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 module.exports.render._withStripped = true
 
 /***/ }),
-/* 89 */
+/* 94 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -9946,7 +10650,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _index = __webpack_require__(90);
+var _index = __webpack_require__(95);
 
 Object.defineProperty(exports, 'default', {
   enumerable: true,
@@ -9958,21 +10662,21 @@ Object.defineProperty(exports, 'default', {
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /***/ }),
-/* 90 */
+/* 95 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __vue_exports__, __vue_options__
 var __vue_styles__ = []
 
 /* styles */
-__vue_styles__.push(__webpack_require__(91)
+__vue_styles__.push(__webpack_require__(96)
 )
 
 /* script */
-__vue_exports__ = __webpack_require__(92)
+__vue_exports__ = __webpack_require__(97)
 
 /* template */
-var __vue_template__ = __webpack_require__(117)
+var __vue_template__ = __webpack_require__(122)
 __vue_options__ = __vue_exports__ = __vue_exports__ || {}
 if (
   typeof __vue_exports__.default === "object" ||
@@ -9984,10 +10688,10 @@ __vue_options__ = __vue_exports__ = __vue_exports__.default
 if (typeof __vue_options__ === "function") {
   __vue_options__ = __vue_options__.options
 }
-__vue_options__.__file = "D:\\MINI-WEB\\node_modules\\weex-ui\\packages\\wxc-city\\index.vue"
+__vue_options__.__file = "E:\\MINI-WEB\\node_modules\\weex-ui\\packages\\wxc-city\\index.vue"
 __vue_options__.render = __vue_template__.render
 __vue_options__.staticRenderFns = __vue_template__.staticRenderFns
-__vue_options__._scopeId = "data-v-4248281a"
+__vue_options__._scopeId = "data-v-3640915c"
 __vue_options__.style = __vue_options__.style || {}
 __vue_styles__.forEach(function (module) {
   for (var name in module) {
@@ -10002,7 +10706,7 @@ module.exports = __vue_exports__
 
 
 /***/ }),
-/* 91 */
+/* 96 */
 /***/ (function(module, exports) {
 
 module.exports = {
@@ -10014,7 +10718,7 @@ module.exports = {
 }
 
 /***/ }),
-/* 92 */
+/* 97 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10058,11 +10762,11 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 
-var _defaultData = __webpack_require__(93);
+var _defaultData = __webpack_require__(98);
 
 var _defaultData2 = _interopRequireDefault(_defaultData);
 
-var _util = __webpack_require__(94);
+var _util = __webpack_require__(99);
 
 var Util = _interopRequireWildcard(_util);
 
@@ -10070,19 +10774,19 @@ var _utils = __webpack_require__(1);
 
 var _utils2 = _interopRequireDefault(_utils);
 
-var _tab = __webpack_require__(95);
+var _tab = __webpack_require__(100);
 
 var _tab2 = _interopRequireDefault(_tab);
 
-var _wxcSearchbar = __webpack_require__(99);
+var _wxcSearchbar = __webpack_require__(104);
 
 var _wxcSearchbar2 = _interopRequireDefault(_wxcSearchbar);
 
-var _wxcResult = __webpack_require__(105);
+var _wxcResult = __webpack_require__(110);
 
 var _wxcResult2 = _interopRequireDefault(_wxcResult);
 
-var _wxcIndexlist = __webpack_require__(111);
+var _wxcIndexlist = __webpack_require__(116);
 
 var _wxcIndexlist2 = _interopRequireDefault(_wxcIndexlist);
 
@@ -10267,7 +10971,7 @@ exports.default = {
 };
 
 /***/ }),
-/* 93 */
+/* 98 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10285,7 +10989,7 @@ exports.default = {
 };
 
 /***/ }),
-/* 94 */
+/* 99 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10354,21 +11058,21 @@ function query(source, text) {
 }
 
 /***/ }),
-/* 95 */
+/* 100 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __vue_exports__, __vue_options__
 var __vue_styles__ = []
 
 /* styles */
-__vue_styles__.push(__webpack_require__(96)
+__vue_styles__.push(__webpack_require__(101)
 )
 
 /* script */
-__vue_exports__ = __webpack_require__(97)
+__vue_exports__ = __webpack_require__(102)
 
 /* template */
-var __vue_template__ = __webpack_require__(98)
+var __vue_template__ = __webpack_require__(103)
 __vue_options__ = __vue_exports__ = __vue_exports__ || {}
 if (
   typeof __vue_exports__.default === "object" ||
@@ -10380,10 +11084,10 @@ __vue_options__ = __vue_exports__ = __vue_exports__.default
 if (typeof __vue_options__ === "function") {
   __vue_options__ = __vue_options__.options
 }
-__vue_options__.__file = "D:\\MINI-WEB\\node_modules\\weex-ui\\packages\\wxc-city\\tab.vue"
+__vue_options__.__file = "E:\\MINI-WEB\\node_modules\\weex-ui\\packages\\wxc-city\\tab.vue"
 __vue_options__.render = __vue_template__.render
 __vue_options__.staticRenderFns = __vue_template__.staticRenderFns
-__vue_options__._scopeId = "data-v-3d2b9114"
+__vue_options__._scopeId = "data-v-6e574e95"
 __vue_options__.style = __vue_options__.style || {}
 __vue_styles__.forEach(function (module) {
   for (var name in module) {
@@ -10398,7 +11102,7 @@ module.exports = __vue_exports__
 
 
 /***/ }),
-/* 96 */
+/* 101 */
 /***/ (function(module, exports) {
 
 module.exports = {
@@ -10441,7 +11145,7 @@ module.exports = {
 }
 
 /***/ }),
-/* 97 */
+/* 102 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10541,7 +11245,7 @@ exports.default = {
 };
 
 /***/ }),
-/* 98 */
+/* 103 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -10571,7 +11275,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 module.exports.render._withStripped = true
 
 /***/ }),
-/* 99 */
+/* 104 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10581,7 +11285,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _index = __webpack_require__(100);
+var _index = __webpack_require__(105);
 
 Object.defineProperty(exports, 'default', {
   enumerable: true,
@@ -10593,21 +11297,21 @@ Object.defineProperty(exports, 'default', {
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /***/ }),
-/* 100 */
+/* 105 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __vue_exports__, __vue_options__
 var __vue_styles__ = []
 
 /* styles */
-__vue_styles__.push(__webpack_require__(101)
+__vue_styles__.push(__webpack_require__(106)
 )
 
 /* script */
-__vue_exports__ = __webpack_require__(102)
+__vue_exports__ = __webpack_require__(107)
 
 /* template */
-var __vue_template__ = __webpack_require__(104)
+var __vue_template__ = __webpack_require__(109)
 __vue_options__ = __vue_exports__ = __vue_exports__ || {}
 if (
   typeof __vue_exports__.default === "object" ||
@@ -10619,10 +11323,10 @@ __vue_options__ = __vue_exports__ = __vue_exports__.default
 if (typeof __vue_options__ === "function") {
   __vue_options__ = __vue_options__.options
 }
-__vue_options__.__file = "D:\\MINI-WEB\\node_modules\\weex-ui\\packages\\wxc-searchbar\\index.vue"
+__vue_options__.__file = "E:\\MINI-WEB\\node_modules\\weex-ui\\packages\\wxc-searchbar\\index.vue"
 __vue_options__.render = __vue_template__.render
 __vue_options__.staticRenderFns = __vue_template__.staticRenderFns
-__vue_options__._scopeId = "data-v-09f026bf"
+__vue_options__._scopeId = "data-v-57af9ec0"
 __vue_options__.style = __vue_options__.style || {}
 __vue_styles__.forEach(function (module) {
   for (var name in module) {
@@ -10637,7 +11341,7 @@ module.exports = __vue_exports__
 
 
 /***/ }),
-/* 101 */
+/* 106 */
 /***/ (function(module, exports) {
 
 module.exports = {
@@ -10750,7 +11454,7 @@ module.exports = {
 }
 
 /***/ }),
-/* 102 */
+/* 107 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10760,7 +11464,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _type = __webpack_require__(103);
+var _type = __webpack_require__(108);
 
 exports.default = {
   props: {
@@ -11100,7 +11804,7 @@ exports.default = {
 //
 
 /***/ }),
-/* 103 */
+/* 108 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11119,7 +11823,7 @@ var CLOSE_ICON = exports.CLOSE_ICON = "https://gw.alicdn.com/tfs/TB1sZB.pwMPMeJj
 var ARROW_ICON = exports.ARROW_ICON = "https://gw.alicdn.com/tfs/TB1vZB.pwMPMeJjy1XdXXasrXXa-24-24.png";
 
 /***/ }),
-/* 104 */
+/* 109 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -11220,7 +11924,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 module.exports.render._withStripped = true
 
 /***/ }),
-/* 105 */
+/* 110 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11230,7 +11934,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _index = __webpack_require__(106);
+var _index = __webpack_require__(111);
 
 Object.defineProperty(exports, 'default', {
   enumerable: true,
@@ -11242,21 +11946,21 @@ Object.defineProperty(exports, 'default', {
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /***/ }),
-/* 106 */
+/* 111 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __vue_exports__, __vue_options__
 var __vue_styles__ = []
 
 /* styles */
-__vue_styles__.push(__webpack_require__(107)
+__vue_styles__.push(__webpack_require__(112)
 )
 
 /* script */
-__vue_exports__ = __webpack_require__(108)
+__vue_exports__ = __webpack_require__(113)
 
 /* template */
-var __vue_template__ = __webpack_require__(110)
+var __vue_template__ = __webpack_require__(115)
 __vue_options__ = __vue_exports__ = __vue_exports__ || {}
 if (
   typeof __vue_exports__.default === "object" ||
@@ -11268,10 +11972,10 @@ __vue_options__ = __vue_exports__ = __vue_exports__.default
 if (typeof __vue_options__ === "function") {
   __vue_options__ = __vue_options__.options
 }
-__vue_options__.__file = "D:\\MINI-WEB\\node_modules\\weex-ui\\packages\\wxc-result\\index.vue"
+__vue_options__.__file = "E:\\MINI-WEB\\node_modules\\weex-ui\\packages\\wxc-result\\index.vue"
 __vue_options__.render = __vue_template__.render
 __vue_options__.staticRenderFns = __vue_template__.staticRenderFns
-__vue_options__._scopeId = "data-v-47a41da5"
+__vue_options__._scopeId = "data-v-483ae578"
 __vue_options__.style = __vue_options__.style || {}
 __vue_styles__.forEach(function (module) {
   for (var name in module) {
@@ -11286,7 +11990,7 @@ module.exports = __vue_exports__
 
 
 /***/ }),
-/* 107 */
+/* 112 */
 /***/ (function(module, exports) {
 
 module.exports = {
@@ -11340,7 +12044,7 @@ module.exports = {
 }
 
 /***/ }),
-/* 108 */
+/* 113 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11350,7 +12054,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _type = __webpack_require__(109);
+var _type = __webpack_require__(114);
 
 var _type2 = _interopRequireDefault(_type);
 
@@ -11497,7 +12201,7 @@ exports.default = {
 };
 
 /***/ }),
-/* 109 */
+/* 114 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11539,7 +12243,7 @@ exports.default = {
 };
 
 /***/ }),
-/* 110 */
+/* 115 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -11576,7 +12280,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 module.exports.render._withStripped = true
 
 /***/ }),
-/* 111 */
+/* 116 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11586,7 +12290,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _index = __webpack_require__(112);
+var _index = __webpack_require__(117);
 
 Object.defineProperty(exports, 'default', {
   enumerable: true,
@@ -11598,21 +12302,21 @@ Object.defineProperty(exports, 'default', {
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /***/ }),
-/* 112 */
+/* 117 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __vue_exports__, __vue_options__
 var __vue_styles__ = []
 
 /* styles */
-__vue_styles__.push(__webpack_require__(113)
+__vue_styles__.push(__webpack_require__(118)
 )
 
 /* script */
-__vue_exports__ = __webpack_require__(114)
+__vue_exports__ = __webpack_require__(119)
 
 /* template */
-var __vue_template__ = __webpack_require__(116)
+var __vue_template__ = __webpack_require__(121)
 __vue_options__ = __vue_exports__ = __vue_exports__ || {}
 if (
   typeof __vue_exports__.default === "object" ||
@@ -11624,10 +12328,10 @@ __vue_options__ = __vue_exports__ = __vue_exports__.default
 if (typeof __vue_options__ === "function") {
   __vue_options__ = __vue_options__.options
 }
-__vue_options__.__file = "D:\\MINI-WEB\\node_modules\\weex-ui\\packages\\wxc-indexlist\\index.vue"
+__vue_options__.__file = "E:\\MINI-WEB\\node_modules\\weex-ui\\packages\\wxc-indexlist\\index.vue"
 __vue_options__.render = __vue_template__.render
 __vue_options__.staticRenderFns = __vue_template__.staticRenderFns
-__vue_options__._scopeId = "data-v-ef5ca0f8"
+__vue_options__._scopeId = "data-v-53ddb0f6"
 __vue_options__.style = __vue_options__.style || {}
 __vue_styles__.forEach(function (module) {
   for (var name in module) {
@@ -11642,7 +12346,7 @@ module.exports = __vue_exports__
 
 
 /***/ }),
-/* 113 */
+/* 118 */
 /***/ (function(module, exports) {
 
 module.exports = {
@@ -11770,7 +12474,7 @@ module.exports = {
 }
 
 /***/ }),
-/* 114 */
+/* 119 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11780,7 +12484,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _format = __webpack_require__(115);
+var _format = __webpack_require__(120);
 
 var Format = _interopRequireWildcard(_format);
 
@@ -12021,7 +12725,7 @@ exports.default = {
 };
 
 /***/ }),
-/* 115 */
+/* 120 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12096,7 +12800,7 @@ function getSpecialData(data) {
 }
 
 /***/ }),
-/* 116 */
+/* 121 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -12212,7 +12916,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 module.exports.render._withStripped = true
 
 /***/ }),
-/* 117 */
+/* 122 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -12261,7 +12965,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 module.exports.render._withStripped = true
 
 /***/ }),
-/* 118 */
+/* 123 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -12407,21 +13111,21 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 module.exports.render._withStripped = true
 
 /***/ }),
-/* 119 */
+/* 124 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __vue_exports__, __vue_options__
 var __vue_styles__ = []
 
 /* styles */
-__vue_styles__.push(__webpack_require__(120)
+__vue_styles__.push(__webpack_require__(125)
 )
 
 /* script */
-__vue_exports__ = __webpack_require__(121)
+__vue_exports__ = __webpack_require__(126)
 
 /* template */
-var __vue_template__ = __webpack_require__(133)
+var __vue_template__ = __webpack_require__(138)
 __vue_options__ = __vue_exports__ = __vue_exports__ || {}
 if (
   typeof __vue_exports__.default === "object" ||
@@ -12433,10 +13137,10 @@ __vue_options__ = __vue_exports__ = __vue_exports__.default
 if (typeof __vue_options__ === "function") {
   __vue_options__ = __vue_options__.options
 }
-__vue_options__.__file = "D:\\MINI-WEB\\src\\components\\msglist.vue"
+__vue_options__.__file = "E:\\MINI-WEB\\src\\components\\msglist.vue"
 __vue_options__.render = __vue_template__.render
 __vue_options__.staticRenderFns = __vue_template__.staticRenderFns
-__vue_options__._scopeId = "data-v-d3738652"
+__vue_options__._scopeId = "data-v-10ce4d14"
 __vue_options__.style = __vue_options__.style || {}
 __vue_styles__.forEach(function (module) {
   for (var name in module) {
@@ -12451,7 +13155,7 @@ module.exports = __vue_exports__
 
 
 /***/ }),
-/* 120 */
+/* 125 */
 /***/ (function(module, exports) {
 
 module.exports = {
@@ -12535,7 +13239,7 @@ module.exports = {
 }
 
 /***/ }),
-/* 121 */
+/* 126 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12545,7 +13249,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _bindEnv = __webpack_require__(122);
+var _bindEnv = __webpack_require__(127);
 
 var _bindEnv2 = _interopRequireDefault(_bindEnv);
 
@@ -12553,15 +13257,15 @@ var _utils = __webpack_require__(1);
 
 var _utils2 = _interopRequireDefault(_utils);
 
-var _wxcPanItem = __webpack_require__(123);
+var _wxcPanItem = __webpack_require__(128);
 
 var _wxcPanItem2 = _interopRequireDefault(_wxcPanItem);
 
-var _wxcTabPage = __webpack_require__(127);
+var _wxcTabPage = __webpack_require__(132);
 
 var _wxcTabPage2 = _interopRequireDefault(_wxcTabPage);
 
-var _config = __webpack_require__(132);
+var _config = __webpack_require__(137);
 
 var _config2 = _interopRequireDefault(_config);
 
@@ -12680,7 +13384,7 @@ exports.default = {
 };
 
 /***/ }),
-/* 122 */
+/* 127 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12690,7 +13394,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _bindEnv = __webpack_require__(3);
+var _bindEnv = __webpack_require__(2);
 
 Object.defineProperty(exports, 'default', {
   enumerable: true,
@@ -12702,7 +13406,7 @@ Object.defineProperty(exports, 'default', {
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /***/ }),
-/* 123 */
+/* 128 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12712,7 +13416,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _index = __webpack_require__(124);
+var _index = __webpack_require__(129);
 
 Object.defineProperty(exports, 'default', {
   enumerable: true,
@@ -12724,17 +13428,17 @@ Object.defineProperty(exports, 'default', {
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /***/ }),
-/* 124 */
+/* 129 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __vue_exports__, __vue_options__
 var __vue_styles__ = []
 
 /* script */
-__vue_exports__ = __webpack_require__(125)
+__vue_exports__ = __webpack_require__(130)
 
 /* template */
-var __vue_template__ = __webpack_require__(126)
+var __vue_template__ = __webpack_require__(131)
 __vue_options__ = __vue_exports__ = __vue_exports__ || {}
 if (
   typeof __vue_exports__.default === "object" ||
@@ -12746,7 +13450,7 @@ __vue_options__ = __vue_exports__ = __vue_exports__.default
 if (typeof __vue_options__ === "function") {
   __vue_options__ = __vue_options__.options
 }
-__vue_options__.__file = "D:\\MINI-WEB\\node_modules\\weex-ui\\packages\\wxc-pan-item\\index.vue"
+__vue_options__.__file = "E:\\MINI-WEB\\node_modules\\weex-ui\\packages\\wxc-pan-item\\index.vue"
 __vue_options__.render = __vue_template__.render
 __vue_options__.staticRenderFns = __vue_template__.staticRenderFns
 __vue_options__.style = __vue_options__.style || {}
@@ -12763,7 +13467,7 @@ module.exports = __vue_exports__
 
 
 /***/ }),
-/* 125 */
+/* 130 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12773,7 +13477,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _indexWeex = __webpack_require__(4);
+var _indexWeex = __webpack_require__(3);
 
 var _indexWeex2 = _interopRequireDefault(_indexWeex);
 
@@ -12781,7 +13485,7 @@ var _utils = __webpack_require__(1);
 
 var _utils2 = _interopRequireDefault(_utils);
 
-var _bindEnv = __webpack_require__(3);
+var _bindEnv = __webpack_require__(2);
 
 var _bindEnv2 = _interopRequireDefault(_bindEnv);
 
@@ -12868,7 +13572,7 @@ exports.default = {
 //
 
 /***/ }),
-/* 126 */
+/* 131 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -12890,7 +13594,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 module.exports.render._withStripped = true
 
 /***/ }),
-/* 127 */
+/* 132 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12900,7 +13604,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _index = __webpack_require__(128);
+var _index = __webpack_require__(133);
 
 Object.defineProperty(exports, 'default', {
   enumerable: true,
@@ -12912,21 +13616,21 @@ Object.defineProperty(exports, 'default', {
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /***/ }),
-/* 128 */
+/* 133 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __vue_exports__, __vue_options__
 var __vue_styles__ = []
 
 /* styles */
-__vue_styles__.push(__webpack_require__(129)
+__vue_styles__.push(__webpack_require__(134)
 )
 
 /* script */
-__vue_exports__ = __webpack_require__(130)
+__vue_exports__ = __webpack_require__(135)
 
 /* template */
-var __vue_template__ = __webpack_require__(131)
+var __vue_template__ = __webpack_require__(136)
 __vue_options__ = __vue_exports__ = __vue_exports__ || {}
 if (
   typeof __vue_exports__.default === "object" ||
@@ -12938,10 +13642,10 @@ __vue_options__ = __vue_exports__ = __vue_exports__.default
 if (typeof __vue_options__ === "function") {
   __vue_options__ = __vue_options__.options
 }
-__vue_options__.__file = "D:\\MINI-WEB\\node_modules\\weex-ui\\packages\\wxc-tab-page\\index.vue"
+__vue_options__.__file = "E:\\MINI-WEB\\node_modules\\weex-ui\\packages\\wxc-tab-page\\index.vue"
 __vue_options__.render = __vue_template__.render
 __vue_options__.staticRenderFns = __vue_template__.staticRenderFns
-__vue_options__._scopeId = "data-v-64e7dc4f"
+__vue_options__._scopeId = "data-v-396e3fa4"
 __vue_options__.style = __vue_options__.style || {}
 __vue_styles__.forEach(function (module) {
   for (var name in module) {
@@ -12956,7 +13660,7 @@ module.exports = __vue_exports__
 
 
 /***/ }),
-/* 129 */
+/* 134 */
 /***/ (function(module, exports) {
 
 module.exports = {
@@ -12991,7 +13695,7 @@ module.exports = {
 }
 
 /***/ }),
-/* 130 */
+/* 135 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13005,11 +13709,11 @@ var _utils = __webpack_require__(1);
 
 var _utils2 = _interopRequireDefault(_utils);
 
-var _bindEnv = __webpack_require__(3);
+var _bindEnv = __webpack_require__(2);
 
 var _bindEnv2 = _interopRequireDefault(_bindEnv);
 
-var _indexWeex = __webpack_require__(4);
+var _indexWeex = __webpack_require__(3);
 
 var _indexWeex2 = _interopRequireDefault(_indexWeex);
 
@@ -13345,7 +14049,7 @@ exports.default = {
 };
 
 /***/ }),
-/* 131 */
+/* 136 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -13438,7 +14142,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 module.exports.render._withStripped = true
 
 /***/ }),
-/* 132 */
+/* 137 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13455,11 +14159,11 @@ exports.default = {
 
     tabTitles: [{
         title: '通知'
-        // icon: 'https://gw.alicdn.com/tfs/TB1MWXdSpXXXXcmXXXXXXXXXXXX-72-72.png',
+        // icon: 'https://gw.alicdn.com/tfs/TB1MWXdSpXXXXcmXXXXXXXXXXXX-72-72.png'
         // activeIcon: 'https://gw.alicdn.com/tfs/TB1kCk2SXXXXXXFXFXXXXXXXXXX-72-72.png'
     }, {
         title: '消息'
-        // icon: 'https://gw.alicdn.com/tfs/TB1ARoKSXXXXXc9XVXXXXXXXXXX-72-72.png',
+        // icon: 'https://gw.alicdn.com/tfs/TB1ARoKSXXXXXc9XVXXXXXXXXXX-72-72.png'
         // activeIcon: 'https://gw.alicdn.com/tfs/TB19Z72SXXXXXamXFXXXXXXXXXX-72-72.png'
     }],
     tabStyles: {
@@ -13517,27 +14221,27 @@ exports.default = {
 };
 
 /***/ }),
-/* 133 */
+/* 138 */
 /***/ (function(module, exports) {
 
 module.exports={render:function(){},staticRenderFns:[]}
 
 /***/ }),
-/* 134 */
+/* 139 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __vue_exports__, __vue_options__
 var __vue_styles__ = []
 
 /* styles */
-__vue_styles__.push(__webpack_require__(135)
+__vue_styles__.push(__webpack_require__(140)
 )
 
 /* script */
-__vue_exports__ = __webpack_require__(136)
+__vue_exports__ = __webpack_require__(141)
 
 /* template */
-var __vue_template__ = __webpack_require__(137)
+var __vue_template__ = __webpack_require__(142)
 __vue_options__ = __vue_exports__ = __vue_exports__ || {}
 if (
   typeof __vue_exports__.default === "object" ||
@@ -13549,10 +14253,10 @@ __vue_options__ = __vue_exports__ = __vue_exports__.default
 if (typeof __vue_options__ === "function") {
   __vue_options__ = __vue_options__.options
 }
-__vue_options__.__file = "D:\\MINI-WEB\\src\\components\\shoot.vue"
+__vue_options__.__file = "E:\\MINI-WEB\\src\\components\\shoot.vue"
 __vue_options__.render = __vue_template__.render
 __vue_options__.staticRenderFns = __vue_template__.staticRenderFns
-__vue_options__._scopeId = "data-v-ef164d52"
+__vue_options__._scopeId = "data-v-0697dc94"
 __vue_options__.style = __vue_options__.style || {}
 __vue_styles__.forEach(function (module) {
   for (var name in module) {
@@ -13567,7 +14271,7 @@ module.exports = __vue_exports__
 
 
 /***/ }),
-/* 135 */
+/* 140 */
 /***/ (function(module, exports) {
 
 module.exports = {
@@ -13612,7 +14316,7 @@ module.exports = {
 }
 
 /***/ }),
-/* 136 */
+/* 141 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13642,7 +14346,7 @@ Object.defineProperty(exports, "__esModule", {
 exports.default = {};
 
 /***/ }),
-/* 137 */
+/* 142 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -13674,21 +14378,21 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 module.exports.render._withStripped = true
 
 /***/ }),
-/* 138 */
+/* 143 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __vue_exports__, __vue_options__
 var __vue_styles__ = []
 
 /* styles */
-__vue_styles__.push(__webpack_require__(139)
+__vue_styles__.push(__webpack_require__(144)
 )
 
 /* script */
-__vue_exports__ = __webpack_require__(140)
+__vue_exports__ = __webpack_require__(145)
 
 /* template */
-var __vue_template__ = __webpack_require__(149)
+var __vue_template__ = __webpack_require__(154)
 __vue_options__ = __vue_exports__ = __vue_exports__ || {}
 if (
   typeof __vue_exports__.default === "object" ||
@@ -13700,10 +14404,10 @@ __vue_options__ = __vue_exports__ = __vue_exports__.default
 if (typeof __vue_options__ === "function") {
   __vue_options__ = __vue_options__.options
 }
-__vue_options__.__file = "D:\\MINI-WEB\\src\\components\\chat\\chat.vue"
+__vue_options__.__file = "E:\\MINI-WEB\\src\\components\\chat\\chat.vue"
 __vue_options__.render = __vue_template__.render
 __vue_options__.staticRenderFns = __vue_template__.staticRenderFns
-__vue_options__._scopeId = "data-v-734d2814"
+__vue_options__._scopeId = "data-v-6b29ce1a"
 __vue_options__.style = __vue_options__.style || {}
 __vue_styles__.forEach(function (module) {
   for (var name in module) {
@@ -13718,7 +14422,7 @@ module.exports = __vue_exports__
 
 
 /***/ }),
-/* 139 */
+/* 144 */
 /***/ (function(module, exports) {
 
 module.exports = {
@@ -13733,7 +14437,7 @@ module.exports = {
 }
 
 /***/ }),
-/* 140 */
+/* 145 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13743,11 +14447,11 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _chatOwn = __webpack_require__(141);
+var _chatOwn = __webpack_require__(146);
 
 var _chatOwn2 = _interopRequireDefault(_chatOwn);
 
-var _chatOther = __webpack_require__(145);
+var _chatOther = __webpack_require__(150);
 
 var _chatOther2 = _interopRequireDefault(_chatOther);
 
@@ -13783,21 +14487,21 @@ exports.default = {
 };
 
 /***/ }),
-/* 141 */
+/* 146 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __vue_exports__, __vue_options__
 var __vue_styles__ = []
 
 /* styles */
-__vue_styles__.push(__webpack_require__(142)
+__vue_styles__.push(__webpack_require__(147)
 )
 
 /* script */
-__vue_exports__ = __webpack_require__(143)
+__vue_exports__ = __webpack_require__(148)
 
 /* template */
-var __vue_template__ = __webpack_require__(144)
+var __vue_template__ = __webpack_require__(149)
 __vue_options__ = __vue_exports__ = __vue_exports__ || {}
 if (
   typeof __vue_exports__.default === "object" ||
@@ -13809,10 +14513,10 @@ __vue_options__ = __vue_exports__ = __vue_exports__.default
 if (typeof __vue_options__ === "function") {
   __vue_options__ = __vue_options__.options
 }
-__vue_options__.__file = "D:\\MINI-WEB\\src\\components\\chat\\chat-own.vue"
+__vue_options__.__file = "E:\\MINI-WEB\\src\\components\\chat\\chat-own.vue"
 __vue_options__.render = __vue_template__.render
 __vue_options__.staticRenderFns = __vue_template__.staticRenderFns
-__vue_options__._scopeId = "data-v-636569cd"
+__vue_options__._scopeId = "data-v-2651d32c"
 __vue_options__.style = __vue_options__.style || {}
 __vue_styles__.forEach(function (module) {
   for (var name in module) {
@@ -13827,7 +14531,7 @@ module.exports = __vue_exports__
 
 
 /***/ }),
-/* 142 */
+/* 147 */
 /***/ (function(module, exports) {
 
 module.exports = {
@@ -13865,7 +14569,7 @@ module.exports = {
 }
 
 /***/ }),
-/* 143 */
+/* 148 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13886,7 +14590,7 @@ exports.default = {
 };
 
 /***/ }),
-/* 144 */
+/* 149 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -13901,21 +14605,21 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 module.exports.render._withStripped = true
 
 /***/ }),
-/* 145 */
+/* 150 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __vue_exports__, __vue_options__
 var __vue_styles__ = []
 
 /* styles */
-__vue_styles__.push(__webpack_require__(146)
+__vue_styles__.push(__webpack_require__(151)
 )
 
 /* script */
-__vue_exports__ = __webpack_require__(147)
+__vue_exports__ = __webpack_require__(152)
 
 /* template */
-var __vue_template__ = __webpack_require__(148)
+var __vue_template__ = __webpack_require__(153)
 __vue_options__ = __vue_exports__ = __vue_exports__ || {}
 if (
   typeof __vue_exports__.default === "object" ||
@@ -13927,10 +14631,10 @@ __vue_options__ = __vue_exports__ = __vue_exports__.default
 if (typeof __vue_options__ === "function") {
   __vue_options__ = __vue_options__.options
 }
-__vue_options__.__file = "D:\\MINI-WEB\\src\\components\\chat\\chat-other.vue"
+__vue_options__.__file = "E:\\MINI-WEB\\src\\components\\chat\\chat-other.vue"
 __vue_options__.render = __vue_template__.render
 __vue_options__.staticRenderFns = __vue_template__.staticRenderFns
-__vue_options__._scopeId = "data-v-082b7497"
+__vue_options__._scopeId = "data-v-7cb9fb94"
 __vue_options__.style = __vue_options__.style || {}
 __vue_styles__.forEach(function (module) {
   for (var name in module) {
@@ -13945,7 +14649,7 @@ module.exports = __vue_exports__
 
 
 /***/ }),
-/* 146 */
+/* 151 */
 /***/ (function(module, exports) {
 
 module.exports = {
@@ -13980,7 +14684,7 @@ module.exports = {
 }
 
 /***/ }),
-/* 147 */
+/* 152 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -14001,7 +14705,7 @@ exports.default = {
 };
 
 /***/ }),
-/* 148 */
+/* 153 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -14016,7 +14720,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 module.exports.render._withStripped = true
 
 /***/ }),
-/* 149 */
+/* 154 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -14039,21 +14743,21 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 module.exports.render._withStripped = true
 
 /***/ }),
-/* 150 */
+/* 155 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __vue_exports__, __vue_options__
 var __vue_styles__ = []
 
 /* styles */
-__vue_styles__.push(__webpack_require__(151)
+__vue_styles__.push(__webpack_require__(156)
 )
 
 /* script */
-__vue_exports__ = __webpack_require__(152)
+__vue_exports__ = __webpack_require__(157)
 
 /* template */
-var __vue_template__ = __webpack_require__(153)
+var __vue_template__ = __webpack_require__(158)
 __vue_options__ = __vue_exports__ = __vue_exports__ || {}
 if (
   typeof __vue_exports__.default === "object" ||
@@ -14065,10 +14769,10 @@ __vue_options__ = __vue_exports__ = __vue_exports__.default
 if (typeof __vue_options__ === "function") {
   __vue_options__ = __vue_options__.options
 }
-__vue_options__.__file = "D:\\MINI-WEB\\src\\index.vue"
+__vue_options__.__file = "E:\\MINI-WEB\\src\\index.vue"
 __vue_options__.render = __vue_template__.render
 __vue_options__.staticRenderFns = __vue_template__.staticRenderFns
-__vue_options__._scopeId = "data-v-526042c4"
+__vue_options__._scopeId = "data-v-52dee076"
 __vue_options__.style = __vue_options__.style || {}
 __vue_styles__.forEach(function (module) {
   for (var name in module) {
@@ -14083,7 +14787,7 @@ module.exports = __vue_exports__
 
 
 /***/ }),
-/* 151 */
+/* 156 */
 /***/ (function(module, exports) {
 
 module.exports = {
@@ -14116,7 +14820,7 @@ module.exports = {
 }
 
 /***/ }),
-/* 152 */
+/* 157 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -14152,7 +14856,7 @@ exports.default = {
 //
 
 /***/ }),
-/* 153 */
+/* 158 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
