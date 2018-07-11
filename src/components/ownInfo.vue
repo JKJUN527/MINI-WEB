@@ -64,6 +64,7 @@
 </template>
 <script>
 import { WxcEpSlider } from 'weex-ui'
+import ajax from '../ajax/index.js'
 export default {
   components: { WxcEpSlider },
   data () {
@@ -79,6 +80,16 @@ export default {
           scale: 0.8
       }
     }
+  },
+  mounted () {
+    ajax.getPersonInfo({})
+    .then((res) => {
+      console.log(res)
+    })
+    ajax.getVideo({})
+    .then((res) => {
+        console.log(res)
+    })
   },
   methods: {
       doListChange (msg) {
