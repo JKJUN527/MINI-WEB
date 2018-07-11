@@ -69,21 +69,24 @@ const productionConfig = webpackMerge(commonConfig[0], {
      *
      * See: http://webpack.github.io/docs/configuration.html#output-filename
      */
-    filename: '[name].[chunkhash].bundle.js',
+    // filename: '[name].[chunkhash].bundle.js',
+    filename: '[name].bundle.js',
     /**
      * The filename of the SourceMaps for the JavaScript files.
      * They are inside the output.path directory.
      *
      * See: http://webpack.github.io/docs/configuration.html#output-sourcemapfilename
      */
-    sourceMapFilename: '[name].[chunkhash].bundle.map',
+    // sourceMapFilename: '[name].[chunkhash].bundle.map',
+    sourceMapFilename: '[name].bundle.map',
     /**
      * The filename of non-entry chunks as relative path
      * inside the output.path directory.
      *
      * See: http://webpack.github.io/docs/configuration.html#output-chunkfilename
      */
-    chunkFilename: '[id].[chunkhash].chunk.js'
+    // chunkFilename: '[id].[chunkhash].chunk.js'
+    chunkFilename: '[id].chunk.js'
   },
   /*
    * Add additional plugins to the compiler.
