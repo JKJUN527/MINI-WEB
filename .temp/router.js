@@ -2,6 +2,7 @@ import Vue from 'vue'
 /* global Vue */
 import Router from 'vue-router'
 import HelloWorld from '@/components/HelloWorld'
+import Index from '@/components/index'
 import Login from '@/components/login'
 import Match from '@/components/match'
 import otherInfo from '@/components/otherInfo'
@@ -19,6 +20,11 @@ module.exports = new Router({
       path: '/',
       name: 'HelloWorld',
       component: HelloWorld
+    },
+    {
+      path: '/index',
+      name: 'index',
+      component: Index
     },
     {
       path: '/login',

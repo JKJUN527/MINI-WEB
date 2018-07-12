@@ -9,7 +9,8 @@
                     <label for="upload"></label>
                 </div>
                 <div class="btn">
-                    <button></button>
+                    <input type="file" ref="file">
+                    <button @click="handleClick">点击</button>
                 </div>
             </div>
         </div>
@@ -17,6 +18,11 @@
 </template>
 <script>
 export default {
+    methods: {
+        handleClick () {
+            
+        }
+    }
 }
 </script>
 <style scoped>
@@ -27,7 +33,7 @@ export default {
 
     .video {
         width: 100%;
-        height: 1000px;
+        height: 800px;
         background-color: black;
     }
 

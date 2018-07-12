@@ -66,6 +66,7 @@
 <script>
 //    const dom = weex.requireModule('dom');
 import { WxcTabPage, WxcPanItem, Utils, BindEnv } from 'weex-ui'
+import ajax from '../ajax/index.js'
 
 // https://github.com/alibaba/weex-ui/blob/master/example/tab-page/config.js
 import Config from './config'
@@ -83,6 +84,9 @@ export default {
     this.tabPageHeight = Utils.env.getPageHeight()
     this.tabList = [...Array(this.tabTitles.length).keys()].map(i => [])
     this.$set(this.tabList, 0, this.demoList)
+  },
+  mounted () {
+      ajax.getConversationList({})
   },
   methods: {
     wxcTabPageCurrentTabSelected (e) {
