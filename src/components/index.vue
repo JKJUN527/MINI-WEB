@@ -23,7 +23,7 @@ export default {
         }
     },
     methods: {
-         handleClick () {
+        handleClick () {
         },
         handleTouchStart (e) {
             this.startX = e.changedTouches[0].pageX

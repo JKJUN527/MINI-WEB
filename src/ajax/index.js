@@ -3,6 +3,9 @@ import qs from 'qs'
 const LOGIN = '/'
 const PersonInfo = 'getpersoninfo'
 const GetVideo = 'getvideo'
+const ConversationList = 'getConversationList'
+const ConversationDetail = 'getConversationDetail'
+const sendMessage = 'sendMessage'
 var ax = axios.create({
   baseURL: 'http://mini.jkjun.cn/',
   timeout: 1000
@@ -24,9 +27,14 @@ function getVideo (data) {
   return makeGet(GetVideo, data)
 }
 
+function getConversationList (data) {
+  return makeGet(ConversationList, data)
+}
+
 export default {
   makePost,
   makeGet,
   getPersonInfo,
-  getVideo
+  getVideo,
+  getConversationList
 }

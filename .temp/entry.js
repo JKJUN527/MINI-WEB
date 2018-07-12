@@ -7,7 +7,5 @@ weex.init(Vue)
 const router = require('./router')
 const App = require('@/index.vue')
 /* eslint-disable no-new */
-import axios from 'axios'
-Vue.prototype.$http= axios
 new Vue(Vue.util.extend({el: '#root', router}, App))
 router.push('/')
