@@ -1,7 +1,7 @@
 <template>
   <div>
     <router-link :to="{name: 'login'}" class="base-font-size">
-      login
+      login123
     </router-link>
     <router-link :to="{name: 'otherInfo'}" class="base-font-size">
       otherInfo
