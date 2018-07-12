@@ -19,21 +19,21 @@
             </div>
             <div v-if="showVideoList == 'works'" class="color-white video-list">
                 <!-- <img src="../asset/img/user-info-bg.png" alt="" class="bg" /> -->
-                <!--<div>-->
-                    <!--<wxc-ep-slider :slider-id="sliderId"-->
-                                   <!--:card-length='cardLength'-->
-                                   <!--:card-s="cardSize"-->
-                                   <!--:select-index="2"-->
-                                   <!--@wxcEpSliderCurrentIndexSelected="wxcEpSliderCurrentIndexSelected">-->
-                        <!--&lt;!&ndash;自动生成demo&ndash;&gt;-->
-                        <!--<div v-for="(v,index) in [1,2,3,4,5]"-->
-                             <!--:key="index"-->
-                             <!--:slot="`card${index}_${sliderId}`"-->
-                             <!--:class="['slider',`slider${index}`]">-->
-                            <!--<text>这里是第{{index + 1}}个滑块</text>-->
-                        <!--</div>-->
-                    <!--</wxc-ep-slider>-->
-                <!--</div>-->
+                <div>
+                    <wxc-ep-slider :slider-id="sliderId"
+                                   :card-length='cardLength'
+                                   :card-s="cardSize"
+                                   :select-index="2"
+                                   @wxcEpSliderCurrentIndexSelected="wxcEpSliderCurrentIndexSelected">
+                        <!--自动生成demo-->
+                        <div v-for="(v,index) in [1,2,3,4,5]"
+                             :key="index"
+                             :slot="`card${index}_${sliderId}`"
+                             :class="['slider',`slider${index}`]">
+                            <text>这里是第{{index + 1}}个滑块</text>
+                        </div>
+                    </wxc-ep-slider>
+                </div>
             </div>
             <div v-if="showVideoList == 'like'" class="color-white video-list">
                 <!-- <img src="../asset/img/user-info-bg.png" alt="" class="bg" /> -->
@@ -43,9 +43,9 @@
     </div>
 </template>
 <script>
-//import { WxcEpSlider } from 'weex-ui'
+import { WxcEpSlider } from 'weex-ui'
 export default {
-//  components: { WxcEpSlider },
+  components: { WxcEpSlider },
   data () {
     return {
         labels: ['北京', '20岁', '双子座', '男'],
@@ -78,13 +78,13 @@ export default {
     }
 
     .user-header {
-        margin-top: 0.64rem;
+        margin-top: 0.5rem;
         align-items: center;
     }
 
     .user-img {
-        width: 3.5rem;
-        height: 3.5rem;
+        width: 3rem;
+        height: 3rem;
         border-radius: 50%;
         background: white
     }
@@ -93,7 +93,7 @@ export default {
         margin-top: 20px;
     }
     .user-label {
-        margin: 0.5rem 0 1rem;
+        margin: 0.1rem 0 1rem;
         flex-direction: row;
         justify-content: center
     }
@@ -141,7 +141,7 @@ export default {
 
     .slider {
         width: 5rem;
-        height: 8rem;
+        height: 7rem;
         margin-top: 0.5rem;
         background-color: #C3413D;
         align-items: center;

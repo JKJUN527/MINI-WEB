@@ -2,7 +2,7 @@ import axios from 'axios'
 import qs from 'qs'
 const LOGIN = '/'
 var ax = axios.create({
-  baseURL: 'http://111.231.233.254:8012',
+  baseURL: 'http://mini.jkjun.cn/',
   timeout: 1000
 })
 
