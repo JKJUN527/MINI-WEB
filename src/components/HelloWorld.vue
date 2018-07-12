@@ -3,6 +3,9 @@
     <router-link :to="{name: 'login'}" class="base-font-size">
       login123
     </router-link>
+    <router-link :to="{name: 'index'}" class="base-font-size">
+      index
+    </router-link>
     <router-link :to="{name: 'otherInfo'}" class="base-font-size">
       otherInfo
     </router-link>

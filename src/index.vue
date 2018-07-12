@@ -23,14 +23,14 @@ export default {
     padding: 0
 }
 .base-font-size {
-    font-size: 42px;
+    font-size: 48px;
 }
 .mini-font-size {
-    font-size: 16px;
+    font-size: 24px;
 }
 
 .middle-font-size {
-    font-size: 16px;
+    font-size: 36px;
 }
 
 .base-flex {
