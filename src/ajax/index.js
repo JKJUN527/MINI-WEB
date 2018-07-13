@@ -1,11 +1,12 @@
 import axios from 'axios'
 import qs from 'qs'
-const LOGIN = '/'
+const TEST = 'test'
 const PersonInfo = 'getpersoninfo'
 const GetVideo = 'getvideo'
 const ConversationList = 'getConversationList'
 const ConversationDetail = 'getConversationDetail'
 const sendMessage = 'sendMessage'
+
 var ax = axios.create({
   baseURL: 'https://mini.jkjun.cn/',
   timeout: 1000
@@ -17,6 +18,10 @@ function makePost (path, data) {
 
 function makeGet (path, params) {
   return ax.get(path, { params })
+}
+
+function Test (data) {
+  return makeGet(TEST, data)
 }
 
 function getPersonInfo (data) {
@@ -34,6 +39,7 @@ function getConversationList (data) {
 export default {
   makePost,
   makeGet,
+  Test,
   getPersonInfo,
   getVideo,
   getConversationList

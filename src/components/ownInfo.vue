@@ -21,43 +21,43 @@
         </div>
         <div class="video-block">
             <div class="tab-group base-flex">
-                <text class="base-font-size color-white tab" v-click="changeTap">作品</text>
+                <text class="base-font-size color-white tab" @click="changeTap">作品</text>
                 <text class="base-font-size color-white tab">|</text>
-                <text class="base-font-size color-white tab">Like</text>
+                <text class="base-font-size color-white tab" @click="changeTap">Like</text>
             </div>
-            <div v-if="showVideoList == 'works'" class="color-white video-list">
-                <!--<div>-->
-                    <!--<wxc-ep-slider :slider-id="sliderId"-->
-                                   <!--:card-length='cardLength'-->
-                                   <!--:card-s="cardSize"-->
-                                   <!--:select-index="2"-->
-                                   <!--@wxcEpSliderCurrentIndexSelected="wxcEpSliderCurrentIndexSelected">-->
-                        <!--&lt;!&ndash;自动生成demo&ndash;&gt;-->
-                        <!--<div v-for="(v,index) in [1,2,3,4,5]"-->
-                             <!--:key="index"-->
-                             <!--:slot="`card${index}_${sliderId}`"-->
-                             <!--:class="['slider',`slider${index}`]">-->
-                            <!--<text>这里是第{{index + 1}}个滑块</text>-->
-                        <!--</div>-->
-                    <!--</wxc-ep-slider>-->
-                <!--</div>-->
+            <div v-if="showVideoList === 0" class="color-white video-list">
+                <div>
+                    <!-- <wxc-ep-slider :slider-id="sliderId"
+                                   :card-length='cardLength'
+                                   :card-s="cardSize"
+                                   :select-index="2"
+                                   @wxcEpSliderCurrentIndexSelected="wxcEpSliderCurrentIndexSelected">
+                        自动生成demo
+                        <div v-for="(v,index) in [1,2,3,4,5]"
+                             :key="index"
+                             :slot="`card${index}_${sliderId}`"
+                             :class="['slider',`slider${index}`]">
+                            <text>这里是第{{index + 1}}个滑块</text>
+                        </div>
+                    </wxc-ep-slider> -->
+                </div>
             </div>
-            <div v-if="showVideoList == 'like'" class="color-white video-list">
-                <!--<div>-->
-                    <!--<wxc-ep-slider :slider-id="sliderId"-->
-                                   <!--:card-length='cardLength'-->
-                                   <!--:card-s="cardSize"-->
-                                   <!--:select-index="2"-->
-                                   <!--@wxcEpSliderCurrentIndexSelected="wxcEpSliderCurrentIndexSelected">-->
-                        <!--&lt;!&ndash;自动生成demo&ndash;&gt;-->
-                        <!--<div v-for="(v,index) in [1,2,3,4,5]"-->
-                             <!--:key="index"-->
-                             <!--:slot="`card${index}_${sliderId}`"-->
-                             <!--:class="['slider',`slider${index}`]">-->
-                            <!--<text>这里是第{{index + 1}}个滑块</text>-->
-                        <!--</div>-->
-                    <!--</wxc-ep-slider>-->
-                <!--</div>-->
+            <div v-if="showVideoList === 1" class="color-white video-list">
+                <div>
+                    <!-- <wxc-ep-slider :slider-id="sliderId"
+                                   :card-length='cardLength'
+                                   :card-s="cardSize"
+                                   :select-index="2"
+                                   @wxcEpSliderCurrentIndexSelected="wxcEpSliderCurrentIndexSelected">
+                        自动生成demo
+                        <div v-for="(v,index) in [1,2,3,4,5]"
+                             :key="index"
+                             :slot="`card${index}_${sliderId}`"
+                             :class="['slider',`slider${index}`]">
+                            <text>这里是第{{index + 1}}个滑块</text>
+                        </div>
+                    </wxc-ep-slider> -->
+                </div>
             </div>
         </div>
     </div>
@@ -70,7 +70,7 @@ export default {
   data () {
     return {
       labels: ['北京', '20岁', '双子座', '男'],
-      showVideoList: 'works',
+      showVideoList: 0,
       sliderId: 1,
       cardLength: 5,
       cardSize: {
@@ -100,10 +100,13 @@ export default {
           console.log(index);
       },
       changeTap () {
-        if (this.showVideoList === 'works'){
-            this.showVideoList = 'like'
+          alert(this.showVideoList)
+        if (this.showVideoList === 0){
+//            alert(1)
+            this.showVideoList = 1
         }else{
-            this.showVideoList = 'works'
+//            alert(2)
+            this.showVideoList = 0
         }
       }
   },
@@ -201,7 +204,7 @@ export default {
 
     .slider {
         width: 5rem;
-        height: 8rem;
+        height: 7rem;
         margin-top: 0.5rem;
         background-color: #C3413D;
         align-items: center;

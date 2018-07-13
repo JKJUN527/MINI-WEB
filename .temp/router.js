@@ -11,6 +11,7 @@ import PersonalEdit from '@/components/personalEdit'
 import Msglist from '@/components/msglist'
 import Shoot from '@/components/shoot'
 import Chat from '@/components/chat/chat'
+import Publish from '@/components/publish'
 
 Vue.use(Router)
 
@@ -65,6 +66,11 @@ module.exports = new Router({
       path: '/chat',
       name: 'chat',
       component: Chat
+    },
+    {
+      path: '/publish',
+      name: 'publish',
+      component: Publish 
     }
   ]
 })

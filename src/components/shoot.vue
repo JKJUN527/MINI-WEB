@@ -8,10 +8,6 @@
                     <input type="file" id="upload">
                     <label for="upload"></label>
                 </div>
-                <div class="btn">
-                    <input type="file" ref="file">
-                    <button @click="handleClick">点击</button>
-                </div>
             </div>
         </div>
     </div>

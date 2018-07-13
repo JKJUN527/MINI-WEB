@@ -69,6 +69,7 @@
     </div>
 </template>
 <script>
+const test = weex.requireModule('picker')
 import {
   WxcCity,
   WxcPopup,
@@ -98,6 +99,7 @@ export default {
   }),
   mounted () {
     // 模拟定位
+    console.log(test)
   },
   methods: {
     showListCity () {
@@ -184,15 +186,13 @@ input[type="text"]{
   width: 500px;
   height: 60px;
   line-height: 100px;
-  font-size: 48px;
-  opacity: 0;
+  background-color: transparent
 }
 
 textarea {
   width: 500px;
   height: 300px;
-  border: solid 1px black;
-  opacity: 0;
+  background-color: transparent
 }
 
 .sex-content {
