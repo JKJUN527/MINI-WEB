@@ -3,7 +3,7 @@
         <!-- <div class="edit">编辑</div> -->
         <div class="user-header base-flex">
             <div class="user-img">
-                <image src='' />
+                <image  />
             </div>
             <div class="user-base-info">
                 <text class="user-name base-font-size">user name</text>
@@ -26,38 +26,38 @@
                 <text class="base-font-size color-white tab" @click="changeTap">Like</text>
             </div>
             <div v-if="showVideoList === 0" class="color-white video-list">
-                <div>
-                    <wxc-ep-slider :slider-id="sliderId"
-                                   :card-length='cardLength'
-                                   :card-s="cardSize"
-                                   :select-index="2"
-                                   @wxcEpSliderCurrentIndexSelected="wxcEpSliderCurrentIndexSelected">
-                        <!--自动生成demo-->
-                        <div v-for="(v,index) in [1,2,3,4,5]"
-                             :key="index"
-                             :slot="`card${index}_${sliderId}`"
-                             :class="['slider',`slider${index}`]">
-                            <text>这里是第{{index + 1}}个滑块</text>
-                        </div>
-                    </wxc-ep-slider>
-                </div>
+                <!--<div>-->
+                    <!--<wxc-ep-slider :slider-id="sliderId"-->
+                                   <!--:card-length='cardLength'-->
+                                   <!--:card-s="cardSize"-->
+                                   <!--:select-index="2"-->
+                                   <!--@wxcEpSliderCurrentIndexSelected="wxcEpSliderCurrentIndexSelected">-->
+                        <!--&lt;!&ndash;自动生成demo&ndash;&gt;-->
+                        <!--<div v-for="(v,index) in [1,2,3,4,5]"-->
+                             <!--:key="index"-->
+                             <!--:slot="`card${index}_${sliderId}`"-->
+                             <!--:class="['slider',`slider${index}`]">-->
+                            <!--<text>这里是第{{index + 1}}个滑块</text>-->
+                        <!--</div>-->
+                    <!--</wxc-ep-slider>-->
+                <!--</div>-->
             </div>
             <div v-if="showVideoList === 1" class="color-white video-list">
-                <div>
-                    <wxc-ep-slider :slider-id="sliderId"
-                                   :card-length='cardLength'
-                                   :card-s="cardSize"
-                                   :select-index="2"
-                                   @wxcEpSliderCurrentIndexSelected="wxcEpSliderCurrentIndexSelected">
-                        <!--自动生成demo-->
-                        <div v-for="(v,index) in [1,2,3,4,5]"
-                             :key="index"
-                             :slot="`card${index}_${sliderId}`"
-                             :class="['slider',`slider${index}`]">
-                            <text>这里是第{{index + 1}}个滑块</text>
-                        </div>
-                    </wxc-ep-slider>
-                </div>
+                <!--<div>-->
+                    <!--<wxc-ep-slider :slider-id="sliderId"-->
+                                   <!--:card-length='cardLength'-->
+                                   <!--:card-s="cardSize"-->
+                                   <!--:select-index="2"-->
+                                   <!--@wxcEpSliderCurrentIndexSelected="wxcEpSliderCurrentIndexSelected">-->
+                        <!--&lt;!&ndash;自动生成demo&ndash;&gt;-->
+                        <!--<div v-for="(v,index) in [1,2,3,4,5]"-->
+                             <!--:key="index"-->
+                             <!--:slot="`card${index}_${sliderId}`"-->
+                             <!--:class="['slider',`slider${index}`]">-->
+                            <!--<text>这里是第{{index + 1}}个滑块</text>-->
+                        <!--</div>-->
+                    <!--</wxc-ep-slider>-->
+                <!--</div>-->
             </div>
         </div>
     </div>
