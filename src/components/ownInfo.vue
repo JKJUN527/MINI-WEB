@@ -27,36 +27,36 @@
             </div>
             <div v-if="showVideoList === 0" class="color-white video-list">
                 <div>
-                    <wxc-ep-slider :slider-id="sliderId"
+                    <!-- <wxc-ep-slider :slider-id="sliderId"
                                    :card-length='cardLength'
                                    :card-s="cardSize"
                                    :select-index="2"
                                    @wxcEpSliderCurrentIndexSelected="wxcEpSliderCurrentIndexSelected">
-                        <!--自动生成demo-->
+                        自动生成demo
                         <div v-for="(v,index) in [1,2,3,4,5]"
                              :key="index"
                              :slot="`card${index}_${sliderId}`"
                              :class="['slider',`slider${index}`]">
                             <text>这里是第{{index + 1}}个滑块</text>
                         </div>
-                    </wxc-ep-slider>
+                    </wxc-ep-slider> -->
                 </div>
             </div>
             <div v-if="showVideoList === 1" class="color-white video-list">
                 <div>
-                    <wxc-ep-slider :slider-id="sliderId"
+                    <!-- <wxc-ep-slider :slider-id="sliderId"
                                    :card-length='cardLength'
                                    :card-s="cardSize"
                                    :select-index="2"
                                    @wxcEpSliderCurrentIndexSelected="wxcEpSliderCurrentIndexSelected">
-                        <!--自动生成demo-->
+                        自动生成demo
                         <div v-for="(v,index) in [1,2,3,4,5]"
                              :key="index"
                              :slot="`card${index}_${sliderId}`"
                              :class="['slider',`slider${index}`]">
                             <text>这里是第{{index + 1}}个滑块</text>
                         </div>
-                    </wxc-ep-slider>
+                    </wxc-ep-slider> -->
                 </div>
             </div>
         </div>
