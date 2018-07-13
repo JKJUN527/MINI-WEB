@@ -7,7 +7,7 @@ const ConversationList = 'getConversationList'
 const ConversationDetail = 'getConversationDetail'
 const sendMessage = 'sendMessage'
 var ax = axios.create({
-  baseURL: 'http://mini.jkjun.cn/',
+  baseURL: 'https://mini.jkjun.cn/',
   timeout: 1000
 })
 
