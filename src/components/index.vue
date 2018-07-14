@@ -1,13 +1,13 @@
 <template>
-    <div class="test" @click="handleClick" @touchstart="handleTouchStart" @touchmove='handleTouchMove' @touchend="handleTouchEnd" :style="{opacity: opacity, transform: `rotate(${rotate}deg) translate(${distanceX}px, ${distanceY}px)`}">
-        <div>startX: {{ startX }}</div>
-        <div>startY: {{ startY }}</div>
-        <div>X: {{ X }}</div>
-        <div>Y: {{ Y }}</div>
-        <div>rotate: {{ rotate }}</div>
+    <div>
+        <video id="video2" src="https://mini.jkjun.cn/media/videos/63.mp4" style="width: 100%; position: absolute"></video>
+        <div class="video-wrapper" @click="handleClick" @touchstart="handleTouchStart" @touchmove='handleTouchMove' @touchend="handleTouchEnd" :style="{opacity: opacity, transform: `rotate(${rotate}deg) translate(${distanceX}px, ${distanceY}px)`}">
+            <video id="video1" src="https://mini.jkjun.cn/media/videos/65.mp4" auto-play="true" play-status="play" style="width: 100%"></video>
+        </div>
     </div>
 </template>
 <script>
+import ajax from '../ajax/index.js'
 export default {
     data () {
         return {
@@ -22,9 +22,13 @@ export default {
             opacity: 1
         }
     },
+    mounted () {
+        ajax.getVideo({})
+        .then(({ data }) => {
+            // alert(JSON.stringify(data))
+        })
+    },
     methods: {
-        handleClick () {
-        },
         handleTouchStart (e) {
             this.startX = e.changedTouches[0].pageX
             this.X = e.changedTouches[0].pageX
@@ -76,7 +80,7 @@ export default {
 }
 </script>
 <style scoped>
-    .test {
+    .video-wrapper {
         flex-grow: 1;
         background-color: yellow;
         position: relative;
