@@ -1,7 +1,8 @@
 <template>
     <div class="infoEdit">
-        <div class="user-img">
-            <image />
+        <div class="user-img" @click="uploadimg">
+            <image :src="imgDataUrl" />
+            <input type="file" id="upload_file" style="display: none" class="upload__input" @change="getFile" accept="image/png,image/gif">
         </div>
         <hr />
         <div class="user-info">
@@ -85,6 +86,8 @@ export default {
     cityStyleType: 'list',
     value: '',
     sex: 'man',
+    imgDataUrl: '/src/asset/img/qq.jpg',
+    files: '',
     isBottomShow: false,
     currentDate: '',
     selectedDate: [],
@@ -102,6 +105,10 @@ export default {
     console.log(test)
   },
   methods: {
+    uploadimg(){
+        alert(123)
+        document.getElementById('upload_file').click()
+    },
     showListCity () {
       this.cityStyleType = 'list'
       this.$refs['wxcCity'].show()
@@ -140,7 +147,17 @@ export default {
       setTimeout(() => {
         this.$refs['wxcPageCalendar'].show()
       }, 10)
-    }
+    },
+      getFile (e) {
+          let _this = this
+          var files = e.target.files[0]
+          if (!e || !window.FileReader) return  // 看支持不支持FileReader
+          let reader = new FileReader()
+          reader.readAsDataURL(files) // 这里是最关键的一步，转换就在这里
+          reader.onloadend = function () {
+              _this.imgDataUrl = this.result
+          }
+      }
   },
   filters: {
     sexTranslate (sex) {
@@ -158,12 +175,13 @@ export default {
   color: white;
 }
 
-.user-img {
+.user-img figure{
   margin: 30px 0;
   width: 160px;
   height: 160px;
   border-radius: 50%;
   background-color: white;
+  margin-left: 40%;
 }
 
 .user-info {
