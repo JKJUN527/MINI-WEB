@@ -1,8 +1,11 @@
 <template>
     <div>
         <div v-for="(src, index) in srcs" :key="index">
-            <div class="video-wrapper" @click="handleClick" @touchstart="handleTouchStart" @touchmove='handleTouchMove' @touchend="handleTouchEnd" :style="{opacity: opacity, transform: `rotate(${rotate}deg) translate(${distanceX}px, ${distanceY}px)`}">
-                <video id="video1" :src="src" :auto-play="index == 0 ? true : false" play-status="play" style="width: 100%"></video>
+            <div v-if="index == 0" class="video-wrapper" @click="handleClick" @touchstart="handleTouchStart" @touchmove='handleTouchMove' @touchend="handleTouchEnd" :style="{opacity: opacity, transform: `rotate(${rotate}deg) translate(${distanceX}px, ${distanceY}px)`}">
+                <video :src="src" :auto-play="index == 0 ? true : false" play-status="play" style="width: 100%"></video>
+            </div>
+            <div v-else >
+                <video :src="src" auto-play="false" preload="true" style="width: 100%"></video>
             </div>
         </div>
         <wxc-popup popup-color="gray"
