@@ -17,7 +17,7 @@ export default {
     align-items: flex-start
   }
   .own-img {
-    margin: 0 20px;
+    margin: 0 0.4rem 0 0.2rem;
     width: 70px;
     height: 70px;
     border-radius: 50%;
