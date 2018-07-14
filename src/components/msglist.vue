@@ -128,7 +128,9 @@ export default {
     .like-time{
         text-align: center;
         color: white;
-        margin-top: 0.4rem;d
+        margin-top: 0.4rem;
+        font-size: 0.35rem;
+        opacity: 0.8;
     }
     .super-like-notice{
         padding: 25px;
@@ -136,7 +138,7 @@ export default {
         border-radius:20px;
         /*opacity: 0.5;*/
         width: 80%;
-        min-height: 3rem;
+        min-height: 3.8rem;
         height: auto;
         background:url(/src/asset/img/superlike.png) no-repeat;
         background-size: cover;
@@ -151,13 +153,13 @@ export default {
     }
     .super-like-notice button{
         background: url("/src/asset/img/icon.png") no-repeat;
-        width: 40%;
+        width: 38%;
         height: 0.8rem;
         background-size: cover;
-        margin-left: 30%;
-        margin-top: 0.5rem;
+        margin-left: 32%;
+        margin-top: 0.3rem;
         color: white;
-        font-size: 0.5rem;
+        font-size: 0.45rem;
         text-align: center;
     }
     .super-like-notice .super-like-name{
@@ -169,6 +171,7 @@ export default {
         font-size: 0.5rem;
         text-align: center;
         color: white;
+        margin-top: 0.8rem;
     }
     .msg-list-content{
         height: 3rem !important;
@@ -203,7 +206,7 @@ export default {
     .msg-time{
         top: 0.2rem;
         right: 0.3rem;
-        font-size: 0.39rem;
+        font-size: 0.35rem;
         opacity: 0.8;
     }
     .msg-num{
