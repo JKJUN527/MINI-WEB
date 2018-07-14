@@ -26,7 +26,7 @@ export default {
 
   .own-msg {
     padding: 25px 20px;
-    max-width: 550px;
+    max-width: 6.5rem;
     color: white;
     background-color: white;
     border-radius: 24px;

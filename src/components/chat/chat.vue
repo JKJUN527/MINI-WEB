@@ -1,12 +1,19 @@
 <template>
-    <div class="chatting">
-        <div v-for="(chat, index) in data" :key="index">
-          <chat-own :msg='chat.msg' v-if="chat.type === 1"></chat-own>
-          <chat-other :msg='chat.msg' v-else></chat-other>
+    <div class="chat-module">
+        <div class="chat-header">
+            <text class="left"></text>
+            <text class="name">JKJUN</text>
+            <text class="right"></text>
         </div>
-        <div id="send-block" class="base-flex">
-          <input type="text" @focus="changeColor" placeholder="聊点什么吧...">
-          <button @click="send_msg">发送</button>
+        <div class="chatting">
+            <div v-for="(chat, index) in data" :key="index">
+              <chat-own :msg='chat.msg' v-if="chat.type === 1"></chat-own>
+              <chat-other :msg='chat.msg' v-else></chat-other>
+            </div>
+            <div id="send-block" class="base-flex">
+              <input type="text" @focus="changeColor" placeholder="聊点什么吧...">
+              <button @click="send_msg">发送</button>
+            </div>
         </div>
     </div>
 </template>
@@ -37,7 +44,45 @@ export default {
 }
 </script>
 <style scoped>
+    .chat-module{
+        height: 100%;
+        background-color: #161824;
+    }
+    .chat-header{
+        height: 7%;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        /*justify-content: center;*/
+
+    }
+    .chat-header p{
+        /*position: absolute;*/
+        color:white;
+    }
+    .chat-header .left{
+        background: url("/src/asset/img/backicon.png");
+        background-size: cover;
+        width: 0.3rem;
+        height: 0.55rem;
+        left: 0.4rem;
+    }
+    .chat-header .right{
+        background: url("/src/asset/img/selficon.png");
+        background-size: cover;
+        width: 0.7rem;
+        height: 0.7rem;
+        right: 0.4rem;
+    }
+    .chat-header .name{
+        font-size: 0.55rem;
+        /*left:50%;*/
+    }
+  .chat-header{
+      background-color: #161824;
+  }
   .chatting {
+      height: 93%;
     position: relative;
     padding: 30px 0 0;
     flex-grow: 1;

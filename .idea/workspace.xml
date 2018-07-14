@@ -2,23 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5e1848f4-07a5-4b79-82c8-6613cf3eb43a" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/asset/img/input_msg.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/asset/img/input_msg_white.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/asset/img/发送消息.png" afterPath="$PROJECT_DIR$/src/asset/img/发送消息.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/asset/img/backicon.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/asset/img/selficon.png" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.temp/router.js" afterPath="$PROJECT_DIR$/.temp/router.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dist/index.js" afterPath="$PROJECT_DIR$/dist/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/weex-ui/packages/wxc-tab-page/full-page.vue" afterPath="$PROJECT_DIR$/node_modules/weex-ui/packages/wxc-tab-page/full-page.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/weex-ui/packages/wxc-tab-page/index.vue" afterPath="$PROJECT_DIR$/node_modules/weex-ui/packages/wxc-tab-page/index.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/release/web/index.bundle.js" afterPath="$PROJECT_DIR$/release/web/index.bundle.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/release/web/index.bundle.map" afterPath="$PROJECT_DIR$/release/web/index.bundle.map" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/release/web/vendor.bundle.js" afterPath="$PROJECT_DIR$/release/web/vendor.bundle.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/release/web/vendor.bundle.map" afterPath="$PROJECT_DIR$/release/web/vendor.bundle.map" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/chat/chat-other.vue" afterPath="$PROJECT_DIR$/src/components/chat/chat-other.vue" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/chat/chat-own.vue" afterPath="$PROJECT_DIR$/src/components/chat/chat-own.vue" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/chat/chat.vue" afterPath="$PROJECT_DIR$/src/components/chat/chat.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/msglist.vue" afterPath="$PROJECT_DIR$/src/components/msglist.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/personalEdit.vue" afterPath="$PROJECT_DIR$/src/components/personalEdit.vue" />
     </list>
     <ignored path="MINI-WEB.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -52,8 +42,8 @@
       <file leaf-file-name="msglist.vue" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/msglist.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="288">
-              <caret line="131" column="15" selection-start-line="131" selection-start-column="8" selection-end-line="131" selection-end-column="15" />
+            <state relative-caret-position="414">
+              <caret line="119" column="8" selection-start-line="119" selection-start-column="8" selection-end-line="119" selection-end-column="31" />
               <folding>
                 <element signature="e#2902#2966#0" expanded="true" />
               </folding>
@@ -77,8 +67,8 @@
       <file leaf-file-name="chat.vue" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/components/chat/chat.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="56" column="20" selection-start-line="56" selection-start-column="20" selection-end-line="56" selection-end-column="20" />
+            <state relative-caret-position="336">
+              <caret line="77" column="27" selection-start-line="77" selection-start-column="27" selection-end-line="77" selection-end-column="27" />
               <folding />
             </state>
           </provider>
@@ -87,8 +77,8 @@
       <file leaf-file-name="chat-other.vue" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/chat/chat-other.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="201">
-              <caret line="21" column="17" selection-start-line="21" selection-start-column="17" selection-end-line="21" selection-end-column="17" />
+            <state relative-caret-position="588">
+              <caret line="28" column="21" selection-start-line="28" selection-start-column="21" selection-end-line="28" selection-end-column="21" />
               <folding />
             </state>
           </provider>
@@ -97,8 +87,8 @@
       <file leaf-file-name="chat-own.vue" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/chat/chat-own.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="273">
-              <caret line="19" column="12" selection-start-line="19" selection-start-column="12" selection-end-line="19" selection-end-column="30" />
+            <state relative-caret-position="378">
+              <caret line="30" column="28" selection-start-line="30" selection-start-column="28" selection-end-line="30" selection-end-column="28" />
               <folding />
             </state>
           </provider>
@@ -558,7 +548,7 @@
       <workItem from="1531140020990" duration="26465000" />
       <workItem from="1531315158421" duration="11175000" />
       <workItem from="1531547798507" duration="5194000" />
-      <workItem from="1531559383174" duration="12562000" />
+      <workItem from="1531559383174" duration="16667000" />
     </task>
     <task id="LOCAL-00001" summary="qq登录页样式">
       <created>1531039256645</created>
@@ -630,11 +620,18 @@
       <option name="project" value="LOCAL" />
       <updated>1531560735961</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="调整好chat聊天界面">
+      <created>1531575650484</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1531575650485</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="79766000" />
+    <option name="totallyTimeSpent" value="83871000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -730,7 +727,8 @@
     <MESSAGE value="调整personalEdit" />
     <MESSAGE value="shoot 修改" />
     <MESSAGE value="调整msglist" />
-    <option name="LAST_COMMIT_MESSAGE" value="调整msglist" />
+    <MESSAGE value="调整好chat聊天界面" />
+    <option name="LAST_COMMIT_MESSAGE" value="调整好chat聊天界面" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1031,14 +1029,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/chat/chat-other.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="201">
-          <caret line="21" column="17" selection-start-line="21" selection-start-column="17" selection-end-line="21" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/ownInfo.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="337">
@@ -1050,28 +1040,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/msglist.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
-          <caret line="131" column="15" selection-start-line="131" selection-start-column="8" selection-end-line="131" selection-end-column="15" />
-          <folding>
-            <element signature="e#2902#2966#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/personalEdit.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="221">
           <caret line="172" column="27" selection-start-line="172" selection-start-column="7" selection-end-line="172" selection-end-column="27" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/chat/chat-own.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="273">
-          <caret line="19" column="12" selection-start-line="19" selection-start-column="12" selection-end-line="19" selection-end-column="30" />
           <folding />
         </state>
       </provider>
@@ -1092,10 +1064,36 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/chat/chat-own.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="378">
+          <caret line="30" column="28" selection-start-line="30" selection-start-column="28" selection-end-line="30" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/chat/chat-other.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="588">
+          <caret line="28" column="21" selection-start-line="28" selection-start-column="21" selection-end-line="28" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/msglist.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="414">
+          <caret line="119" column="8" selection-start-line="119" selection-start-column="8" selection-end-line="119" selection-end-column="31" />
+          <folding>
+            <element signature="e#2902#2966#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/chat/chat.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="56" column="20" selection-start-line="56" selection-start-column="20" selection-end-line="56" selection-end-column="20" />
+        <state relative-caret-position="336">
+          <caret line="77" column="27" selection-start-line="77" selection-start-column="27" selection-end-line="77" selection-end-column="27" />
           <folding />
         </state>
       </provider>

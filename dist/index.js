@@ -14877,7 +14877,19 @@ module.exports = __vue_exports__
 /***/ (function(module, exports) {
 
 module.exports = {
+  "chat-module": {
+    "height": 100,
+    "backgroundColor": "#161824"
+  },
+  "chat-header": {
+    "height": 7,
+    "flexDirection": "row",
+    "alignItems": "center",
+    "justifyContent": "space-between",
+    "backgroundColor": "#161824"
+  },
   "chatting": {
+    "height": 93,
     "position": "relative",
     "paddingTop": "30",
     "paddingRight": 0,
@@ -14909,6 +14921,13 @@ var _chatOther2 = _interopRequireDefault(_chatOther);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -15019,7 +15038,7 @@ module.exports = {
     "paddingRight": "20",
     "paddingBottom": "25",
     "paddingLeft": "20",
-    "maxWidth": "550",
+    "maxWidth": 6.5,
     "color": "#FFFFFF",
     "backgroundColor": "#FFFFFF",
     "borderRadius": "24",
@@ -15137,7 +15156,7 @@ module.exports = {
     "paddingRight": "20",
     "paddingBottom": "25",
     "paddingLeft": "20",
-    "maxWidth": "550",
+    "maxWidth": 6.5,
     "backgroundColor": "#FFFFFF",
     "borderRadius": "24"
   }
@@ -15185,6 +15204,8 @@ module.exports.render._withStripped = true
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
+    staticClass: ["chat-module"]
+  }, [_vm._m(0), _c('div', {
     staticClass: ["chatting"]
   }, [_vm._l((_vm.data), function(chat, index) {
     return _c('div', {
@@ -15215,8 +15236,18 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     on: {
       "click": _vm.send_msg
     }
-  }, [_vm._v("发送")])], 1)], 2)
-},staticRenderFns: []}
+  }, [_vm._v("发送")])], 1)], 2)])
+},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: ["chat-header"]
+  }, [_c('text', {
+    staticClass: ["left"]
+  }), _c('text', {
+    staticClass: ["name"]
+  }, [_vm._v("JKJUN")]), _c('text', {
+    staticClass: ["right"]
+  })])
+}]}
 module.exports.render._withStripped = true
 
 /***/ }),
