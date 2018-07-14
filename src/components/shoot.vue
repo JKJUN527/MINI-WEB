@@ -71,8 +71,8 @@ export default {
     .shoot-controller button{
         background: url("/src/asset/img/takephoto.png");
         background-size: cover;
-        width: 190px;
-        height: 190px;
+        width: 180px;
+        height: 180px;
         border-radius: 50%;
         margin-top: 0.2rem;
     }
@@ -99,9 +99,9 @@ export default {
         position: absolute;
         background: url("/src/asset/img/cameraicon.png");
         background-size: cover;
-        height: 0.8rem;
+        height: 0.7rem;
         width: 0.8rem;
-        border-radius: 50%;
+        /*border-radius: 50%;*/
         left: 6.5rem;
         top: 0.1rem;
     }

@@ -128,7 +128,7 @@ export default {
     .like-time{
         text-align: center;
         color: white;
-        margin-top: 0.4rem;
+        margin-top: 0.4rem;d
     }
     .super-like-notice{
         padding: 25px;
