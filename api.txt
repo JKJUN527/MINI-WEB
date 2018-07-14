@@ -1,5 +1,18 @@
 getConversationList: 
 { 
-    lasttime: ?
-    count: ?
+    lasttime: ? '早于这个时间'
+    count: ? || 10
+}
+[{
+    user: '对方用户id'，
+    name: '对方用户名字'，
+    sentence: '最后一条消息'
+}]
+
+
+getConversationDetail:
+{
+    id: *,
+    lastId: ？ '早于这个id',
+    count: ? || 10
 }

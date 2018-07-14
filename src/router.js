@@ -11,6 +11,7 @@ import Msglist from '@/components/msglist'
 import Shoot from '@/components/shoot'
 import Chat from '@/components/chat/chat'
 import Publish from '@/components/publish'
+import MegTest from '@/components/msglist/msglist'
 
 Vue.use(Router)
 
@@ -70,6 +71,11 @@ module.exports = new Router({
       path: '/publish',
       name: 'publish',
       component: Publish 
+    },
+    {
+      path: '/msgtest',
+      name: 'msgtest',
+      component: MegTest 
     }
   ]
 })

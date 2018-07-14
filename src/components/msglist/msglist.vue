@@ -17,23 +17,8 @@
                 <wxc-pan-item :ext-id="'1-' + (v) + '-' + (key)"
                               url=""
                               @wxcPanItemPan="wxcPanItemPan">
-                    <div class="content" v-if="key%2 === 0">
-                        <div class="like-notice">
-                            <text>{{key}}你收到一个like</text>
-                        </div>
-                        <text class="like-time">13:05</text>
-                    </div>
-                    <div class="content" v-if="key%2 != 0">
-                        <div class="super-like-notice">
-                            <image src="/src/asset/img/qq.jpg" />
-                            <text class="super-like-name">jkjun</text>
-                            <br>
-                            <br>
-                            <text class="super-like-content">好喜欢你的视频，超级喜欢你</text>
-                            <button>发起聊天</button>
-                        </div>
-                        <text class="like-time">13:05</text>
-                    </div>
+                    <Match v-if="demo.type == 1"></Match>
+                    <SuperLike v-if="demo.type == 123" :name="demo.username" :msg="demo.message"></SuperLike>
                 </wxc-pan-item>
             </cell>
         </list>
@@ -49,32 +34,28 @@
                 <wxc-pan-item :ext-id="'1-' + (v) + '-' + (key)"
                               url=""
                               @wxcPanItemPan="wxcPanItemPan">
-                    <div class="content msg-list-content">
-                        <div class="msg-list">
-                            <image src="/src/asset/img/qq.jpg"></image>
-                            <text class="msg-name">大概是肖宇</text>
-                            <text class="msg-time">12:30</text>
-                            <text class="msg-content">你视频拍的很不错喔！可以认识一下吗？</text>
-                            <text class="msg-num">5</text>
-                        </div>
-                    </div>
+                    <Msg :name="demo.name" :msg="demo.sentence"></Msg>
                 </wxc-pan-item>
             </cell>
         </list>
     </wxc-tab-page>
 </template>
 <script>
+//    const dom = weex.requireModule('dom');
 import { WxcTabPage, WxcPanItem, Utils, BindEnv } from 'weex-ui'
-import ajax from '../ajax/index.js'
-import Config from './config'
+import ajax from '../../ajax/index.js'
+import Match from './match'
+import Msg from './msg'
+import SuperLike from './superlike'
+// https://github.com/alibaba/weex-ui/blob/master/example/tab-page/config.js
+import Config from '../config'
 
 export default {
-  components: { WxcTabPage, WxcPanItem },
+  components: { WxcTabPage, WxcPanItem, Match, Msg, SuperLike },
   data: () => ({
     tabTitles: Config.tabTitles,
     tabStyles: Config.tabStyles,
     tabList: [],
-    demoList: [1, 2, 3, 4, 5, 6, 7, 8, 9],
     tabPageHeight: 1334
   }),
   created () {
@@ -83,7 +64,15 @@ export default {
     this.$set(this.tabList, 0, this.demoList)
   },
   mounted () {
+      ajax.getPushMessages({})
+      .then(({data}) => {
+          this.$set(this.tabList, 0, data.data)
+      })
+
       ajax.getConversationList({})
+      .then(({data}) => {
+          this.$set(this.tabList, 1, data.data)
+      })
   },
   methods: {
     wxcTabPageCurrentTabSelected (e) {
@@ -179,8 +168,6 @@ export default {
         height: 2rem;
         border-radius: 1rem;
         margin-left: 0.3rem;
-        /*position: absolute;*/
-        /*left: -4rem;*/
     }
     .msg-list p{
         color: white;
@@ -217,30 +204,23 @@ export default {
     }
     .item-container {
         width: 750px;
-        /*background-color: #f2f3f4;*/
         background-color: #000000;
     }
 
 .border-cell {
   background-color: #000000;
   width: 750px;
-  /*height: 24px;*/
   align-items: center;
   justify-content: center;
-  /*border-bottom-width: 1px;*/
-  /*border-style: solid;*/
-  /*border-color: #e0e0e0;*/
 }
 
 .cell {
-  /*background-color: #ffffff;*/
   margin-bottom: 0;
 }
 
     .content{
         width:750px;
         height:5rem;
-        /*border-bottom-width:1px;*/
         align-items: center;
         justify-content: center;
         background-color: #000000;

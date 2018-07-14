@@ -5,7 +5,8 @@ const PersonInfo = 'getpersoninfo'
 const GetVideo = 'getvideo'
 const ConversationList = 'getConversationList'
 const ConversationDetail = 'getConversationDetail'
-const sendMessage = 'sendMessage'
+// const sendMessage = 'sendMessage'
+const PushMessages = 'getPushMessages'
 
 var ax = axios.create({
   baseURL: 'https://mini.jkjun.cn/',
@@ -36,11 +37,23 @@ function getConversationList (data) {
   return makeGet(ConversationList, data)
 }
 
+
+function getConversationDetail (data) {
+  return makeGet(ConversationDetail, data)
+}
+
+
+function getPushMessages (data) {
+  return makeGet(PushMessages, data)
+}
+
 export default {
   makePost,
   makeGet,
   Test,
   getPersonInfo,
   getVideo,
-  getConversationList
+  getConversationList,
+  getConversationDetail,
+  getPushMessages
 }

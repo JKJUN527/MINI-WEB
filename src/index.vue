@@ -5,6 +5,7 @@
 </template>
 
 <script>
+import axios from 'axios'
 import { WxcButton, WxcPopup } from 'weex-ui'
 export default {
   components: { WxcButton, WxcPopup },
