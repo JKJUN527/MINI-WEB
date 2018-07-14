@@ -48,8 +48,8 @@ export default {
     mounted () {
         ajax.getVideo({ count: 2 })
         .then(({ data }) => {
-            this.srcs.push(data.data[0].replace('http', 'https'))
-            this.srcs.push(data.data[1].replace('http', 'https'))
+            this.srcs.push(data.data[0])
+            this.srcs.push(data.data[1])
         })
     },
     methods: {
@@ -72,8 +72,8 @@ export default {
             }
             ajax.getVideo({ count: 1 })
             .then(({ data }) => {
-                this.video_1 = this.video_2
-                this.video_2 = data.data[0].replace('http', 'https')
+                this.srcs.shift()
+                this.srcs.push(data.data[])
             })
             if(Math.abs(this.distanceX) > Math.abs(this.distanceY)) {
                 if(this.distanceX > 0) {
