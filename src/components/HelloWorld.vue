@@ -1,6 +1,5 @@
 <template>
   <div>
-    <button @click="handleClick">asds111asda</button>
     <router-link :to="{name: 'login'}" class="base-font-size">
       login123
     </router-link>
@@ -31,21 +30,28 @@
     <router-link :to="{name: 'publish'}" class="base-font-size">
       publish
     </router-link>
+    <router-link :to="{name: 'msgtest'}" class="base-font-size">
+      msgTest
+    </router-link>
+    <div>{{ data }}</div>
   </div>
 </template>
 <script>
 import ajax from '../ajax/index.js'
-import axios from 'axios'
-var instance = axios.create()
 export default {
+  data () {
+    return {
+    }
+  },
   mounted () {
-    },
+  },
   methods: {
     handleClick () {
-      console.log(ajax.getVideo().catch(e => {
-        console.log(e)
-      }))
     }
   }
 }
 </script>
+<style scoped>
+</style>
+
+

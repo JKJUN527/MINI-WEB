@@ -6,7 +6,7 @@
                 <image  />
             </div>
             <div class="user-base-info">
-                <text class="user-name base-font-size">user name</text>
+                <text class="user-name base-font-size">{{ name }}</text>
                 <div class="user-label">
                     <text v-for="(label, key) in labels" :key="key" class="label-item middle-font-size" >{{ label }}</text>
                 </div>
@@ -14,10 +14,14 @@
         </div>
         <div class="user-signature">
             <text class="color-white">个性签名</text>
-            <text class="color-white" style="{text-align: center}">xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</text>
+            <text class="color-white" style="{text-align: center}">{{ signature }}</text>
         </div>
         <div class="edit-block">
-            <button class="edit-btn middle-font-size">编辑资料</button>
+              <button class="edit-btn middle-font-size" @click="doEdit">
+                <router-link class="color-white" :to="{name: 'personalEdit'}">
+                    编辑资料
+                </router-link>
+              </button>
         </div>
         <div class="video-block">
             <div class="tab-group base-flex">
@@ -69,7 +73,9 @@ export default {
   components: { WxcEpSlider },
   data () {
     return {
+      name: '',
       labels: ['北京', '20岁', '双子座', '男'],
+      signature: '',
       showVideoList: 0,
       sliderId: 1,
       cardLength: 5,
@@ -83,12 +89,12 @@ export default {
   },
   mounted () {
     ajax.getPersonInfo({})
-    .then((res) => {
-      console.log(res)
-    })
-    ajax.getVideo({})
-    .then((res) => {
-        console.log(res)
+    .then(({ data }) => {
+      data = data.data
+      this.labels = [data.local, data.age + '岁', data.constellation, data.sex]
+      // this.labels.slice()
+      this.name = data.name
+      this.signature = data.signature
     })
   },
   methods: {
@@ -102,10 +108,8 @@ export default {
       changeTap () {
           alert(this.showVideoList)
         if (this.showVideoList === 0){
-//            alert(1)
             this.showVideoList = 1
         }else{
-//            alert(2)
             this.showVideoList = 0
         }
       }
@@ -166,7 +170,6 @@ export default {
         margin-right: 20px;
         padding: 0 10px;
         border-radius: 10px;
-        color: white;
         background: #143640;
     }
 

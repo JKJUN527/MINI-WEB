@@ -102,7 +102,6 @@ export default {
   }),
   mounted () {
     // 模拟定位
-    console.log(test)
   },
   methods: {
     uploadimg(){

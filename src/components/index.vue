@@ -1,16 +1,33 @@
 <template>
-    <div class="test" @click="handleClick" @touchstart="handleTouchStart" @touchmove='handleTouchMove' @touchend="handleTouchEnd" :style="{opacity: opacity, transform: `rotate(${rotate}deg) translate(${distanceX}px, ${distanceY}px)`}">
-        <div>startX: {{ startX }}</div>
-        <div>startY: {{ startY }}</div>
-        <div>X: {{ X }}</div>
-        <div>Y: {{ Y }}</div>
-        <div>rotate: {{ rotate }}</div>
+    <div>
+        <video id="video2" preload='true' :src="video_2" style="width: 100%; position: absolute"></video>
+        <div class="video-wrapper" @click="handleClick" @touchstart="handleTouchStart" @touchmove='handleTouchMove' @touchend="handleTouchEnd" :style="{opacity: opacity, transform: `rotate(${rotate}deg) translate(${distanceX}px, ${distanceY}px)`}">
+            <video id="video1" :src="video_1" auto-play="true" play-status="play" style="width: 100%"></video>
+        </div>
+        <wxc-popup popup-color="gray"
+            :show="isBottomShow"
+            @wxcPopupOverlayClicked="popupOverlayBottomClick"
+            pos="bottom"
+            height="300">
+            <div>
+                <div>
+                    <image />
+                    <div class="user-name"></div>
+                </div>
+
+            </div>
+        </wxc-popup>
     </div>
 </template>
 <script>
+import ajax from '../ajax/index.js'
+import { WxcPopup } from 'weex-ui'
 export default {
+    components: { WxcPopup },
     data () {
         return {
+            video_1: '',
+            video_2: '',
             startX: 0,
             startY: 0,
             X: 0,
@@ -19,12 +36,18 @@ export default {
             distanceY: 0,
             R: 1000,
             rotate: 0,
-            opacity: 1
+            opacity: 1,
+            isBottomShow: false
         }
     },
+    mounted () {
+        ajax.getVideo({ count: 2 })
+        .then(({ data }) => {
+            this.video_1 = data.data[0]
+            this.video_2 = data.data[1]
+        })
+    },
     methods: {
-        handleClick () {
-        },
         handleTouchStart (e) {
             this.startX = e.changedTouches[0].pageX
             this.X = e.changedTouches[0].pageX
@@ -42,6 +65,11 @@ export default {
                 this.rotate = 0
                 return
             }
+            ajax.getVideo({ count: 1 })
+            .then(({ data }) => {
+                this.video_1 = this.video_2
+                this.video_2 = data.data[0]
+            })
             if(Math.abs(this.distanceX) > Math.abs(this.distanceY)) {
                 if(this.distanceX > 0) {
                     console.log('右划like')
@@ -76,9 +104,9 @@ export default {
 }
 </script>
 <style scoped>
-    .test {
+    .video-wrapper {
         flex-grow: 1;
-        background-color: yellow;
+        background-color: transparent;
         position: relative;
         transition: opacity 0.5s;
         -moz-transition: opacity 0.5s; /* Firefox 4 */

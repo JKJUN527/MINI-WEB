@@ -5,12 +5,12 @@ const PersonInfo = 'getpersoninfo'
 const GetVideo = 'getvideo'
 const ConversationList = 'getConversationList'
 const ConversationDetail = 'getConversationDetail'
-const sendMessage = 'sendMessage'
+// const sendMessage = 'sendMessage'
+const PushMessages = 'getPushMessages'
 
 var ax = axios.create({
-  // baseURL: 'http://mini.jkjun.cn/',
-  baseURL: 'http://localhost:3000/',
-  // withCredentials: true
+  baseURL: 'https://mini.jkjun.cn/',
+  timeout: 1000
 })
 
 function makePost (path, data) {
@@ -37,11 +37,23 @@ function getConversationList (data) {
   return makeGet(ConversationList, data)
 }
 
+
+function getConversationDetail (data) {
+  return makeGet(ConversationDetail, data)
+}
+
+
+function getPushMessages (data) {
+  return makeGet(PushMessages, data)
+}
+
 export default {
   makePost,
   makeGet,
   Test,
   getPersonInfo,
   getVideo,
-  getConversationList
+  getConversationList,
+  getConversationDetail,
+  getPushMessages
 }
