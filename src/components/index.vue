@@ -1,12 +1,8 @@
 <template>
     <div>
-        <div v-for="(src, index) in srcs" :key="index">
-            <div v-if="index == 0" class="video-wrapper" @click="handleClick" @touchstart="handleTouchStart" @touchmove='handleTouchMove' @touchend="handleTouchEnd" :style="{opacity: opacity, transform: `rotate(${rotate}deg) translate(${distanceX}px, ${distanceY}px)`}">
-                <video :src="src" :auto-play="index == 0 ? true : false" play-status="play" style="width: 100%"></video>
-            </div>
-            <div v-else >
-                <video :src="src" auto-play="false" preload="true" style="width: 100%"></video>
-            </div>
+        <video id="video2" preload='true' :src="video_2" style="width: 100%; position: absolute"></video>
+        <div class="video-wrapper" @click="handleClick" @touchstart="handleTouchStart" @touchmove='handleTouchMove' @touchend="handleTouchEnd" :style="{opacity: opacity, transform: `rotate(${rotate}deg) translate(${distanceX}px, ${distanceY}px)`}">
+            <video id="video1" :src="video_1" auto-play="true" play-status="play" style="width: 100%"></video>
         </div>
         <wxc-popup popup-color="gray"
             :show="isBottomShow"
@@ -41,15 +37,14 @@ export default {
             R: 1000,
             rotate: 0,
             opacity: 1,
-            srcs: [],
             isBottomShow: false
         }
     },
     mounted () {
         ajax.getVideo({ count: 2 })
         .then(({ data }) => {
-            this.srcs.push(data.data[0])
-            this.srcs.push(data.data[1])
+            this.video_1 = data.data[0]
+            this.video_2 = data.data[1]
         })
     },
     methods: {
@@ -72,8 +67,8 @@ export default {
             }
             ajax.getVideo({ count: 1 })
             .then(({ data }) => {
-                this.srcs.shift()
-                this.srcs.push(data.data[])
+                this.video_1 = this.video_2
+                this.video_2 = data.data[0]
             })
             if(Math.abs(this.distanceX) > Math.abs(this.distanceY)) {
                 if(this.distanceX > 0) {
