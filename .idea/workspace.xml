@@ -2,13 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5e1848f4-07a5-4b79-82c8-6613cf3eb43a" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/asset/img/backicon.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/asset/img/selficon.png" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dist/index.js" afterPath="$PROJECT_DIR$/dist/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/chat/chat-other.vue" afterPath="$PROJECT_DIR$/src/components/chat/chat-other.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/chat/chat-own.vue" afterPath="$PROJECT_DIR$/src/components/chat/chat-own.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/chat/chat.vue" afterPath="$PROJECT_DIR$/src/components/chat/chat.vue" />
     </list>
     <ignored path="MINI-WEB.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -548,7 +543,7 @@
       <workItem from="1531140020990" duration="26465000" />
       <workItem from="1531315158421" duration="11175000" />
       <workItem from="1531547798507" duration="5194000" />
-      <workItem from="1531559383174" duration="16667000" />
+      <workItem from="1531559383174" duration="16941000" />
     </task>
     <task id="LOCAL-00001" summary="qq登录页样式">
       <created>1531039256645</created>
@@ -627,11 +622,18 @@
       <option name="project" value="LOCAL" />
       <updated>1531575650485</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="新增chat聊天顶部button">
+      <created>1531580386598</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1531580386598</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="83871000" />
+    <option name="totallyTimeSpent" value="84145000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -728,7 +730,8 @@
     <MESSAGE value="shoot 修改" />
     <MESSAGE value="调整msglist" />
     <MESSAGE value="调整好chat聊天界面" />
-    <option name="LAST_COMMIT_MESSAGE" value="调整好chat聊天界面" />
+    <MESSAGE value="新增chat聊天顶部button" />
+    <option name="LAST_COMMIT_MESSAGE" value="新增chat聊天顶部button" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

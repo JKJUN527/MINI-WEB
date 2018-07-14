@@ -7466,7 +7466,6 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }), _c('div', {
     staticClass: ["video-wrapper"],
     style: {
-      opacity: _vm.opacity,
       transform: ("rotate(" + _vm.rotate + "deg) translate(" + _vm.distanceX + "px, " + _vm.distanceY + "px)")
     },
     on: {
