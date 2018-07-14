@@ -1,7 +1,7 @@
 <template>
     <div>
         <video id="video2" preload='true' :src="video_2" style="width: 100%; position: absolute"></video>
-        <div class="video-wrapper" @click="handleClick" @touchstart="handleTouchStart" @touchmove='handleTouchMove' @touchend="handleTouchEnd" :style="{opacity: opacity, transform: `rotate(${rotate}deg) translate(${distanceX}px, ${distanceY}px)`}">
+        <div class="video-wrapper" @click="handleClick" @touchstart="handleTouchStart" @touchmove='handleTouchMove' @touchend="handleTouchEnd" :style="{ transform: `rotate(${rotate}deg) translate(${distanceX}px, ${distanceY}px)`}">
             <video id="video1" :src="video_1" auto-play="true" play-status="play" style="width: 100%"></video>
         </div>
         <wxc-popup popup-color="gray"
