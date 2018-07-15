@@ -18,7 +18,7 @@
                               url=""
                               @wxcPanItemPan="wxcPanItemPan">
                     <Match v-if="demo.type == 1"></Match>
-                    <SuperLike v-if="demo.type == 123" :name="demo.username" :msg="demo.message"></SuperLike>
+                    <SuperLike v-if="demo.type == 123" :name="demo.username" :msg="demo.message" :id="demo.user"></SuperLike>
                 </wxc-pan-item>
             </cell>
         </list>
@@ -34,7 +34,7 @@
                 <wxc-pan-item :ext-id="'1-' + (v) + '-' + (key)"
                               url=""
                               @wxcPanItemPan="wxcPanItemPan">
-                    <Msg :name="demo.name" :msg="demo.sentence"></Msg>
+                    <Msg :name="demo.name" :msg="demo.sentence" :time="demo.time" :unreadCount="demo.unread_count"></Msg>
                 </wxc-pan-item>
             </cell>
         </list>

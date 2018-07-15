@@ -1,20 +1,24 @@
 <template>
     <div>
         <video id="video2" preload='true' :src="video_2" style="width: 100%; position: absolute"></video>
-        <div class="video-wrapper" @click="handleClick" @touchstart="handleTouchStart" @touchmove='handleTouchMove' @touchend="handleTouchEnd" :style="{ transform: `rotate(${rotate}deg) translate(${distanceX}px, ${distanceY}px)`}">
+        <div class="video-wrapper" @click="handleClick" @touchstart="handleTouchStart" @touchmove='handleTouchMove' @touchend="handleTouchEnd" :style="{opacity: opacity, transform: `rotate(${rotate}deg) translate(${distanceX}px, ${distanceY}px)`}">
             <video id="video1" :src="video_1" auto-play="true" play-status="play" style="width: 100%"></video>
         </div>
-        <wxc-popup popup-color="gray"
+        <wxc-popup popup-color="#000"
             :show="isBottomShow"
             @wxcPopupOverlayClicked="popupOverlayBottomClick"
             pos="bottom"
-            height="300">
+            height="400"
+            class="super-block">
             <div>
-                <div>
-                    <image />
-                    <div class="user-name"></div>
+                <div class="super-header">
+                    <image class="super-image"/>
+                    <text class="super-name color-white">肖宇干啥</text>
                 </div>
-
+                <textarea class="super-msg" name="" id="" cols="30" rows="10"></textarea>
+                <div>
+                    <div class="super-send color-white middle-font-size">发送</div>
+                </div>
             </div>
         </wxc-popup>
     </div>
@@ -48,6 +52,9 @@ export default {
         })
     },
     methods: {
+        popupOverlayBottomClick () {
+            this.isBottomShow = false
+        },
         handleTouchStart (e) {
             this.startX = e.changedTouches[0].pageX
             this.X = e.changedTouches[0].pageX
@@ -72,15 +79,19 @@ export default {
             })
             if(Math.abs(this.distanceX) > Math.abs(this.distanceY)) {
                 if(this.distanceX > 0) {
-                    console.log('右划like')
+                    ajax.sendPreference({
+                        type: 'like'
+                    })
                 } else {
-                    console.log('左划no')
+                    ajax.sendPreference({
+                        type: 'like'
+                    })
                 }
             } else {
                 if(this.distanceY > 0) {
                     console.log('下滑摄像')
                 } else {
-                    console.log('上划superlike')
+                    this.isBottomShow = true
                 }
             }
             this.opacity = 0
@@ -112,6 +123,34 @@ export default {
         -moz-transition: opacity 0.5s; /* Firefox 4 */
         -webkit-transition: opacity 0.5s; /* Safari 和 Chrome */
         -o-transition: opacity 0.5s; /* Opera */
+    }
+
+    .super-header {
+        padding-left: 2.5rem;
+        padding-top: 0.2rem;
+        position: relative;
+        height: 100px;
+        align-items: flex-start
+    }
+
+    .super-image {
+        position: absolute;
+        top: -50px;
+        left: 50px;
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        background-color: white
+    }
+
+    .super-msg {
+        margin: 0 auto;
+        width: 9rem;
+        height: 2.5rem;
+    }
+
+    .super-send {
+        text-align: center
     }
 </style>
 

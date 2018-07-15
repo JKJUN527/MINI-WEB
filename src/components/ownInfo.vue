@@ -102,8 +102,7 @@ export default {
           this.showVideoList = msg
       },
       wxcEpSliderCurrentIndexSelected (e) {
-          const index = e.currentIndex;
-          console.log(index);
+          const index = e.currentIndex
       },
       changeTap () {
           alert(this.showVideoList)

@@ -1,18 +1,18 @@
 <template>
     <div class="content msg-list-content">
         <div class="msg-list">
-            <image src="/src/asset/img/qq.jpg"></image>
+            <image src="/src/asset/img/qq.jpg" />
             <text class="msg-name">{{ name }}</text>
-            <text class="msg-time">12:30</text>
+            <text class="msg-time">{{ new Date(time).getHours() + ':' + new Date(time).getMinutes() }}</text>
             <text class="msg-content">{{ msg }}</text>
-            <text class="msg-num">5</text>
+            <text class="msg-num">{{ unreadCount }}</text>
         </div>
     </div>
 </template>
 
 <script>
 export default {
-  props: ['name', 'time', 'msg', 'num']
+  props: ['name', 'time', 'msg', 'unreadCount']
 }
 </script>
 

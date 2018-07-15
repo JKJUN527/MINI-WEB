@@ -1,32 +1,57 @@
 <template>
     <div class="chatting">
         <div v-for="(chat, index) in data" :key="index">
-          <chat-own :msg='chat.msg' v-if="chat.type === 1"></chat-own>
-          <chat-other :msg='chat.msg' v-else></chat-other>
+          <chat-own :msg='chat.test' v-if="chat.sender != otherId"></chat-own>
+          <chat-other :msg='chat.test' v-else></chat-other>
         </div>
         <div id="send-block" class="base-flex">
-          <input type="text">
-          <button>发送</button>
+          <input type="text" v-model="text">
+          <button @click="handleSendMessage">发送</button>
         </div>
     </div>
 </template>
 <script>
+import ajax from '../../ajax/index.js'
 import ChatOwn from './chat-own'
 import ChatOther from './chat-other'
 export default {
   components: { ChatOwn, ChatOther },
   data () {
     return {
-      data: [{
-        type: 1,
-        msg: '哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈'
-      }, {
-        type: 2,
-        msg: 'hi,认识你很高兴，你是哪个班的？'
-      }, {
-        type: 2,
-        msg: '1111111111111111111111'
-      }]
+      otherId: 0,
+      data: [],
+      text: '',
+      lastId: 0,
+      timmer: {}
+    }
+  },
+  beforeRouteEnter (to, from, next) {
+    next(vm => {
+      // alert(JSON.stringify(to.params))
+        vm.otherId = to.params.user
+      })
+  },
+  beforeRouteLeave (to, from, next) {
+    clearInterval(timmer)
+  },
+  mounted () {
+    this.timmer = setInterval(() => {
+      ajax.getConversationDetail({ id: this.otherId, id_greater_than: this.lastId, count: -1 })
+      .then(({ data }) => {
+        if(data.status === 403) {
+          return
+        }
+        this.data = this.data.concat(data.data)
+        this.lastId = data.data.length > 0 && data.data[data.data.length - 1].id
+      })
+    }, 1000)
+  },
+  methods: {
+    handleSendMessage () {
+      ajax.doSendMessage({user_id: this.otherId, text: this.text})
+    },
+    handleGetMessage() {
+
     }
   }
 }

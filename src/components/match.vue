@@ -1,22 +1,23 @@
 <template>
     <div class="match-content">
         <div class="match-success">
-            <text class="match-success-font">匹配成功</text>
-            <text class="match-success-font">您和AAA已互赞</text>
+            <text class="base-font-size color-white">匹配成功!</text>
+            <text class="match-success-font">您和AAA已匹配成功</text>
         </div>
         <div class="user-group base-flex">
             <div class="user-item">
                 <image class="user-img" />
                 <text class="user-name">user name</text>
             </div>
+            <div class="heart-beat"></div>
             <div class="user-item">
                 <image class="user-img" />
                 <text class="user-name">user name</text>
             </div>
         </div>
         <div class="btn-group">
-          <button class="btn chat" style="background-size: 100% 100%">发送消息</button>
-          <button class="btn next" style="background-size: 100% 100%">继续滑动配对</button>
+          <button class="btn chat" style="background-size: 100% 100%">去聊天嘛</button>
+          <button class="btn next" style="background-size: 100% 100%">我再看看</button>
         </div>
     </div>
 </template>
@@ -43,7 +44,7 @@ export default {
 }
 
 .match-success-font {
-  font-size: 48px;
+  font-size: 36px;
   color: white;
 }
 
@@ -51,12 +52,19 @@ export default {
   justify-content: center
 }
 
+.heart-beat {
+  width: 2rem;
+  background-size: 100% 100%;
+  height: 1rem;
+  background-image: url('../asset/img/心跳.png');
+}
+
 .user-img {
-  margin: 0 40px;
-  width: 200px;
-  height: 200px;
+  margin: 0 20px;
+  width: 150px;
+  height: 150px;
   border-radius: 50%;
-  border: solid 5px white
+  border: solid 2px white
 }
 
 .user-name {
@@ -74,7 +82,7 @@ export default {
 
 .btn {
   margin: 30px 0;
-  width: 400px;
+  width: 300px;
   height: 80px;
   line-height: 80px;
   color: white;
@@ -84,10 +92,10 @@ export default {
 }
 
 .chat {
-  background: url('../asset/img/发送消息.png');
+  background: url('../asset/img/Rectangle 3 Copy.png');
 }
 
 .next {
-  background: url('../asset/img/继续滑动来配对.png');
+  background: url('../asset/img/Rectangle 3 Copy 3.png');
 }
 </style>

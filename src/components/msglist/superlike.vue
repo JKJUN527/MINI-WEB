@@ -6,7 +6,7 @@
             <br>
             <br>
             <text class="super-like-content">{{ msg }}</text>
-            <button>发起聊天</button>
+            <button @click="handleSendMessage">发起聊天</button>
         </div>
         <text class="like-time">13:05</text>
     </div>
@@ -14,7 +14,14 @@
 
 <script>
 export default {
-    props: ['name', 'msg', 'time']
+    props: ['name', 'msg', 'time', 'user'],
+    methods: {
+        handleSendMessage () {
+            this.$router.push({name: 'chat', params: {
+                user: this.user
+            }})
+        }
+    }
 }
 </script>
 

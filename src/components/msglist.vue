@@ -27,10 +27,10 @@
                         <div class="super-like-notice">
                             <image src="/src/asset/img/qq.jpg" />
                             <text class="super-like-name">jkjun</text>
-                            <br>
-                            <br>
+                            <br />
+                            <br />
                             <text class="super-like-content">好喜欢你的视频，超级喜欢你</text>
-                            <button>发起聊天</button>
+                            <button @click="handleClick">发起聊天</button>
                         </div>
                         <text class="like-time">13:05</text>
                     </div>
@@ -51,7 +51,7 @@
                               @wxcPanItemPan="wxcPanItemPan">
                     <div class="content msg-list-content">
                         <div class="msg-list">
-                            <image src="/src/asset/img/qq.jpg"></image>
+                            <image src="/src/asset/img/qq.jpg" />
                             <text class="msg-name">大概是肖宇</text>
                             <text class="msg-time">12:30</text>
                             <text class="msg-content">你视频拍的很不错喔！可以认识一下吗？</text>
@@ -86,6 +86,14 @@ export default {
       ajax.getConversationList({})
   },
   methods: {
+    handleClick () {
+      this.$router.push({
+          name: 'chat',
+          params: {
+              user: '357'
+          }
+      })
+    },
     wxcTabPageCurrentTabSelected (e) {
       const self = this
       const index = e.page

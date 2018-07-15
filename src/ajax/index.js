@@ -1,12 +1,15 @@
 import axios from 'axios'
 import qs from 'qs'
 const TEST = 'test'
-const PersonInfo = 'getpersoninfo'
-const GetVideo = 'getvideo'
-const ConversationList = 'getConversationList'
-const ConversationDetail = 'getConversationDetail'
-// const sendMessage = 'sendMessage'
-const PushMessages = 'getPushMessages'
+const PersonInfo = 'getpersoninfo/'
+const GetVideo = 'getvideo/'
+const ConversationList = 'getConversationList/'
+const ConversationDetail = 'getConversationDetail/'
+const sendMessage = 'sendMessage/'
+const PushMessages = 'getPushMessages/'
+const preference = 'preference/'
+const Events = 'getevent/'
+const Count = 'getCount/'
 
 var ax = axios.create({
   baseURL: 'https://mini.jkjun.cn/',
@@ -47,13 +50,31 @@ function getPushMessages (data) {
   return makeGet(PushMessages, data)
 }
 
+function doSendMessage (data) {
+  return makePost(sendMessage, data)
+}
+
+function sendPreference (data) {
+  return makePost(preference, data)
+}
+
+function getEvent (data) {
+  return makeGet(Events, data)
+}
+
+function getCount (data) {
+  return makeGet(Count, data)
+}
+
+
 export default {
-  makePost,
-  makeGet,
-  Test,
   getPersonInfo,
   getVideo,
   getConversationList,
   getConversationDetail,
-  getPushMessages
+  getPushMessages,
+  doSendMessage,
+  sendPreference,
+  getEvent,
+  getCount
 }
