@@ -99,7 +99,7 @@ export default {
     signature: '',
     isRange: false,
     calendarTitle: '选择日期',
-    dateRange: ['2017-06-10', '2018-06-10'],
+    dateRange: ['1990-06-10', '2018-06-10'],
     selectedNote: ['生日'],
     minibarCfg: {
       title: '日期选择'
@@ -129,6 +129,10 @@ export default {
       formdata.append('signature', this.signature)
       formdata.append('img_portrait', this.files)
       ajax.doPersonEdit(formdata)
+         .then(({ data }) => {
+             alert('保存成功')
+             this.$router.push({name: 'ownInfo'})
+         })
     },
     uploadimg(){
         document.getElementById('upload_file').click()

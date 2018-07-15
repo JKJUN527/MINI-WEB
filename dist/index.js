@@ -756,12 +756,10 @@ var PushMessages = 'getPushMessages/';
 var preference = 'preference/';
 var Events = 'getevent/';
 var Count = 'getCount/';
-<<<<<<< HEAD
 var DetectFace = 'detectface/';
 var PersonEdit = 'editpersoninfo/';
+var uploadVideo = 'uploadvideo/';
 // const  = 'editpersoninfo/'
-=======
->>>>>>> 56d4ee9f7feab368848e525b371d85e229ad1a05
 
 var ax = _axios2.default.create({
   baseURL: 'https://mini.jkjun.cn/',
@@ -776,7 +774,6 @@ function makeGet(path, params) {
   return ax.get(path, { params: params });
 }
 
-<<<<<<< HEAD
 function uploadFile(path, data) {
   return ax.post(path, data, {
     headers: {
@@ -789,8 +786,6 @@ function Test(data) {
   return makeGet(TEST, data);
 }
 
-=======
->>>>>>> 56d4ee9f7feab368848e525b371d85e229ad1a05
 function getPersonInfo(data) {
   return makeGet(PersonInfo, data);
 }
@@ -827,7 +822,6 @@ function getCount(data) {
   return makeGet(Count, data);
 }
 
-<<<<<<< HEAD
 function doDetectFace(data) {
   return uploadFile(DetectFace, data);
 }
@@ -839,11 +833,10 @@ function doPersonEdit(data) {
 function getOtherInfo(data) {
   return makePost(OtherPerson, data);
 }
-=======
-// function doDetectFace (data) {
-//   return makePost(DetectFace, data)
-// }
->>>>>>> 56d4ee9f7feab368848e525b371d85e229ad1a05
+
+function doUploadVideo(data) {
+  return uploadFile(uploadVideo, data);
+}
 
 exports.default = {
   getPersonInfo: getPersonInfo,
@@ -857,7 +850,8 @@ exports.default = {
   getCount: getCount,
   doDetectFace: doDetectFace,
   doPersonEdit: doPersonEdit,
-  getOtherInfo: getOtherInfo
+  getOtherInfo: getOtherInfo,
+  doUploadVideo: doUploadVideo
 };
 
 /***/ }),
@@ -5642,7 +5636,7 @@ module.exports = {
 
 
 Object.defineProperty(exports, "__esModule", {
-  value: true
+    value: true
 });
 
 var _wxcPopup = __webpack_require__(5);
@@ -5656,125 +5650,149 @@ var _index2 = _interopRequireDefault(_index);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 exports.default = {
-  components: { WxcPopup: _wxcPopup2.default },
-  data: function data() {
-    return {
-      video_1: '',
-      video_2: 'https://mini.jkjun.cn/media/videos/8.mp4',
-      startX: 0,
-      startY: 0,
-      X: 0,
-      Y: 0,
-      distanceX: 0,
-      distanceY: 0,
-      R: 1000,
-      rotate: 0,
-      opacity: 1,
-      isBottomShow: false,
-      id: '',
-      name: '',
-      imgurl: ''
-    };
-  },
-  mounted: function mounted() {
-    var _this = this;
-
-    _index2.default.getVideo({ count: 2 }).then(function (_ref) {
-      var data = _ref.data;
-
-      _this.video_1 = data.data[0].videourl;
-      _this.video_2 = data.data[1].videourl;
-      _this.id = data.data[0].userid;
-      _this.name = data.data[0].username;
-      _this.imgurl = data.data[0].userphoto;
-    });
-  },
-
-  methods: {
-    popupOverlayBottomClick: function popupOverlayBottomClick() {
-      this.isBottomShow = false;
+    components: { WxcPopup: _wxcPopup2.default },
+    data: function data() {
+        return {
+            video_1: '',
+            video_2: 'https://mini.jkjun.cn/media/videos/8.mp4',
+            startX: 0,
+            startY: 0,
+            X: 0,
+            Y: 0,
+            distanceX: 0,
+            distanceY: 0,
+            R: 1000,
+            rotate: 0,
+            opacity: 1,
+            isBottomShow: false,
+            id: '',
+            name: '',
+            imgurl: '',
+            supermsg: '',
+            superLikeTime: 1
+        };
     },
-    handleTouchStart: function handleTouchStart(e) {
-      this.startX = e.changedTouches[0].pageX;
-      this.X = e.changedTouches[0].pageX;
-      this.startY = e.changedTouches[0].pageY;
-      this.Y = e.changedTouches[0].pageY;
-    },
-    handleTouchMove: function handleTouchMove(e) {
-      this.X = e.changedTouches[0].pageX;
-      this.Y = e.changedTouches[0].pageY;
-    },
-    handleTouchEnd: function handleTouchEnd(e) {
-      var _this2 = this;
+    mounted: function mounted() {
+        var _this = this;
 
-      if (this.distanceX * this.distanceX + this.distanceY * this.distanceY < 300 * 300) {
-        this.distanceX = 0;
-        this.distanceY = 0;
-        this.rotate = 0;
-        return;
-      }
-      _index2.default.getVideo({ count: 1 }).then(function (_ref2) {
-        var data = _ref2.data;
+        _index2.default.getCount().then(function (_ref) {
+            var data = _ref.data;
 
-        _this2.video_1 = _this2.video_2;
-        _this2.video_2 = data.data[0].videourl;
-        _this2.id = data.data[0].userid;
-        _this2.name = data.data[0].username;
-        _this2.imgurl = data.data[0].userphoto;
-      });
-      if (Math.abs(this.distanceX) > Math.abs(this.distanceY)) {
-        if (this.distanceX > 0) {
-          _index2.default.sendPreference({
-            user: this.id,
-            type: 'like'
-          });
-        } else {
-          _index2.default.sendPreference({
-            user: this.id,
-            type: 'like'
-          });
+            _this.superLikeTime = data.data.superCount;
+        });
+        _index2.default.getVideo({ count: 2 }).then(function (_ref2) {
+            var data = _ref2.data;
+
+            _this.video_1 = data.data[0].videourl;
+            _this.video_2 = data.data[1].videourl;
+            _this.id = data.data[0].userid;
+            _this.name = data.data[0].username;
+            _this.imgurl = data.data[0].userphoto;
+            _this.idea = data.data[0].idea;
+        });
+    },
+
+    methods: {
+        handleRouter: function handleRouter(route, params) {
+            this.$router.push({
+                name: route,
+                params: params
+            });
+        },
+        popupOverlayBottomClick: function popupOverlayBottomClick() {
+            this.isBottomShow = false;
+        },
+        handleTouchStart: function handleTouchStart(e) {
+            this.startX = e.changedTouches[0].pageX;
+            this.X = e.changedTouches[0].pageX;
+            this.startY = e.changedTouches[0].pageY;
+            this.Y = e.changedTouches[0].pageY;
+        },
+        handleTouchMove: function handleTouchMove(e) {
+            this.X = e.changedTouches[0].pageX;
+            this.Y = e.changedTouches[0].pageY;
+        },
+        handleTouchEnd: function handleTouchEnd(e) {
+            var _this2 = this;
+
+            if (this.distanceX * this.distanceX + this.distanceY * this.distanceY < 100 * 100) {
+                this.distanceX = 0;
+                this.distanceY = 0;
+                this.rotate = 0;
+                return;
+            }
+            if (Math.abs(this.distanceX) > Math.abs(this.distanceY)) {
+                _index2.default.getVideo({ count: 1 }).then(function (_ref3) {
+                    var data = _ref3.data;
+
+                    _this2.video_1 = _this2.video_2;
+                    _this2.video_2 = data.data[0].videourl;
+                    _this2.id = data.data[0].userid;
+                    _this2.name = data.data[0].username;
+                    _this2.imgurl = data.data[0].userphoto;
+                    _this2.idea = data.data[0].idea;
+                });
+                if (this.distanceX > 0) {
+                    _index2.default.sendPreference({
+                        video_url: this.video_1,
+                        user: this.id,
+                        type: 'like'
+                    }).then(function (res) {
+                        if (res.data.event == 1) {
+                            _this2.$router.push({ name: 'match' });
+                        }
+                    });
+                } else {
+                    _index2.default.sendPreference({
+                        video_url: this.video_1,
+                        user: this.id,
+                        type: 'no'
+                    });
+                }
+            } else {
+                if (this.distanceY > 0) {
+                    console.log('下滑摄像');
+                } else {
+                    this.isBottomShow = true;
+                }
+            }
+            this.opacity = 0;
+            setTimeout(function () {
+                _this2.distanceX = 0;
+                _this2.distanceY = 0;
+                _this2.rotate = 0;
+                _this2.opacity = 1;
+            }, 200);
+        },
+        closeSuperLike: function closeSuperLike() {
+            this.isBottomShow = false;
+        },
+        sendSuperLike: function sendSuperLike() {
+            var _this3 = this;
+
+            _index2.default.sendPreference({
+                video_url: this.video_1,
+                user: this.id,
+                type: 'super',
+                msg: this.supermsg
+            }).then(function (res) {
+                _this3.isBottomShow = false;
+                if (res.data.event == 1) {
+                    _this3.$router.push({ name: 'match' });
+                }
+            });
         }
-      } else {
-        if (this.distanceY > 0) {
-          console.log('下滑摄像');
-        } else {
-          this.isBottomShow = true;
+    },
+    watch: {
+        X: function X(val) {
+            this.rotate = Math.asin((val - this.startX) / this.R) / 2 / Math.PI * 360;
+            this.distanceX = val - this.startX;
+        },
+        Y: function Y(val) {
+            this.distanceY = val - this.startY;
         }
-      }
-      this.opacity = 0;
-      setTimeout(function () {
-        _this2.distanceX = 0;
-        _this2.distanceY = 0;
-        _this2.rotate = 0;
-        _this2.opacity = 1;
-      }, 200);
-    },
-    closeSuperLike: function closeSuperLike() {
-      alert('取消');
-    },
-    sendSuperLike: function sendSuperLike() {
-      alert('确定');
     }
-  },
-  watch: {
-    X: function X(val) {
-      this.rotate = Math.asin((val - this.startX) / this.R) / 2 / Math.PI * 360;
-      this.distanceX = val - this.startX;
-    },
-    Y: function Y(val) {
-      this.distanceY = val - this.startY;
-    }
-  }
 }; //
-//
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -7227,48 +7245,6 @@ var stringify = __webpack_require__(58);
 var parse = __webpack_require__(59);
 var formats = __webpack_require__(13);
 
-<<<<<<< HEAD
-exports.default = {
-    components: { WxcPopup: _wxcPopup2.default },
-    data: function data() {
-        return {
-            video_1: '',
-            video_2: 'https://mini.jkjun.cn/media/videos/8.mp4',
-            startX: 0,
-            startY: 0,
-            X: 0,
-            Y: 0,
-            distanceX: 0,
-            distanceY: 0,
-            R: 1000,
-            rotate: 0,
-            opacity: 1,
-            isBottomShow: false,
-            id: '',
-            name: '',
-            imgurl: '',
-            supermsg: '',
-            superLikeTime: 1
-        };
-    },
-    mounted: function mounted() {
-        var _this = this;
-
-        _index2.default.getCount().then(function (_ref) {
-            var data = _ref.data;
-
-            _this.superLikeTime = data.data.superCount;
-        });
-        _index2.default.getVideo({ count: 2 }).then(function (_ref2) {
-            var data = _ref2.data;
-
-            _this.video_1 = data.data[0].videourl;
-            _this.video_2 = data.data[1].videourl;
-            _this.id = data.data[0].userid;
-            _this.name = data.data[0].username;
-            _this.imgurl = data.data[0].userphoto;
-        });
-=======
 module.exports = {
     formats: formats,
     parse: parse,
@@ -7292,7 +7268,6 @@ var arrayPrefixGenerators = {
     },
     indices: function indices(prefix, key) { // eslint-disable-line func-name-matching
         return prefix + '[' + key + ']';
->>>>>>> 56d4ee9f7feab368848e525b371d85e229ad1a05
     },
     repeat: function repeat(prefix) { // eslint-disable-line func-name-matching
         return prefix;
@@ -7301,159 +7276,6 @@ var arrayPrefixGenerators = {
 
 var toISO = Date.prototype.toISOString;
 
-<<<<<<< HEAD
-            if (this.distanceX * this.distanceX + this.distanceY * this.distanceY < 300 * 300) {
-                this.distanceX = 0;
-                this.distanceY = 0;
-                this.rotate = 0;
-                return;
-            }
-            if (Math.abs(this.distanceX) > Math.abs(this.distanceY)) {
-                _index2.default.getVideo({ count: 1 }).then(function (_ref3) {
-                    var data = _ref3.data;
-
-                    _this2.video_1 = _this2.video_2;
-                    _this2.video_2 = data.data[0].videourl;
-                    _this2.id = data.data[0].userid;
-                    _this2.name = data.data[0].username;
-                    _this2.imgurl = data.data[0].userphoto;
-                });
-                if (this.distanceX > 0) {
-                    _index2.default.sendPreference({
-                        video_url: this.video_1,
-                        user: this.id,
-                        type: 'like'
-                    }).then(function (res) {
-                        if (res.data.event == 1) {
-                            _this2.$router.push({ name: 'match' });
-                        }
-                    });
-                } else {
-                    _index2.default.sendPreference({
-                        video_url: this.video_1,
-                        user: this.id,
-                        type: 'no'
-                    });
-                }
-            } else {
-                if (this.distanceY > 0) {
-                    console.log('下滑摄像');
-                } else {
-                    this.isBottomShow = true;
-                }
-            }
-            this.opacity = 0;
-            setTimeout(function () {
-                _this2.distanceX = 0;
-                _this2.distanceY = 0;
-                _this2.rotate = 0;
-                _this2.opacity = 1;
-            }, 200);
-        },
-        closeSuperLike: function closeSuperLike() {
-            this.isBottomShow = false;
-        },
-        sendSuperLike: function sendSuperLike() {
-            var _this3 = this;
-
-            _index2.default.sendPreference({
-                video_url: this.video_1,
-                user: this.id,
-                type: 'super',
-                msg: this.supermsg
-            }).then(function (res) {
-                _this3.isBottomShow = false;
-                if (res.data.event == 1) {
-                    _this3.$router.push({ name: 'match' });
-                }
-            });
-        }
-    },
-    watch: {
-        X: function X(val) {
-            this.rotate = Math.asin((val - this.startX) / this.R) / 2 / Math.PI * 360;
-            this.distanceX = val - this.startX;
-        },
-        Y: function Y(val) {
-            this.distanceY = val - this.startY;
-        }
-    }
-}; //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-<<<<<<< HEAD
-=======
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
->>>>>>> e8cfb948d3fc85cc4789145fd55816dfa0429980
-
-/***/ }),
-/* 51 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var __vue_exports__, __vue_options__
-var __vue_styles__ = []
-
-/* styles */
-__vue_styles__.push(__webpack_require__(52)
-)
-
-/* script */
-__vue_exports__ = __webpack_require__(53)
-
-/* template */
-var __vue_template__ = __webpack_require__(59)
-__vue_options__ = __vue_exports__ = __vue_exports__ || {}
-if (
-  typeof __vue_exports__.default === "object" ||
-  typeof __vue_exports__.default === "function"
-=======
 var defaults = {
     delimiter: '&',
     encode: true,
@@ -7479,7 +7301,6 @@ var stringify = function stringify( // eslint-disable-line func-name-matching
     serializeDate,
     formatter,
     encodeValuesOnly
->>>>>>> 56d4ee9f7feab368848e525b371d85e229ad1a05
 ) {
     var obj = object;
     if (typeof filter === 'function') {
@@ -7836,7 +7657,27 @@ module.exports = function (str, opts) {
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
     staticClass: ["index-page"]
-  }, [_vm._m(0), _c('video', {
+  }, [_c('div', {
+    staticClass: ["chat-header"]
+  }, [_c('text', {
+    staticClass: ["left"],
+    on: {
+      "click": function($event) {
+        _vm.handleRouter('ownInfo')
+      }
+    }
+  }), _c('text', {
+    staticClass: ["name"]
+  }), _c('text', {
+    staticClass: ["right"],
+    on: {
+      "click": function($event) {
+        _vm.handleRouter('msgtest')
+      }
+    }
+  }), _c('text', {
+    staticClass: ["header-bottom"]
+  })]), _c('video', {
     staticStyle: {
       width: "100%",
       position: "absolute"
@@ -7868,7 +7709,33 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "autoPlay": "true",
       "playStatus": "play"
     }
-  })]), _vm._m(1), _c('wxc-popup', {
+  })]), _c('div', {
+    staticClass: ["footer"]
+  }, [_c('div', {
+    staticClass: ["photo-img"]
+  }, [_c('image', {
+    staticClass: ["person-img"],
+    attrs: {
+      "src": _vm.imgurl
+    },
+    on: {
+      "click": function($event) {
+        _vm.handleRouter('otherInfo', {
+          user: _vm.id
+        })
+      }
+    }
+  }), _c('text', {
+    staticClass: ["person-name"]
+  }, [_vm._v(_vm._s(_vm.name))])]), _c('div', {
+    staticClass: ["content"]
+  }, [_c('textarea', {
+    attrs: {
+      "row": "3",
+      "placeholder": _vm.idea,
+      "disabled": ""
+    }
+  })])]), _c('wxc-popup', {
     staticClass: ["super-block"],
     attrs: {
       "popupColor": "#161824",
@@ -7918,40 +7785,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "click": _vm.sendSuperLike
     }
   }, [_vm._v("发送")])], 1)])])], 1)
-},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: ["chat-header"]
-  }, [_c('text', {
-    staticClass: ["left"]
-  }), _c('text', {
-    staticClass: ["name"]
-  }), _c('text', {
-    staticClass: ["right"]
-  }), _c('text', {
-    staticClass: ["header-bottom"]
-  })])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: ["footer"]
-  }, [_c('div', {
-    staticClass: ["photo-img"]
-  }, [_c('image', {
-    staticClass: ["person-img"],
-    attrs: {
-      "src": "/src/asset/img/qq.jpg"
-    }
-  }), _c('text', {
-    staticClass: ["person-name"]
-  }, [_vm._v("肖宇ni嘎哈")])]), _c('div', {
-    staticClass: ["content"]
-  }, [_c('textarea', {
-    attrs: {
-      "row": "3",
-      "placeholder": "写的一点东东",
-      "disabled": ""
-    }
-  })])])
-}]}
+},staticRenderFns: []}
 module.exports.render._withStripped = true
 
 /***/ }),
@@ -8457,22 +8291,6 @@ var _index2 = _interopRequireDefault(_index);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-<<<<<<< HEAD
-=======
-  methods: {
-    doListChange: function doListChange(msg) {
-      this.showVideoList = msg;
-    },
-    goback: function goback() {
-      this.$router.go(-1);
-    }
-  },
-  watch: {
-    showVideoList: function showVideoList() {}
-  }
-}; //
-//
->>>>>>> 56d4ee9f7feab368848e525b371d85e229ad1a05
 //
 //
 //
@@ -8548,21 +8366,26 @@ exports.default = {
   mounted: function mounted() {
     var _this = this;
 
-    _index2.default.getOtherInfo({ user_id: this.user_id }).then(function (_ref) {
-      var data = _ref.data;
+    this.$nextTick(function () {
+      _index2.default.getOtherInfo({ user_id: _this.user_id }).then(function (_ref) {
+        var data = _ref.data;
 
-      data = data.data;
-      _this.labels = [data.local, data.age + '岁', data.constellation, data.sex];
-      _this.name = data.name;
-      _this.signature = data.signature;
-      _this.imgurl = data.img_portrait;
-      _this.my_video_list = data.my_video_list;
+        data = data.data;
+        _this.labels = [data.local, data.age + '岁', data.constellation, data.sex];
+        _this.name = data.name;
+        _this.signature = data.signature;
+        _this.imgurl = data.img_portrait;
+        _this.my_video_list = data.my_video_list;
+      });
     });
   },
 
   methods: {
     doListChange: function doListChange(msg) {
       this.showVideoList = msg;
+    },
+    goback: function goback() {
+      this.$router.go(-1);
     }
   },
   watch: {
@@ -9670,11 +9493,7 @@ module.exports.render._withStripped = true
 /* 79 */
 /***/ (function(module, exports) {
 
-<<<<<<< HEAD
-throw new Error("Module build failed: SyntaxError: Unexpected token (21:10)\n    at Parser.pp$4.raise (E:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:2610:13)\n    at Parser.pp.unexpected (E:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:637:8)\n    at Parser.pp$3.parseIdent (E:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:2565:10)\n    at Parser.pp$3.parsePropertyName (E:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:2362:105)\n    at Parser.parseObj (E:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:4463:14)\n    at Parser.pp$3.parseExprAtom (E:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:2077:17)\n    at Parser.parseExprAtom (E:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:4372:24)\n    at Parser.pp$3.parseExprSubscripts (E:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:1955:19)\n    at Parser.pp$3.parseMaybeUnary (E:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:1932:17)\n    at Parser.pp$3.parseExprOps (E:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:1874:19)\n    at Parser.pp$3.parseMaybeConditional (E:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:1857:19)\n    at Parser.pp$3.parseMaybeAssign (E:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:1832:19)\n    at Parser.pp$3.parsePropertyValue (E:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:2310:87)\n    at Parser.parseObj (E:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:4472:14)\n    at Parser.pp$3.parseExprAtom (E:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:2077:17)\n    at Parser.parseExprAtom (E:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:4372:24)");
-=======
-throw new Error("Module build failed: SyntaxError: Unexpected token (45:10)\n    at Parser.pp$4.raise (E:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:2610:13)\n    at Parser.pp.unexpected (E:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:637:8)\n    at Parser.pp$3.parseIdent (E:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:2565:10)\n    at Parser.pp$3.parsePropertyName (E:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:2362:105)\n    at Parser.parseObj (E:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:4463:14)\n    at Parser.pp$3.parseExprAtom (E:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:2077:17)\n    at Parser.parseExprAtom (E:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:4372:24)\n    at Parser.pp$3.parseExprSubscripts (E:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:1955:19)\n    at Parser.pp$3.parseMaybeUnary (E:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:1932:17)\n    at Parser.pp$3.parseExprOps (E:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:1874:19)\n    at Parser.pp$3.parseMaybeConditional (E:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:1857:19)\n    at Parser.pp$3.parseMaybeAssign (E:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:1832:19)\n    at Parser.pp$3.parsePropertyValue (E:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:2310:87)\n    at Parser.parseObj (E:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:4472:14)\n    at Parser.pp$3.parseExprAtom (E:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:2077:17)\n    at Parser.parseExprAtom (E:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:4372:24)");
->>>>>>> 56d4ee9f7feab368848e525b371d85e229ad1a05
+throw new Error("Module build failed: SyntaxError: Unexpected token (28:10)\n    at Parser.pp$4.raise (E:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:2610:13)\n    at Parser.pp.unexpected (E:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:637:8)\n    at Parser.pp$3.parseIdent (E:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:2565:10)\n    at Parser.pp$3.parsePropertyName (E:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:2362:105)\n    at Parser.parseObj (E:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:4463:14)\n    at Parser.pp$3.parseExprAtom (E:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:2077:17)\n    at Parser.parseExprAtom (E:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:4372:24)\n    at Parser.pp$3.parseExprSubscripts (E:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:1955:19)\n    at Parser.pp$3.parseMaybeUnary (E:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:1932:17)\n    at Parser.pp$3.parseExprOps (E:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:1874:19)\n    at Parser.pp$3.parseMaybeConditional (E:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:1857:19)\n    at Parser.pp$3.parseMaybeAssign (E:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:1832:19)\n    at Parser.pp$3.parsePropertyValue (E:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:2310:87)\n    at Parser.parseObj (E:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:4472:14)\n    at Parser.pp$3.parseExprAtom (E:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:2077:17)\n    at Parser.parseExprAtom (E:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:4372:24)");
 
 /***/ }),
 /* 80 */
@@ -9734,7 +9553,7 @@ module.exports = {
     "backgroundColor": "#161824"
   },
   "user-header": {
-    "marginTop": 1.5
+    "marginTop": 0.3
   },
   "user-img": {
     "marginTop": 0,
@@ -9777,7 +9596,7 @@ module.exports = {
     "paddingRight": "40",
     "paddingBottom": 0,
     "paddingLeft": "40",
-    "marginTop": "100"
+    "marginTop": 0.3
   },
   "edit-block": {
     "marginTop": "20",
@@ -9924,7 +9743,9 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 //
 //
 //
-<<<<<<< HEAD
+//
+//
+//
 
 exports.default = {
   components: { WxcEpSlider: _wxcEpSlider2.default },
@@ -9954,7 +9775,7 @@ exports.default = {
       var data = _ref.data;
 
       data = data.data;
-      _this.labels = [data.local, data.age + '岁', data.constellation, data.sex];
+      _this.labels = [data.local, data.age + '岁', data.constellation || '天蝎座', data.sex];
       _this.name = data.name;
       _this.signature = data.signature;
       _this.imgurl = data.img_portrait;
@@ -9962,86 +9783,24 @@ exports.default = {
       _this.my_video_list = data.my_video_list;
     });
   },
-=======
-//
-//
-//
-//
-//
-
-exports.default = {
-  components: { WxcEpSlider: _wxcEpSlider2.default },
-  data: function data() {
-    return {
-      name: '',
-      labels: ['北京', '20岁', '双子座', '男'],
-      signature: '',
-      imgurl: '',
-      showVideoList: 0,
-      sliderId: 1,
-      cardLength: 5,
-      cardSize: {
-        width: 400,
-        height: 300,
-        spacing: 0,
-        scale: 0.8
-      }
-    };
-  },
-  mounted: function mounted() {
-    var _this = this;
-
-<<<<<<< HEAD
-        _index2.default.getPersonInfo({}).then(function (_ref) {
-            var data = _ref.data;
->>>>>>> 56d4ee9f7feab368848e525b371d85e229ad1a05
-=======
-    _index2.default.getPersonInfo({}).then(function (_ref) {
-      var data = _ref.data;
->>>>>>> 392d108a8e581ef12dbcc00828913665f411516e
-
-      data = data.data;
-      _this.labels = [data.local, data.age + '岁', data.constellation, data.sex];
-      _this.name = data.name;
-      _this.signature = data.signature;
-      alert(JSON.stringify(data));
-      _this.imgurl = data.img_portrait;
-    });
-  },
 
   methods: {
     doListChange: function doListChange(msg) {
       this.showVideoList = msg;
     },
-<<<<<<< HEAD
-<<<<<<< HEAD
-    changeTap: function changeTap() {
-=======
     wxcEpSliderCurrentIndexSelected: function wxcEpSliderCurrentIndexSelected(e) {
-      //    const index = e.currentIndex
+      var index = e.currentIndex;
     },
     changeTap: function changeTap() {
-      alert(this.showVideoList);
->>>>>>> 392d108a8e581ef12dbcc00828913665f411516e
       if (this.showVideoList === 0) {
         this.showVideoList = 1;
       } else {
         this.showVideoList = 0;
       }
-<<<<<<< HEAD
-=======
-    watch: {
-        showVideoList: function showVideoList() {}
->>>>>>> 56d4ee9f7feab368848e525b371d85e229ad1a05
-=======
     },
     goback: function goback() {
       this.$router.go(-1);
->>>>>>> 392d108a8e581ef12dbcc00828913665f411516e
     }
-  },
-  watch: {
-    showVideoList: function showVideoList() {}
   }
 };
 
@@ -10206,7 +9965,6 @@ var _index2 = _interopRequireDefault(_index);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-<<<<<<< HEAD
 exports.default = {
   components: { WxcCity: _wxcCity2.default, WxcPopup: _wxcPopup2.default, WxcButton: _wxcButton2.default, WxcPageCalendar: _wxcPageCalendar2.default },
   data: function data() {
@@ -10248,8 +10006,10 @@ exports.default = {
   },
 
   methods: {
+    handleGoBack: function handleGoBack() {
+      this.$router.go(-1);
+    },
     handleSave: function handleSave() {
-      alert(JSON.stringify(this.currentCity));
       var formdata = new FormData();
       formdata.append('birth_timestamp', 1531650089047);
       formdata.append('name', this.name);
@@ -10398,183 +10158,6 @@ exports.default = {
 //
 //
 
-<<<<<<< HEAD
-=======
-var test = weex.requireModule('picker');
-=======
->>>>>>> 56d4ee9f7feab368848e525b371d85e229ad1a05
-exports.default = {
-  components: { WxcCity: _wxcCity2.default, WxcPopup: _wxcPopup2.default, WxcButton: _wxcButton2.default, WxcPageCalendar: _wxcPageCalendar2.default },
-  data: function data() {
-    return {
-      name: '董宇辰',
-      animationType: 'push',
-      currentCity: '',
-      cityStyleType: 'list',
-      value: '',
-      sex: 'man',
-      imgDataUrl: '/src/asset/img/qq.jpg',
-      files: '',
-      isBottomShow: false,
-      currentDate: '',
-      selectedDate: [],
-      isRange: false,
-      calendarTitle: '选择日期',
-      dateRange: ['2017-06-10', '2018-06-10'],
-      selectedNote: ['生日'],
-      minibarCfg: {
-        title: '日期选择'
-      },
-      descList: []
-    };
-  },
-  mounted: function mounted() {
-    // 模拟定位
-  },
-
-  methods: {
-    showListCity: function showListCity() {
-      this.cityStyleType = 'list';
-      this.$refs['wxcCity'].show();
-    },
-    showGroupCity: function showGroupCity() {
-      this.cityStyleType = 'group';
-      this.$refs['wxcCity'].show();
-    },
-    citySelect: function citySelect(e) {
-      this.currentCity = e.item;
-    },
-    onInput: function onInput(e) {},
-    openBottomPopup: function openBottomPopup() {
-      this.isBottomShow = true;
-    },
-    popupOverlayBottomClick: function popupOverlayBottomClick() {
-      this.isBottomShow = false;
-    },
-    handleSexChange: function handleSexChange(sex) {
-      this.sex = sex === '' ? this.sex : sex;
-      this.isBottomShow = false;
-    },
-    wxcPageCalendarDateSelected: function wxcPageCalendarDateSelected(e) {
-      this.selectedDate = e.date;
-      this.currentDate = e.date;
-    },
-    wxcPageCalendarBackClicked: function wxcPageCalendarBackClicked() {},
-    showCalendar: function showCalendar() {
-      var _this2 = this;
-
-      this.isRange = false;
-      setTimeout(function () {
-        _this2.$refs['wxcPageCalendar'].show();
-      }, 10);
-    },
-    showReturnCalendar: function showReturnCalendar() {
-      var _this3 = this;
-
-      this.isRange = true;
-      setTimeout(function () {
-        _this3.$refs['wxcPageCalendar'].show();
-      }, 10);
-    },
-    getFile: function getFile(e) {
-      var _this = this;
-      var files = e.target.files[0];
-      if (!e || !window.FileReader) return;
-      var reader = new FileReader();
-      reader.readAsDataURL(files); // 这里是最关键的一步，转换就在这里
-      reader.onloadend = function () {
-        _this.imgDataUrl = this.result;
-      };
-    }
-  },
-  filters: {
-    sexTranslate: function sexTranslate(sex) {
-      return sex === 'man' ? '男' : '女';
-    }
-  }
-}; //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
->>>>>>> e8cfb948d3fc85cc4789145fd55816dfa0429980
 /***/ }),
 /* 87 */
 /***/ (function(module, exports, __webpack_require__) {
@@ -14339,7 +13922,10 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_c('div', {
     staticClass: ["chat-header"]
   }, [_c('text', {
-    staticClass: ["left"]
+    staticClass: ["left"],
+    on: {
+      "click": _vm.handleGoBack
+    }
   }, [_vm._v("取消")]), _c('text', {
     staticClass: ["name"]
   }, [_vm._v("资料修改")]), _c('text', {
@@ -15672,49 +15258,73 @@ module.exports = {
 
 
 Object.defineProperty(exports, "__esModule", {
-  value: true
+    value: true
 });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
+
+var _index = __webpack_require__(2);
+
+var _index2 = _interopRequireDefault(_index);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 exports.default = {
-  data: function data() {
-    return {
-      video_src: 'https://mini.jkjun.cn/media/videos/8.mp4'
-    };
-  },
+    data: function data() {
+        return {
+            videoDataUrl: '',
+            file: {}
+        };
+    },
 
-  methods: {
-    handleClick: function handleClick() {},
-    take_video: function take_video() {
-      alert('点击录像');
+    methods: {
+        handleClick: function handleClick() {
+            var _this2 = this;
+
+            var form = new FormData();
+            form.append('file', this.file);
+            _index2.default.doUploadVideo(form).then(function () {
+                _this2.$router.push({
+                    name: 'publish',
+                    params: {
+                        url: ''
+                    }
+                });
+            });
+        },
+        getFile: function getFile(e) {
+            var _this = this;
+            this.file = e.target.files[0];
+            var reader = new FileReader();
+            reader.readAsDataURL(this.file); // 这里是最关键的一步，转换就在这里
+            reader.onloadend = function () {
+                _this.videoDataUrl = this.result;
+            };
+        }
     }
-  }
-};
+}; //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /***/ }),
 /* 147 */
@@ -15723,22 +15333,25 @@ exports.default = {
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
     staticClass: ["shoot"]
-  }, [_vm._m(0), _c('div', {
+  }, [_c('div', {
+    staticClass: ["chat-header"]
+  }, [_c('text', {
+    staticClass: ["left"]
+  }), _c('text', {
+    staticClass: ["name"]
+  }, [_vm._v("录制页")]), _c('text', {
+    staticClass: ["right"],
+    on: {
+      "click": _vm.handleClick
+    }
+  }, [_vm._v("确定")])]), _c('div', {
     staticClass: ["video_module"]
   }, [_c('video', {
     staticClass: ["video"],
     attrs: {
       "id": "video",
-      "src": _vm.video_src,
-      "controls": "controls",
+      "src": _vm.videoDataUrl,
       "autoplay": "autoplay"
-    }
-  }), _c('canvas', {
-    staticStyle: {
-      display: "none"
-    },
-    attrs: {
-      "id": "canvas"
     }
   })]), _c('div', {
     staticClass: ["footer"]
@@ -15748,18 +15361,22 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     on: {
       "click": _vm.take_video
     }
-  })], 1)])])
-},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: ["chat-header"]
-  }, [_c('text', {
-    staticClass: ["left"]
-  }), _c('text', {
-    staticClass: ["name"]
-  }, [_vm._v("录制页")]), _c('text', {
-    staticClass: ["right"]
-  }, [_vm._v("确定")])])
-}]}
+  }, [_c('input', {
+    staticStyle: {
+      width: "100%",
+      height: "100%",
+      opacity: "0"
+    },
+    attrs: {
+      "type": "file",
+      "refs": "",
+      "capture": "camera"
+    },
+    on: {
+      "change": _vm.getFile
+    }
+  })])], 1)])])
+},staticRenderFns: []}
 module.exports.render._withStripped = true
 
 /***/ }),
@@ -15904,15 +15521,20 @@ exports.default = {
   },
 
   methods: {
+    handleGoback: function handleGoback() {
+      this.$router.go(-1);
+    },
+    handleClick: function handleClick() {
+      this.$router.push({
+        name: 'otherInfo',
+        params: {
+          user: this.otherId
+        }
+      });
+    },
     handleSendMessage: function handleSendMessage() {
       _index2.default.doSendMessage({ user_id: this.otherId, text: this.text });
-<<<<<<< HEAD
-=======
-    },
-    handleGetMessage: function handleGetMessage() {},
-    send_msg: function send_msg() {
-      alert(123);
->>>>>>> e790fa9e8e9cea9880ca83cc21cdc664d6102000
+      this.text = '';
     }
   }
 }; //
@@ -16156,7 +15778,6 @@ exports.default = {
   props: ['imgurl', 'msg', 'id'],
   methods: {
     otherInfo: function otherInfo() {
-      alert('hahah');
       this.$router.push({
         name: 'otherInfo',
         params: {
@@ -16198,12 +15819,20 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_c('div', {
     staticClass: ["chat-header"]
   }, [_c('text', {
-    staticClass: ["left"]
+    staticClass: ["left"],
+    on: {
+      "click": _vm.handleGoback
+    }
   }), _c('text', {
     staticClass: ["name"]
-  }, [_vm._v(_vm._s(_vm.name))]), _c('text', {
-    staticClass: ["right"]
-  })]), _c('div', {
+  }, [_vm._v(_vm._s(_vm.name))]), _c('router-link', {
+    staticClass: ["right"],
+    attrs: {
+      "to": {
+        name: 'otherInfo'
+      }
+    }
+  })], 1), _c('div', {
     staticClass: ["chatting"]
   }, [_vm._l((_vm.data), function(chat, index) {
     return _c('div', {
@@ -16318,7 +15947,7 @@ module.exports = {
 
 
 Object.defineProperty(exports, "__esModule", {
-  value: true
+    value: true
 });
 //
 //
@@ -16336,15 +15965,17 @@ Object.defineProperty(exports, "__esModule", {
 //
 //
 
-exports.default = {};
+exports.default = {
+    methods: {
+        handleClick: function handleClick() {}
+    }
+};
 
 /***/ }),
 /* 163 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _vm._m(0)
-},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
     attrs: {
       "id": "publish"
@@ -16356,20 +15987,25 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }), _c('text', {
     staticClass: ["name"]
   }, [_vm._v("发布页")]), _c('text', {
-    staticClass: ["right"]
+    staticClass: ["right"],
+    on: {
+      "click": _vm.handleClick
+    }
   }, [_vm._v("发布")])]), _c('textarea', {
     attrs: {
       "name": "",
       "placeholder": "写点什么吧..."
     }
-  }), _c('div', {
+  }), _vm._m(0)])
+},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
     staticClass: ["video-wrapper"]
   }, [_c('video', {
     attrs: {
       "src": "https://mini.jkjun.cn/media/videos/8.mp4",
       "controls": "controls"
     }
-  })])])
+  })])
 }]}
 module.exports.render._withStripped = true
 
@@ -16772,7 +16408,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: ["content"]
   }, [_c('div', {
     staticClass: ["like-notice"]
-  }, [_c('text', [_vm._v("你收到一个match:")])])])
+  }, [_c('text', [_vm._v("你收到一个like")])])])
 }]}
 module.exports.render._withStripped = true
 

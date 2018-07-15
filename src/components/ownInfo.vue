@@ -152,7 +152,7 @@ export default {
     }
 
     .user-header {
-        margin-top: 1.5rem;
+        margin-top: 0.3rem;
     }
 
     .user-img {
@@ -188,7 +188,7 @@ export default {
 
     .user-signature  {
         padding: 0 40px;
-        margin-top: 100px;
+        margin-top: 0.3rem;
     }
 
     .edit-block {
@@ -246,7 +246,7 @@ export default {
 
     .slider video {
         width:100%;
-        height: 100%;
+        height: 90%;
     }
 
 
