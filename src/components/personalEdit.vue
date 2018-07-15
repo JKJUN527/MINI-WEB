@@ -80,6 +80,7 @@
     </div>
 </template>
 <script>
+<<<<<<< HEAD
 import ajax from '../ajax/index.js'
 import {
   WxcCity,
@@ -87,6 +88,9 @@ import {
   WxcButton,
   WxcPageCalendar
 } from 'weex-ui'
+=======
+import {WxcCity, WxcPopup, WxcButton, WxcPageCalendar} from 'weex-ui'
+>>>>>>> 56d4ee9f7feab368848e525b371d85e229ad1a05
 export default {
   components: { WxcCity, WxcPopup, WxcButton, WxcPageCalendar },
   data: () => ({
@@ -122,6 +126,7 @@ export default {
     })
   },
   methods: {
+<<<<<<< HEAD
     handleSave () {
       var formdata = new FormData()
       formdata.append('birth_timestamp', 1531650089047)
@@ -135,6 +140,8 @@ export default {
     uploadimg(){
         document.getElementById('upload_file').click()
     },
+=======
+>>>>>>> 56d4ee9f7feab368848e525b371d85e229ad1a05
     showListCity () {
       this.cityStyleType = 'list'
       this.$refs['wxcCity'].show()

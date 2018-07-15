@@ -1,5 +1,8 @@
 <template>
     <div id="personalInfo">
+        <div class="chat-header">
+            <text class="left" @click="goback"></text>
+        </div>
         <!-- <div class="edit">编辑</div> -->
         <div class="user-header base">
             <div class="user-img">
@@ -86,6 +89,9 @@ export default {
   methods: {
     doListChange (msg) {
       this.showVideoList = msg
+    },
+    goback () {
+      this.$router.go(-1)
     }
   },
   watch: {
@@ -94,6 +100,27 @@ export default {
 }
 </script>
 <style scoped>
+    .chat-header{
+        width: 100%;
+        height: 7%;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        background-color: #161824;
+        /*justify-content: center;*/
+
+    }
+    .chat-header p{
+        /*position: absolute;*/
+        color:white;
+    }
+    .chat-header .left{
+        background: url("/src/asset/img/backicon.png");
+        background-size: cover;
+        width: 0.3rem;
+        height: 0.55rem;
+        left: 0.4rem;
+    }
     #personalInfo {
         position: relative;
         background: #1c1f1f;

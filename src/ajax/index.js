@@ -1,6 +1,5 @@
 import axios from 'axios'
 import qs from 'qs'
-const TEST = 'test'
 const PersonInfo = 'getpersoninfo/'
 const OtherPerson = 'getotherpersoninfo/'
 const GetVideo = 'getvideo/'
@@ -11,10 +10,13 @@ const PushMessages = 'getPushMessages/'
 const preference = 'preference/'
 const Events = 'getevent/'
 const Count = 'getCount/'
+<<<<<<< HEAD
 const DetectFace = 'detectface/'
 const PersonEdit = 'editpersoninfo/'
 const uploadVideo = 'uploadvideo/'
 // const  = 'editpersoninfo/'
+=======
+>>>>>>> 56d4ee9f7feab368848e525b371d85e229ad1a05
 
 var ax = axios.create({
   baseURL: 'https://mini.jkjun.cn/',
@@ -29,6 +31,7 @@ function makeGet (path, params) {
   return ax.get(path, { params })
 }
 
+<<<<<<< HEAD
 function uploadFile(path, data) {
   return ax.post(path, data, {
     headers: {
@@ -41,6 +44,8 @@ function Test (data) {
   return makeGet(TEST, data)
 }
 
+=======
+>>>>>>> 56d4ee9f7feab368848e525b371d85e229ad1a05
 function getPersonInfo (data) {
   return makeGet(PersonInfo, data)
 }
@@ -53,11 +58,9 @@ function getConversationList (data) {
   return makeGet(ConversationList, data)
 }
 
-
 function getConversationDetail (data) {
   return makeGet(ConversationDetail, data)
 }
-
 
 function getPushMessages (data) {
   return makeGet(PushMessages, data)

@@ -2,7 +2,9 @@
     <div class="index-page">
         <div class="chat-header">
             <text class="left" @click="handleRouter('ownInfo')"></text>
+            <text class="name"></text>
             <text class="right" @click="handleRouter('msglist')"></text>
+            <text class="header-bottom"></text>
         </div>
         <video id="video2" preload='true' :src="video_2" style="width: 100%; position: absolute"></video>
         <div class="video-wrapper" @click="handleClick" @touchstart="handleTouchStart" @touchmove='handleTouchMove' @touchend="handleTouchEnd" :style="{opacity: opacity, transform: `rotate(${rotate}deg) translate(${distanceX}px, ${distanceY}px)`}">
@@ -209,7 +211,8 @@ export default {
         background-size: cover;
         width: 0.9rem;
         height: 0.8rem;
-        right: 0.4rem;
+        /*right: 0.4rem;*/
+        right: -2.7rem;
         /*padding: 0.1rem 0 0.1rem 0.25rem;*/
     }
     .chat-header .name{
@@ -217,6 +220,16 @@ export default {
         background-size: cover;
         width: 0.6rem;
         height: 1rem;
+        left: 1.5rem;
+    }
+    .chat-header .header-bottom{
+        background: url("/src/asset/img/cameraicon.png");
+        background-size: cover;
+        width: 0.9rem;
+        height: 0.8rem;
+        right: 0.4rem;
+        top: 2rem;
+        /*padding: 0.1rem 0 0.1rem 0.25rem;*/
     }
     .close-button{
         width: 1rem;
