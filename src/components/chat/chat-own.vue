@@ -17,7 +17,7 @@ export default {
     align-items: flex-start
   }
   .own-img {
-    margin: 0 20px;
+    margin: 0 0.4rem 0 0.2rem;
     width: 70px;
     height: 70px;
     border-radius: 50%;
@@ -26,7 +26,7 @@ export default {
 
   .own-msg {
     padding: 25px 20px;
-    max-width: 550px;
+    max-width: 6.5rem;
     color: white;
     background-color: white;
     border-radius: 24px;

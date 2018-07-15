@@ -1,8 +1,8 @@
 <template>
     <div class="infoEdit">
-        <div class="user-img" @click="uploadimg">
+        <div class="user-img">
             <image :src="imgDataUrl" />
-            <input type="file" id="upload_file" style="display: none" class="upload__input" @change="getFile" accept="image/png,image/gif">
+            <input type="file" id="upload_file" class="upload__input" @change="getFile" accept="image/png,image/gif">
         </div>
         <hr />
         <div class="user-info">
@@ -167,6 +167,13 @@ export default {
 </script>
 
 <style scoped>
+    .upload__input{
+        width: 2.1rem;
+        height: 2.1rem;
+        position: absolute;
+        top: 0.4rem;
+        opacity: 0;
+    }
 .infoEdit {
   flex-grow: 1;
   align-items: center;
@@ -180,7 +187,7 @@ export default {
   height: 160px;
   border-radius: 50%;
   background-color: white;
-  margin-left: 40%;
+  /*margin-left: 40%;*/
 }
 
 .user-info {

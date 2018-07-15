@@ -6860,9 +6860,12 @@ exports.default = {
     },
 
     methods: {
+<<<<<<< HEAD
         popupOverlayBottomClick: function popupOverlayBottomClick() {
             this.isBottomShow = false;
         },
+=======
+>>>>>>> d5f75e6c3dc497af42faa6ed36f8aa45a747a051
         handleTouchStart: function handleTouchStart(e) {
             this.startX = e.changedTouches[0].pageX;
             this.X = e.changedTouches[0].pageX;
@@ -6944,10 +6947,13 @@ exports.default = {
 //
 //
 //
+<<<<<<< HEAD
 //
 //
 //
 //
+=======
+>>>>>>> d5f75e6c3dc497af42faa6ed36f8aa45a747a051
 
 /***/ }),
 /* 51 */
@@ -7038,9 +7044,63 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 var _wxcOverlay = __webpack_require__(54);
 
 var _wxcOverlay2 = _interopRequireDefault(_wxcOverlay);
+<<<<<<< HEAD
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+=======
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+>>>>>>> d5f75e6c3dc497af42faa6ed36f8aa45a747a051
 //
 //
 //
@@ -7278,6 +7338,192 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 /* 55 */
 /***/ (function(module, exports, __webpack_require__) {
 
+<<<<<<< HEAD
+var animation = weex.requireModule('animation');
+var platform = weex.config.env.platform;
+
+var isWeb = (typeof window === 'undefined' ? 'undefined' : _typeof(window)) === 'object' && platform.toLowerCase() === 'web';
+exports.default = {
+  components: { WxcOverlay: _wxcOverlay2.default },
+  props: {
+    show: {
+      type: Boolean,
+      default: false
+    },
+    pos: {
+      type: String,
+      default: 'bottom'
+    },
+    popupColor: {
+      type: String,
+      default: '#FFFFFF'
+    },
+    overlayCfg: {
+      type: Object,
+      default: function _default() {
+        return {
+          hasAnimation: true,
+          timingFunction: ['ease-in', 'ease-out'],
+          duration: 300,
+          opacity: 0.6
+        };
+      }
+    },
+    height: {
+      type: [Number, String],
+      default: 840
+    },
+    standOut: {
+      type: [Number, String],
+      default: 0
+    },
+    width: {
+      type: [Number, String],
+      default: 750
+    },
+    animation: {
+      type: Object,
+      default: function _default() {
+        return {
+          timingFunction: 'ease-in'
+        };
+      }
+    }
+  },
+  data: function data() {
+    return {
+      haveOverlay: true,
+      isOverShow: true
+    };
+  },
+  computed: {
+    isNeedShow: function isNeedShow() {
+      var _this = this;
+
+      setTimeout(function () {
+        _this.appearPopup(_this.show);
+      }, 50);
+      return this.show;
+    },
+    _height: function _height() {
+      this.appearPopup(this.show, 150);
+      return this.height;
+    },
+    padStyle: function padStyle() {
+      var pos = this.pos,
+          width = this.width,
+          height = this.height,
+          popupColor = this.popupColor,
+          standOut = this.standOut;
+
+      var style = {
+        width: width + 'px',
+        backgroundColor: popupColor
+      };
+      pos === 'top' && (style = _extends({}, style, {
+        top: -height + standOut + 'px',
+        height: height + 'px'
+      }));
+      pos === 'bottom' && (style = _extends({}, style, {
+        bottom: -height + standOut + 'px',
+        height: height + 'px'
+      }));
+      pos === 'left' && (style = _extends({}, style, {
+        left: -width + standOut + 'px'
+      }));
+      pos === 'right' && (style = _extends({}, style, {
+        right: -width + standOut + 'px'
+      }));
+      return style;
+    }
+  },
+  methods: {
+    handleTouchEnd: function handleTouchEnd(e) {
+      // 在支付宝上面有点击穿透问题
+      var platform = weex.config.env.platform;
+
+      platform === 'Web' && e.preventDefault && e.preventDefault();
+    },
+    hide: function hide() {
+      this.appearPopup(false);
+      this.$refs.overlay.appearOverlay(false);
+    },
+    wxcOverlayBodyClicking: function wxcOverlayBodyClicking() {
+      this.isShow && this.appearPopup(false);
+    },
+    appearPopup: function appearPopup(bool) {
+      var _this2 = this;
+
+      var duration = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 300;
+
+      this.isShow = bool;
+      var popupEl = this.$refs['wxc-popup'];
+      if (!popupEl) {
+        return;
+      }
+      animation.transition(popupEl, _extends({
+        styles: {
+          transform: this.getTransform(this.pos, this.width, this.height, !bool)
+        },
+        duration: duration,
+        delay: 0
+      }, this.animation), function () {
+        if (!bool) {
+          _this2.$emit('wxcPopupOverlayClicked', { pos: _this2.pos });
+        }
+      });
+    },
+    getTransform: function getTransform(pos, width, height, bool) {
+      var _size = pos === 'top' || pos === 'bottom' ? height : width;
+      bool && (_size = 0);
+      var _transform = void 0;
+      switch (pos) {
+        case 'top':
+          _transform = 'translateY(' + _size + 'px)';
+          break;
+        case 'bottom':
+          _transform = 'translateY(-' + _size + 'px)';
+          break;
+        case 'left':
+          _transform = 'translateX(' + _size + 'px)';
+          break;
+        case 'right':
+          _transform = 'translateX(-' + _size + 'px)';
+          break;
+      }
+      return _transform;
+    }
+  }
+};
+
+/***/ }),
+/* 54 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _index = __webpack_require__(55);
+
+Object.defineProperty(exports, 'default', {
+  enumerable: true,
+  get: function get() {
+    return _interopRequireDefault(_index).default;
+  }
+});
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+/***/ }),
+/* 55 */
+/***/ (function(module, exports, __webpack_require__) {
+
+=======
+>>>>>>> d5f75e6c3dc497af42faa6ed36f8aa45a747a051
 var __vue_exports__, __vue_options__
 var __vue_styles__ = []
 
@@ -7522,7 +7768,10 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }), _c('div', {
     staticClass: ["video-wrapper"],
     style: {
+<<<<<<< HEAD
       opacity: _vm.opacity,
+=======
+>>>>>>> d5f75e6c3dc497af42faa6ed36f8aa45a747a051
       transform: ("rotate(" + _vm.rotate + "deg) translate(" + _vm.distanceX + "px, " + _vm.distanceY + "px)")
     },
     on: {
@@ -7542,16 +7791,25 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "playStatus": "play"
     }
   })]), _c('wxc-popup', {
+<<<<<<< HEAD
     staticClass: ["super-block"],
     attrs: {
       "popupColor": "#000",
       "show": _vm.isBottomShow,
       "pos": "bottom",
       "height": "400"
+=======
+    attrs: {
+      "popupColor": "gray",
+      "show": _vm.isBottomShow,
+      "pos": "bottom",
+      "height": "300"
+>>>>>>> d5f75e6c3dc497af42faa6ed36f8aa45a747a051
     },
     on: {
       "wxcPopupOverlayClicked": _vm.popupOverlayBottomClick
     }
+<<<<<<< HEAD
   }, [_c('div', [_c('div', {
     staticClass: ["super-header"]
   }, [_c('image', {
@@ -7569,6 +7827,11 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }), _c('div', [_c('div', {
     staticClass: ["super-send", "color-white", "middle-font-size"]
   }, [_vm._v("发送")])])])])], 1)
+=======
+  }, [_c('div', [_c('div', [_c('image'), _c('div', {
+    staticClass: ["user-name"]
+  })])])])], 1)
+>>>>>>> d5f75e6c3dc497af42faa6ed36f8aa45a747a051
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 
@@ -7746,6 +8009,7 @@ module.exports = {
     "backgroundColor": "#000000"
   },
   "match-success": {
+<<<<<<< HEAD
     "marginTop": "81",
     "marginRight": 0,
     "marginBottom": "81",
@@ -7754,11 +8018,22 @@ module.exports = {
   },
   "match-success-font": {
     "fontSize": "32",
+=======
+    "marginTop": "60",
+    "marginRight": "60",
+    "marginBottom": "60",
+    "marginLeft": "60",
+    "alignItems": "center"
+  },
+  "match-success-font": {
+    "fontSize": "48",
+>>>>>>> d5f75e6c3dc497af42faa6ed36f8aa45a747a051
     "color": "#FFFFFF"
   },
   "user-group": {
     "justifyContent": "center"
   },
+<<<<<<< HEAD
   "heart-beat": {
     "width": 2,
     "backgroundSize": "100% 100%",
@@ -7774,6 +8049,17 @@ module.exports = {
     "height": "128",
     "borderRadius": 50,
     "border": "solid 2px white"
+=======
+  "user-img": {
+    "marginTop": 0,
+    "marginRight": "40",
+    "marginBottom": 0,
+    "marginLeft": "40",
+    "width": "200",
+    "height": "200",
+    "borderRadius": 50,
+    "border": "solid 5px white"
+>>>>>>> d5f75e6c3dc497af42faa6ed36f8aa45a747a051
   },
   "user-name": {
     "marginTop": "20",
@@ -7791,19 +8077,32 @@ module.exports = {
     "marginRight": 0,
     "marginBottom": "30",
     "marginLeft": 0,
+<<<<<<< HEAD
     "width": "252",
     "height": "70",
     "lineHeight": "70",
+=======
+    "width": "400",
+    "height": "80",
+    "lineHeight": "80",
+>>>>>>> d5f75e6c3dc497af42faa6ed36f8aa45a747a051
     "color": "#FFFFFF",
     "fontSize": "36",
     "textAlign": "center",
     "borderRadius": "10"
   },
   "chat": {
+<<<<<<< HEAD
     "background": "url('../asset/img/Rectangle 3 Copy.png')"
   },
   "next": {
     "background": "url('../asset/img/Rectangle 3 Copy 3.png')"
+=======
+    "background": "url('../asset/img/发送消息.png')"
+  },
+  "next": {
+    "background": "url('../asset/img/继续滑动来配对.png')"
+>>>>>>> d5f75e6c3dc497af42faa6ed36f8aa45a747a051
   }
 }
 
@@ -7817,7 +8116,10 @@ module.exports = {
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+<<<<<<< HEAD
 //
+=======
+>>>>>>> d5f75e6c3dc497af42faa6ed36f8aa45a747a051
 //
 //
 //
@@ -7848,6 +8150,7 @@ exports.default = {
     };
   }
 };
+<<<<<<< HEAD
 
 /***/ }),
 /* 68 */
@@ -7946,6 +8249,104 @@ module.exports = __vue_exports__
 /* 70 */
 /***/ (function(module, exports) {
 
+=======
+
+/***/ }),
+/* 68 */
+/***/ (function(module, exports) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: ["match-content"]
+  }, [_vm._m(0), _vm._m(1), _c('div', {
+    staticClass: ["btn-group"]
+  }, [_c('button', {
+    staticClass: ["btn", "chat"],
+    staticStyle: {
+      backgroundSize: "100% 100%"
+    }
+  }, [_vm._v("发送消息")]), _c('button', {
+    staticClass: ["btn", "next"],
+    staticStyle: {
+      backgroundSize: "100% 100%"
+    }
+  }, [_vm._v("继续滑动配对")])], 1)])
+},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: ["match-success"]
+  }, [_c('text', {
+    staticClass: ["match-success-font"]
+  }, [_vm._v("匹配成功")]), _c('text', {
+    staticClass: ["match-success-font"]
+  }, [_vm._v("您和AAA已互赞")])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: ["user-group", "base-flex"]
+  }, [_c('div', {
+    staticClass: ["user-item"]
+  }, [_c('image', {
+    staticClass: ["user-img"]
+  }), _c('text', {
+    staticClass: ["user-name"]
+  }, [_vm._v("user name")])]), _c('div', {
+    staticClass: ["user-item"]
+  }, [_c('image', {
+    staticClass: ["user-img"]
+  }), _c('text', {
+    staticClass: ["user-name"]
+  }, [_vm._v("user name")])])])
+}]}
+module.exports.render._withStripped = true
+
+/***/ }),
+/* 69 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var __vue_exports__, __vue_options__
+var __vue_styles__ = []
+
+/* styles */
+__vue_styles__.push(__webpack_require__(70)
+)
+
+/* script */
+__vue_exports__ = __webpack_require__(71)
+
+/* template */
+var __vue_template__ = __webpack_require__(79)
+__vue_options__ = __vue_exports__ = __vue_exports__ || {}
+if (
+  typeof __vue_exports__.default === "object" ||
+  typeof __vue_exports__.default === "function"
+) {
+if (Object.keys(__vue_exports__).some(function (key) { return key !== "default" && key !== "__esModule" })) {console.error("named exports are not supported in *.vue files.")}
+__vue_options__ = __vue_exports__ = __vue_exports__.default
+}
+if (typeof __vue_options__ === "function") {
+  __vue_options__ = __vue_options__.options
+}
+__vue_options__.__file = "E:\\MINI-WEB\\src\\components\\otherInfo.vue"
+__vue_options__.render = __vue_template__.render
+__vue_options__.staticRenderFns = __vue_template__.staticRenderFns
+__vue_options__._scopeId = "data-v-e4fee316"
+__vue_options__.style = __vue_options__.style || {}
+__vue_styles__.forEach(function (module) {
+  for (var name in module) {
+    __vue_options__.style[name] = module[name]
+  }
+})
+if (typeof __register_static_styles__ === "function") {
+  __register_static_styles__(__vue_options__._scopeId, __vue_styles__)
+}
+
+module.exports = __vue_exports__
+
+
+/***/ }),
+/* 70 */
+/***/ (function(module, exports) {
+
+>>>>>>> d5f75e6c3dc497af42faa6ed36f8aa45a747a051
 module.exports = {
   "user-header": {
     "marginTop": 0.5,
@@ -8233,6 +8634,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 //
 //
 //
+<<<<<<< HEAD
 
 var swipeBack = weex.requireModule('swipeBack');
 var animation = weex.requireModule('animation');
@@ -8317,6 +8719,878 @@ exports.default = {
       swipeBack.forbidSwipeBack(true);
     }
 
+    setTimeout(function () {
+      var sliderCtn = _this.$refs['sliderCtn_' + _this.sliderId];
+      if (_bindEnv2.default.supportsEB() && sliderCtn && sliderCtn.ref) {
+        _indexWeex2.default.prepare && _indexWeex2.default.prepare({
+          anchor: sliderCtn.ref,
+          eventType: 'pan'
+        });
+      }
+    }, 20);
+    this.checkNeedAutoPlay();
+  },
+
+  methods: {
+    onPanStart: function onPanStart(e) {
+      if (_bindEnv2.default.supportsEB()) {
+        return;
+      }
+      this.clearAutoPlay();
+      this.startX = e.changedTouches[0].clientX;
+      this.startTime = Date.now();
+    },
+    onPanMove: function onPanMove(e) {
+      if (_bindEnv2.default.supportsEB()) {
+        return;
+      }
+      var moveX = e.changedTouches[0].clientX - this.startX;
+      var index = this.loopedIndex(this.currentIndex, this.cardLength);
+      var cardLength = this.cardLength;
+      var currentCardLeft = this.currentIndex * (this.cardS.width + this.cardS.spacing);
+
+      var sliderCtn = this.$refs['sliderCtn_' + this.sliderId];
+      sliderCtn && animation.transition(sliderCtn, {
+        styles: {
+          transform: 'translateX(' + (moveX - currentCardLeft) + 'px)'
+        },
+        timingFunction: 'ease',
+        delay: 0,
+        duration: 0
+      }, function () {});
+
+      if (this.cardS.scale !== 1) {
+        var currentCard = this.$refs['card' + this.loopedIndex(index, cardLength) + '_' + this.sliderId][0];
+        currentCard && animation.transition(currentCard, {
+          styles: {
+            transform: 'scale(' + (1 - Math.abs(moveX) / this.cardS.width * (1 - this.cardS.scale)) + ')'
+          },
+          timingFunction: 'ease',
+          delay: 0,
+          duration: 0
+        }, function () {});
+        // 左边的卡片
+        var leftCard = this.$refs['card' + this.loopedIndex(index - 1, cardLength) + '_' + this.sliderId][0];
+        // loop 函数负数返回 0，这里有点冲突
+        if (leftCard && index !== 0) {
+          animation.transition(leftCard, {
+            styles: {
+              transform: 'scale(' + (1 - Math.abs(moveX - this.cardS.width) / this.cardS.width * (1 - this.cardS.scale)) + ')'
+            },
+            timingFunction: 'ease',
+            delay: 0,
+            duration: 0
+          }, function () {});
+        }
+        // 右边卡片
+        var rightCard = this.$refs['card' + this.loopedIndex(index + 1, cardLength) + '_' + this.sliderId][0];
+        rightCard && animation.transition(rightCard, {
+          styles: {
+            transform: 'scale(' + (1 - Math.abs(this.cardS.width + moveX) / this.cardS.width * (1 - this.cardS.scale)) + ')'
+          },
+          timingFunction: 'ease',
+          delay: 0,
+          duration: 0
+        }, function () {});
+      }
+    },
+    onEpPanStart: function onEpPanStart(e) {
+      var _this2 = this;
+
+      if (_bindEnv2.default.supportsEB() && e.state === 'start') {
+        this.clearAutoPlay();
+        setTimeout(function () {
+          var sliderCtn = _this2.$refs['sliderCtn_' + _this2.sliderId];
+          _this2.bindExp(sliderCtn);
+        }, 0);
+      }
+    },
+    onPanEnd: function onPanEnd(e) {
+      if (_bindEnv2.default.supportsEB()) {
+        return;
+      }
+      this.panEnd(e);
+    },
+    panEnd: function panEnd(e) {
+      var _this3 = this;
+
+      this.isMoving = true;
+      var moveX = e.deltaX;
+
+      if (_utils2.default.env.isWeb()) {
+        moveX = e.changedTouches[0].clientX - this.startX;
+      }
+
+      var originIndex = this.currentIndex;
+      var selectIndex = originIndex;
+      var duration = Date.now() - this.startTime;
+      var panOffset = this.panOffset || this.cardS.width / 2;
+      var isPullMore = selectIndex === this.cardLength - 1 && (moveX < -68 || moveX < -10 && duration < 200);
+
+      if (isPullMore) {
+        this.$emit('wxcEpSliderPullMore', { currentIndex: selectIndex });
+      }
+
+      if (moveX < -panOffset || moveX < -10 && duration < 200) {
+        if (selectIndex !== this.cardLength - 1) {
+          selectIndex++;
+        }
+      } else if (moveX > panOffset || moveX > 10 && duration < 500) {
+        if (selectIndex !== 0) {
+          selectIndex--;
+        }
+      }
+
+      this.slideTo(originIndex, selectIndex);
+      setTimeout(function () {
+        _this3.checkNeedAutoPlay();
+      }, 3000);
+    },
+    slideTo: function slideTo(originIndex, selectIndex) {
+      var _this4 = this;
+
+      var currentCardScale = 1;
+      var rightCardScale = this.cardS.scale;
+      var leftCardScale = this.cardS.scale;
+      var duration = selectIndex === 0 && originIndex === this.cardLength - 1 && this.cardLength !== 2 ? 0.00001 : 300;
+      this.$emit('wxcEpSliderCurrentIndexSelected', { currentIndex: selectIndex });
+      if (originIndex < selectIndex) {
+        currentCardScale = this.cardS.scale;
+        rightCardScale = 1;
+      } else if (originIndex > selectIndex) {
+        currentCardScale = this.cardS.scale;
+        leftCardScale = 1;
+      }
+      var currentCard = this.$refs['card' + this.loopedIndex(originIndex, this.cardLength) + '_' + this.sliderId][0];
+      currentCard && animation.transition(currentCard, {
+        styles: {
+          transform: 'scale(' + currentCardScale + ')'
+        },
+        timingFunction: 'ease',
+        duration: duration
+      }, function () {});
+
+      var leftCard = this.$refs['card' + this.loopedIndex(originIndex - 1, this.cardLength) + '_' + this.sliderId][0];
+      if (this.isMoving && leftCard && originIndex !== 0) {
+        animation.transition(leftCard, {
+          styles: {
+            transform: 'scale(' + leftCardScale + ')'
+          },
+          timingFunction: 'ease',
+          duration: duration
+        }, function () {});
+      }
+      var rightCard = this.$refs['card' + this.loopedIndex(originIndex + 1, this.cardLength) + '_' + this.sliderId][0];
+      if (rightCard && originIndex !== this.cardLength - 1) {
+        animation.transition(rightCard, {
+          styles: {
+            transform: 'scale(' + rightCardScale + ')'
+          },
+          timingFunction: 'ease',
+          duration: duration
+        }, function () {});
+      }
+
+      var sliderCtn = this.$refs['sliderCtn_' + this.sliderId];
+      sliderCtn && animation.transition(sliderCtn, {
+        styles: {
+          transform: 'translateX(-' + selectIndex * (this.cardS.width + this.cardS.spacing) + 'px)'
+        },
+        timingFunction: 'ease',
+        duration: duration
+      }, function () {
+        _this4.isMoving = false;
+        if (originIndex !== selectIndex) {
+          _this4.currentIndex = selectIndex;
+        }
+      });
+    },
+
+    // 使index维持在0-length之间循环
+    loopedIndex: function loopedIndex(index, total) {
+      if (index < 0) {
+        index = index + (1 - index / total) * total;
+      }
+      return index % total;
+    },
+    bindExp: function bindExp(element) {
+      var _this5 = this;
+
+      if (element && element.ref) {
+
+        if (this.isMoving && this.gesToken !== 0) {
+          _indexWeex2.default.unbind({
+            eventType: 'pan',
+            token: this.gesToken
+          });
+          this.gesToken = 0;
+          return;
+        }
+
+        this.startTime = Date.now();
+        var index = this.loopedIndex(this.currentIndex, this.cardLength);
+        var sliderCtn = this.$refs['sliderCtn_' + this.sliderId];
+        var currentCard = this.$refs['card' + index + '_' + this.sliderId][0];
+        var rightCard = null;
+        var leftCard = null;
+        var currentCardLeft = this.currentIndex * (this.cardS.width + this.cardS.spacing);
+
+        // 卡片容器
+        var sliderCtnExp = 'x - ' + currentCardLeft;
+        var args = [{
+          element: sliderCtn.ref,
+          property: 'transform.translateX',
+          expression: sliderCtnExp
+        }];
+
+        if (this.cardS.scale !== 1) {
+
+          var currentCardExp = '1-abs(x)/' + this.cardS.width + '*' + (1 - this.cardS.scale);
+          var leftCardExp = '1-abs(x-' + this.cardS.width + ')/' + this.cardS.width + '*' + (1 - this.cardS.scale);
+          var rightCardExp = '1-abs(' + this.cardS.width + '+x)/' + this.cardS.width + '*' + (1 - this.cardS.scale);
+
+          args.push({
+            element: currentCard.ref,
+            property: 'transform.scale',
+            expression: currentCardExp
+          });
+
+          if (index === 0 && this.$refs['card' + (index + 1) + '_' + this.sliderId]) {
+
+            rightCard = this.$refs['card' + (index + 1) + '_' + this.sliderId][0];
+            args.push({
+              element: rightCard.ref,
+              property: 'transform.scale',
+              expression: rightCardExp
+            });
+          } else if (index === this.cardLength - 1 && this.$refs['card' + (index - 1) + '_' + this.sliderId]) {
+            leftCard = this.$refs['card' + (index - 1) + '_' + this.sliderId][0];
+            args.push({
+              element: leftCard.ref,
+              property: 'transform.scale',
+              expression: leftCardExp
+            });
+          } else if (this.$refs['card' + (index - 1) + '_' + this.sliderId]) {
+            // 左边卡片
+            leftCard = this.$refs['card' + (index - 1) + '_' + this.sliderId][0];
+            args.push({
+              element: leftCard.ref,
+              property: 'transform.scale',
+              expression: leftCardExp
+            });
+            // 右边卡片
+            rightCard = this.$refs['card' + (index + 1) + '_' + this.sliderId][0];
+            args.push({
+              element: rightCard.ref,
+              property: 'transform.scale',
+              expression: rightCardExp
+            });
+          }
+        }
+
+        var gesTokenObj = _indexWeex2.default.bind({
+          anchor: element.ref,
+          eventType: 'pan',
+          props: args
+        }, function (e) {
+          if (!_this5.isMoving && (e.state === 'end' || e.state === 'cancel' || e.state === 'exit')) {
+            _this5.panEnd(e);
+          }
+        });
+
+        this.gesToken = gesTokenObj.token;
+      }
+    },
+    checkNeedAutoPlay: function checkNeedAutoPlay() {
+      var _this6 = this;
+
+      if (this.autoPlay) {
+        this.clearAutoPlay();
+        this.autoPlayTimer = setInterval(function () {
+          _this6.slideTo(_this6.currentIndex, _this6.loopedIndex(_this6.currentIndex + 1, _this6.cardLength));
+        }, parseInt(this.interval));
+      }
+    },
+    clearAutoPlay: function clearAutoPlay() {
+      this.autoPlayTimer && clearInterval(this.autoPlayTimer);
+    },
+    rebind: function rebind() {
+      var sliderCtn = this.$refs['sliderCtn_' + this.sliderId];
+      if (sliderCtn && sliderCtn.ref) {
+        _indexWeex2.default.unbind({
+          eventType: 'pan',
+          token: this.gesToken
+        });
+        this.gesToken = 0;
+        this.bindExp(sliderCtn);
+      }
+    },
+    manualSetPage: function manualSetPage(selectIndex) {
+      var _this7 = this;
+
+      this.clearAutoPlay();
+      var step = this.currentIndex < selectIndex ? 1 : -1;
+      this.slideTo(this.loopedIndex(selectIndex - step, this.cardLength), selectIndex);
+      setTimeout(function () {
+        _this7.checkNeedAutoPlay();
+      }, 3000);
+    }
+  }
+};
+
+/***/ }),
+/* 75 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var required = __webpack_require__(76)
+  , qs = __webpack_require__(77)
+  , protocolre = /^([a-z][a-z0-9.+-]*:)?(\/\/)?([\S\s]*)/i
+  , slashes = /^[A-Za-z][A-Za-z0-9+-.]*:\/\//;
+
+/**
+ * These are the parse rules for the URL parser, it informs the parser
+ * about:
+ *
+ * 0. The char it Needs to parse, if it's a string it should be done using
+ *    indexOf, RegExp using exec and NaN means set as current value.
+ * 1. The property we should set when parsing this value.
+ * 2. Indication if it's backwards or forward parsing, when set as number it's
+ *    the value of extra chars that should be split off.
+ * 3. Inherit from location if non existing in the parser.
+ * 4. `toLowerCase` the resulting value.
+ */
+var rules = [
+  ['#', 'hash'],                        // Extract from the back.
+  ['?', 'query'],                       // Extract from the back.
+  ['/', 'pathname'],                    // Extract from the back.
+  ['@', 'auth', 1],                     // Extract from the front.
+  [NaN, 'host', undefined, 1, 1],       // Set left over value.
+  [/:(\d+)$/, 'port', undefined, 1],    // RegExp the back.
+  [NaN, 'hostname', undefined, 1, 1]    // Set left over.
+];
+
+/**
+ * These properties should not be copied or inherited from. This is only needed
+ * for all non blob URL's as a blob URL does not include a hash, only the
+ * origin.
+ *
+ * @type {Object}
+ * @private
+ */
+var ignore = { hash: 1, query: 1 };
+
+/**
+ * The location object differs when your code is loaded through a normal page,
+ * Worker or through a worker using a blob. And with the blobble begins the
+ * trouble as the location object will contain the URL of the blob, not the
+ * location of the page where our code is loaded in. The actual origin is
+ * encoded in the `pathname` so we can thankfully generate a good "default"
+ * location from it so we can generate proper relative URL's again.
+ *
+ * @param {Object|String} loc Optional default location object.
+ * @returns {Object} lolcation object.
+ * @api public
+ */
+function lolcation(loc) {
+  var location = global && global.location || {};
+  loc = loc || location;
+
+  var finaldestination = {}
+    , type = typeof loc
+    , key;
+
+  if ('blob:' === loc.protocol) {
+    finaldestination = new URL(unescape(loc.pathname), {});
+  } else if ('string' === type) {
+    finaldestination = new URL(loc, {});
+    for (key in ignore) delete finaldestination[key];
+  } else if ('object' === type) {
+    for (key in loc) {
+      if (key in ignore) continue;
+      finaldestination[key] = loc[key];
+    }
+
+    if (finaldestination.slashes === undefined) {
+      finaldestination.slashes = slashes.test(loc.href);
+=======
+
+var swipeBack = weex.requireModule('swipeBack');
+var animation = weex.requireModule('animation');
+exports.default = {
+  props: {
+    sliderId: {
+      type: [String, Number],
+      default: 1
+    },
+    panOffset: {
+      type: Number,
+      default: 80
+    },
+    cardLength: {
+      type: Number,
+      default: 1
+    },
+    selectIndex: {
+      type: Number,
+      default: 0
+    },
+    enableSwipe: {
+      type: Boolean,
+      default: true
+    },
+    containerS: {
+      type: Object,
+      default: function _default() {
+        return {
+          position: 'relative',
+          width: 750,
+          height: 352
+        };
+      }
+    },
+    cardS: {
+      type: Object,
+      default: function _default() {
+        return {
+          width: 360,
+          height: 300,
+          spacing: 0,
+          scale: 0.75
+        };
+      }
+    },
+    autoPlay: {
+      type: Boolean,
+      default: false
+    },
+    interval: {
+      type: [Number, String],
+      default: 1200
+    }
+  },
+  data: function data() {
+    return {
+      isMoving: false,
+      gesToken: 0,
+      startX: 0,
+      startTime: 0,
+      currentIndex: 0,
+      autoPlayTimer: null
+    };
+  },
+  computed: {
+    cardList: function cardList() {
+      return new Array(this.cardLength + 1).join().split('');
+    },
+    cardWidth: function cardWidth() {
+      return (this.cardLength - 1) * this.cardS.width + this.containerS.width + 235;
+    }
+  },
+  created: function created() {
+    this.currentIndex = this.selectIndex;
+  },
+  mounted: function mounted() {
+    var _this = this;
+
+    // ios和页面返回冲突，组件里面将ios系统横滑返回禁止
+    if (swipeBack && swipeBack.forbidSwipeBack) {
+      swipeBack.forbidSwipeBack(true);
+>>>>>>> d5f75e6c3dc497af42faa6ed36f8aa45a747a051
+    }
+
+<<<<<<< HEAD
+  return finaldestination;
+}
+
+/**
+ * @typedef ProtocolExtract
+ * @type Object
+ * @property {String} protocol Protocol matched in the URL, in lowercase.
+ * @property {Boolean} slashes `true` if protocol is followed by "//", else `false`.
+ * @property {String} rest Rest of the URL that is not part of the protocol.
+ */
+
+/**
+ * Extract protocol information from a URL with/without double slash ("//").
+ *
+ * @param {String} address URL we want to extract from.
+ * @return {ProtocolExtract} Extracted information.
+ * @api private
+ */
+function extractProtocol(address) {
+  var match = protocolre.exec(address);
+
+  return {
+    protocol: match[1] ? match[1].toLowerCase() : '',
+    slashes: !!match[2],
+    rest: match[3]
+  };
+}
+
+/**
+ * Resolve a relative URL pathname against a base URL pathname.
+ *
+ * @param {String} relative Pathname of the relative URL.
+ * @param {String} base Pathname of the base URL.
+ * @return {String} Resolved pathname.
+ * @api private
+ */
+function resolve(relative, base) {
+  var path = (base || '/').split('/').slice(0, -1).concat(relative.split('/'))
+    , i = path.length
+    , last = path[i - 1]
+    , unshift = false
+    , up = 0;
+
+  while (i--) {
+    if (path[i] === '.') {
+      path.splice(i, 1);
+    } else if (path[i] === '..') {
+      path.splice(i, 1);
+      up++;
+    } else if (up) {
+      if (i === 0) unshift = true;
+      path.splice(i, 1);
+      up--;
+    }
+  }
+
+  if (unshift) path.unshift('');
+  if (last === '.' || last === '..') path.push('');
+
+  return path.join('/');
+}
+
+/**
+ * The actual URL instance. Instead of returning an object we've opted-in to
+ * create an actual constructor as it's much more memory efficient and
+ * faster and it pleases my OCD.
+ *
+ * @constructor
+ * @param {String} address URL we want to parse.
+ * @param {Object|String} location Location defaults for relative paths.
+ * @param {Boolean|Function} parser Parser for the query string.
+ * @api public
+ */
+function URL(address, location, parser) {
+  if (!(this instanceof URL)) {
+    return new URL(address, location, parser);
+  }
+
+  var relative, extracted, parse, instruction, index, key
+    , instructions = rules.slice()
+    , type = typeof location
+    , url = this
+    , i = 0;
+
+  //
+  // The following if statements allows this module two have compatibility with
+  // 2 different API:
+  //
+  // 1. Node.js's `url.parse` api which accepts a URL, boolean as arguments
+  //    where the boolean indicates that the query string should also be parsed.
+  //
+  // 2. The `URL` interface of the browser which accepts a URL, object as
+  //    arguments. The supplied object will be used as default values / fall-back
+  //    for relative paths.
+  //
+  if ('object' !== type && 'string' !== type) {
+    parser = location;
+    location = null;
+  }
+
+  if (parser && 'function' !== typeof parser) parser = qs.parse;
+
+  location = lolcation(location);
+
+  //
+  // Extract protocol information before running the instructions.
+  //
+  extracted = extractProtocol(address || '');
+  relative = !extracted.protocol && !extracted.slashes;
+  url.slashes = extracted.slashes || relative && location.slashes;
+  url.protocol = extracted.protocol || location.protocol || '';
+  address = extracted.rest;
+
+  //
+  // When the authority component is absent the URL starts with a path
+  // component.
+  //
+  if (!extracted.slashes) instructions[2] = [/(.*)/, 'pathname'];
+
+  for (; i < instructions.length; i++) {
+    instruction = instructions[i];
+    parse = instruction[0];
+    key = instruction[1];
+
+    if (parse !== parse) {
+      url[key] = address;
+    } else if ('string' === typeof parse) {
+      if (~(index = address.indexOf(parse))) {
+        if ('number' === typeof instruction[2]) {
+          url[key] = address.slice(0, index);
+          address = address.slice(index + instruction[2]);
+        } else {
+          url[key] = address.slice(index);
+          address = address.slice(0, index);
+        }
+      }
+    } else if ((index = parse.exec(address))) {
+      url[key] = index[1];
+      address = address.slice(0, index.index);
+    }
+
+    url[key] = url[key] || (
+      relative && instruction[3] ? location[key] || '' : ''
+    );
+
+    //
+    // Hostname, host and protocol should be lowercased so they can be used to
+    // create a proper `origin`.
+    //
+    if (instruction[4]) url[key] = url[key].toLowerCase();
+  }
+
+  //
+  // Also parse the supplied query string in to an object. If we're supplied
+  // with a custom parser as function use that instead of the default build-in
+  // parser.
+  //
+  if (parser) url.query = parser(url.query);
+
+  //
+  // If the URL is relative, resolve the pathname against the base URL.
+  //
+  if (
+      relative
+    && location.slashes
+    && url.pathname.charAt(0) !== '/'
+    && (url.pathname !== '' || location.pathname !== '')
+  ) {
+    url.pathname = resolve(url.pathname, location.pathname);
+  }
+
+  //
+  // We should not add port numbers if they are already the default port number
+  // for a given protocol. As the host also contains the port number we're going
+  // override it with the hostname which contains no port number.
+  //
+  if (!required(url.port, url.protocol)) {
+    url.host = url.hostname;
+    url.port = '';
+  }
+
+  //
+  // Parse down the `auth` for the username and password.
+  //
+  url.username = url.password = '';
+  if (url.auth) {
+    instruction = url.auth.split(':');
+    url.username = instruction[0] || '';
+    url.password = instruction[1] || '';
+  }
+
+  url.origin = url.protocol && url.host && url.protocol !== 'file:'
+    ? url.protocol +'//'+ url.host
+    : 'null';
+
+  //
+  // The href is just the compiled result.
+  //
+  url.href = url.toString();
+}
+
+/**
+ * This is convenience method for changing properties in the URL instance to
+ * insure that they all propagate correctly.
+ *
+ * @param {String} part          Property we need to adjust.
+ * @param {Mixed} value          The newly assigned value.
+ * @param {Boolean|Function} fn  When setting the query, it will be the function
+ *                               used to parse the query.
+ *                               When setting the protocol, double slash will be
+ *                               removed from the final url if it is true.
+ * @returns {URL}
+ * @api public
+ */
+function set(part, value, fn) {
+  var url = this;
+
+  switch (part) {
+    case 'query':
+      if ('string' === typeof value && value.length) {
+        value = (fn || qs.parse)(value);
+      }
+
+      url[part] = value;
+      break;
+
+    case 'port':
+      url[part] = value;
+
+      if (!required(value, url.protocol)) {
+        url.host = url.hostname;
+        url[part] = '';
+      } else if (value) {
+        url.host = url.hostname +':'+ value;
+      }
+
+      break;
+
+    case 'hostname':
+      url[part] = value;
+
+      if (url.port) value += ':'+ url.port;
+      url.host = value;
+      break;
+
+    case 'host':
+      url[part] = value;
+
+      if (/:\d+$/.test(value)) {
+        value = value.split(':');
+        url.port = value.pop();
+        url.hostname = value.join(':');
+      } else {
+        url.hostname = value;
+        url.port = '';
+      }
+
+      break;
+
+    case 'protocol':
+      url.protocol = value.toLowerCase();
+      url.slashes = !fn;
+      break;
+
+    case 'pathname':
+    case 'hash':
+      if (value) {
+        var char = part === 'pathname' ? '/' : '#';
+        url[part] = value.charAt(0) !== char ? char + value : value;
+      } else {
+        url[part] = value;
+      }
+      break;
+
+    default:
+      url[part] = value;
+  }
+
+  for (var i = 0; i < rules.length; i++) {
+    var ins = rules[i];
+
+    if (ins[4]) url[ins[1]] = url[ins[1]].toLowerCase();
+  }
+
+  url.origin = url.protocol && url.host && url.protocol !== 'file:'
+    ? url.protocol +'//'+ url.host
+    : 'null';
+
+  url.href = url.toString();
+
+  return url;
+}
+
+/**
+ * Transform the properties back in to a valid and full URL string.
+ *
+ * @param {Function} stringify Optional query stringify function.
+ * @returns {String}
+ * @api public
+ */
+function toString(stringify) {
+  if (!stringify || 'function' !== typeof stringify) stringify = qs.stringify;
+
+  var query
+    , url = this
+    , protocol = url.protocol;
+
+  if (protocol && protocol.charAt(protocol.length - 1) !== ':') protocol += ':';
+
+  var result = protocol + (url.slashes ? '//' : '');
+
+  if (url.username) {
+    result += url.username;
+    if (url.password) result += ':'+ url.password;
+    result += '@';
+  }
+
+  result += url.host + url.pathname;
+
+  query = 'object' === typeof url.query ? stringify(url.query) : url.query;
+  if (query) result += '?' !== query.charAt(0) ? '?'+ query : query;
+
+  if (url.hash) result += url.hash;
+
+  return result;
+}
+
+URL.prototype = { set: set, toString: toString };
+
+//
+// Expose the URL parser and some additional properties that might be useful for
+// others or testing.
+//
+URL.extractProtocol = extractProtocol;
+URL.location = lolcation;
+URL.qs = qs;
+
+module.exports = URL;
+
+
+/***/ }),
+/* 76 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+/**
+ * Check if we're required to add a port number.
+ *
+ * @see https://url.spec.whatwg.org/#default-port
+ * @param {Number|String} port Port number we need to check
+ * @param {String} protocol Protocol we need to check against.
+ * @returns {Boolean} Is it a default port for the given protocol
+ * @api private
+ */
+module.exports = function required(port, protocol) {
+  protocol = protocol.split(':')[0];
+  port = +port;
+
+  if (!port) return false;
+
+  switch (protocol) {
+    case 'http':
+    case 'ws':
+    return port !== 80;
+
+    case 'https':
+    case 'wss':
+    return port !== 443;
+
+    case 'ftp':
+    return port !== 21;
+
+    case 'gopher':
+    return port !== 70;
+
+    case 'file':
+    return false;
+  }
+
+  return port !== 0;
+};
+
+
+/***/ }),
+/* 77 */
+/***/ (function(module, exports, __webpack_require__) {
+=======
     setTimeout(function () {
       var sliderCtn = _this.$refs['sliderCtn_' + _this.sliderId];
       if (_bindEnv2.default.supportsEB() && sliderCtn && sliderCtn.ref) {
@@ -8960,6 +10234,7 @@ function set(part, value, fn) {
       if (url.port) value += ':'+ url.port;
       url.host = value;
       break;
+>>>>>>> d5f75e6c3dc497af42faa6ed36f8aa45a747a051
 
     case 'host':
       url[part] = value;
@@ -8973,6 +10248,81 @@ function set(part, value, fn) {
         url.port = '';
       }
 
+<<<<<<< HEAD
+var has = Object.prototype.hasOwnProperty;
+
+/**
+ * Decode a URI encoded string.
+ *
+ * @param {String} input The URI encoded string.
+ * @returns {String} The decoded string.
+ * @api private
+ */
+function decode(input) {
+  return decodeURIComponent(input.replace(/\+/g, ' '));
+}
+
+/**
+ * Simple query string parser.
+ *
+ * @param {String} query The query string that needs to be parsed.
+ * @returns {Object}
+ * @api public
+ */
+function querystring(query) {
+  var parser = /([^=?&]+)=?([^&]*)/g
+    , result = {}
+    , part;
+
+  while (part = parser.exec(query)) {
+    var key = decode(part[1])
+      , value = decode(part[2]);
+
+    //
+    // Prevent overriding of existing properties. This ensures that build-in
+    // methods like `toString` or __proto__ are not overriden by malicious
+    // querystrings.
+    //
+    if (key in result) continue;
+    result[key] = value;
+  }
+
+  return result;
+}
+
+/**
+ * Transform a query string to an object.
+ *
+ * @param {Object} obj Object that should be transformed.
+ * @param {String} prefix Optional prefix.
+ * @returns {String}
+ * @api public
+ */
+function querystringify(obj, prefix) {
+  prefix = prefix || '';
+
+  var pairs = [];
+
+  //
+  // Optionally prefix with a '?' if needed
+  //
+  if ('string' !== typeof prefix) prefix = '?';
+
+  for (var key in obj) {
+    if (has.call(obj, key)) {
+      pairs.push(encodeURIComponent(key) +'='+ encodeURIComponent(obj[key]));
+    }
+  }
+
+  return pairs.length ? prefix + pairs.join('&') : '';
+}
+
+//
+// Expose the module.
+//
+exports.stringify = querystringify;
+exports.parse = querystring;
+=======
       break;
 
     case 'protocol':
@@ -9034,10 +10384,104 @@ function toString(stringify) {
   }
 
   result += url.host + url.pathname;
+>>>>>>> d5f75e6c3dc497af42faa6ed36f8aa45a747a051
 
   query = 'object' === typeof url.query ? stringify(url.query) : url.query;
   if (query) result += '?' !== query.charAt(0) ? '?'+ query : query;
 
+<<<<<<< HEAD
+/***/ }),
+/* 78 */
+/***/ (function(module, exports) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    style: _vm.containerS
+  }, [_c('div', {
+    ref: ("sliderCtn_" + _vm.sliderId),
+    style: {
+      width: _vm.cardWidth + 'px',
+      height: _vm.cardS.height + 'px',
+      transform: ("translateX(-" + (_vm.currentIndex * (_vm.cardS.width + _vm.cardS.spacing)) + "px)")
+    },
+    on: {
+      "panstart": _vm.onPanStart,
+      "panmove": _vm.onPanMove,
+      "panend": _vm.onPanEnd,
+      "horizontalpan": _vm.onEpPanStart
+    }
+  }, [_vm._l((_vm.cardList), function(v, index) {
+    return _c('div', {
+      ref: ("card" + index + "_" + _vm.sliderId),
+      refInFor: true,
+      staticClass: ["slider"],
+      style: {
+        transform: ("scale(" + (index===_vm.currentIndex ? 1 : _vm.cardS.scale) + ")"),
+        left: ((index * (_vm.cardS.width+_vm.cardS.spacing)) + "px"),
+        marginLeft: (((_vm.containerS.width - _vm.cardS.width) / 2) + "px"),
+        width: _vm.cardS.width + 'px',
+        height: _vm.cardS.height + 'px'
+      }
+    }, [_vm._t(("card" + index + "_" + _vm.sliderId))], 2)
+  }), _vm._t("pull-more")], 2)])
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+
+/***/ }),
+/* 79 */
+/***/ (function(module, exports) {
+
+throw new Error("Module build failed: SyntaxError: Unexpected token (38:10)\n    at Parser.pp$4.raise (E:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:2610:13)\n    at Parser.pp.unexpected (E:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:637:8)\n    at Parser.pp$3.parseIdent (E:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:2565:10)\n    at Parser.pp$3.parsePropertyName (E:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:2362:105)\n    at Parser.parseObj (E:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:4463:14)\n    at Parser.pp$3.parseExprAtom (E:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:2077:17)\n    at Parser.parseExprAtom (E:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:4372:24)\n    at Parser.pp$3.parseExprSubscripts (E:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:1955:19)\n    at Parser.pp$3.parseMaybeUnary (E:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:1932:17)\n    at Parser.pp$3.parseExprOps (E:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:1874:19)\n    at Parser.pp$3.parseMaybeConditional (E:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:1857:19)\n    at Parser.pp$3.parseMaybeAssign (E:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:1832:19)\n    at Parser.pp$3.parsePropertyValue (E:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:2310:87)\n    at Parser.parseObj (E:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:4472:14)\n    at Parser.pp$3.parseExprAtom (E:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:2077:17)\n    at Parser.parseExprAtom (E:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:4372:24)");
+
+/***/ }),
+/* 80 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var __vue_exports__, __vue_options__
+var __vue_styles__ = []
+
+/* styles */
+__vue_styles__.push(__webpack_require__(81)
+)
+
+/* script */
+__vue_exports__ = __webpack_require__(82)
+
+/* template */
+var __vue_template__ = __webpack_require__(83)
+__vue_options__ = __vue_exports__ = __vue_exports__ || {}
+if (
+  typeof __vue_exports__.default === "object" ||
+  typeof __vue_exports__.default === "function"
+) {
+if (Object.keys(__vue_exports__).some(function (key) { return key !== "default" && key !== "__esModule" })) {console.error("named exports are not supported in *.vue files.")}
+__vue_options__ = __vue_exports__ = __vue_exports__.default
+}
+if (typeof __vue_options__ === "function") {
+  __vue_options__ = __vue_options__.options
+}
+__vue_options__.__file = "E:\\MINI-WEB\\src\\components\\ownInfo.vue"
+__vue_options__.render = __vue_template__.render
+__vue_options__.staticRenderFns = __vue_template__.staticRenderFns
+__vue_options__._scopeId = "data-v-82b0c6aa"
+__vue_options__.style = __vue_options__.style || {}
+__vue_styles__.forEach(function (module) {
+  for (var name in module) {
+    __vue_options__.style[name] = module[name]
+  }
+})
+if (typeof __register_static_styles__ === "function") {
+  __register_static_styles__(__vue_options__._scopeId, __vue_styles__)
+}
+
+module.exports = __vue_exports__
+
+
+/***/ }),
+/* 81 */
+/***/ (function(module, exports) {
+
+=======
   if (url.hash) result += url.hash;
 
   return result;
@@ -9274,6 +10718,7 @@ module.exports = __vue_exports__
 /* 81 */
 /***/ (function(module, exports) {
 
+>>>>>>> d5f75e6c3dc497af42faa6ed36f8aa45a747a051
 module.exports = {
   "user-header": {
     "marginTop": 1.5
@@ -9401,6 +10846,7 @@ module.exports = {
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+<<<<<<< HEAD
 
 var _wxcEpSlider = __webpack_require__(15);
 
@@ -9797,6 +11243,412 @@ exports.default = {
     showReturnCalendar: function showReturnCalendar() {
       var _this3 = this;
 
+=======
+
+var _wxcEpSlider = __webpack_require__(15);
+
+var _wxcEpSlider2 = _interopRequireDefault(_wxcEpSlider);
+
+var _index = __webpack_require__(2);
+
+var _index2 = _interopRequireDefault(_index);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+exports.default = {
+  components: { WxcEpSlider: _wxcEpSlider2.default },
+  data: function data() {
+    return {
+      name: '',
+      labels: ['北京', '20岁', '双子座', '男'],
+      signature: '',
+      showVideoList: 0,
+      sliderId: 1,
+      cardLength: 5,
+      cardSize: {
+        width: 400,
+        height: 300,
+        spacing: 0,
+        scale: 0.8
+      }
+    };
+  },
+  mounted: function mounted() {
+    var _this = this;
+
+    _index2.default.getPersonInfo({}).then(function (_ref) {
+      var data = _ref.data;
+
+      data = data.data;
+      _this.labels = [data.local, data.age + '岁', data.constellation, data.sex];
+      // this.labels.slice()
+      _this.name = data.name;
+      _this.signature = data.signature;
+    });
+  },
+
+  methods: {
+    doListChange: function doListChange(msg) {
+      this.showVideoList = msg;
+    },
+    wxcEpSliderCurrentIndexSelected: function wxcEpSliderCurrentIndexSelected(e) {
+      var index = e.currentIndex;
+      console.log(index);
+    },
+    changeTap: function changeTap() {
+      alert(this.showVideoList);
+      if (this.showVideoList === 0) {
+        this.showVideoList = 1;
+      } else {
+        this.showVideoList = 0;
+      }
+    }
+  },
+  watch: {
+    showVideoList: function showVideoList() {}
+  }
+};
+
+/***/ }),
+/* 83 */
+/***/ (function(module, exports) {
+
+throw new Error("Module build failed: SyntaxError: Unexpected token (26:10)\n    at Parser.pp$4.raise (E:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:2610:13)\n    at Parser.pp.unexpected (E:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:637:8)\n    at Parser.pp$3.parseIdent (E:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:2565:10)\n    at Parser.pp$3.parsePropertyName (E:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:2362:105)\n    at Parser.parseObj (E:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:4463:14)\n    at Parser.pp$3.parseExprAtom (E:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:2077:17)\n    at Parser.parseExprAtom (E:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:4372:24)\n    at Parser.pp$3.parseExprSubscripts (E:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:1955:19)\n    at Parser.pp$3.parseMaybeUnary (E:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:1932:17)\n    at Parser.pp$3.parseExprOps (E:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:1874:19)\n    at Parser.pp$3.parseMaybeConditional (E:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:1857:19)\n    at Parser.pp$3.parseMaybeAssign (E:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:1832:19)\n    at Parser.pp$3.parsePropertyValue (E:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:2310:87)\n    at Parser.parseObj (E:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:4472:14)\n    at Parser.pp$3.parseExprAtom (E:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:2077:17)\n    at Parser.parseExprAtom (E:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:4372:24)");
+
+/***/ }),
+/* 84 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var __vue_exports__, __vue_options__
+var __vue_styles__ = []
+
+/* styles */
+__vue_styles__.push(__webpack_require__(85)
+)
+
+/* script */
+__vue_exports__ = __webpack_require__(86)
+
+/* template */
+var __vue_template__ = __webpack_require__(132)
+__vue_options__ = __vue_exports__ = __vue_exports__ || {}
+if (
+  typeof __vue_exports__.default === "object" ||
+  typeof __vue_exports__.default === "function"
+) {
+if (Object.keys(__vue_exports__).some(function (key) { return key !== "default" && key !== "__esModule" })) {console.error("named exports are not supported in *.vue files.")}
+__vue_options__ = __vue_exports__ = __vue_exports__.default
+}
+if (typeof __vue_options__ === "function") {
+  __vue_options__ = __vue_options__.options
+}
+__vue_options__.__file = "E:\\MINI-WEB\\src\\components\\personalEdit.vue"
+__vue_options__.render = __vue_template__.render
+__vue_options__.staticRenderFns = __vue_template__.staticRenderFns
+__vue_options__._scopeId = "data-v-741f52ba"
+__vue_options__.style = __vue_options__.style || {}
+__vue_styles__.forEach(function (module) {
+  for (var name in module) {
+    __vue_options__.style[name] = module[name]
+  }
+})
+if (typeof __register_static_styles__ === "function") {
+  __register_static_styles__(__vue_options__._scopeId, __vue_styles__)
+}
+
+module.exports = __vue_exports__
+
+
+/***/ }),
+/* 85 */
+/***/ (function(module, exports) {
+
+module.exports = {
+  "upload__input": {
+    "width": 2.1,
+    "height": 2.1,
+    "position": "absolute",
+    "top": 0.4,
+    "opacity": 0
+  },
+  "infoEdit": {
+    "flexGrow": 1,
+    "alignItems": "center",
+    "backgroundColor": "#000000",
+    "color": "#FFFFFF"
+  },
+  "user-info": {
+    "marginTop": "30",
+    "width": 100
+  },
+  "cell": {
+    "width": 100,
+    "paddingTop": "20",
+    "paddingRight": "80",
+    "paddingBottom": "20",
+    "paddingLeft": "80",
+    "flexDirection": "row",
+    "alignItems": "center",
+    "backgroundColor": "#161824"
+  },
+  "cell-h": {
+    "marginRight": "40"
+  },
+  "sex-content": {
+    "alignItems": "center"
+  },
+  "btn-style": {
+    "marginTop": "5",
+    "marginRight": 0,
+    "marginBottom": "5",
+    "marginLeft": 0
+  }
+}
+
+/***/ }),
+/* 86 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _wxcPageCalendar = __webpack_require__(87);
+
+var _wxcPageCalendar2 = _interopRequireDefault(_wxcPageCalendar);
+
+var _wxcButton = __webpack_require__(16);
+
+var _wxcButton2 = _interopRequireDefault(_wxcButton);
+
+var _wxcPopup = __webpack_require__(6);
+
+var _wxcPopup2 = _interopRequireDefault(_wxcPopup);
+
+var _wxcCity = __webpack_require__(103);
+
+var _wxcCity2 = _interopRequireDefault(_wxcCity);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+var test = weex.requireModule('picker');
+exports.default = {
+  components: { WxcCity: _wxcCity2.default, WxcPopup: _wxcPopup2.default, WxcButton: _wxcButton2.default, WxcPageCalendar: _wxcPageCalendar2.default },
+  data: function data() {
+    return {
+      name: '董宇辰',
+      animationType: 'push',
+      currentCity: '',
+      cityStyleType: 'list',
+      value: '',
+      sex: 'man',
+      imgDataUrl: '/src/asset/img/qq.jpg',
+      files: '',
+      isBottomShow: false,
+      currentDate: '',
+      selectedDate: [],
+      isRange: false,
+      calendarTitle: '选择日期',
+      dateRange: ['2017-06-10', '2018-06-10'],
+      selectedNote: ['生日'],
+      minibarCfg: {
+        title: '日期选择'
+      },
+      descList: []
+    };
+  },
+  mounted: function mounted() {
+    // 模拟定位
+  },
+
+  methods: {
+    uploadimg: function uploadimg() {
+      alert(123);
+      document.getElementById('upload_file').click();
+    },
+    showListCity: function showListCity() {
+      this.cityStyleType = 'list';
+      this.$refs['wxcCity'].show();
+    },
+    showGroupCity: function showGroupCity() {
+      this.cityStyleType = 'group';
+      this.$refs['wxcCity'].show();
+    },
+    citySelect: function citySelect(e) {
+      this.currentCity = e.item;
+    },
+    onInput: function onInput(e) {},
+    openBottomPopup: function openBottomPopup() {
+      this.isBottomShow = true;
+    },
+    popupOverlayBottomClick: function popupOverlayBottomClick() {
+      this.isBottomShow = false;
+    },
+    handleSexChange: function handleSexChange(sex) {
+      this.sex = sex === '' ? this.sex : sex;
+      this.isBottomShow = false;
+    },
+    wxcPageCalendarDateSelected: function wxcPageCalendarDateSelected(e) {
+      this.selectedDate = e.date;
+      this.currentDate = e.date;
+    },
+    wxcPageCalendarBackClicked: function wxcPageCalendarBackClicked() {},
+    showCalendar: function showCalendar() {
+      var _this2 = this;
+
+      this.isRange = false;
+      setTimeout(function () {
+        _this2.$refs['wxcPageCalendar'].show();
+      }, 10);
+    },
+    showReturnCalendar: function showReturnCalendar() {
+      var _this3 = this;
+
+>>>>>>> d5f75e6c3dc497af42faa6ed36f8aa45a747a051
       this.isRange = true;
       setTimeout(function () {
         _this3.$refs['wxcPageCalendar'].show();
@@ -9928,6 +11780,7 @@ module.exports = {
     "textAlign": "center",
     "alignItems": "center",
     "backgroundColor": "#f2f3f4"
+<<<<<<< HEAD
   },
   "calendar-row": {
     "height": "140",
@@ -9982,6 +11835,62 @@ module.exports = {
     "backgroundColor": "#FFC900",
     "textAlign": "center"
   },
+=======
+  },
+  "calendar-row": {
+    "height": "140",
+    "flexDirection": "row",
+    "backgroundColor": "#ffffff",
+    "borderBottomWidth": "1",
+    "borderColor": "#f2f3f4",
+    "alignItems": "center",
+    "justifyContent": "space-between"
+  },
+  "row-item": {
+    "flex": 1,
+    "height": "140",
+    "paddingTop": "10",
+    "paddingBottom": "10",
+    "justifyContent": "center",
+    "alignItems": "center"
+  },
+  "iphone-x": {
+    "height": "68"
+  },
+  "calendar-note": {
+    "height": "36",
+    "lineHeight": "36",
+    "fontSize": "24",
+    "color": "#000000",
+    "textAlign": "center"
+  },
+  "calendar-day": {
+    "height": "48",
+    "lineHeight": "48",
+    "fontSize": "36",
+    "color": "#000000",
+    "textAlign": "center"
+  },
+  "calendar-ext": {
+    "height": "36",
+    "lineHeight": "36",
+    "color": "#999999",
+    "textAlign": "center",
+    "fontSize": "24",
+    "textOverflow": "ellipsis"
+  },
+  "calendar-holiday": {
+    "color": "#FF5000"
+  },
+  "calendar-rest": {
+    "color": "#FF5000"
+  },
+  "item-row-selected": {
+    "color": "#ffffff",
+    "backgroundColor": "#FFC900",
+    "textAlign": "center"
+  },
+>>>>>>> d5f75e6c3dc497af42faa6ed36f8aa45a747a051
   "item-text-selected": {
     "color": "#3d3d3d",
     "textAlign": "center"
@@ -10077,6 +11986,74 @@ exports.default = {
     animationType: {
       type: String,
       default: 'push'
+<<<<<<< HEAD
+    },
+    dateRange: {
+      type: Array,
+      required: true,
+      default: function _default() {
+        return [];
+      }
+    },
+    minibarCfg: {
+      type: Object,
+      default: function _default() {
+        return {
+          'title': '选择日期',
+          'background-color': '#FFC900',
+          'text-color': '#3D3D3D'
+        };
+      }
+    },
+    showHeader: {
+      type: Boolean,
+      default: false
+    },
+    selectedNote: {
+      type: Array,
+      default: function _default() {
+        return ['开始', '到达', '往返'];
+      }
+    },
+    isRange: {
+      type: Boolean,
+      default: false
+    },
+    needDestroy: {
+      type: Boolean,
+      default: false
+    },
+    descList: {
+      type: Array,
+      default: function _default() {
+        return [];
+      }
+    }
+  },
+  data: function data() {
+    return {
+      isShow: false,
+      reSelect: true,
+      today: Format.getToDay(),
+      departDate: '',
+      arriveDate: ''
+    };
+  },
+  computed: {
+    calendarExtendStyle: function calendarExtendStyle() {
+      return _utils2.default.uiStyle.pageTransitionAnimationStyle(this.animationType);
+    },
+    monthsArray: function monthsArray() {
+      var range = this.dateRange,
+          today = this.today,
+          departDate = this.departDate,
+          arriveDate = this.arriveDate,
+          selectedNote = this.selectedNote,
+          descList = this.descList;
+
+      var param = { range: range, today: today, departDate: departDate, arriveDate: arriveDate, selectedNote: selectedNote, descList: descList };
+      return Format.generateDateCell(param);
+=======
     },
     dateRange: {
       type: Array,
@@ -10153,6 +12130,136 @@ exports.default = {
   mounted: function mounted() {
     var _this = this;
 
+    var needDestroy = this.needDestroy;
+
+    var hold = isWeb ? 700 : 100;
+    !needDestroy && setTimeout(function () {
+      _this.isShow = true;
+      _this.scrollToDate();
+    }, hold);
+  },
+
+  watch: {
+    needDestroy: function needDestroy(newVal, preVal) {
+      var _this2 = this;
+
+      if (!newVal && newVal !== preVal) {
+        setTimeout(function () {
+          _this2.isShow = true;
+        }, 200);
+      }
+    }
+  },
+  methods: {
+    minibarLeftButtonClick: function minibarLeftButtonClick() {
+      var _this3 = this;
+
+      setTimeout(function () {
+        _this3.hide();
+        _this3.$emit('wxcPageCalendarBackClicked', {});
+      }, 100);
+    },
+    onClickDate: function onClickDate(datConfig) {
+      var self = this;
+      if (datConfig.disabled || datConfig.isEmpty) return;
+
+      if (self.reSelect) {
+        self.departDate = '';
+        self.arriveDate = '';
+        self.reSelect = false;
+      }
+
+      if (self.isRange) {
+        if (self.departDate && Date.parse(self.departDate) <= Date.parse(datConfig.date)) {
+          self.arriveDate = datConfig.date;
+        } else {
+          self.departDate = datConfig.date;
+        }
+        if (self.departDate && self.arriveDate) {
+          self.dispatchDateChange([self.departDate, self.arriveDate]);
+        }
+      } else {
+        self.departDate = datConfig.date;
+        self.dispatchDateChange([self.departDate]);
+      }
+    },
+    scrollToDate: function scrollToDate() {
+      var _this4 = this;
+
+      setTimeout(function () {
+        if (_this4.departDate) {
+          var el = _this4.$refs.departDate[0];
+          el && dom.getComponentRect && dom.getComponentRect(el, function (e) {
+            if (e && e.result) {
+              var bottom = e.size.bottom;
+              var env = weex.config.env;
+              // 误差
+
+              var height = env.deviceHeight / env.deviceWidth * 750 - 50;
+              if (bottom > height || bottom === 0) {
+                dom.scrollToElement(el, { offset: -146, animated: false });
+              }
+            }
+          });
+        }
+      }, 10);
+    },
+    dispatchDateChange: function dispatchDateChange(dateArr) {
+      var _this5 = this;
+
+      var duration = isWeb ? 400 : 600;
+      setTimeout(function () {
+        _this5.hide();
+      }, duration);
+      this.$emit('wxcPageCalendarDateSelected', {
+        date: dateArr
+      });
+    },
+    detectShow: function detectShow() {
+      if (this.isRange && this.selectedDate.length >= 2) {
+        this.departDate = this.selectedDate[0];
+        this.arriveDate = this.selectedDate[1];
+      } else if (this.selectedDate.length >= 1) {
+        this.departDate = this.selectedDate[0];
+        this.arriveDate = '';
+      }
+    },
+    _animate: function _animate(status) {
+      var callback = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
+
+      var ref = this.$refs.pageCalendar;
+      if (this.animationType === 'push') {
+        _utils2.default.animation.pageTransitionAnimation(ref, 'translateX(' + (status ? -750 : 750) + 'px)', status, callback);
+      } else if (this.animationType === 'model') {
+        _utils2.default.animation.pageTransitionAnimation(ref, 'translateY(' + (status ? -_utils2.default.env.getScreenHeight() : _utils2.default.env.getScreenHeight()) + 'px)', status, callback);
+      }
+    },
+    show: function show() {
+      var needDestroy = this.needDestroy;
+
+      needDestroy && (this.isShow = true);
+      this.reSelect = true;
+      this.detectShow();
+      this._animate(true);
+      needDestroy && this.scrollToDate();
+    },
+    hide: function hide() {
+      this.needDestroy && (this.isShow = false);
+      this.reSelect = false;
+      this._animate(false);
+      this.$emit('wxcPageCalendarHide', {});
+>>>>>>> d5f75e6c3dc497af42faa6ed36f8aa45a747a051
+    }
+  },
+  created: function created() {
+    this.isIPhoneX = _utils2.default.env.isIPhoneX();
+    this.showTitle = isWeb || this.showHeader;
+    this.detectShow();
+  },
+  mounted: function mounted() {
+    var _this = this;
+
+<<<<<<< HEAD
     var needDestroy = this.needDestroy;
 
     var hold = isWeb ? 700 : 100;
@@ -10364,6 +12471,97 @@ function _checkHash(url, hash) {
 }
 
 /**
+=======
+/***/ }),
+/* 91 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports._getTraditionalHoliday = _getTraditionalHoliday;
+exports._isDate = _isDate;
+exports._checkHash = _checkHash;
+exports.getTime = getTime;
+exports._isInRange = _isInRange;
+exports._isInSelectRange = _isInSelectRange;
+exports._fixNum = _fixNum;
+exports._isWeekend = _isWeekend;
+exports._isToday = _isToday;
+exports._getMonthDays = _getMonthDays;
+exports._getPadding = _getPadding;
+exports._unique = _unique;
+exports.getToDay = getToDay;
+exports.getWeekRows = getWeekRows;
+exports.generateDateCell = generateDateCell;
+
+function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+
+/**
+ * CopyRight (C) 2017-2022 Alibaba Group Holding Limited.
+ * Created by Tw93 on 2017/07/29.
+ */
+
+// 国际节日
+var GLOBAL_HOLIDAY = exports.GLOBAL_HOLIDAY = {
+  '01-01': '元旦',
+  '02-14': '情人',
+  '05-01': '劳动',
+  '06-01': '儿童',
+  '10-01': '国庆',
+  '12-25': '圣诞'
+};
+
+// 传统节日
+var TRADITIONAL_HOLIDAY = {
+  '除夕': ['2015-02-18', '2016-02-07', '2017-01-27', '2018-02-15', '2019-02-04', '2020-01-24'],
+  '春节': ['2015-02-19', '2016-02-08', '2017-01-28', '2018-02-16', '2019-02-05', '2020-01-25'],
+  '元宵': ['2015-03-05', '2016-02-22', '2017-02-11', '2018-03-02', '2019-02-19', '2020-02-08'],
+  '清明': ['2015-04-05', '2016-04-04', '2017-04-04', '2018-04-05', '2019-04-05', '2020-04-04'],
+  '端午': ['2015-06-20', '2016-06-09', '2017-05-30', '2018-06-18', '2019-06-07', '2020-06-25'],
+  '中秋': ['2015-09-27', '2016-09-15', '2017-10-04', '2018-09-24', '2019-09-13', '2020-10-01'],
+  '重阳': ['2015-10-21', '2016-10-09', '2017-10-28', '2018-10-17', '2019-10-07', '2020-10-25']
+};
+
+// 放假日
+var REST_DAYS = ['2017-10-01', '2017-10-02', '2017-10-03', '2017-10-04', '2017-10-05', '2017-10-06', '2017-10-07', '2017-10-08'];
+
+// 工作日
+var WORK_DAYS = ['2017-09-30'];
+
+function _getTraditionalHoliday() {
+  var HOLIDAY_TEMP = {};
+
+  var keys = Object.keys(TRADITIONAL_HOLIDAY);
+  keys.forEach(function (k) {
+    var arr = TRADITIONAL_HOLIDAY[k];
+    arr.forEach(function (i) {
+      HOLIDAY_TEMP[i] = k;
+    });
+  });
+  return HOLIDAY_TEMP;
+}
+
+function _isDate(obj) {
+  var type = obj === null ? String(obj) : {}.toString.call(obj) || 'object';
+  return type === '[object date]';
+}
+
+/**
+ * 检测Hash
+ *
+ * @method _checkHash
+ * @private
+ */
+function _checkHash(url, hash) {
+  return url && url.match(/#/) && url.replace(/^.*#/, '') === hash;
+}
+
+/**
+>>>>>>> d5f75e6c3dc497af42faa6ed36f8aa45a747a051
  * 获取当前日期的毫秒数
  * @method getTime
  * @param {String} date
@@ -10444,6 +12642,7 @@ function _getMonthDays(y, t) {
     MONTH_DAYS[1] = 28;
   }
   return MONTH_DAYS;
+<<<<<<< HEAD
 }
 
 /**
@@ -10466,6 +12665,30 @@ function getToDay() {
   return new Date().getFullYear() + '-' + _fixNum(new Date().getMonth() + 1) + '-' + _fixNum(new Date().getDate());
 }
 
+=======
+}
+
+/**
+ * 当月1号前面有多少空格
+ * @method _getPadding
+ * @protected
+ */
+function _getPadding(year, month) {
+  var date = new Date(year + '/' + month + '/1');
+  return date.getDay();
+}
+
+function _unique(array) {
+  return Array.prototype.filter.call(array, function (item, index) {
+    return array.indexOf(item) === index;
+  });
+}
+
+function getToDay() {
+  return new Date().getFullYear() + '-' + _fixNum(new Date().getMonth() + 1) + '-' + _fixNum(new Date().getDate());
+}
+
+>>>>>>> d5f75e6c3dc497af42faa6ed36f8aa45a747a051
 function getWeekRows(y, m, today, dateRange, departDate, arriveDate, selectedNote, descList) {
   var monthDays = _getMonthDays(y, today);
   var padding = _getPadding(y, m, 7);
@@ -10473,6 +12696,90 @@ function getWeekRows(y, m, today, dateRange, departDate, arriveDate, selectedNot
   var rows = Math.ceil(num / 7);
   var remain = num % 7;
   var rowsData = [];
+<<<<<<< HEAD
+
+  for (var i = 1; i <= rows; i++) {
+    var cells = [];
+
+    for (var j = 1; j <= 7; j++) {
+      var cell = {};
+      // 前后空格
+      if (i === 1 && j <= padding || remain && i === rows && j > remain) {
+        cell.isEmpty = true;
+      } else {
+        (function () {
+          var d = (i - 1) * 7 + j - padding;
+          var date = y + '-' + _fixNum(m) + '-' + _fixNum(d);
+          var cls = [];
+          var ref = '';
+          var cellClass = [];
+          var isInRange = _isInRange(dateRange, date);
+          var disabled = false;
+          var global = _fixNum(m) + '-' + _fixNum(d);
+          var note = '';
+          var ext = '';
+
+          if (descList && descList.length > 0) {
+            var nowDesc = descList.filter(function (item) {
+              return item.date == date;
+            });
+            if (nowDesc && nowDesc.length > 0) {
+              ext = nowDesc[0].value;
+              if (nowDesc[0].emphasize) {
+                cls.push('calendar-holiday');
+              }
+            }
+          }
+
+          // 国际节日
+          if (GLOBAL_HOLIDAY[global]) {
+            note = GLOBAL_HOLIDAY[global];
+            cls.push('calendar-holiday');
+          }
+
+          var tHoliday = _getTraditionalHoliday()[date];
+
+          // 传统节日
+          if (tHoliday) {
+            note = tHoliday;
+            cls.push('calendar-holiday');
+          }
+          // 放假日
+          if (REST_DAYS.indexOf(date) > -1) {
+            cls.push('calendar-holiday');
+          }
+
+          // 工作日
+          if (WORK_DAYS.indexOf(date) > -1) {
+            cls.push('calendar-work');
+          }
+
+          // 周末
+          if (_isWeekend(date)) {
+            cls.push('calendar-holiday');
+          }
+
+          // 今天
+          if (_isToday(today, date)) {
+            cls.push('calendar-today');
+            note = '今天';
+          }
+
+          // 不在日期范围内
+          if (!isInRange) {
+            disabled = true;
+          }
+
+          if (disabled) {
+            cls = [];
+            cls.push('calendar-disabled');
+            cellClass.push('cell-disabled');
+          }
+
+          if (!ext && disabled && isInRange) {
+            ext = '不可选';
+          }
+=======
 
   for (var i = 1; i <= rows; i++) {
     var cells = [];
@@ -10626,6 +12933,79 @@ function generateDateCell(_ref) {
 /***/ }),
 /* 92 */
 /***/ (function(module, exports, __webpack_require__) {
+>>>>>>> d5f75e6c3dc497af42faa6ed36f8aa45a747a051
+
+          if (departDate === date || arriveDate === date) {
+            note = departDate === date ? selectedNote[0] : selectedNote[1];
+            ref = departDate === date ? 'departDate' : 'arriveDate';
+            if (departDate === arriveDate && selectedNote.length >= 3) {
+              note = selectedNote[2];
+            }
+            cls.push('item-text-selected');
+            cellClass.push('item-row-selected');
+          }
+
+          if (departDate && arriveDate && _isInSelectRange([departDate, arriveDate], date)) {
+            cellClass.push('calendar-day-include');
+          }
+
+<<<<<<< HEAD
+          cell = {
+            isEmpty: false,
+            ref: ref,
+            cls: _unique(cls).join(' '),
+            cellClass: _unique(cellClass).join(' '),
+            note: note,
+            date: date,
+            ext: ext,
+            disabled: disabled,
+            text: d
+          };
+        })();
+      }
+      cells.push(cell);
+    }
+
+    rowsData.push(cells);
+  }
+
+  return rowsData;
+}
+
+function generateDateCell(_ref) {
+  var range = _ref.range,
+      today = _ref.today,
+      departDate = _ref.departDate,
+      arriveDate = _ref.arriveDate,
+      selectedNote = _ref.selectedNote,
+      descList = _ref.descList;
+
+  var start = new Date(range[0].replace(/-/g, '/'));
+  var end = new Date(range[1].replace(/-/g, '/'));
+  var startYear = start.getFullYear();
+  var startMonth = start.getMonth() + 1;
+  var endYear = end.getFullYear();
+  var endMonth = end.getMonth() + 1;
+
+  var l = (endYear - startYear) * 12 + endMonth - startMonth + 1;
+  var y = startYear;
+  var n = startMonth;
+  var months = [];
+
+  for (var i = 0; i < l; i++) {
+    if (n > 12) {
+      n = 1;
+      y++;
+    }
+    months.push.apply(months, [{ title: y + '-' + _fixNum(n) }].concat(_toConsumableArray(getWeekRows(y, n, today, range, departDate, arriveDate, selectedNote, descList))));
+    n++;
+  }
+  return months;
+}
+
+/***/ }),
+/* 92 */
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
@@ -10643,6 +13023,21 @@ Object.defineProperty(exports, 'default', {
   }
 });
 
+=======
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _index = __webpack_require__(93);
+
+Object.defineProperty(exports, 'default', {
+  enumerable: true,
+  get: function get() {
+    return _interopRequireDefault(_index).default;
+  }
+});
+
+>>>>>>> d5f75e6c3dc497af42faa6ed36f8aa45a747a051
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /***/ }),
@@ -10701,6 +13096,7 @@ module.exports = {
     "justifyContent": "space-between",
     "alignItems": "center",
     "backgroundColor": "#009ff0"
+<<<<<<< HEAD
   },
   "left": {
     "width": "180",
@@ -10725,6 +13121,32 @@ module.exports = {
     "width": "32",
     "height": "32"
   },
+=======
+  },
+  "left": {
+    "width": "180",
+    "paddingLeft": "32"
+  },
+  "middle-title": {
+    "fontSize": "30",
+    "color": "#ffffff",
+    "height": "36",
+    "lineHeight": "34"
+  },
+  "right": {
+    "width": "180",
+    "paddingRight": "32",
+    "alignItems": "flex-end"
+  },
+  "left-button": {
+    "width": "21",
+    "height": "36"
+  },
+  "right-button": {
+    "width": "32",
+    "height": "32"
+  },
+>>>>>>> d5f75e6c3dc497af42faa6ed36f8aa45a747a051
   "icon-text": {
     "fontSize": "28",
     "color": "#ffffff"
@@ -10829,6 +13251,48 @@ exports.default = {
     leftButton: {
       type: String,
       default: 'https://gw.alicdn.com/tfs/TB1x18VpwMPMeJjy1XdXXasrXXa-21-36.png'
+<<<<<<< HEAD
+    },
+    textColor: {
+      type: String,
+      default: '#3D3D3D'
+    },
+    rightButton: {
+      type: String,
+      default: ''
+    },
+    title: {
+      type: String,
+      default: '标题'
+    },
+    leftText: {
+      type: String,
+      default: ''
+    },
+    rightText: {
+      type: String,
+      default: ''
+    },
+    useDefaultReturn: {
+      type: Boolean,
+      default: true
+    },
+    show: {
+      type: Boolean,
+      default: true
+    }
+  },
+  methods: {
+    leftButtonClicked: function leftButtonClicked() {
+      if (this.useDefaultReturn) {
+        Navigator.pop({}, function (e) {});
+      }
+      this.$emit('wxcMinibarLeftButtonClicked', {});
+    },
+    rightButtonClicked: function rightButtonClicked() {
+      var hasRightContent = this.rightText || this.rightButton || this.$slots && this.$slots.right;
+      hasRightContent && this.$emit('wxcMinibarRightButtonClicked', {});
+=======
     },
     textColor: {
       type: String,
@@ -10917,6 +13381,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "src": _vm.rightButton,
       "ariaHidden": true
+>>>>>>> d5f75e6c3dc497af42faa6ed36f8aa45a747a051
     }
   }) : _vm._e(), (_vm.rightText) ? _c('text', {
     staticClass: ["icon-text"],
@@ -10928,6 +13393,63 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 module.exports.render._withStripped = true
 
 /***/ }),
+<<<<<<< HEAD
+/* 96 */
+/***/ (function(module, exports) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return (_vm.show) ? _c('div', {
+    staticClass: ["wxc-minibar"],
+    style: {
+      backgroundColor: _vm.backgroundColor
+    }
+  }, [_c('div', {
+    staticClass: ["left"],
+    attrs: {
+      "ariaLabel": "返回",
+      "accessible": true
+    },
+    on: {
+      "click": _vm.leftButtonClicked
+    }
+  }, [_vm._t("left", [(_vm.leftButton && !_vm.leftText) ? _c('image', {
+    staticClass: ["left-button"],
+    attrs: {
+      "src": _vm.leftButton
+    }
+  }) : _vm._e(), (_vm.leftText) ? _c('text', {
+    staticClass: ["icon-text"],
+    style: {
+      color: _vm.textColor
+    }
+  }, [_vm._v(_vm._s(_vm.leftText))]) : _vm._e()])], 2), _vm._t("middle", [_c('text', {
+    staticClass: ["middle-title"],
+    style: {
+      color: _vm.textColor
+    }
+  }, [_vm._v(_vm._s(_vm.title))])]), _c('div', {
+    staticClass: ["right"],
+    on: {
+      "click": _vm.rightButtonClicked
+    }
+  }, [_vm._t("right", [(_vm.rightButton && !_vm.rightText) ? _c('image', {
+    staticClass: ["right-button"],
+    attrs: {
+      "src": _vm.rightButton,
+      "ariaHidden": true
+    }
+  }) : _vm._e(), (_vm.rightText) ? _c('text', {
+    staticClass: ["icon-text"],
+    style: {
+      color: _vm.textColor
+    }
+  }, [_vm._v(_vm._s(_vm.rightText))]) : _vm._e()])], 2)], 2) : _vm._e()
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+
+/***/ }),
+=======
+>>>>>>> d5f75e6c3dc497af42faa6ed36f8aa45a747a051
 /* 97 */
 /***/ (function(module, exports) {
 
@@ -13582,19 +16104,26 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   return _c('div', {
     staticClass: ["infoEdit"]
   }, [_c('div', {
+<<<<<<< HEAD
     staticClass: ["user-img"],
     on: {
       "click": _vm.uploadimg
     }
+=======
+    staticClass: ["user-img"]
+>>>>>>> d5f75e6c3dc497af42faa6ed36f8aa45a747a051
   }, [_c('image', {
     attrs: {
       "src": _vm.imgDataUrl
     }
   }), _c('input', {
     staticClass: ["upload__input"],
+<<<<<<< HEAD
     staticStyle: {
       display: "none"
     },
+=======
+>>>>>>> d5f75e6c3dc497af42faa6ed36f8aa45a747a051
     attrs: {
       "type": "file",
       "id": "upload_file",
@@ -13796,6 +16325,110 @@ module.exports = {
     "backgroundSize": "cover",
     "borderRadius": "20",
     "width": 80,
+    "minHeight": 1.7,
+    "marginTop": 0.6,
+    "justifyContent": "center"
+  },
+  "like-time": {
+    "textAlign": "center",
+    "color": "#FFFFFF",
+    "marginTop": 0.7,
+    "fontSize": 0.35,
+    "opacity": 0.8
+  },
+  "super-like-notice": {
+    "paddingTop": "25",
+    "paddingRight": "25",
+    "paddingBottom": "25",
+    "paddingLeft": "25",
+    "backgroundColor": "#f2f3f4",
+    "borderRadius": "20",
+    "width": 80,
+    "minHeight": 3.8,
+    "background": "url(/src/asset/img/superlike.png) no-repeat",
+    "backgroundSize": "cover"
+  },
+  "msg-list-content": {
+    "justifyContent": "center"
+  },
+  "msg-name": {
+    "left": 2.5,
+    "top": 0.2,
+    "fontSize": 0.5
+  },
+  "msg-content": {
+    "left": 2.5,
+    "top": 1.1,
+    "fontSize": 0.4,
+    "opacity": 0.8,
+    "maxWidth": 6,
+    "whiteSpace": "nowrap",
+    "overflow": "hidden",
+    "textOverflow": "ellipsis"
+  },
+  "msg-time": {
+    "top": 0.2,
+    "right": 0.3,
+    "fontSize": 0.4,
+    "opacity": 0.8
+  },
+  "msg-num": {
+    "background": "url(/src/asset/img/msg-num.png) no-repeat",
+    "backgroundSize": "cover",
+    "width": 0.7,
+    "height": 0.7,
+    "borderRadius": 50,
+    "textAlign": "center",
+    "fontSize": 0.35,
+    "top": 1,
+    "right": 0.3,
+    "paddingTop": 0.15
+  },
+  "item-container": {
+    "width": "750",
+    "backgroundColor": "#000000"
+  },
+  "border-cell": {
+    "backgroundColor": "#000000",
+    "width": "750",
+    "alignItems": "center",
+    "justifyContent": "center"
+  },
+  "cell": {
+    "marginBottom": 0
+  },
+  "content": {
+    "width": "750",
+    "height": 5,
+    "alignItems": "center",
+    "backgroundColor": "#000000"
+  },
+  "content-super": {
+    "width": "750",
+    "height": 6,
+    "alignItems": "center",
+    "backgroundColor": "#000000"
+  }
+}
+
+<<<<<<< HEAD
+module.exports = __vue_exports__
+
+
+/***/ }),
+/* 134 */
+/***/ (function(module, exports) {
+
+module.exports = {
+  "like-notice": {
+    "paddingTop": "25",
+    "paddingRight": "25",
+    "paddingBottom": "25",
+    "paddingLeft": "25",
+    "background": "url(\"/src/asset/img/like-bg.png\") no-repeat",
+    "backgroundSize": "cover",
+    "borderRadius": "20",
+    "width": 80,
     "minHeight": 1.7
   },
   "like-time": {
@@ -13866,6 +16499,8 @@ module.exports = {
   }
 }
 
+=======
+>>>>>>> d5f75e6c3dc497af42faa6ed36f8aa45a747a051
 /***/ }),
 /* 135 */
 /***/ (function(module, exports, __webpack_require__) {
@@ -14381,6 +17016,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 //
 //
 //
+//
 
 var dom = weex.requireModule('dom');
 var animation = weex.requireModule('animation');
@@ -14790,11 +17426,21 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       style: {
         height: (_vm.tabPageHeight - _vm.tabStyles.height) + 'px'
       }
+<<<<<<< HEAD
     }, [_c('cell', {
       staticClass: ["border-cell"],
       appendAsTree: true,
       attrs: {
         "append": "tree"
+=======
+    }, [_vm._v(_vm._s(v.title))]) : _vm._e(), _c('text', [_vm._v("123")]), (_vm.tabStyles.hasActiveBottom && !_vm.titleUseSlot) ? _c('div', {
+      staticClass: ["border-bottom"],
+      style: {
+        width: _vm.tabStyles.activeBottomWidth + 'px',
+        left: (_vm.tabStyles.width - _vm.tabStyles.activeBottomWidth) / 2 + 'px',
+        height: _vm.tabStyles.activeBottomHeight + 'px',
+        backgroundColor: _vm.currentPage === index ? _vm.tabStyles.activeBottomColor : 'transparent'
+>>>>>>> d5f75e6c3dc497af42faa6ed36f8aa45a747a051
       }
     }), _vm._l((v), function(demo, key) {
       return _c('cell', {
@@ -14835,6 +17481,15 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 module.exports.render._withStripped = true
 
 /***/ }),
+<<<<<<< HEAD
+=======
+/* 143 */
+/***/ (function(module, exports) {
+
+module.exports={render:function(){},staticRenderFns:[]}
+
+/***/ }),
+>>>>>>> d5f75e6c3dc497af42faa6ed36f8aa45a747a051
 /* 144 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -15062,7 +17717,19 @@ module.exports = __vue_exports__
 /***/ (function(module, exports) {
 
 module.exports = {
+  "chat-module": {
+    "height": 100,
+    "backgroundColor": "#161824"
+  },
+  "chat-header": {
+    "height": 7,
+    "flexDirection": "row",
+    "alignItems": "center",
+    "justifyContent": "space-between",
+    "backgroundColor": "#161824"
+  },
   "chatting": {
+    "height": 93,
     "position": "relative",
     "paddingTop": "30",
     "paddingRight": 0,
@@ -15084,10 +17751,13 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
+<<<<<<< HEAD
 var _index = __webpack_require__(2);
 
 var _index2 = _interopRequireDefault(_index);
 
+=======
+>>>>>>> d5f75e6c3dc497af42faa6ed36f8aa45a747a051
 var _chatOwn = __webpack_require__(151);
 
 var _chatOwn2 = _interopRequireDefault(_chatOwn);
@@ -15152,6 +17822,41 @@ exports.default = {
 //
 //
 //
+<<<<<<< HEAD
+=======
+//
+//
+//
+//
+//
+//
+//
+//
+
+exports.default = {
+  components: { ChatOwn: _chatOwn2.default, ChatOther: _chatOther2.default },
+  data: function data() {
+    return {
+      data: [{
+        type: 1,
+        msg: '哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈'
+      }, {
+        type: 2,
+        msg: 'hi,认识你很高兴，你是哪个班的？'
+      }, {
+        type: 2,
+        msg: '1111111111111111111111'
+      }]
+    };
+  },
+
+  methods: {
+    send_msg: function send_msg() {
+      alert(123);
+    }
+  }
+};
+>>>>>>> d5f75e6c3dc497af42faa6ed36f8aa45a747a051
 
 /***/ }),
 /* 151 */
@@ -15213,9 +17918,9 @@ module.exports = {
   },
   "own-img": {
     "marginTop": 0,
-    "marginRight": "20",
+    "marginRight": 0.4,
     "marginBottom": 0,
-    "marginLeft": "20",
+    "marginLeft": 0.2,
     "width": "70",
     "height": "70",
     "borderRadius": 50,
@@ -15226,7 +17931,7 @@ module.exports = {
     "paddingRight": "20",
     "paddingBottom": "25",
     "paddingLeft": "20",
-    "maxWidth": "550",
+    "maxWidth": 6.5,
     "color": "#FFFFFF",
     "backgroundColor": "#FFFFFF",
     "borderRadius": "24",
@@ -15331,9 +18036,9 @@ module.exports = {
   },
   "other-img": {
     "marginTop": 0,
-    "marginRight": "20",
+    "marginRight": 0.2,
     "marginBottom": 0,
-    "marginLeft": "20",
+    "marginLeft": 0.4,
     "width": "70",
     "height": "70",
     "borderRadius": 50,
@@ -15344,7 +18049,7 @@ module.exports = {
     "paddingRight": "20",
     "paddingBottom": "25",
     "paddingLeft": "20",
-    "maxWidth": "550",
+    "maxWidth": 6.5,
     "backgroundColor": "#FFFFFF",
     "borderRadius": "24"
   }
@@ -15392,6 +18097,8 @@ module.exports.render._withStripped = true
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
+    staticClass: ["chat-module"]
+  }, [_vm._m(0), _c('div', {
     staticClass: ["chatting"]
   }, [_vm._l((_vm.data), function(chat, index) {
     return _c('div', {
@@ -15413,6 +18120,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_c('input', {
     attrs: {
       "type": "text",
+<<<<<<< HEAD
       "value": (_vm.text)
     },
     on: {
@@ -15426,6 +18134,29 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_vm._v("发送")])], 1)], 2)
 },staticRenderFns: []}
+=======
+      "placeholder": "聊点什么吧..."
+    },
+    on: {
+      "focus": _vm.changeColor
+    }
+  }), _c('button', {
+    on: {
+      "click": _vm.send_msg
+    }
+  }, [_vm._v("发送")])], 1)], 2)])
+},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: ["chat-header"]
+  }, [_c('text', {
+    staticClass: ["left"]
+  }), _c('text', {
+    staticClass: ["name"]
+  }, [_vm._v("JKJUN")]), _c('text', {
+    staticClass: ["right"]
+  })])
+}]}
+>>>>>>> d5f75e6c3dc497af42faa6ed36f8aa45a747a051
 module.exports.render._withStripped = true
 
 /***/ }),
@@ -16058,7 +18789,11 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: ["msg-content"]
   }, [_vm._v(_vm._s(_vm.msg))]), _c('text', {
     staticClass: ["msg-num"]
+<<<<<<< HEAD
   }, [_vm._v(_vm._s(_vm.unreadCount))])])])
+=======
+  }, [_vm._v("5")])])])
+>>>>>>> d5f75e6c3dc497af42faa6ed36f8aa45a747a051
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 
@@ -16256,8 +18991,12 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       }, [(demo.type == 1) ? _c('Match') : _vm._e(), (demo.type == 123) ? _c('SuperLike', {
         attrs: {
           "name": demo.username,
+<<<<<<< HEAD
           "msg": demo.message,
           "id": demo.user
+=======
+          "msg": demo.message
+>>>>>>> d5f75e6c3dc497af42faa6ed36f8aa45a747a051
         }
       }) : _vm._e()], 1)], 1)
     })], 2) : _vm._e()
@@ -16293,9 +19032,13 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       }, [_c('Msg', {
         attrs: {
           "name": demo.name,
+<<<<<<< HEAD
           "msg": demo.sentence,
           "time": demo.time,
           "unreadCount": demo.unread_count
+=======
+          "msg": demo.sentence
+>>>>>>> d5f75e6c3dc497af42faa6ed36f8aa45a747a051
         }
       })], 1)], 1)
     })], 2) : _vm._e()

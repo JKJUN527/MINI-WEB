@@ -17,7 +17,7 @@ export default {
     align-items: flex-start
   }
   .other-img {
-    margin: 0 20px;
+    margin: 0 0.2rem 0 0.4rem;
     width: 70px;
     height: 70px;
     border-radius: 50%;
@@ -26,7 +26,7 @@ export default {
 
   .other-msg {
     padding: 25px 20px;
-    max-width: 550px;
+    max-width: 6.5rem;
     background-color: white;
     border-radius: 24px
   }

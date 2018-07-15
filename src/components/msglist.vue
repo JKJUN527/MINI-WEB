@@ -23,7 +23,7 @@
                         </div>
                         <text class="like-time">13:05</text>
                     </div>
-                    <div class="content" v-if="key%2 != 0">
+                    <div class="content-super" v-if="key%2 != 0">
                         <div class="super-like-notice">
                             <image src="/src/asset/img/qq.jpg" />
                             <text class="super-like-name">jkjun</text>
@@ -54,7 +54,7 @@
                             <image src="/src/asset/img/qq.jpg" />
                             <text class="msg-name">大概是肖宇</text>
                             <text class="msg-time">12:30</text>
-                            <text class="msg-content">你视频拍的很不错喔！可以认识一下吗？</text>
+                            <text class="msg-content">你视频拍的很不错喔！想认识一下吗？</text>
                             <text class="msg-num">5</text>
                         </div>
                     </div>
@@ -121,6 +121,12 @@ export default {
         width: 80%;
         min-height: 1.7rem;
         height: auto;
+<<<<<<< HEAD
+=======
+        /*color: #ffffff;*/
+        margin-top: 0.6rem;
+        justify-content: center
+>>>>>>> d5f75e6c3dc497af42faa6ed36f8aa45a747a051
     }
     .like-notice p{
         color: white;
@@ -130,7 +136,9 @@ export default {
     .like-time{
         text-align: center;
         color: white;
-        margin-top: 0.4rem;
+        margin-top: 0.7rem;
+        font-size: 0.35rem;
+        opacity: 0.8;
     }
     .super-like-notice{
         padding: 25px;
@@ -138,7 +146,7 @@ export default {
         border-radius:20px;
         /*opacity: 0.5;*/
         width: 80%;
-        min-height: 3rem;
+        min-height: 3.8rem;
         height: auto;
         background:url(/src/asset/img/superlike.png) no-repeat;
         background-size: cover;
@@ -153,13 +161,13 @@ export default {
     }
     .super-like-notice button{
         background: url("/src/asset/img/icon.png") no-repeat;
-        width: 40%;
+        width: 38%;
         height: 0.8rem;
         background-size: cover;
-        margin-left: 30%;
-        margin-top: 0.5rem;
+        margin-left: 32%;
+        margin-top: 0.6rem;
         color: white;
-        font-size: 0.5rem;
+        font-size: 0.45rem;
         text-align: center;
     }
     .super-like-notice .super-like-name{
@@ -171,18 +179,20 @@ export default {
         font-size: 0.5rem;
         text-align: center;
         color: white;
+        margin-top: 0.6rem;
     }
     .msg-list-content{
         height: 3rem !important;
         align-items: unset !important;
+        justify-content: center;
     }
     .msg-list{
 
     }
     .msg-list figure{
-        width: 2rem;
-        height: 2rem;
-        border-radius: 1rem;
+        width: 1.8rem;
+        height: 1.8rem;
+        border-radius: 50%;
         margin-left: 0.3rem;
         /*position: absolute;*/
         /*left: -4rem;*/
@@ -198,27 +208,31 @@ export default {
     }
     .msg-content{
         left: 2.5rem;
-        top: 1.3rem;
-        font-size: 0.35rem;
+        top: 1.1rem;
+        font-size: 0.4rem;
         opacity: 0.8;
+        max-width: 6rem;
+        white-space:nowrap;
+        overflow:hidden;
+        text-overflow:ellipsis;
     }
     .msg-time{
         top: 0.2rem;
         right: 0.3rem;
-        font-size: 0.39rem;
+        font-size: 0.4rem;
         opacity: 0.8;
     }
     .msg-num{
         background: url(/src/asset/img/msg-num.png) no-repeat;
         background-size: cover;
-        width: 0.8rem;
-        height: 0.8rem;
-        border-radius: 0.4rem;
+        width: 0.7rem;
+        height: 0.7rem;
+        border-radius: 50%;
         text-align: center;
-        font-size: 0.45rem;
-        top: 1.2rem;
+        font-size: 0.35rem;
+        top: 1rem;
         right: 0.3rem;
-        padding-top: 0.1rem;
+        padding-top: 0.15rem;
     }
     .item-container {
         width: 750px;
@@ -247,7 +261,15 @@ export default {
         height:5rem;
         /*border-bottom-width:1px;*/
         align-items: center;
-        justify-content: center;
+        /*justify-content: center;*/
+        background-color: #000000;
+    }
+    .content-super{
+        width:750px;
+        height:6rem;
+        /*border-bottom-width:1px;*/
+        align-items: center;
+        /*justify-content: center;*/
         background-color: #000000;
     }
     .title-item .border-bottom{
