@@ -1,21 +1,26 @@
 <template>
     <div class="shoot">
+        <div class="chat-header">
+            <text class="left"></text>
+            <text class="name">录制页</text>
+            <text class="right">确定</text>
+        </div>
         <div class="video_module">
-            <video id="video" class="video" :src="video_src" autoplay loop></video>
+            <video id="video" class="video" :src="video_src"  controls="controls" autoplay="autoplay"></video>
             <canvas id="canvas" style="display: none"></canvas>
         </div>
         <div class="footer">
             <div class="shoot-controller">
                 <button @click="take_video"></button>
             </div>
-            <div class="btn-group">
-                <div class="btn uploadFile">
-                    <label class="upload">
-                        <input type="file" id="upload" value="">
-                    </label>
-                    <label class="take_pic"></label>
-                </div>
-            </div>
+            <!--<div class="btn-group">-->
+                <!--<div class="btn uploadFile">-->
+                    <!--<label class="upload">-->
+                        <!--<input type="file" id="upload" value="">-->
+                    <!--</label>-->
+                    <!--<label class="take_pic"></label>-->
+                <!--</div>-->
+            <!--</div>-->
         </div>
     </div>
 </template>
@@ -23,7 +28,7 @@
 export default {
     data () {
       return {
-          video_src:""
+          video_src:"https://mini.jkjun.cn/media/videos/8.mp4"
       }
     },
     methods: {
@@ -37,28 +42,64 @@ export default {
 }
 </script>
 <style scoped>
+    .chat-header{
+        width: 100%;
+        height: 7%;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        background-color: #161824;
+        /*justify-content: center;*/
+
+    }
+    .chat-header p{
+        /*position: absolute;*/
+        color:white;
+    }
+    .chat-header .left{
+        background: url("/src/asset/img/backicon.png");
+        background-size: cover;
+        width: 0.3rem;
+        height: 0.55rem;
+        left: 0.4rem;
+    }
+    .chat-header .right{
+        background: url(/src/asset/img/saveicon.png);
+        background-size: cover;
+        width: 1.4rem;
+        height: 0.8rem;
+        right: 0.4rem;
+        padding: 0.1rem 0 0.1rem 0.25rem;
+    }
+    .chat-header .name{
+        font-size: 0.55rem;
+        left: 5%;
+    }
     .video_module{
-        height: 77%;
+        /*height: 77%;*/
+        height: 93%;
     }
     .shoot {
         flex-grow: 1;
         position: relative;
         background-color: black;
+        height: 100%;
     }
 
     .video {
         width: 100%;
         height: 100%;
         background-color: black;
+        object-fit: fill;
     }
 
     .footer {
         width: 100%;
-        height: 23%;
+        /*height: 23%;*/
         position: absolute;
-        bottom: 0px;
-        background: url("/src/asset/img/takephoto_bg.png");
-        background-size: cover;
+        bottom: 1rem;
+        /*background: url("/src/asset/img/takephoto_bg.png");*/
+        /*background-size: cover;*/
     }
 
     .shoot-controller {

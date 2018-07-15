@@ -114,10 +114,10 @@ export default {
     // 模拟定位
   },
   methods: {
-    uploadimg(){
-        alert(123)
-        document.getElementById('upload_file').click()
-    },
+//    uploadimg(){
+//        alert(123)
+//        document.getElementById('upload_file').click()
+//    },
     showListCity () {
       this.cityStyleType = 'list'
       this.$refs['wxcCity'].show()
@@ -177,6 +177,9 @@ export default {
 </script>
 
 <style scoped>
+    .botttom{
+        left:0;
+    }
     .chat-header{
         height: 7%;
         width: 100%;
@@ -281,6 +284,8 @@ textarea {
 
 .sex-content {
   align-items: center;
+    position: absolute;
+    right: 4.6rem;
 }
 
 .btn-style {

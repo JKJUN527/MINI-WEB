@@ -9673,6 +9673,9 @@ module.exports = __vue_exports__
 /***/ (function(module, exports) {
 
 module.exports = {
+  "botttom": {
+    "left": 0
+  },
   "chat-header": {
     "height": 7,
     "width": 100,
@@ -9731,7 +9734,9 @@ module.exports = {
     "marginRight": "40"
   },
   "sex-content": {
-    "alignItems": "center"
+    "alignItems": "center",
+    "position": "absolute",
+    "right": 4.6
   },
   "btn-style": {
     "marginTop": "5",
@@ -9883,10 +9888,10 @@ exports.default = {
   },
 
   methods: {
-    uploadimg: function uploadimg() {
-      alert(123);
-      document.getElementById('upload_file').click();
-    },
+    //    uploadimg(){
+    //        alert(123)
+    //        document.getElementById('upload_file').click()
+    //    },
     showListCity: function showListCity() {
       this.cityStyleType = 'list';
       this.$refs['wxcCity'].show();
@@ -14992,26 +14997,33 @@ module.exports = __vue_exports__
 /***/ (function(module, exports) {
 
 module.exports = {
+  "chat-header": {
+    "width": 100,
+    "height": 7,
+    "flexDirection": "row",
+    "alignItems": "center",
+    "justifyContent": "space-between",
+    "backgroundColor": "#161824"
+  },
   "video_module": {
-    "height": 77
+    "height": 93
   },
   "shoot": {
     "flexGrow": 1,
     "position": "relative",
-    "backgroundColor": "#000000"
+    "backgroundColor": "#000000",
+    "height": 100
   },
   "video": {
     "width": 100,
     "height": 100,
-    "backgroundColor": "#000000"
+    "backgroundColor": "#000000",
+    "objectFit": "fill"
   },
   "footer": {
     "width": 100,
-    "height": 23,
     "position": "absolute",
-    "bottom": "0",
-    "background": "url(\"/src/asset/img/takephoto_bg.png\")",
-    "backgroundSize": "cover"
+    "bottom": 1
   },
   "shoot-controller": {
     "marginTop": 0,
@@ -15056,11 +15068,16 @@ Object.defineProperty(exports, "__esModule", {
 //
 //
 //
+//
+//
+//
+//
+//
 
 exports.default = {
     data: function data() {
         return {
-            video_src: ""
+            video_src: "https://mini.jkjun.cn/media/videos/8.mp4"
         };
     },
 
@@ -15079,15 +15096,15 @@ exports.default = {
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
     staticClass: ["shoot"]
-  }, [_c('div', {
+  }, [_vm._m(0), _c('div', {
     staticClass: ["video_module"]
   }, [_c('video', {
     staticClass: ["video"],
     attrs: {
       "id": "video",
       "src": _vm.video_src,
-      "autoplay": "",
-      "loop": ""
+      "controls": "controls",
+      "autoplay": "autoplay"
     }
   }), _c('canvas', {
     staticStyle: {
@@ -15104,22 +15121,18 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     on: {
       "click": _vm.take_video
     }
-  })], 1), _c('div', {
-    staticClass: ["btn-group"]
-  }, [_c('div', {
-    staticClass: ["btn", "uploadFile"]
-  }, [_c('label', {
-    staticClass: ["upload"]
-  }, [_c('input', {
-    attrs: {
-      "type": "file",
-      "id": "upload",
-      "value": ""
-    }
-  })]), _c('label', {
-    staticClass: ["take_pic"]
-  })], 1)])])])
-},staticRenderFns: []}
+  })], 1)])])
+},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: ["chat-header"]
+  }, [_c('text', {
+    staticClass: ["left"]
+  }), _c('text', {
+    staticClass: ["name"]
+  }, [_vm._v("录制页")]), _c('text', {
+    staticClass: ["right"]
+  }, [_vm._v("确定")])])
+}]}
 module.exports.render._withStripped = true
 
 /***/ }),
