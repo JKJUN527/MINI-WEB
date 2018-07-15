@@ -16,7 +16,7 @@
             </div>
         </div>
         <div class="btn-group">
-          <router-link class="btn chat" style="background-size: 100% 100%" :to="{ name: 'chat' }"> 去聊天嘛 </router-link>
+          <router-link class="btn chat" style="background-size: 100% 100%" :to="{ name: 'chat', params: { user: buserid } }"> 去聊天嘛 </router-link>
           <router-link class="btn next" style="background-size: 100% 100%" :to="{ name: 'index' }"> 我再看看 </router-link>
         </div>
     </div>
