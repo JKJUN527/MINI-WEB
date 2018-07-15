@@ -51,16 +51,16 @@ export default {
   components: { WxcEpSlider },
   data () {
     return {
-        labels: ['北京', '20岁', '双子座', '男'],
-        showVideoList: 'works',
-        sliderId: 1,
-        cardLength: 5,
-        cardSize: {
-            width: 400,
-            height: 300,
-            spacing: 0,
-            scale: 0.8
-        }
+      labels: ['北京', '20岁', '双子座', '男'],
+      showVideoList: 'works',
+      sliderId: 1,
+      cardLength: 5,
+      cardSize: {
+        width: 400,
+        height: 300,
+        spacing: 0,
+        scale: 0.8
+      }
     }
   },
   methods: {

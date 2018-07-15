@@ -2424,7 +2424,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+  value: true
 });
 /**
  * Created by Tw93 on 2016/11/4.
@@ -2432,66 +2432,65 @@ Object.defineProperty(exports, "__esModule", {
 
 exports.default = {
 
-    tabTitles: [{
-        title: '通知'
-        // icon: 'https://gw.alicdn.com/tfs/TB1MWXdSpXXXXcmXXXXXXXXXXXX-72-72.png'
-        // activeIcon: 'https://gw.alicdn.com/tfs/TB1kCk2SXXXXXXFXFXXXXXXXXXX-72-72.png'
-    }, {
-        title: '消息'
-        // icon: 'https://gw.alicdn.com/tfs/TB1ARoKSXXXXXc9XVXXXXXXXXXX-72-72.png'
-        // activeIcon: 'https://gw.alicdn.com/tfs/TB19Z72SXXXXXamXFXXXXXXXXXX-72-72.png'
-    }],
-    tabStyles: {
-        bgColor: '#161824',
-        titleColor: '#7D7D7D',
-        activeTitleColor: '#FFFFFF',
-        activeBgColor: '#161824',
-        isActiveTitleBold: true,
-        iconWidth: 0,
-        iconHeight: 0,
-        width: 370,
-        height: 120,
-        fontSize: 35,
-        hasActiveBottom: true,
-        activeBottomColor: '#FFC900',
-        activeBottomHeight: 6,
-        activeBottomWidth: 120,
-        textPaddingLeft: 30,
-        textPaddingRight: 30
-    },
-    // 使用 iconfont 模式的tab title配置
-    tabIconFontTitles: [{
-        title: '首页',
-        codePoint: '\uE623'
-    }, {
-        title: '特别推荐',
-        codePoint: '\uE608'
-    }, {
-        title: '消息中心',
-        codePoint: '\uE752',
-        badge: 5
-    }, {
-        title: '我的主页',
-        codePoint: '\uE601',
-        dot: true
-    }],
-    tabIconFontStyles: {
-        bgColor: '#FFFFFF',
-        titleColor: '#666666',
-        activeTitleColor: '#3D3D3D',
-        activeBgColor: '#FFFFFF',
-        isActiveTitleBold: true,
-        width: 160,
-        height: 120,
-        fontSize: 24,
-        textPaddingLeft: 10,
-        textPaddingRight: 10,
-        iconFontSize: 50,
-        iconFontColor: '#333333',
-        iconFontMarginBottom: 8,
-        activeIconFontColor: 'red',
-        iconFontUrl: '//at.alicdn.com/t/font_501019_mauqv15evc1pp66r.ttf'
-    }
+  tabTitles: [{
+    title: '通知'
+    // icon: 'https://gw.alicdn.com/tfs/TB1MWXdSpXXXXcmXXXXXXXXXXXX-72-72.png'
+    // activeIcon: 'https://gw.alicdn.com/tfs/TB1kCk2SXXXXXXFXFXXXXXXXXXX-72-72.png'
+  }, {
+    title: '消息'
+    // icon: 'https://gw.alicdn.com/tfs/TB1ARoKSXXXXXc9XVXXXXXXXXXX-72-72.png'
+    // activeIcon: 'https://gw.alicdn.com/tfs/TB19Z72SXXXXXamXFXXXXXXXXXX-72-72.png'
+  }],
+  tabStyles: {
+    bgColor: '#161824',
+    titleColor: '#7D7D7D',
+    activeTitleColor: '#FFFFFF',
+    activeBgColor: '#161824',
+    isActiveTitleBold: true,
+    iconWidth: 0,
+    iconHeight: 0,
+    width: 370,
+    height: 120,
+    fontSize: 35,
+    hasActiveBottom: true,
+    activeBottomColor: '#FFC900',
+    activeBottomHeight: 6,
+    activeBottomWidth: 120,
+    textPaddingLeft: 30,
+    textPaddingRight: 30
+  },
+  tabIconFontTitles: [{
+    title: '首页',
+    codePoint: '\uE623'
+  }, {
+    title: '特别推荐',
+    codePoint: '\uE608'
+  }, {
+    title: '消息中心',
+    codePoint: '\uE752',
+    badge: 5
+  }, {
+    title: '我的主页',
+    codePoint: '\uE601',
+    dot: true
+  }],
+  tabIconFontStyles: {
+    bgColor: '#FFFFFF',
+    titleColor: '#666666',
+    activeTitleColor: '#3D3D3D',
+    activeBgColor: '#FFFFFF',
+    isActiveTitleBold: true,
+    width: 160,
+    height: 120,
+    fontSize: 24,
+    textPaddingLeft: 10,
+    textPaddingRight: 10,
+    iconFontSize: 50,
+    iconFontColor: '#333333',
+    iconFontMarginBottom: 8,
+    activeIconFontColor: 'red',
+    iconFontUrl: '//at.alicdn.com/t/font_501019_mauqv15evc1pp66r.ttf'
+  }
 
 };
 
@@ -9555,7 +9554,7 @@ module.exports = {
 
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+  value: true
 });
 
 var _wxcEpSlider = __webpack_require__(14);
@@ -9641,61 +9640,61 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 //
 
 exports.default = {
-    components: { WxcEpSlider: _wxcEpSlider2.default },
-    data: function data() {
-        return {
-            name: '',
-            labels: ['北京', '20岁', '双子座', '男'],
-            signature: '',
-            imgurl: '',
-            showVideoList: 0,
-            sliderId: 1,
-            cardLength: 5,
-            cardSize: {
-                width: 400,
-                height: 300,
-                spacing: 0,
-                scale: 0.8
-            }
-        };
-    },
-    mounted: function mounted() {
-        var _this = this;
+  components: { WxcEpSlider: _wxcEpSlider2.default },
+  data: function data() {
+    return {
+      name: '',
+      labels: ['北京', '20岁', '双子座', '男'],
+      signature: '',
+      imgurl: '',
+      showVideoList: 0,
+      sliderId: 1,
+      cardLength: 5,
+      cardSize: {
+        width: 400,
+        height: 300,
+        spacing: 0,
+        scale: 0.8
+      }
+    };
+  },
+  mounted: function mounted() {
+    var _this = this;
 
-        _index2.default.getPersonInfo({}).then(function (_ref) {
-            var data = _ref.data;
+    _index2.default.getPersonInfo({}).then(function (_ref) {
+      var data = _ref.data;
 
-            data = data.data;
-            _this.labels = [data.local, data.age + '岁', data.constellation, data.sex];
-            _this.name = data.name;
-            _this.signature = data.signature;
-            alert(JSON.stringify(data));
-            _this.imgurl = data.img_portrait;
-        });
-    },
+      data = data.data;
+      _this.labels = [data.local, data.age + '岁', data.constellation, data.sex];
+      _this.name = data.name;
+      _this.signature = data.signature;
+      alert(JSON.stringify(data));
+      _this.imgurl = data.img_portrait;
+    });
+  },
 
-    methods: {
-        doListChange: function doListChange(msg) {
-            this.showVideoList = msg;
-        },
-        wxcEpSliderCurrentIndexSelected: function wxcEpSliderCurrentIndexSelected(e) {
-            var index = e.currentIndex;
-        },
-        changeTap: function changeTap() {
-            alert(this.showVideoList);
-            if (this.showVideoList === 0) {
-                this.showVideoList = 1;
-            } else {
-                this.showVideoList = 0;
-            }
-        },
-        goback: function goback() {
-            this.$router.go(-1);
-        }
+  methods: {
+    doListChange: function doListChange(msg) {
+      this.showVideoList = msg;
     },
-    watch: {
-        showVideoList: function showVideoList() {}
+    wxcEpSliderCurrentIndexSelected: function wxcEpSliderCurrentIndexSelected(e) {
+      //    const index = e.currentIndex
+    },
+    changeTap: function changeTap() {
+      alert(this.showVideoList);
+      if (this.showVideoList === 0) {
+        this.showVideoList = 1;
+      } else {
+        this.showVideoList = 0;
+      }
+    },
+    goback: function goback() {
+      this.$router.go(-1);
     }
+  },
+  watch: {
+    showVideoList: function showVideoList() {}
+  }
 };
 
 /***/ }),
@@ -15116,7 +15115,7 @@ module.exports = {
 
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+  value: true
 });
 //
 //
@@ -15146,18 +15145,18 @@ Object.defineProperty(exports, "__esModule", {
 //
 
 exports.default = {
-    data: function data() {
-        return {
-            video_src: "https://mini.jkjun.cn/media/videos/8.mp4"
-        };
-    },
+  data: function data() {
+    return {
+      video_src: 'https://mini.jkjun.cn/media/videos/8.mp4'
+    };
+  },
 
-    methods: {
-        handleClick: function handleClick() {},
-        take_video: function take_video() {
-            alert("点击录像");
-        }
+  methods: {
+    handleClick: function handleClick() {},
+    take_video: function take_video() {
+      alert('点击录像');
     }
+  }
 };
 
 /***/ }),
@@ -15841,12 +15840,16 @@ module.exports = {
     "backgroundSize": "cover",
     "borderRadius": "20",
     "width": 80,
-    "minHeight": 1.7
+    "minHeight": 1.7,
+    "marginTop": 0.6,
+    "justifyContent": "center"
   },
   "like-time": {
     "textAlign": "center",
     "color": "#FFFFFF",
-    "marginTop": 0.4
+    "marginTop": 0.7,
+    "fontSize": 0.35,
+    "opacity": 0.8
   },
   "super-like-notice": {
     "paddingTop": "25",
@@ -15906,7 +15909,6 @@ module.exports = {
     "width": "750",
     "height": 5,
     "alignItems": "center",
-    "justifyContent": "center",
     "backgroundColor": "#000000"
   }
 }
@@ -16142,7 +16144,7 @@ module.exports = {
 
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+  value: true
 });
 //
 //
@@ -16155,7 +16157,7 @@ Object.defineProperty(exports, "__esModule", {
 //
 
 exports.default = {
-    props: ['name']
+  props: ['name']
 };
 
 /***/ }),
@@ -16231,6 +16233,9 @@ module.exports = {
     "justifyContent": "center",
     "backgroundColor": "#000000"
   },
+  "msg-list-content": {
+    "justifyContent": "center"
+  },
   "msg-name": {
     "left": 2.5,
     "top": 0.2,
@@ -16238,27 +16243,31 @@ module.exports = {
   },
   "msg-content": {
     "left": 2.5,
-    "top": 1.3,
-    "fontSize": 0.35,
-    "opacity": 0.8
+    "top": 1.1,
+    "fontSize": 0.4,
+    "opacity": 0.8,
+    "maxWidth": 6,
+    "whiteSpace": "nowrap",
+    "overflow": "hidden",
+    "textOverflow": "ellipsis"
   },
   "msg-time": {
     "top": 0.2,
     "right": 0.3,
-    "fontSize": 0.39,
+    "fontSize": 0.4,
     "opacity": 0.8
   },
   "msg-num": {
     "background": "url(/src/asset/img/msg-num.png) no-repeat",
     "backgroundSize": "cover",
-    "width": 0.8,
-    "height": 0.8,
-    "borderRadius": 0.4,
+    "width": 0.7,
+    "height": 0.7,
+    "borderRadius": 50,
     "textAlign": "center",
-    "fontSize": 0.45,
-    "top": 1.2,
+    "fontSize": 0.35,
+    "top": 1,
     "right": 0.3,
-    "paddingTop": 0.1
+    "paddingTop": 0.15
   }
 }
 
@@ -16363,12 +16372,10 @@ module.exports = __vue_exports__
 /***/ (function(module, exports) {
 
 module.exports = {
-  "content": {
-    "marginTop": "100",
+  "content-super": {
     "width": "750",
-    "height": 5,
+    "height": 6,
     "alignItems": "center",
-    "justifyContent": "center",
     "backgroundColor": "#000000"
   },
   "super-like-notice": {
@@ -16379,7 +16386,7 @@ module.exports = {
     "backgroundColor": "#f2f3f4",
     "borderRadius": "20",
     "width": 80,
-    "minHeight": 3,
+    "minHeight": 3.8,
     "background": "url(/src/asset/img/superlike.png) no-repeat",
     "backgroundSize": "cover"
   },

@@ -26,19 +26,19 @@
 </template>
 <script>
 export default {
-    data () {
-      return {
-          video_src:"https://mini.jkjun.cn/media/videos/8.mp4"
-      }
-    },
-    methods: {
-        handleClick () {
-            
-        },
-        take_video () {
-            alert("点击录像");
-        }
+  data () {
+    return {
+      video_src: 'https://mini.jkjun.cn/media/videos/8.mp4'
     }
+  },
+  methods: {
+    handleClick () {
+
+    },
+    take_video () {
+      alert('点击录像')
+    }
+  }
 }
 </script>
 <style scoped>

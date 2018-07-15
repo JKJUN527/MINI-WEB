@@ -92,34 +92,34 @@ export default {
     }
   },
   mounted () {
-    ajax.getPersonInfo({})
+  ajax.getPersonInfo({})
     .then(({ data }) => {
-      data = data.data
-      this.labels = [data.local, data.age + '岁', data.constellation, data.sex]
-      this.name = data.name
-      this.signature = data.signature
-      alert(JSON.stringify(data))
-      this.imgurl = data.img_portrait
-    })
+        data = data.data
+        this.labels = [data.local, data.age + '岁', data.constellation, data.sex]
+        this.name = data.name
+        this.signature = data.signature
+        alert(JSON.stringify(data))
+        this.imgurl = data.img_portrait
+      })
   },
   methods: {
-      doListChange (msg) {
-          this.showVideoList = msg
-      },
-      wxcEpSliderCurrentIndexSelected (e) {
-          const index = e.currentIndex
-      },
-      changeTap () {
-          alert(this.showVideoList)
-        if (this.showVideoList === 0){
-            this.showVideoList = 1
-        }else{
-            this.showVideoList = 0
-        }
-      },
-      goback () {
-          this.$router.go(-1)
+    doListChange (msg) {
+      this.showVideoList = msg
+    },
+    wxcEpSliderCurrentIndexSelected (e) {
+      //    const index = e.currentIndex
+    },
+    changeTap () {
+      alert(this.showVideoList)
+      if (this.showVideoList === 0) {
+        this.showVideoList = 1
+      } else {
+        this.showVideoList = 0
       }
+    },
+    goback () {
+      this.$router.go(-1)
+    }
   },
   watch: {
     showVideoList: function () {}
