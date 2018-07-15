@@ -54,108 +54,108 @@
 import ajax from '../ajax/index.js'
 import { WxcPopup } from 'weex-ui'
 export default {
-    components: { WxcPopup },
-    data () {
-        return {
-            video_1: '',
-            video_2: 'https://mini.jkjun.cn/media/videos/8.mp4',
-            startX: 0,
-            startY: 0,
-            X: 0,
-            Y: 0,
-            distanceX: 0,
-            distanceY: 0,
-            R: 1000,
-            rotate: 0,
-            opacity: 1,
-            isBottomShow: false,
-            id: '',
-            name: '',
-            imgurl: ''
-        }
-    },
-    mounted () {
-        ajax.getVideo({ count: 2 })
-        .then(({ data }) => {
-            this.video_1 = data.data[0].videourl
-            this.video_2 = data.data[1].videourl
-            this.id = data.data[0].userid
-            this.name = data.data[0].username
-            this.imgurl = data.data[0].userphoto
-        })
-    },
-    methods: {
-        popupOverlayBottomClick () {
-            this.isBottomShow = false
-        },
-        handleTouchStart (e) {
-            this.startX = e.changedTouches[0].pageX
-            this.X = e.changedTouches[0].pageX
-            this.startY = e.changedTouches[0].pageY
-            this.Y = e.changedTouches[0].pageY
-        },
-        handleTouchMove (e) {
-            this.X = e.changedTouches[0].pageX
-            this.Y = e.changedTouches[0].pageY
-        },
-        handleTouchEnd (e) {
-            if(this.distanceX * this.distanceX + this.distanceY * this.distanceY < 300 * 300) {
-                this.distanceX = 0
-                this.distanceY = 0
-                this.rotate = 0
-                return
-            }
-            ajax.getVideo({ count: 1 })
-            .then(({ data }) => {
-                this.video_1 = this.video_2
-                this.video_2 = data.data[0].videourl
-                this.id = data.data[0].userid
-                this.name = data.data[0].username
-                this.imgurl = data.data[0].userphoto
-            })
-            if(Math.abs(this.distanceX) > Math.abs(this.distanceY)) {
-                if(this.distanceX > 0) {
-                    ajax.sendPreference({
-                        user: this.id,
-                        type: 'like'
-                    })
-                } else {
-                    ajax.sendPreference({
-                        user: this.id,
-                        type: 'like'
-                    })
-                }
-            } else {
-                if(this.distanceY > 0) {
-                    console.log('下滑摄像')
-                } else {
-                    this.isBottomShow = true
-                }
-            }
-            this.opacity = 0
-            setTimeout(() => {
-                this.distanceX = 0
-                this.distanceY = 0
-                this.rotate = 0
-                this.opacity = 1
-            }, 200)
-        },
-        closeSuperLike () {
-            alert("取消");
-        },
-        sendSuperLike () {
-            alert("确定");
-        }
-    },
-    watch: {
-        X: function(val) {
-            this.rotate = Math.asin((val - this.startX) / this.R)/2/Math.PI*360
-            this.distanceX = val - this.startX
-        },
-        Y: function(val) {
-            this.distanceY = val - this.startY
-        }
+  components: { WxcPopup },
+  data () {
+    return {
+      video_1: '',
+      video_2: 'https://mini.jkjun.cn/media/videos/8.mp4',
+      startX: 0,
+      startY: 0,
+      X: 0,
+      Y: 0,
+      distanceX: 0,
+      distanceY: 0,
+      R: 1000,
+      rotate: 0,
+      opacity: 1,
+      isBottomShow: false,
+      id: '',
+      name: '',
+      imgurl: ''
     }
+  },
+  mounted () {
+    ajax.getVideo({ count: 2 })
+      .then(({ data }) => {
+        this.video_1 = data.data[0].videourl
+        this.video_2 = data.data[1].videourl
+        this.id = data.data[0].userid
+        this.name = data.data[0].username
+        this.imgurl = data.data[0].userphoto
+      })
+  },
+  methods: {
+    popupOverlayBottomClick () {
+      this.isBottomShow = false
+    },
+    handleTouchStart (e) {
+      this.startX = e.changedTouches[0].pageX
+      this.X = e.changedTouches[0].pageX
+      this.startY = e.changedTouches[0].pageY
+      this.Y = e.changedTouches[0].pageY
+    },
+    handleTouchMove (e) {
+      this.X = e.changedTouches[0].pageX
+      this.Y = e.changedTouches[0].pageY
+    },
+    handleTouchEnd (e) {
+      if (this.distanceX * this.distanceX + this.distanceY * this.distanceY < 300 * 300) {
+        this.distanceX = 0
+        this.distanceY = 0
+        this.rotate = 0
+        return
+      }
+      ajax.getVideo({ count: 1 })
+        .then(({ data }) => {
+          this.video_1 = this.video_2
+          this.video_2 = data.data[0].videourl
+          this.id = data.data[0].userid
+          this.name = data.data[0].username
+          this.imgurl = data.data[0].userphoto
+        })
+      if (Math.abs(this.distanceX) > Math.abs(this.distanceY)) {
+        if (this.distanceX > 0) {
+          ajax.sendPreference({
+            user: this.id,
+            type: 'like'
+          })
+        } else {
+          ajax.sendPreference({
+            user: this.id,
+            type: 'like'
+          })
+        }
+      } else {
+        if (this.distanceY > 0) {
+          console.log('下滑摄像')
+        } else {
+          this.isBottomShow = true
+        }
+      }
+      this.opacity = 0
+      setTimeout(() => {
+        this.distanceX = 0
+        this.distanceY = 0
+        this.rotate = 0
+        this.opacity = 1
+      }, 200)
+    },
+    closeSuperLike () {
+      alert('取消')
+    },
+    sendSuperLike () {
+      alert('确定')
+    }
+  },
+  watch: {
+    X: function (val) {
+      this.rotate = Math.asin((val - this.startX) / this.R) / 2 / Math.PI * 360
+      this.distanceX = val - this.startX
+    },
+    Y: function (val) {
+      this.distanceY = val - this.startY
+    }
+  }
 }
 </script>
 <style scoped>
@@ -316,4 +316,3 @@ export default {
         background: transparent;
     }
 </style>
-

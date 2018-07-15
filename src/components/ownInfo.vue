@@ -84,16 +84,16 @@ export default {
       sliderId: 1,
       cardLength: 5,
       cardSize: {
-          width: 400,
-          height: 300,
-          spacing: 0,
-          scale: 0.8
+        width: 400,
+        height: 300,
+        spacing: 0,
+        scale: 0.8
       }
     }
   },
   mounted () {
-  ajax.getPersonInfo({})
-    .then(({ data }) => {
+    ajax.getPersonInfo({})
+      .then(({ data }) => {
         data = data.data
         this.labels = [data.local, data.age + '岁', data.constellation, data.sex]
         this.name = data.name

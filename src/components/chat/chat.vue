@@ -34,8 +34,8 @@ export default {
   },
   beforeRouteEnter (to, from, next) {
     next(vm => {
-        vm.otherId = to.params.user
-      })
+      vm.otherId = to.params.user
+    })
   },
   beforeRouteLeave (to, from, next) {
     clearInterval(this.timmer)
@@ -43,28 +43,26 @@ export default {
   mounted () {
     this.timmer = setInterval(() => {
       ajax.getConversationDetail({ id: this.otherId, id_greater_than: this.lastId, count: -1 })
-      .then(({ data }) => {
-        if(data.status === 403) {
-          return
-        }
-        this.data = this.data.concat(data.data)
-        this.lastId = data.data.length > 0 && data.data[data.data.length - 1].id
-      })
+        .then(({ data }) => {
+          if (data.status === 403) {
+            return
+          }
+          this.data = this.data.concat(data.data)
+          this.lastId = data.data.length > 0 && data.data[data.data.length - 1].id
+        })
     }, 1000)
   },
   methods: {
     handleSendMessage () {
       ajax.doSendMessage({user_id: this.otherId, text: this.text})
     },
-    handleGetMessage() {
+    handleGetMessage () {
 
+    },
+    send_msg () {
+      alert(123)
     }
-  },
-    methods: {
-        send_msg () {
-            alert(123);
-        }
-    }
+  }
 }
 </script>
 <style scoped>
