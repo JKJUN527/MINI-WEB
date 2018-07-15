@@ -104,7 +104,7 @@ export default {
             this.Y = e.changedTouches[0].pageY
         },
         handleTouchEnd (e) {
-            if(this.distanceX * this.distanceX + this.distanceY * this.distanceY < 300 * 300) {
+            if(this.distanceX * this.distanceX + this.distanceY * this.distanceY < 100 * 100) {
                 this.distanceX = 0
                 this.distanceY = 0
                 this.rotate = 0
