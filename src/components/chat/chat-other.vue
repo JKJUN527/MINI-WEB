@@ -1,12 +1,22 @@
 <template>
     <div class="chat-other">
-        <div class="other-img"></div>
+        <div class="other-img" @click="otherInfo" :style="{'background-image': `url(https://mini.jkjun.cn/media/${imgurl})`}"></div>
         <div class="other-msg">{{ msg }}</div>
     </div>
 </template>
 <script>
 export default {
-  props: ['imgurl', 'msg']
+  props: ['imgurl', 'msg', 'id'],
+  methods: {
+    otherInfo () {
+      this.$router.push({
+          name: 'otherInfo',
+          params: {
+              user: this.id
+          }
+      })
+    }
+  }
 }
 </script>
 <style scoped>
@@ -21,7 +31,7 @@ export default {
     width: 70px;
     height: 70px;
     border-radius: 50%;
-    background: white
+    background-size: 100% 100%;
   }
 
   .other-msg {

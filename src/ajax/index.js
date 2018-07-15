@@ -2,7 +2,7 @@ import axios from 'axios'
 import qs from 'qs'
 const TEST = 'test'
 const PersonInfo = 'getpersoninfo/'
-const OtherPerson = 'getotherperson/'
+const OtherPerson = 'getotherpersoninfo/'
 const GetVideo = 'getvideo/'
 const ConversationList = 'getConversationList/'
 const ConversationDetail = 'getConversationDetail/'
@@ -85,6 +85,10 @@ function doDetectFace (data) {
 function doPersonEdit (data) {
   return uploadFile(PersonEdit, data)
 }
+
+function getOtherInfo (data) {
+  return makePost(OtherPerson, data)
+}
  
 
 export default {
@@ -98,5 +102,6 @@ export default {
   getEvent,
   getCount,
   doDetectFace,
-  doPersonEdit
+  doPersonEdit,
+  getOtherInfo
 }

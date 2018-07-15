@@ -2,17 +2,17 @@
     <div class="chat-module">
         <div class="chat-header">
             <text class="left"></text>
-            <text class="name">JKJUN</text>
+            <text class="name">{{ name }}</text>
             <text class="right"></text>
         </div>
         <div class="chatting">
             <div v-for="(chat, index) in data" :key="index">
-              <chat-own :msg='chat.msg' v-if="chat.type === 1"></chat-own>
-              <chat-other :msg='chat.msg' v-else></chat-other>
+              <chat-own :imgurl="userimg" :msg='chat.test' v-if="chat.sender != otherId"></chat-own>
+              <chat-other :imgurl="otherimg" :msg='chat.test' :id="otherId" v-else></chat-other>
             </div>
             <div id="send-block" class="base-flex">
-              <input type="text" @focus="changeColor" placeholder="聊点什么吧...">
-              <button @click="send_msg">发送</button>
+              <input type="text" @focus="changeColor" placeholder="聊点什么吧..." v-model="text">
+              <button @click="handleSendMessage">发送</button>
             </div>
         </div>
     </div>
@@ -29,18 +29,26 @@ export default {
       data: [],
       text: '',
       lastId: 0,
-      timmer: {}
+      timmer: {},
+      userimg: '',
+      name: ''
     }
   },
   beforeRouteEnter (to, from, next) {
     next(vm => {
         vm.otherId = to.params.user
+        vm.otherimg = to.params.otherimg
       })
   },
   beforeRouteLeave (to, from, next) {
     clearInterval(this.timmer)
   },
   mounted () {
+    ajax.getPersonInfo()
+    .then(({ data }) => {
+      this.userimg = data.data.img_portrait
+      this.name = data.data.name
+    })
     this.timmer = setInterval(() => {
       ajax.getConversationDetail({ id: this.otherId, id_greater_than: this.lastId, count: -1 })
       .then(({ data }) => {
@@ -48,23 +56,15 @@ export default {
           return
         }
         this.data = this.data.concat(data.data)
-        this.lastId = data.data.length > 0 && data.data[data.data.length - 1].id
+        this.lastId = (data.data.length > 0 && data.data[data.data.length - 1].id) || this.lastId
       })
     }, 1000)
   },
   methods: {
     handleSendMessage () {
       ajax.doSendMessage({user_id: this.otherId, text: this.text})
-    },
-    handleGetMessage() {
-
     }
-  },
-    methods: {
-        send_msg () {
-            alert(123);
-        }
-    }
+  }
 }
 </script>
 <style scoped>

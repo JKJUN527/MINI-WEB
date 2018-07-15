@@ -17,8 +17,8 @@
                 <wxc-pan-item :ext-id="'1-' + (v) + '-' + (key)"
                               url=""
                               @wxcPanItemPan="wxcPanItemPan">
-                    <Match v-if="demo.type == 1"></Match>
-                    <SuperLike v-if="demo.type == 123" :name="demo.username" :msg="demo.message" :id="demo.user"></SuperLike>
+                    <Match v-if="demo.type == 'match'"></Match>
+                    <SuperLike v-else :name="demo.username" :msg="demo.message" :id="demo.user"></SuperLike>
                 </wxc-pan-item>
             </cell>
         </list>
@@ -34,7 +34,10 @@
                 <wxc-pan-item :ext-id="'1-' + (v) + '-' + (key)"
                               url=""
                               @wxcPanItemPan="wxcPanItemPan">
-                    <Msg :name="demo.name" :msg="demo.sentence" :time="demo.time" :unreadCount="demo.unread_count"></Msg>
+
+                    <div class="test" @click="doSendMessage(demo.user, demo.avatar)">
+                        <Msg :avatar="`https://mini.jkjun.cn/media/${demo.avatar}`" :id="demo.user" :name="demo.name" :msg="demo.sentence" :time="demo.time" :unreadCount="demo.unread_count"></Msg>
+                    </div>
                 </wxc-pan-item>
             </cell>
         </list>
@@ -55,7 +58,8 @@ export default {
     tabTitles: Config.tabTitles,
     tabStyles: Config.tabStyles,
     tabList: [],
-    tabPageHeight: 1334
+    tabPageHeight: 1334,
+    avatar: 'https://mini.jkjun.cn/media/'
   }),
   created () {
     this.tabPageHeight = Utils.env.getPageHeight()
@@ -71,6 +75,7 @@ export default {
       ajax.getConversationList({})
       .then(({data}) => {
           this.$set(this.tabList, 1, data.data)
+          this.avatar = this.avatar + '/' + data.data.avatar
       })
   },
   methods: {
@@ -88,6 +93,12 @@ export default {
       if (BindEnv.supportsEBForAndroid()) {
         this.$refs['wxc-tab-page'].bindExp(e.element)
       }
+    },
+    doSendMessage (id, avatar) {
+        this.$router.push({name: 'chat', params: {
+            user: id,
+            otherimg: avatar
+        }})
     }
   }
 }

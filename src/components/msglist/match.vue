@@ -3,13 +3,11 @@
         <div class="like-notice">
             <text>你收到一个like</text>
         </div>
-        <text class="like-time">13:05</text>
     </div>
 </template>
 
 <script>
 export default {
-    props: ['name']
 }
 </script>
 

@@ -748,6 +748,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var TEST = 'test';
 var PersonInfo = 'getpersoninfo/';
+var OtherPerson = 'getotherpersoninfo/';
 var GetVideo = 'getvideo/';
 var ConversationList = 'getConversationList/';
 var ConversationDetail = 'getConversationDetail/';
@@ -756,7 +757,9 @@ var PushMessages = 'getPushMessages/';
 var preference = 'preference/';
 var Events = 'getevent/';
 var Count = 'getCount/';
-var DetectFace = 'detectface';
+var DetectFace = 'detectface/';
+var PersonEdit = 'editpersoninfo/';
+// const  = 'editpersoninfo/'
 
 var ax = _axios2.default.create({
   baseURL: 'https://mini.jkjun.cn/',
@@ -769,6 +772,14 @@ function makePost(path, data) {
 
 function makeGet(path, params) {
   return ax.get(path, { params: params });
+}
+
+function uploadFile(path, data) {
+  return ax.post(path, data, {
+    headers: {
+      'Content-Type': 'multipart/form-data'
+    }
+  });
 }
 
 function Test(data) {
@@ -812,7 +823,15 @@ function getCount(data) {
 }
 
 function doDetectFace(data) {
-  return makePost(DetectFace, data);
+  return uploadFile(DetectFace, data);
+}
+
+function doPersonEdit(data) {
+  return uploadFile(PersonEdit, data);
+}
+
+function getOtherInfo(data) {
+  return makePost(OtherPerson, data);
 }
 
 exports.default = {
@@ -824,7 +843,10 @@ exports.default = {
   doSendMessage: doSendMessage,
   sendPreference: sendPreference,
   getEvent: getEvent,
-  getCount: getCount
+  getCount: getCount,
+  doDetectFace: doDetectFace,
+  doPersonEdit: doPersonEdit,
+  getOtherInfo: getOtherInfo
 };
 
 /***/ }),
@@ -6771,6 +6793,22 @@ module.exports = __vue_exports__
 /***/ (function(module, exports) {
 
 module.exports = {
+  "close-button": {
+    "width": 1,
+    "top": 0.1,
+    "left": 0.2,
+    "position": "absolute",
+    "opacity": 0,
+    "height": 100
+  },
+  "send-button": {
+    "right": 0.2,
+    "width": 1,
+    "top": 0.1,
+    "position": "absolute",
+    "opacity": 0,
+    "height": 100
+  },
   "video-wrapper": {
     "flexGrow": 1,
     "backgroundColor": "rgba(0,0,0,0)",
@@ -6794,23 +6832,38 @@ module.exports = {
     "height": "100",
     "alignItems": "flex-start"
   },
-  "super-image": {
+  "super-img-bg": {
     "position": "absolute",
-    "top": "-50",
-    "left": "50",
+    "top": "-65",
+    "left": "30",
+    "background": "url(\"/src/asset/img/flare.png\")",
+    "backgroundSize": "cover",
+    "width": "130",
+    "height": "130"
+  },
+  "super-image": {
     "width": "100",
     "height": "100",
     "borderRadius": 50,
-    "backgroundColor": "#FFFFFF"
+    "backgroundColor": "#FFFFFF",
+    "marginTop": "13",
+    "marginLeft": "15"
   },
   "super-msg": {
     "marginTop": 0,
     "marginBottom": 0,
-    "width": 9,
-    "height": 2.5
+    "background": "transparent",
+    "color": "#FFFFFF"
   },
   "super-send": {
     "textAlign": "center"
+  },
+  "superlike-button": {
+    "borderTop": "1px #C5C5C5 solid",
+    "background": "url(\"/src/asset/img/superlike-button.png\")",
+    "backgroundSize": "cover",
+    "width": 100,
+    "height": 1.3
   }
 }
 
@@ -6853,14 +6906,21 @@ exports.default = {
             isBottomShow: false,
             id: '',
             name: '',
-            imgurl: ''
+            imgurl: '',
+            supermsg: '',
+            superLikeTime: 1
         };
     },
     mounted: function mounted() {
         var _this = this;
 
-        _index2.default.getVideo({ count: 2 }).then(function (_ref) {
+        _index2.default.getCount().then(function (_ref) {
             var data = _ref.data;
+
+            _this.superLikeTime = data.data.superCount;
+        });
+        _index2.default.getVideo({ count: 2 }).then(function (_ref2) {
+            var data = _ref2.data;
 
             _this.video_1 = data.data[0].videourl;
             _this.video_2 = data.data[1].videourl;
@@ -6893,25 +6953,31 @@ exports.default = {
                 this.rotate = 0;
                 return;
             }
-            _index2.default.getVideo({ count: 1 }).then(function (_ref2) {
-                var data = _ref2.data;
-
-                _this2.video_1 = _this2.video_2;
-                _this2.video_2 = data.data[0].videourl;
-                _this2.id = data.data[0].userid;
-                _this2.name = data.data[0].username;
-                _this2.imgurl = data.data[0].userphoto;
-            });
             if (Math.abs(this.distanceX) > Math.abs(this.distanceY)) {
+                _index2.default.getVideo({ count: 1 }).then(function (_ref3) {
+                    var data = _ref3.data;
+
+                    _this2.video_1 = _this2.video_2;
+                    _this2.video_2 = data.data[0].videourl;
+                    _this2.id = data.data[0].userid;
+                    _this2.name = data.data[0].username;
+                    _this2.imgurl = data.data[0].userphoto;
+                });
                 if (this.distanceX > 0) {
                     _index2.default.sendPreference({
+                        video_url: this.video_1,
                         user: this.id,
                         type: 'like'
+                    }).then(function (res) {
+                        if (res.data.event == 1) {
+                            _this2.$router.push({ name: 'match' });
+                        }
                     });
                 } else {
                     _index2.default.sendPreference({
+                        video_url: this.video_1,
                         user: this.id,
-                        type: 'like'
+                        type: 'no'
                     });
                 }
             } else {
@@ -6928,6 +6994,24 @@ exports.default = {
                 _this2.rotate = 0;
                 _this2.opacity = 1;
             }, 200);
+        },
+        closeSuperLike: function closeSuperLike() {
+            this.isBottomShow = false;
+        },
+        sendSuperLike: function sendSuperLike() {
+            var _this3 = this;
+
+            _index2.default.sendPreference({
+                video_url: this.video_1,
+                user: this.id,
+                type: 'super',
+                msg: this.supermsg
+            }).then(function (res) {
+                _this3.isBottomShow = false;
+                if (res.data.event == 1) {
+                    _this3.$router.push({ name: 'match' });
+                }
+            });
         }
     },
     watch: {
@@ -6940,6 +7024,9 @@ exports.default = {
         }
     }
 }; //
+//
+//
+//
 //
 //
 //
@@ -7022,10 +7109,6 @@ module.exports = {
     "left": 0,
     "right": 0
   },
-  "bottom": {
-    "left": 0,
-    "right": 0
-  },
   "left": {
     "bottom": 0,
     "top": 0
@@ -7057,6 +7140,12 @@ var _wxcOverlay2 = _interopRequireDefault(_wxcOverlay);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -7560,7 +7649,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   })]), _c('wxc-popup', {
     staticClass: ["super-block"],
     attrs: {
-      "popupColor": "#000",
+      "popupColor": "#161824",
       "show": _vm.isBottomShow,
       "pos": "bottom",
       "height": "400"
@@ -7570,21 +7659,43 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_c('div', [_c('div', {
     staticClass: ["super-header"]
+  }, [_c('text', {
+    staticClass: ["super-img-bg"]
   }, [_c('image', {
-    staticClass: ["super-image"]
-  }), _c('text', {
+    staticClass: ["super-image"],
+    attrs: {
+      "src": _vm.imgurl
+    }
+  })]), _c('text', {
     staticClass: ["super-name", "color-white"]
-  }, [_vm._v("肖宇干啥")])]), _c('textarea', {
+  }, [_vm._v(_vm._s(_vm.name))])]), _c('textarea', {
     staticClass: ["super-msg"],
     attrs: {
       "name": "",
       "id": "",
       "cols": "30",
-      "rows": "10"
+      "rows": "5",
+      "placeholder": "写点什么吧...",
+      "value": (_vm.supermsg)
+    },
+    on: {
+      "input": function($event) {
+        _vm.supermsg = $event.target.attr.value
+      }
     }
-  }), _c('div', [_c('div', {
-    staticClass: ["super-send", "color-white", "middle-font-size"]
-  }, [_vm._v("发送")])])])])], 1)
+  }), _c('div', {
+    staticClass: ["superlike-button"]
+  }, [_c('button', {
+    staticClass: ["close-button"],
+    on: {
+      "click": _vm.closeSuperLike
+    }
+  }, [_vm._v("取消")]), _c('button', {
+    staticClass: ["send-button"],
+    on: {
+      "click": _vm.sendSuperLike
+    }
+  }, [_vm._v("发送")])], 1)])])], 1)
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 
@@ -7833,37 +7944,60 @@ module.exports = {
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
+
+var _index = __webpack_require__(2);
+
+var _index2 = _interopRequireDefault(_index);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 exports.default = {
   data: function data() {
     return {
-      test: ''
+      ausername: '',
+      auserphoto: '',
+      busername: '',
+      buserphoto: '',
+      buserid: ''
     };
+  },
+  mounted: function mounted() {
+    var _this = this;
+
+    _index2.default.getEvent().then(function (_ref) {
+      var data = _ref.data;
+
+      data = data.data;
+      _this.ausername = data.ausername;
+      _this.auserphoto = data.auserphoto;
+      _this.busername = data.busername;
+      _this.buserphoto = data.buserphoto;
+      _this.buserid = data.buserid;
+    });
   }
-};
+}; //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /***/ }),
 /* 68 */
@@ -7872,7 +8006,35 @@ exports.default = {
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
     staticClass: ["match-content"]
-  }, [_vm._m(0), _vm._m(1), _c('div', {
+  }, [_c('div', {
+    staticClass: ["match-success"]
+  }, [_c('text', {
+    staticClass: ["base-font-size", "color-white"]
+  }, [_vm._v("匹配成功!")]), _c('text', {
+    staticClass: ["match-success-font"]
+  }, [_vm._v("您和" + _vm._s(_vm.busername) + "已匹配成功")])]), _c('div', {
+    staticClass: ["user-group", "base-flex"]
+  }, [_c('div', {
+    staticClass: ["user-item"]
+  }, [_c('image', {
+    staticClass: ["user-img"],
+    attrs: {
+      "src": _vm.auserphoto
+    }
+  }), _c('text', {
+    staticClass: ["user-name"]
+  }, [_vm._v(_vm._s(_vm.ausername))])]), _c('div', {
+    staticClass: ["heart-beat"]
+  }), _c('div', {
+    staticClass: ["user-item"]
+  }, [_c('image', {
+    staticClass: ["user-img"],
+    attrs: {
+      "src": _vm.buserphoto
+    }
+  }), _c('text', {
+    staticClass: ["user-name"]
+  }, [_vm._v(_vm._s(_vm.busername))])])]), _c('div', {
     staticClass: ["btn-group"]
   }, [_c('router-link', {
     staticClass: ["btn", "chat"],
@@ -7895,33 +8057,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       }
     }
   }, [_vm._v(" 我再看看 ")])], 1)])
-},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: ["match-success"]
-  }, [_c('text', {
-    staticClass: ["base-font-size", "color-white"]
-  }, [_vm._v("匹配成功!")]), _c('text', {
-    staticClass: ["match-success-font"]
-  }, [_vm._v("您和AAA已匹配成功")])])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: ["user-group", "base-flex"]
-  }, [_c('div', {
-    staticClass: ["user-item"]
-  }, [_c('image', {
-    staticClass: ["user-img"]
-  }), _c('text', {
-    staticClass: ["user-name"]
-  }, [_vm._v("user name")])]), _c('div', {
-    staticClass: ["heart-beat"]
-  }), _c('div', {
-    staticClass: ["user-item"]
-  }, [_c('image', {
-    staticClass: ["user-img"]
-  }), _c('text', {
-    staticClass: ["user-name"]
-  }, [_vm._v("user name")])])])
-}]}
+},staticRenderFns: []}
 module.exports.render._withStripped = true
 
 /***/ }),
@@ -7981,7 +8117,8 @@ module.exports = {
     "width": 3,
     "height": 3,
     "borderRadius": 50,
-    "background": "white"
+    "background": "white",
+    "overflow": "hidden"
   },
   "user-name": {
     "color": "#FFFFFF",
@@ -8045,21 +8182,8 @@ module.exports = {
     "width": 5,
     "height": 7,
     "marginTop": 0.5,
-    "backgroundColor": "#C3413D",
     "alignItems": "center",
     "justifyContent": "center"
-  },
-  "slider1": {
-    "backgroundColor": "#635147"
-  },
-  "slider2": {
-    "backgroundColor": "#FFC302"
-  },
-  "slider3": {
-    "backgroundColor": "#FF9090"
-  },
-  "slider4": {
-    "backgroundColor": "#546E7A"
   }
 }
 
@@ -8078,7 +8202,54 @@ var _wxcEpSlider = __webpack_require__(15);
 
 var _wxcEpSlider2 = _interopRequireDefault(_wxcEpSlider);
 
+var _index = __webpack_require__(2);
+
+var _index2 = _interopRequireDefault(_index);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 exports.default = {
   components: { WxcEpSlider: _wxcEpSlider2.default },
@@ -8088,13 +8259,37 @@ exports.default = {
       showVideoList: 'works',
       sliderId: 1,
       cardLength: 5,
+      name: '',
+      signature: '',
+      imgurl: '',
+      my_video_list: [],
       cardSize: {
         width: 400,
         height: 300,
         spacing: 0,
         scale: 0.8
-      }
+      },
+      user_id: 0
     };
+  },
+  beforeRouteEnter: function beforeRouteEnter(to, from, next) {
+    next(function (vm) {
+      vm.user_id = to.params.user;
+    });
+  },
+  mounted: function mounted() {
+    var _this = this;
+
+    _index2.default.getOtherInfo({ user_id: this.user_id }).then(function (_ref) {
+      var data = _ref.data;
+
+      data = data.data;
+      _this.labels = [data.local, data.age + '岁', data.constellation, data.sex];
+      _this.name = data.name;
+      _this.signature = data.signature;
+      _this.imgurl = data.img_portrait;
+      _this.my_video_list = data.my_video_list;
+    });
   },
 
   methods: {
@@ -8105,50 +8300,7 @@ exports.default = {
   watch: {
     showVideoList: function showVideoList() {}
   }
-}; //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
+};
 
 /***/ }),
 /* 72 */
@@ -9250,7 +9402,7 @@ module.exports.render._withStripped = true
 /* 79 */
 /***/ (function(module, exports) {
 
-throw new Error("Module build failed: SyntaxError: Unexpected token (38:10)\n    at Parser.pp$4.raise (E:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:2610:13)\n    at Parser.pp.unexpected (E:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:637:8)\n    at Parser.pp$3.parseIdent (E:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:2565:10)\n    at Parser.pp$3.parsePropertyName (E:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:2362:105)\n    at Parser.parseObj (E:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:4463:14)\n    at Parser.pp$3.parseExprAtom (E:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:2077:17)\n    at Parser.parseExprAtom (E:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:4372:24)\n    at Parser.pp$3.parseExprSubscripts (E:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:1955:19)\n    at Parser.pp$3.parseMaybeUnary (E:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:1932:17)\n    at Parser.pp$3.parseExprOps (E:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:1874:19)\n    at Parser.pp$3.parseMaybeConditional (E:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:1857:19)\n    at Parser.pp$3.parseMaybeAssign (E:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:1832:19)\n    at Parser.pp$3.parsePropertyValue (E:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:2310:87)\n    at Parser.parseObj (E:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:4472:14)\n    at Parser.pp$3.parseExprAtom (E:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:2077:17)\n    at Parser.parseExprAtom (E:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:4372:24)");
+throw new Error("Module build failed: SyntaxError: Unexpected token (21:10)\n    at Parser.pp$4.raise (E:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:2610:13)\n    at Parser.pp.unexpected (E:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:637:8)\n    at Parser.pp$3.parseIdent (E:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:2565:10)\n    at Parser.pp$3.parsePropertyName (E:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:2362:105)\n    at Parser.parseObj (E:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:4463:14)\n    at Parser.pp$3.parseExprAtom (E:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:2077:17)\n    at Parser.parseExprAtom (E:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:4372:24)\n    at Parser.pp$3.parseExprSubscripts (E:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:1955:19)\n    at Parser.pp$3.parseMaybeUnary (E:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:1932:17)\n    at Parser.pp$3.parseExprOps (E:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:1874:19)\n    at Parser.pp$3.parseMaybeConditional (E:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:1857:19)\n    at Parser.pp$3.parseMaybeAssign (E:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:1832:19)\n    at Parser.pp$3.parsePropertyValue (E:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:2310:87)\n    at Parser.parseObj (E:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:4472:14)\n    at Parser.pp$3.parseExprAtom (E:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:2077:17)\n    at Parser.parseExprAtom (E:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:4372:24)");
 
 /***/ }),
 /* 80 */
@@ -9312,6 +9464,7 @@ module.exports = {
     "width": 2.3,
     "height": 2.3,
     "borderRadius": 50,
+    "overflow": "hidden",
     "background": "white"
   },
   "user-name": {
@@ -9399,21 +9552,8 @@ module.exports = {
     "width": 5,
     "height": 7,
     "marginTop": 0.5,
-    "backgroundColor": "#C3413D",
     "alignItems": "center",
     "justifyContent": "center"
-  },
-  "slider1": {
-    "backgroundColor": "#635147"
-  },
-  "slider2": {
-    "backgroundColor": "#FFC302"
-  },
-  "slider3": {
-    "backgroundColor": "#FF9090"
-  },
-  "slider4": {
-    "backgroundColor": "#546E7A"
   }
 }
 
@@ -9504,20 +9644,20 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 //
 //
 //
-//
-//
 
 exports.default = {
   components: { WxcEpSlider: _wxcEpSlider2.default },
   data: function data() {
     return {
       name: '',
-      labels: ['北京', '20岁', '双子座', '男'],
+      labels: [],
       signature: '',
       imgurl: '',
       showVideoList: 0,
       sliderId: 1,
       cardLength: 5,
+      like_video_list: [],
+      my_video_list: [],
       cardSize: {
         width: 400,
         height: 300,
@@ -9536,8 +9676,9 @@ exports.default = {
       _this.labels = [data.local, data.age + '岁', data.constellation, data.sex];
       _this.name = data.name;
       _this.signature = data.signature;
-      alert(JSON.stringify(data));
       _this.imgurl = data.img_portrait;
+      _this.like_video_list = data.like_video_list;
+      _this.my_video_list = data.my_video_list;
     });
   },
 
@@ -9549,7 +9690,6 @@ exports.default = {
       var index = e.currentIndex;
     },
     changeTap: function changeTap() {
-      alert(this.showVideoList);
       if (this.showVideoList === 0) {
         this.showVideoList = 1;
       } else {
@@ -9712,106 +9852,28 @@ var _wxcCity = __webpack_require__(103);
 
 var _wxcCity2 = _interopRequireDefault(_wxcCity);
 
+var _index = __webpack_require__(2);
+
+var _index2 = _interopRequireDefault(_index);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-var test = weex.requireModule('picker');
 exports.default = {
   components: { WxcCity: _wxcCity2.default, WxcPopup: _wxcPopup2.default, WxcButton: _wxcButton2.default, WxcPageCalendar: _wxcPageCalendar2.default },
   data: function data() {
     return {
-      name: '董宇辰',
+      name: '',
       animationType: 'push',
       currentCity: '',
       cityStyleType: 'list',
       value: '',
-      sex: 'man',
+      sex: '',
       imgDataUrl: '/src/asset/img/qq.jpg',
-      files: '',
+      files: 0,
       isBottomShow: false,
       currentDate: '',
       selectedDate: [],
+      signature: '',
       isRange: false,
       calendarTitle: '选择日期',
       dateRange: ['2017-06-10', '2018-06-10'],
@@ -9823,12 +9885,32 @@ exports.default = {
     };
   },
   mounted: function mounted() {
-    // 模拟定位
+    var _this2 = this;
+
+    _index2.default.getPersonInfo({}).then(function (_ref) {
+      var data = _ref.data;
+
+      data = data.data;
+      _this2.currentCity = data.local;
+      _this2.name = data.name;
+      _this2.signature = data.signature;
+      _this2.imgDataUrl = data.img_portrait;
+    });
   },
 
   methods: {
+    handleSave: function handleSave() {
+      alert(JSON.stringify(this.currentCity));
+      var formdata = new FormData();
+      formdata.append('birth_timestamp', 1531650089047);
+      formdata.append('name', this.name);
+      formdata.append('sex', this.sex);
+      formdata.append('local', this.currentCity.cityName);
+      formdata.append('signature', this.signature);
+      formdata.append('img_portrait', this.files);
+      _index2.default.doPersonEdit(formdata);
+    },
     uploadimg: function uploadimg() {
-      alert(123);
       document.getElementById('upload_file').click();
     },
     showListCity: function showListCity() {
@@ -9859,38 +9941,113 @@ exports.default = {
     },
     wxcPageCalendarBackClicked: function wxcPageCalendarBackClicked() {},
     showCalendar: function showCalendar() {
-      var _this2 = this;
-
-      this.isRange = false;
-      setTimeout(function () {
-        _this2.$refs['wxcPageCalendar'].show();
-      }, 10);
-    },
-    showReturnCalendar: function showReturnCalendar() {
       var _this3 = this;
 
-      this.isRange = true;
+      this.isRange = false;
       setTimeout(function () {
         _this3.$refs['wxcPageCalendar'].show();
       }, 10);
     },
+    showReturnCalendar: function showReturnCalendar() {
+      var _this4 = this;
+
+      this.isRange = true;
+      setTimeout(function () {
+        _this4.$refs['wxcPageCalendar'].show();
+      }, 10);
+    },
     getFile: function getFile(e) {
       var _this = this;
-      var files = e.target.files[0];
+      this.files = e.target.files[0];
       if (!e || !window.FileReader) return; // 看支持不支持FileReader
       var reader = new FileReader();
-      reader.readAsDataURL(files); // 这里是最关键的一步，转换就在这里
+      reader.readAsDataURL(this.files); // 这里是最关键的一步，转换就在这里
       reader.onloadend = function () {
         _this.imgDataUrl = this.result;
       };
     }
-  },
-  filters: {
-    sexTranslate: function sexTranslate(sex) {
-      return sex === 'man' ? '男' : '女';
-    }
   }
-};
+}; //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /***/ }),
 /* 87 */
@@ -13653,7 +13810,18 @@ module.exports.render._withStripped = true
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
     staticClass: ["infoEdit"]
-  }, [_vm._m(0), _c('div', {
+  }, [_c('div', {
+    staticClass: ["chat-header"]
+  }, [_c('text', {
+    staticClass: ["left"]
+  }, [_vm._v("取消")]), _c('text', {
+    staticClass: ["name"]
+  }, [_vm._v("资料修改")]), _c('text', {
+    staticClass: ["right"],
+    on: {
+      "click": _vm.handleSave
+    }
+  }, [_vm._v("保存")])]), _c('div', {
     staticClass: ["user-img"]
   }, [_c('image', {
     attrs: {
@@ -13699,7 +13867,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: ["base-flex"]
   }, [_c('text', {
     staticClass: ["color-gray"]
-  }, [_vm._v(_vm._s(_vm._f("sexTranslate")(_vm.sex)))])]), _c('label', {
+  }, [_vm._v(_vm._s(_vm.sex))])]), _c('label', {
     staticClass: ["right-icon"]
   })], 1), _c('div', {
     staticClass: ["base-flex", "cell"],
@@ -13738,7 +13906,13 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_vm._v("签名")]), _c('textarea', {
     staticClass: ["color-gray"],
     attrs: {
-      "rows": "1"
+      "rows": "1",
+      "value": (_vm.signature)
+    },
+    on: {
+      "input": function($event) {
+        _vm.signature = $event.target.attr.value
+      }
     }
   }), _c('label', {
     staticClass: ["right-icon"]
@@ -13762,7 +13936,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     },
     on: {
       "wxcButtonClicked": function($event) {
-        _vm.handleSexChange('man')
+        _vm.handleSexChange('男')
       }
     }
   }), _c('wxc-button', {
@@ -13773,7 +13947,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     },
     on: {
       "wxcButtonClicked": function($event) {
-        _vm.handleSexChange('woman')
+        _vm.handleSexChange('女')
       }
     }
   }), _c('wxc-button', {
@@ -13814,17 +13988,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "wxcPageCalendarDateSelected": _vm.wxcPageCalendarDateSelected
     }
   })], 1)
-},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: ["chat-header"]
-  }, [_c('text', {
-    staticClass: ["left"]
-  }, [_vm._v("取消")]), _c('text', {
-    staticClass: ["name"]
-  }, [_vm._v("资料修改")]), _c('text', {
-    staticClass: ["right"]
-  }, [_vm._v("保存")])])
-}]}
+},staticRenderFns: []}
 module.exports.render._withStripped = true
 
 /***/ }),
@@ -15163,27 +15327,7 @@ var _chatOther2 = _interopRequireDefault(_chatOther);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; } //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-exports.default = _defineProperty({
+exports.default = {
   components: { ChatOwn: _chatOwn2.default, ChatOther: _chatOther2.default },
   data: function data() {
     return {
@@ -15191,12 +15335,15 @@ exports.default = _defineProperty({
       data: [],
       text: '',
       lastId: 0,
-      timmer: {}
+      timmer: {},
+      userimg: '',
+      name: ''
     };
   },
   beforeRouteEnter: function beforeRouteEnter(to, from, next) {
     next(function (vm) {
       vm.otherId = to.params.user;
+      vm.otherimg = to.params.otherimg;
     });
   },
   beforeRouteLeave: function beforeRouteLeave(to, from, next) {
@@ -15205,15 +15352,21 @@ exports.default = _defineProperty({
   mounted: function mounted() {
     var _this = this;
 
+    _index2.default.getPersonInfo().then(function (_ref) {
+      var data = _ref.data;
+
+      _this.userimg = data.data.img_portrait;
+      _this.name = data.data.name;
+    });
     this.timmer = setInterval(function () {
-      _index2.default.getConversationDetail({ id: _this.otherId, id_greater_than: _this.lastId, count: -1 }).then(function (_ref) {
-        var data = _ref.data;
+      _index2.default.getConversationDetail({ id: _this.otherId, id_greater_than: _this.lastId, count: -1 }).then(function (_ref2) {
+        var data = _ref2.data;
 
         if (data.status === 403) {
           return;
         }
         _this.data = _this.data.concat(data.data);
-        _this.lastId = data.data.length > 0 && data.data[data.data.length - 1].id;
+        _this.lastId = data.data.length > 0 && data.data[data.data.length - 1].id || _this.lastId;
       });
     }, 1000);
   },
@@ -15221,14 +15374,27 @@ exports.default = _defineProperty({
   methods: {
     handleSendMessage: function handleSendMessage() {
       _index2.default.doSendMessage({ user_id: this.otherId, text: this.text });
-    },
-    handleGetMessage: function handleGetMessage() {}
+    }
   }
-}, 'methods', {
-  send_msg: function send_msg() {
-    alert(123);
-  }
-});
+}; //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /***/ }),
 /* 151 */
@@ -15296,7 +15462,7 @@ module.exports = {
     "width": "70",
     "height": "70",
     "borderRadius": 50,
-    "background": "white"
+    "backgroundSize": "100% 100%"
   },
   "own-msg": {
     "paddingTop": "25",
@@ -15343,7 +15509,10 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_c('div', {
     staticClass: ["own-msg"]
   }, [_vm._v(_vm._s(_vm.msg))]), _c('div', {
-    staticClass: ["own-img"]
+    staticClass: ["own-img"],
+    style: {
+      'background-image': ("url(" + _vm.imgurl + ")")
+    }
   })])
 },staticRenderFns: []}
 module.exports.render._withStripped = true
@@ -15414,7 +15583,7 @@ module.exports = {
     "width": "70",
     "height": "70",
     "borderRadius": 50,
-    "background": "white"
+    "backgroundSize": "100% 100%"
   },
   "other-msg": {
     "paddingTop": "25",
@@ -15445,7 +15614,18 @@ Object.defineProperty(exports, "__esModule", {
 //
 
 exports.default = {
-  props: ['imgurl', 'msg']
+  props: ['imgurl', 'msg', 'id'],
+  methods: {
+    otherInfo: function otherInfo() {
+      alert('hahah');
+      this.$router.push({
+        name: 'otherInfo',
+        params: {
+          user: this.id
+        }
+      });
+    }
+  }
 };
 
 /***/ }),
@@ -15456,7 +15636,13 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   return _c('div', {
     staticClass: ["chat-other"]
   }, [_c('div', {
-    staticClass: ["other-img"]
+    staticClass: ["other-img"],
+    style: {
+      'background-image': ("url(https://mini.jkjun.cn/media/" + _vm.imgurl + ")")
+    },
+    on: {
+      "click": _vm.otherInfo
+    }
   }), _c('div', {
     staticClass: ["other-msg"]
   }, [_vm._v(_vm._s(_vm.msg))])])
@@ -15470,18 +15656,29 @@ module.exports.render._withStripped = true
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
     staticClass: ["chat-module"]
-  }, [_vm._m(0), _c('div', {
+  }, [_c('div', {
+    staticClass: ["chat-header"]
+  }, [_c('text', {
+    staticClass: ["left"]
+  }), _c('text', {
+    staticClass: ["name"]
+  }, [_vm._v(_vm._s(_vm.name))]), _c('text', {
+    staticClass: ["right"]
+  })]), _c('div', {
     staticClass: ["chatting"]
   }, [_vm._l((_vm.data), function(chat, index) {
     return _c('div', {
       key: index
-    }, [(chat.type === 1) ? _c('chat-own', {
+    }, [(chat.sender != _vm.otherId) ? _c('chat-own', {
       attrs: {
-        "msg": chat.msg
+        "imgurl": _vm.userimg,
+        "msg": chat.test
       }
     }) : _c('chat-other', {
       attrs: {
-        "msg": chat.msg
+        "imgurl": _vm.otherimg,
+        "msg": chat.test,
+        "id": _vm.otherId
       }
     })], 1)
   }), _c('div', {
@@ -15492,27 +15689,21 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_c('input', {
     attrs: {
       "type": "text",
-      "placeholder": "聊点什么吧..."
+      "placeholder": "聊点什么吧...",
+      "value": (_vm.text)
     },
     on: {
-      "focus": _vm.changeColor
+      "focus": _vm.changeColor,
+      "input": function($event) {
+        _vm.text = $event.target.attr.value
+      }
     }
   }), _c('button', {
     on: {
-      "click": _vm.send_msg
+      "click": _vm.handleSendMessage
     }
   }, [_vm._v("发送")])], 1)], 2)])
-},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: ["chat-header"]
-  }, [_c('text', {
-    staticClass: ["left"]
-  }), _c('text', {
-    staticClass: ["name"]
-  }, [_vm._v("JKJUN")]), _c('text', {
-    staticClass: ["right"]
-  })])
-}]}
+},staticRenderFns: []}
 module.exports.render._withStripped = true
 
 /***/ }),
@@ -15862,6 +16053,9 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
 //
 //
 //
+//
+//
+//
 
 //    const dom = weex.requireModule('dom');
 
@@ -15873,7 +16067,8 @@ exports.default = {
       tabTitles: _config2.default.tabTitles,
       tabStyles: _config2.default.tabStyles,
       tabList: [],
-      tabPageHeight: 1334
+      tabPageHeight: 1334,
+      avatar: 'https://mini.jkjun.cn/media/'
     };
   },
   created: function created() {
@@ -15896,6 +16091,7 @@ exports.default = {
       var data = _ref2.data;
 
       _this.$set(_this.tabList, 1, data.data);
+      _this.avatar = _this.avatar + '/' + data.data.avatar;
     });
   },
 
@@ -15916,6 +16112,12 @@ exports.default = {
       if (_bindEnv2.default.supportsEBForAndroid()) {
         this.$refs['wxc-tab-page'].bindExp(e.element);
       }
+    },
+    doSendMessage: function doSendMessage(id, avatar) {
+      this.$router.push({ name: 'chat', params: {
+          user: id,
+          otherimg: avatar
+        } });
     }
   }
 };
@@ -16012,7 +16214,6 @@ Object.defineProperty(exports, "__esModule", {
 //
 //
 //
-//
 
 exports.default = {
     props: ['name']
@@ -16029,9 +16230,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: ["content"]
   }, [_c('div', {
     staticClass: ["like-notice"]
-  }, [_c('text', [_vm._v("你收到一个like")])]), _c('text', {
-    staticClass: ["like-time"]
-  }, [_vm._v("13:05")])])
+  }, [_c('text', [_vm._v("你收到一个match:")])])])
 }]}
 module.exports.render._withStripped = true
 
@@ -16146,7 +16345,7 @@ Object.defineProperty(exports, "__esModule", {
 //
 
 exports.default = {
-  props: ['name', 'time', 'msg', 'unreadCount']
+  props: ['avatar', 'name', 'time', 'msg', 'unreadCount', 'id']
 };
 
 /***/ }),
@@ -16160,7 +16359,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: ["msg-list"]
   }, [_c('image', {
     attrs: {
-      "src": "/src/asset/img/qq.jpg"
+      "src": _vm.avatar
     }
   }), _c('text', {
     staticClass: ["msg-name"]
@@ -16365,13 +16564,13 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         on: {
           "wxcPanItemPan": _vm.wxcPanItemPan
         }
-      }, [(demo.type == 1) ? _c('Match') : _vm._e(), (demo.type == 123) ? _c('SuperLike', {
+      }, [(demo.type == 'match') ? _c('Match') : _c('SuperLike', {
         attrs: {
           "name": demo.username,
           "msg": demo.message,
           "id": demo.user
         }
-      }) : _vm._e()], 1)], 1)
+      })], 1)], 1)
     })], 2) : _vm._e()
   }), _vm._l((_vm.tabList), function(v, index) {
     return (index === 1) ? _c('list', {
@@ -16402,14 +16601,23 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         on: {
           "wxcPanItemPan": _vm.wxcPanItemPan
         }
+      }, [_c('div', {
+        staticClass: ["test"],
+        on: {
+          "click": function($event) {
+            _vm.doSendMessage(demo.user, demo.avatar)
+          }
+        }
       }, [_c('Msg', {
         attrs: {
+          "avatar": ("https://mini.jkjun.cn/media/" + (demo.avatar)),
+          "id": demo.user,
           "name": demo.name,
           "msg": demo.sentence,
           "time": demo.time,
           "unreadCount": demo.unread_count
         }
-      })], 1)], 1)
+      })], 1)])], 1)
     })], 2) : _vm._e()
   })], 2)
 },staticRenderFns: []}

@@ -97,7 +97,7 @@ export default {
     value: '',
     sex: '',
     imgDataUrl: '/src/asset/img/qq.jpg',
-    files: '',
+    files: 0,
     isBottomShow: false,
     currentDate: '',
     selectedDate: [],
@@ -123,11 +123,12 @@ export default {
   },
   methods: {
     handleSave () {
+      alert(JSON.stringify(this.currentCity))
       var formdata = new FormData()
       formdata.append('birth_timestamp', 1531650089047)
       formdata.append('name', this.name)
       formdata.append('sex', this.sex)
-      formdata.append('local', this.currentCity)
+      formdata.append('local', this.currentCity.cityName)
       formdata.append('signature', this.signature)
       formdata.append('img_portrait', this.files)
       ajax.doPersonEdit(formdata)

@@ -1,7 +1,7 @@
 <template>
     <div class="content msg-list-content">
         <div class="msg-list">
-            <image src="/src/asset/img/qq.jpg" />
+            <image :src="avatar"/>
             <text class="msg-name">{{ name }}</text>
             <text class="msg-time">{{ new Date(time).getHours() + ':' + new Date(time).getMinutes() }}</text>
             <text class="msg-content">{{ msg }}</text>
@@ -12,7 +12,7 @@
 
 <script>
 export default {
-  props: ['name', 'time', 'msg', 'unreadCount']
+  props: ['avatar' ,'name', 'time', 'msg', 'unreadCount', 'id']
 }
 </script>
 

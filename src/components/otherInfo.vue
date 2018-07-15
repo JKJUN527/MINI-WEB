@@ -3,12 +3,12 @@
         <!-- <div class="edit">编辑</div> -->
         <div class="user-header base">
             <div class="user-img">
-                <image src='' />
+                <image :src='imgurl' />
             </div>
-            <text class="user-name base-font-size">User name</text>
+            <text class="user-name base-font-size">{{ name }}</text>
         </div>
         <div class="user-signature">
-            <text class="mini-font-size color-white" style="{text-align: center}">个性签名： XXXXXXXXXXXXXXXXXXXXXXXXX</text>
+            <text class="mini-font-size color-white" style="{text-align: center}">个性签名： {{ signature }}</text>
         </div>
         <div class="user-label">
             <text v-for="(label, key) in labels" :key="key" class="label-item middle-font-size" >{{ label }}</text>
@@ -18,22 +18,20 @@
                 <text class="base-font-size color-white tab">作品</text>
             </div>
             <div v-if="showVideoList == 'works'" class="color-white video-list">
-                <!-- <img src="../asset/img/user-info-bg.png" alt="" class="bg" /> -->
-                <!--<div>-->
-                    <!--<wxc-ep-slider :slider-id="sliderId"-->
-                                   <!--:card-length='cardLength'-->
-                                   <!--:card-s="cardSize"-->
-                                   <!--:select-index="2"-->
-                                   <!--@wxcEpSliderCurrentIndexSelected="wxcEpSliderCurrentIndexSelected">-->
-                        <!--&lt;!&ndash;自动生成demo&ndash;&gt;-->
-                        <!--<div v-for="(v,index) in [1,2,3,4,5]"-->
-                             <!--:key="index"-->
-                             <!--:slot="`card${index}_${sliderId}`"-->
-                             <!--:class="['slider',`slider${index}`]">-->
-                            <!--<text>这里是第{{index + 1}}个滑块</text>-->
-                        <!--</div>-->
-                    <!--</wxc-ep-slider>-->
-                <!--</div>-->
+                <div>
+                    <wxc-ep-slider :slider-id="sliderId"
+                                   :card-length='cardLength'
+                                   :card-s="cardSize"
+                                   :select-index="my_video_list / 2"
+                                   @wxcEpSliderCurrentIndexSelected="wxcEpSliderCurrentIndexSelected">
+                        <div v-for="(v,index) in my_video_list"
+                             :key="index"
+                             :slot="`card${index}_${sliderId}`"
+                             :class="['slider',`slider${index}`]">
+                            <video :src="v"></video>
+                        </div>
+                    </wxc-ep-slider>
+                </div>
             </div>
             <div v-if="showVideoList == 'like'" class="color-white video-list">
                 <!-- <img src="../asset/img/user-info-bg.png" alt="" class="bg" /> -->
@@ -44,6 +42,7 @@
 </template>
 <script>
 import { WxcEpSlider } from 'weex-ui'
+import ajax from '../ajax/index.js'
 export default {
   components: { WxcEpSlider },
   data () {
@@ -52,13 +51,34 @@ export default {
         showVideoList: 'works',
         sliderId: 1,
         cardLength: 5,
+        name: '',
+        signature: '',
+        imgurl: '',
+        my_video_list: [],
         cardSize: {
             width: 400,
             height: 300,
             spacing: 0,
             scale: 0.8
-        }
+        },
+        user_id: 0
     }
+  },
+  beforeRouteEnter (to, from, next) {
+      next(vm => {
+          vm.user_id = to.params.user
+      })
+  },
+  mounted () {
+      ajax.getOtherInfo({ user_id: this.user_id })
+      .then(({data}) => {
+          data = data.data
+        this.labels = [data.local, data.age + '岁', data.constellation, data.sex]
+        this.name = data.name
+        this.signature = data.signature
+        this.imgurl = data.img_portrait
+        this.my_video_list = data.my_video_list
+      })
   },
   methods: {
     doListChange (msg) {
@@ -86,7 +106,13 @@ export default {
         width: 3rem;
         height: 3rem;
         border-radius: 50%;
-        background: white
+        background: white;
+        overflow: hidden;
+    }
+
+    .user-img figure {
+        width: 100%;
+        height: 100%;
     }
     .user-name {
         color: white;
@@ -147,20 +173,9 @@ export default {
         justify-content: center;
     }
 
-    .slider1 {
-        background-color: #635147;
-    }
-
-    .slider2 {
-        background-color: #FFC302;
-    }
-
-    .slider3 {
-        background-color: #FF9090;
-    }
-
-    .slider4 {
-        background-color: #546E7A;
+    .slider video {
+        width:100%;
+        height: 100%;
     }
 
 </style>

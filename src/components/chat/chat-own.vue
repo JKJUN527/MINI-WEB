@@ -1,7 +1,7 @@
 <template>
     <div class="chat-own">
         <div class="own-msg">{{ msg }}</div>
-        <div class="own-img"></div>
+        <div class="own-img" :style="{'background-image': `url(${imgurl})`}"></div>
     </div>
 </template>
 <script>
@@ -21,7 +21,7 @@ export default {
     width: 70px;
     height: 70px;
     border-radius: 50%;
-    background: white
+    background-size: 100% 100%
   }
 
   .own-msg {
