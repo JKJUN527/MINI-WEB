@@ -95,7 +95,7 @@ export default {
   ajax.getPersonInfo({})
     .then(({ data }) => {
       data = data.data
-      this.labels = [data.local, data.age + '岁', data.constellation, data.sex]
+      this.labels = [data.local, data.age + '岁', data.constellation || '天蝎座', data.sex]
       this.name = data.name
       this.signature = data.signature
       this.imgurl = data.img_portrait
