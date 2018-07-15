@@ -4,7 +4,7 @@
         <div class="video-wrapper" @click="handleClick" @touchstart="handleTouchStart" @touchmove='handleTouchMove' @touchend="handleTouchEnd" :style="{opacity: opacity, transform: `rotate(${rotate}deg) translate(${distanceX}px, ${distanceY}px)`}">
             <video id="video1" :src="video_1" auto-play="true" play-status="play" style="width: 100%"></video>
         </div>
-        <wxc-popup popup-color="#000"
+        <wxc-popup popup-color="#161824"
             :show="isBottomShow"
             @wxcPopupOverlayClicked="popupOverlayBottomClick"
             pos="bottom"
@@ -12,12 +12,16 @@
             class="super-block">
             <div>
                 <div class="super-header">
-                    <image class="super-image"/>
+                    <text class="super-img-bg">
+                        <image class="super-image"/>
+                    </text>
                     <text class="super-name color-white">肖宇干啥</text>
                 </div>
-                <textarea class="super-msg" name="" id="" cols="30" rows="10"></textarea>
-                <div>
-                    <div class="super-send color-white middle-font-size">发送</div>
+                <textarea class="super-msg" name="" id="" cols="30" rows="5" placeholder="写点什么吧..."></textarea>
+                <div class="superlike-button">
+                    <button class="close-button" @click="closeSuperLike">取消</button>
+                    <button class="send-button" @click="sendSuperLike">发送</button>
+                    <!--<div class="super-send color-white middle-font-size"></div>-->
                 </div>
             </div>
         </wxc-popup>
@@ -41,7 +45,7 @@ export default {
             R: 1000,
             rotate: 0,
             opacity: 1,
-            isBottomShow: false,
+            isBottomShow: true,
             id: '',
             name: '',
             imgurl: ''
@@ -112,6 +116,12 @@ export default {
                 this.rotate = 0
                 this.opacity = 1
             }, 200)
+        },
+        closeSuperLike () {
+            alert("取消");
+        },
+        sendSuperLike () {
+            alert("确定");
         }
     },
     watch: {
@@ -126,6 +136,22 @@ export default {
 }
 </script>
 <style scoped>
+    .close-button{
+        width: 1rem;
+        top: 0.1rem;
+        left: 0.2rem;
+        position: absolute;
+        opacity: 0;
+        height: 100%;
+    }
+    .send-button{
+        right: 0.2rem;
+        width: 1rem;
+        top: 0.1rem;
+        position: absolute;
+        opacity: 0;
+        height: 100%;
+    }
     .video-wrapper {
         flex-grow: 1;
         background-color: transparent;
@@ -144,24 +170,46 @@ export default {
         align-items: flex-start
     }
 
-    .super-image {
+    .super-img-bg{
         position: absolute;
-        top: -50px;
-        left: 50px;
+        top: -65px;
+        left: 30px;
+        background: url("/src/asset/img/flare.png");
+        background-size: cover;
+        width: 130px;
+        height: 130px;
+    }
+
+    .super-image {
+        /*position: absolute;*/
+        /*top: -50px;*/
+        /*left: 50px;*/
         width: 100px;
         height: 100px;
         border-radius: 50%;
-        background-color: white
+        background-color: white;
+        margin-top:13px;
+        margin-left:15px;
     }
 
     .super-msg {
         margin: 0 auto;
-        width: 9rem;
-        height: 2.5rem;
+        /*width: 9rem;*/
+        /*height: 2.5rem;*/
+        background: transparent;
+        border-style: none;
+        color: white;
     }
 
     .super-send {
         text-align: center
+    }
+    .superlike-button {
+        border-top: 1px #C5C5C5 solid;
+        background: url("/src/asset/img/superlike-button.png");
+        background-size: cover;
+        width: 100%;
+        height: 1.3rem;
     }
 </style>
 
