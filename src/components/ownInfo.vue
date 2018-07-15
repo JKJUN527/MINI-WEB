@@ -92,7 +92,6 @@ export default {
     .then(({ data }) => {
       data = data.data
       this.labels = [data.local, data.age + '岁', data.constellation, data.sex]
-      // this.labels.slice()
       this.name = data.name
       this.signature = data.signature
     })

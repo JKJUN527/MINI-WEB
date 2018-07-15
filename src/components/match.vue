@@ -39,12 +39,12 @@ export default {
 }
 
 .match-success {
-  margin: 60px;
+  margin: 81px 0;
   align-items: center;
 }
 
 .match-success-font {
-  font-size: 36px;
+  font-size: 32px;
   color: white;
 }
 
@@ -61,8 +61,8 @@ export default {
 
 .user-img {
   margin: 0 20px;
-  width: 150px;
-  height: 150px;
+  width: 128px;
+  height: 128px;
   border-radius: 50%;
   border: solid 2px white
 }
@@ -82,9 +82,9 @@ export default {
 
 .btn {
   margin: 30px 0;
-  width: 300px;
-  height: 80px;
-  line-height: 80px;
+  width: 252px;
+  height: 70px;
+  line-height: 70px;
   color: white;
   font-size: 36px;
   text-align: center;

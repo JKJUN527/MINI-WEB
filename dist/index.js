@@ -7746,14 +7746,14 @@ module.exports = {
     "backgroundColor": "#000000"
   },
   "match-success": {
-    "marginTop": "60",
-    "marginRight": "60",
-    "marginBottom": "60",
-    "marginLeft": "60",
+    "marginTop": "81",
+    "marginRight": 0,
+    "marginBottom": "81",
+    "marginLeft": 0,
     "alignItems": "center"
   },
   "match-success-font": {
-    "fontSize": "36",
+    "fontSize": "32",
     "color": "#FFFFFF"
   },
   "user-group": {
@@ -7770,8 +7770,8 @@ module.exports = {
     "marginRight": "20",
     "marginBottom": 0,
     "marginLeft": "20",
-    "width": "150",
-    "height": "150",
+    "width": "128",
+    "height": "128",
     "borderRadius": 50,
     "border": "solid 2px white"
   },
@@ -7791,9 +7791,9 @@ module.exports = {
     "marginRight": 0,
     "marginBottom": "30",
     "marginLeft": 0,
-    "width": "300",
-    "height": "80",
-    "lineHeight": "80",
+    "width": "252",
+    "height": "70",
+    "lineHeight": "70",
     "color": "#FFFFFF",
     "fontSize": "36",
     "textAlign": "center",

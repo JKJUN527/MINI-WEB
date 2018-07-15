@@ -115,15 +115,12 @@ export default {
 <style scoped>
     .like-notice{
         padding: 25px;
-        /*background-color:#f2f3f4;*/
         background: url("/src/asset/img/like-bg.png") no-repeat;
         background-size: cover;
         border-radius:20px;
-        /*opacity: 0.5;*/
         width: 80%;
         min-height: 1.7rem;
         height: auto;
-        /*color: #ffffff;*/
     }
     .like-notice p{
         color: white;
