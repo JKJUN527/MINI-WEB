@@ -5,23 +5,13 @@
     </div>
 </template>
 <script>
-import server from '../ajax/index'
 export default {
   data () {
     return {}
   },
   methods: {
     loginEvent: function (event) {
-        window.location.href="http://mini.jkjun.cn/loginqq"
-//      server.login({
-//          pic: 'test.jpg'
-//        })
-//        .then(data => {
-//          console.log(data)
-//        })
-//        .catch(err => {
-//          console.log(err)
-//        })
+      window.location.href = 'https://mini.jkjun.cn/loginqq'
     }
   }
 }

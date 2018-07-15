@@ -37,7 +37,6 @@
   </div>
 </template>
 <script>
-import ajax from '../ajax/index.js'
 export default {
   data () {
     return {
@@ -53,5 +52,3 @@ export default {
 </script>
 <style scoped>
 </style>
-
-

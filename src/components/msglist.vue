@@ -74,7 +74,7 @@ export default {
   data: () => ({
     tabTitles: Config.tabTitles,
     tabStyles: Config.tabStyles,
-    msgnum:5,
+    msgnum: 5,
     tabList: [],
     demoList: [1, 2, 3, 4, 5, 6, 7, 8, 9],
     tabPageHeight: 1334
@@ -85,15 +85,15 @@ export default {
     this.$set(this.tabList, 0, this.demoList)
   },
   mounted () {
-      ajax.getConversationList({})
+    ajax.getConversationList({})
   },
   methods: {
     handleClick () {
       this.$router.push({
-          name: 'chat',
-          params: {
-              user: '357'
-          }
+        name: 'chat',
+        params: {
+          user: '357'
+        }
       })
     },
     wxcTabPageCurrentTabSelected (e) {

@@ -80,13 +80,7 @@
     </div>
 </template>
 <script>
-const test = weex.requireModule('picker')
-import {
-  WxcCity,
-  WxcPopup,
-  WxcButton,
-  WxcPageCalendar
-} from 'weex-ui'
+import {WxcCity, WxcPopup, WxcButton, WxcPageCalendar} from 'weex-ui'
 export default {
   components: { WxcCity, WxcPopup, WxcButton, WxcPageCalendar },
   data: () => ({
@@ -114,10 +108,6 @@ export default {
     // 模拟定位
   },
   methods: {
-//    uploadimg(){
-//        alert(123)
-//        document.getElementById('upload_file').click()
-//    },
     showListCity () {
       this.cityStyleType = 'list'
       this.$refs['wxcCity'].show()
@@ -157,16 +147,16 @@ export default {
         this.$refs['wxcPageCalendar'].show()
       }, 10)
     },
-      getFile (e) {
-          let _this = this
-          var files = e.target.files[0]
-          if (!e || !window.FileReader) return  // 看支持不支持FileReader
-          let reader = new FileReader()
-          reader.readAsDataURL(files) // 这里是最关键的一步，转换就在这里
-          reader.onloadend = function () {
-              _this.imgDataUrl = this.result
-          }
+    getFile (e) {
+      let _this = this
+      var files = e.target.files[0]
+      if (!e || !window.FileReader) return
+      let reader = new FileReader()
+      reader.readAsDataURL(files) // 这里是最关键的一步，转换就在这里
+      reader.onloadend = function () {
+        _this.imgDataUrl = this.result
       }
+    }
   },
   filters: {
     sexTranslate (sex) {

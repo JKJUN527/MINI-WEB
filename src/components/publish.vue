@@ -10,7 +10,7 @@
         <div class="video-wrapper">
             <video src="https://mini.jkjun.cn/media/videos/8.mp4" controls="controls"></video>
         </div>
-    </div>    
+    </div>
 </template>
 
 <script>
