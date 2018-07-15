@@ -84,10 +84,10 @@ export default {
       like_video_list: [],
       my_video_list: [],
       cardSize: {
-          width: 400,
-          height: 300,
-          spacing: 0,
-          scale: 0.8
+        width: 400,
+        height: 300,
+        spacing: 0,
+        scale: 0.8
       }
     }
   },

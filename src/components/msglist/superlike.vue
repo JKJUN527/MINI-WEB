@@ -14,14 +14,16 @@
 
 <script>
 export default {
-    props: ['name', 'msg', 'time', 'user'],
-    methods: {
-        handleSendMessage () {
-            this.$router.push({name: 'chat', params: {
-                user: this.user
-            }})
-        }
+  props: ['name', 'msg', 'time', 'user'],
+  methods: {
+    handleSendMessage () {
+      this.$router.push({
+        name: 'chat',
+        params: {
+          user: this.user
+        }})
     }
+  }
 }
 </script>
 

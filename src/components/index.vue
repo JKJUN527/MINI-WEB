@@ -45,6 +45,7 @@
 import ajax from '../ajax/index.js'
 import { WxcPopup } from 'weex-ui'
 export default {
+<<<<<<< HEAD
     components: { WxcPopup },
     data () {
         return {
@@ -166,17 +167,17 @@ export default {
                     this.$router.push({ name: 'match' })
                 }
             })
-        }
-    },
-    watch: {
-        X: function(val) {
-            this.rotate = Math.asin((val - this.startX) / this.R)/2/Math.PI*360
-            this.distanceX = val - this.startX
         },
-        Y: function(val) {
-            this.distanceY = val - this.startY
-        }
+  },
+  watch: {
+    X: function (val) {
+      this.rotate = Math.asin((val - this.startX) / this.R) / 2 / Math.PI * 360
+      this.distanceX = val - this.startX
+    },
+    Y: function (val) {
+      this.distanceY = val - this.startY
     }
+  }
 }
 </script>
 <style scoped>
@@ -337,4 +338,3 @@ export default {
         background: transparent;
     }
 </style>
-

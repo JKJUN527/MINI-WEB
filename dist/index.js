@@ -5642,7 +5642,7 @@ module.exports = {
 
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+  value: true
 });
 
 var _wxcPopup = __webpack_require__(5);
@@ -5656,115 +5656,115 @@ var _index2 = _interopRequireDefault(_index);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 exports.default = {
-    components: { WxcPopup: _wxcPopup2.default },
-    data: function data() {
-        return {
-            video_1: '',
-            video_2: 'https://mini.jkjun.cn/media/videos/8.mp4',
-            startX: 0,
-            startY: 0,
-            X: 0,
-            Y: 0,
-            distanceX: 0,
-            distanceY: 0,
-            R: 1000,
-            rotate: 0,
-            opacity: 1,
-            isBottomShow: false,
-            id: '',
-            name: '',
-            imgurl: ''
-        };
+  components: { WxcPopup: _wxcPopup2.default },
+  data: function data() {
+    return {
+      video_1: '',
+      video_2: 'https://mini.jkjun.cn/media/videos/8.mp4',
+      startX: 0,
+      startY: 0,
+      X: 0,
+      Y: 0,
+      distanceX: 0,
+      distanceY: 0,
+      R: 1000,
+      rotate: 0,
+      opacity: 1,
+      isBottomShow: false,
+      id: '',
+      name: '',
+      imgurl: ''
+    };
+  },
+  mounted: function mounted() {
+    var _this = this;
+
+    _index2.default.getVideo({ count: 2 }).then(function (_ref) {
+      var data = _ref.data;
+
+      _this.video_1 = data.data[0].videourl;
+      _this.video_2 = data.data[1].videourl;
+      _this.id = data.data[0].userid;
+      _this.name = data.data[0].username;
+      _this.imgurl = data.data[0].userphoto;
+    });
+  },
+
+  methods: {
+    popupOverlayBottomClick: function popupOverlayBottomClick() {
+      this.isBottomShow = false;
     },
-    mounted: function mounted() {
-        var _this = this;
-
-        _index2.default.getVideo({ count: 2 }).then(function (_ref) {
-            var data = _ref.data;
-
-            _this.video_1 = data.data[0].videourl;
-            _this.video_2 = data.data[1].videourl;
-            _this.id = data.data[0].userid;
-            _this.name = data.data[0].username;
-            _this.imgurl = data.data[0].userphoto;
-        });
+    handleTouchStart: function handleTouchStart(e) {
+      this.startX = e.changedTouches[0].pageX;
+      this.X = e.changedTouches[0].pageX;
+      this.startY = e.changedTouches[0].pageY;
+      this.Y = e.changedTouches[0].pageY;
     },
+    handleTouchMove: function handleTouchMove(e) {
+      this.X = e.changedTouches[0].pageX;
+      this.Y = e.changedTouches[0].pageY;
+    },
+    handleTouchEnd: function handleTouchEnd(e) {
+      var _this2 = this;
 
-    methods: {
-        popupOverlayBottomClick: function popupOverlayBottomClick() {
-            this.isBottomShow = false;
-        },
-        handleTouchStart: function handleTouchStart(e) {
-            this.startX = e.changedTouches[0].pageX;
-            this.X = e.changedTouches[0].pageX;
-            this.startY = e.changedTouches[0].pageY;
-            this.Y = e.changedTouches[0].pageY;
-        },
-        handleTouchMove: function handleTouchMove(e) {
-            this.X = e.changedTouches[0].pageX;
-            this.Y = e.changedTouches[0].pageY;
-        },
-        handleTouchEnd: function handleTouchEnd(e) {
-            var _this2 = this;
+      if (this.distanceX * this.distanceX + this.distanceY * this.distanceY < 300 * 300) {
+        this.distanceX = 0;
+        this.distanceY = 0;
+        this.rotate = 0;
+        return;
+      }
+      _index2.default.getVideo({ count: 1 }).then(function (_ref2) {
+        var data = _ref2.data;
 
-            if (this.distanceX * this.distanceX + this.distanceY * this.distanceY < 300 * 300) {
-                this.distanceX = 0;
-                this.distanceY = 0;
-                this.rotate = 0;
-                return;
-            }
-            _index2.default.getVideo({ count: 1 }).then(function (_ref2) {
-                var data = _ref2.data;
-
-                _this2.video_1 = _this2.video_2;
-                _this2.video_2 = data.data[0].videourl;
-                _this2.id = data.data[0].userid;
-                _this2.name = data.data[0].username;
-                _this2.imgurl = data.data[0].userphoto;
-            });
-            if (Math.abs(this.distanceX) > Math.abs(this.distanceY)) {
-                if (this.distanceX > 0) {
-                    _index2.default.sendPreference({
-                        user: this.id,
-                        type: 'like'
-                    });
-                } else {
-                    _index2.default.sendPreference({
-                        user: this.id,
-                        type: 'like'
-                    });
-                }
-            } else {
-                if (this.distanceY > 0) {
-                    console.log('下滑摄像');
-                } else {
-                    this.isBottomShow = true;
-                }
-            }
-            this.opacity = 0;
-            setTimeout(function () {
-                _this2.distanceX = 0;
-                _this2.distanceY = 0;
-                _this2.rotate = 0;
-                _this2.opacity = 1;
-            }, 200);
-        },
-        closeSuperLike: function closeSuperLike() {
-            alert("取消");
-        },
-        sendSuperLike: function sendSuperLike() {
-            alert("确定");
+        _this2.video_1 = _this2.video_2;
+        _this2.video_2 = data.data[0].videourl;
+        _this2.id = data.data[0].userid;
+        _this2.name = data.data[0].username;
+        _this2.imgurl = data.data[0].userphoto;
+      });
+      if (Math.abs(this.distanceX) > Math.abs(this.distanceY)) {
+        if (this.distanceX > 0) {
+          _index2.default.sendPreference({
+            user: this.id,
+            type: 'like'
+          });
+        } else {
+          _index2.default.sendPreference({
+            user: this.id,
+            type: 'like'
+          });
         }
-    },
-    watch: {
-        X: function X(val) {
-            this.rotate = Math.asin((val - this.startX) / this.R) / 2 / Math.PI * 360;
-            this.distanceX = val - this.startX;
-        },
-        Y: function Y(val) {
-            this.distanceY = val - this.startY;
+      } else {
+        if (this.distanceY > 0) {
+          console.log('下滑摄像');
+        } else {
+          this.isBottomShow = true;
         }
+      }
+      this.opacity = 0;
+      setTimeout(function () {
+        _this2.distanceX = 0;
+        _this2.distanceY = 0;
+        _this2.rotate = 0;
+        _this2.opacity = 1;
+      }, 200);
+    },
+    closeSuperLike: function closeSuperLike() {
+      alert('取消');
+    },
+    sendSuperLike: function sendSuperLike() {
+      alert('确定');
     }
+  },
+  watch: {
+    X: function X(val) {
+      this.rotate = Math.asin((val - this.startX) / this.R) / 2 / Math.PI * 360;
+      this.distanceX = val - this.startX;
+    },
+    Y: function Y(val) {
+      this.distanceY = val - this.startY;
+    }
+  }
 }; //
 //
 //
@@ -15906,6 +15906,13 @@ exports.default = {
   methods: {
     handleSendMessage: function handleSendMessage() {
       _index2.default.doSendMessage({ user_id: this.otherId, text: this.text });
+<<<<<<< HEAD
+=======
+    },
+    handleGetMessage: function handleGetMessage() {},
+    send_msg: function send_msg() {
+      alert(123);
+>>>>>>> e790fa9e8e9cea9880ca83cc21cdc664d6102000
     }
   }
 }; //
@@ -17025,7 +17032,7 @@ module.exports = {
 
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+  value: true
 });
 //
 //
@@ -17043,14 +17050,16 @@ Object.defineProperty(exports, "__esModule", {
 //
 
 exports.default = {
-    props: ['name', 'msg', 'time', 'user'],
-    methods: {
-        handleSendMessage: function handleSendMessage() {
-            this.$router.push({ name: 'chat', params: {
-                    user: this.user
-                } });
-        }
+  props: ['name', 'msg', 'time', 'user'],
+  methods: {
+    handleSendMessage: function handleSendMessage() {
+      this.$router.push({
+        name: 'chat',
+        params: {
+          user: this.user
+        } });
     }
+  }
 };
 
 /***/ }),
