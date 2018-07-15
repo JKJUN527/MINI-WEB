@@ -143,7 +143,6 @@ export default {
         width: 5rem;
         height: 7rem;
         margin-top: 0.5rem;
-        background-color: #C3413D;
         align-items: center;
         justify-content: center;
     }

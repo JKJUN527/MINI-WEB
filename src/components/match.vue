@@ -2,17 +2,17 @@
     <div class="match-content">
         <div class="match-success">
             <text class="base-font-size color-white">匹配成功!</text>
-            <text class="match-success-font">您和AAA已匹配成功</text>
+            <text class="match-success-font">您和{{ busername }}已匹配成功</text>
         </div>
         <div class="user-group base-flex">
             <div class="user-item">
-                <image class="user-img" />
-                <text class="user-name">user name</text>
+                <image class="user-img" :src="auserphoto"/>
+                <text class="user-name">{{ ausername }}</text>
             </div>
             <div class="heart-beat"></div>
             <div class="user-item">
-                <image class="user-img" />
-                <text class="user-name">user name</text>
+                <image class="user-img" :src="buserphoto"/>
+                <text class="user-name">{{ busername }}</text>
             </div>
         </div>
         <div class="btn-group">
@@ -22,11 +22,27 @@
     </div>
 </template>
 <script>
+import ajax from '../ajax/index.js'
 export default {
   data () {
     return {
-      test: ''
+      ausername: '',
+      auserphoto: '',
+      busername: '',
+      buserphoto: '',
+      buserid: ''
     }
+  },
+  mounted () {
+    ajax.getEvent()
+    .then(({data}) => {
+      data = data.data
+      this.ausername = data.ausername
+      this.auserphoto = data.auserphoto
+      this.busername = data.busername
+      this.buserphoto = data.buserphoto
+      this.buserid = data.buserid
+    })
   }
 }
 </script>

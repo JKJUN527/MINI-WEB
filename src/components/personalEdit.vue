@@ -3,7 +3,7 @@
         <div class="chat-header">
             <text class="left">取消</text>
             <text class="name">资料修改</text>
-            <text class="right">保存</text>
+            <text class="right" @click="handleSave">保存</text>
         </div>
         <div class="user-img">
             <image :src="imgDataUrl" />
@@ -19,7 +19,7 @@
             <div class="base-flex cell" @click="openBottomPopup">
                 <text class="base-font-size cell-h color-white">性别</text>
                 <div class="base-flex">
-                    <text class="color-gray">{{ sex | sexTranslate }}</text>
+                    <text class="color-gray">{{ sex }}</text>
                 </div>
                 <label class="right-icon"></label>
             </div>
@@ -37,7 +37,7 @@
             </div>
             <div class="base-flex cell" :style="{'align-items': 'flex-start'}">
                 <text class="base-font-size cell-h color-white">签名</text>
-                <textarea class="color-gray" rows="1"></textarea>
+                <textarea class="color-gray" rows="1" v-model="signature"></textarea>
                 <label class="right-icon"></label>
             </div>
         </div>
@@ -50,11 +50,11 @@
                 <wxc-button text="男"
                     class="btn-style"
                     type="white"
-                    @wxcButtonClicked="handleSexChange('man')"></wxc-button>
+                    @wxcButtonClicked="handleSexChange('男')"></wxc-button>
                 <wxc-button text="女"
                     class="btn-style"
                     type="white"
-                    @wxcButtonClicked="handleSexChange('woman')"></wxc-button>
+                    @wxcButtonClicked="handleSexChange('女')"></wxc-button>
                 <wxc-button text="取消"
                     class="btn-style"
                     type="white"
@@ -80,7 +80,7 @@
     </div>
 </template>
 <script>
-const test = weex.requireModule('picker')
+import ajax from '../ajax/index.js'
 import {
   WxcCity,
   WxcPopup,
@@ -90,17 +90,18 @@ import {
 export default {
   components: { WxcCity, WxcPopup, WxcButton, WxcPageCalendar },
   data: () => ({
-    name: '董宇辰',
+    name: '',
     animationType: 'push',
     currentCity: '',
     cityStyleType: 'list',
     value: '',
-    sex: 'man',
+    sex: '',
     imgDataUrl: '/src/asset/img/qq.jpg',
     files: '',
     isBottomShow: false,
     currentDate: '',
     selectedDate: [],
+    signature: '',
     isRange: false,
     calendarTitle: '选择日期',
     dateRange: ['2017-06-10', '2018-06-10'],
@@ -111,11 +112,27 @@ export default {
     descList: []
   }),
   mounted () {
-    // 模拟定位
+    ajax.getPersonInfo({})
+    .then(({ data }) => {
+      data = data.data
+      this.currentCity = data.local
+      this.name = data.name
+      this.signature = data.signature
+      this.imgDataUrl = data.img_portrait
+    })
   },
   methods: {
+    handleSave () {
+      var formdata = new FormData()
+      formdata.append('birth_timestamp', 1531650089047)
+      formdata.append('name', this.name)
+      formdata.append('sex', this.sex)
+      formdata.append('local', this.currentCity)
+      formdata.append('signature', this.signature)
+      formdata.append('img_portrait', this.files)
+      ajax.doPersonEdit(formdata)
+    },
     uploadimg(){
-        alert(123)
         document.getElementById('upload_file').click()
     },
     showListCity () {
@@ -159,19 +176,14 @@ export default {
     },
       getFile (e) {
           let _this = this
-          var files = e.target.files[0]
+          this.files = e.target.files[0]
           if (!e || !window.FileReader) return  // 看支持不支持FileReader
           let reader = new FileReader()
-          reader.readAsDataURL(files) // 这里是最关键的一步，转换就在这里
+          reader.readAsDataURL(this.files) // 这里是最关键的一步，转换就在这里
           reader.onloadend = function () {
               _this.imgDataUrl = this.result
           }
       }
-  },
-  filters: {
-    sexTranslate (sex) {
-      return sex === 'man' ? '男' : '女'
-    }
   }
 }
 </script>

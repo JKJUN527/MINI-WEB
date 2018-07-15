@@ -2,6 +2,7 @@ import axios from 'axios'
 import qs from 'qs'
 const TEST = 'test'
 const PersonInfo = 'getpersoninfo/'
+const OtherPerson = 'getotherperson/'
 const GetVideo = 'getvideo/'
 const ConversationList = 'getConversationList/'
 const ConversationDetail = 'getConversationDetail/'
@@ -10,7 +11,9 @@ const PushMessages = 'getPushMessages/'
 const preference = 'preference/'
 const Events = 'getevent/'
 const Count = 'getCount/'
-const DetectFace = 'detectface'
+const DetectFace = 'detectface/'
+const PersonEdit = 'editpersoninfo/'
+// const  = 'editpersoninfo/'
 
 var ax = axios.create({
   baseURL: 'https://mini.jkjun.cn/',
@@ -23,6 +26,14 @@ function makePost (path, data) {
 
 function makeGet (path, params) {
   return ax.get(path, { params })
+}
+
+function uploadFile(path, data) {
+  return ax.post(path, data, {
+    headers: {
+      'Content-Type': 'multipart/form-data'
+    }
+  })
 }
 
 function Test (data) {
@@ -68,9 +79,13 @@ function getCount (data) {
 }
 
 function doDetectFace (data) {
-  return makePost(DetectFace, data)
+  return uploadFile(DetectFace, data)
 }
 
+function doPersonEdit (data) {
+  return uploadFile(PersonEdit, data)
+}
+ 
 
 export default {
   getPersonInfo,
@@ -81,5 +96,7 @@ export default {
   doSendMessage,
   sendPreference,
   getEvent,
-  getCount
+  getCount,
+  doDetectFace,
+  doPersonEdit
 }

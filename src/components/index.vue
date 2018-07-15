@@ -12,10 +12,10 @@
             class="super-block">
             <div>
                 <div class="super-header">
-                    <image class="super-image"/>
-                    <text class="super-name color-white">肖宇干啥</text>
+                    <image class="super-image" :src="imgurl"/>
+                    <text class="super-name color-white">{{ name }}</text>
                 </div>
-                <textarea class="super-msg" name="" id="" cols="30" rows="10"></textarea>
+                <textarea class="super-msg" name="" id="" cols="30" rows="10" v-model="supermsg"></textarea>
                 <div>
                     <div class="super-send color-white middle-font-size">发送</div>
                 </div>
@@ -44,10 +44,16 @@ export default {
             isBottomShow: false,
             id: '',
             name: '',
-            imgurl: ''
+            imgurl: '',
+            supermsg: '',
+            superLikeTime: 1
         }
     },
     mounted () {
+        ajax.getCount()
+        .then(({ data }) => {
+            this.superLikeTime = data.data.superCount
+        })
         ajax.getVideo({ count: 2 })
         .then(({ data }) => {
             this.video_1 = data.data[0].videourl
@@ -78,24 +84,30 @@ export default {
                 this.rotate = 0
                 return
             }
-            ajax.getVideo({ count: 1 })
-            .then(({ data }) => {
-                this.video_1 = this.video_2
-                this.video_2 = data.data[0].videourl
-                this.id = data.data[0].userid
-                this.name = data.data[0].username
-                this.imgurl = data.data[0].userphoto
-            })
             if(Math.abs(this.distanceX) > Math.abs(this.distanceY)) {
+                ajax.getVideo({ count: 1 })
+                .then(({ data }) => {
+                    this.video_1 = this.video_2
+                    this.video_2 = data.data[0].videourl
+                    this.id = data.data[0].userid
+                    this.name = data.data[0].username
+                    this.imgurl = data.data[0].userphoto
+                })
                 if(this.distanceX > 0) {
                     ajax.sendPreference({
+                        video_url: this.video_1,
                         user: this.id,
                         type: 'like'
+                    }).then((res) => {
+                        if(res.data.event == 1) {
+                            this.$router.push({ name: 'match' })
+                        }
                     })
                 } else {
                     ajax.sendPreference({
+                        video_url: this.video_1,
                         user: this.id,
-                        type: 'like'
+                        type: 'no'
                     })
                 }
             } else {

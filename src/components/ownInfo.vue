@@ -30,38 +30,36 @@
                 <text class="base-font-size color-white tab" @click="changeTap">Like</text>
             </div>
             <div v-if="showVideoList === 0" class="color-white video-list">
-                <!--<div>-->
-                    <!--<wxc-ep-slider :slider-id="sliderId"-->
-                                   <!--:card-length='cardLength'-->
-                                   <!--:card-s="cardSize"-->
-                                   <!--:select-index="2"-->
-                                   <!--@wxcEpSliderCurrentIndexSelected="wxcEpSliderCurrentIndexSelected">-->
-                        <!--&lt;!&ndash;自动生成demo&ndash;&gt;-->
-                        <!--<div v-for="(v,index) in [1,2,3,4,5]"-->
-                             <!--:key="index"-->
-                             <!--:slot="`card${index}_${sliderId}`"-->
-                             <!--:class="['slider',`slider${index}`]">-->
-                            <!--<text>这里是第{{index + 1}}个滑块</text>-->
-                        <!--</div>-->
-                    <!--</wxc-ep-slider>-->
-                <!--</div>-->
+                <div>
+                    <wxc-ep-slider :slider-id="sliderId"
+                                   :card-length='cardLength'
+                                   :card-s="cardSize"
+                                   :select-index="my_video_list / 2"
+                                   @wxcEpSliderCurrentIndexSelected="wxcEpSliderCurrentIndexSelected">
+                        <div v-for="(v,index) in my_video_list"
+                             :key="index"
+                             :slot="`card${index}_${sliderId}`"
+                             :class="['slider',`slider${index}`]">
+                            <video :src="v"></video>
+                        </div>
+                    </wxc-ep-slider>
+                </div>
             </div>
             <div v-if="showVideoList === 1" class="color-white video-list">
-                <!--<div>-->
-                    <!--<wxc-ep-slider :slider-id="sliderId"-->
-                                   <!--:card-length='cardLength'-->
-                                   <!--:card-s="cardSize"-->
-                                   <!--:select-index="2"-->
-                                   <!--@wxcEpSliderCurrentIndexSelected="wxcEpSliderCurrentIndexSelected">-->
-                        <!--&lt;!&ndash;自动生成demo&ndash;&gt;-->
-                        <!--<div v-for="(v,index) in [1,2,3,4,5]"-->
-                             <!--:key="index"-->
-                             <!--:slot="`card${index}_${sliderId}`"-->
-                             <!--:class="['slider',`slider${index}`]">-->
-                            <!--<text>这里是第{{index + 1}}个滑块</text>-->
-                        <!--</div>-->
-                    <!--</wxc-ep-slider>-->
-                <!--</div>-->
+                <div>
+                    <wxc-ep-slider :slider-id="sliderId"
+                                   :card-length='cardLength'
+                                   :card-s="cardSize"
+                                   :select-index="like_video_list / 2"
+                                   @wxcEpSliderCurrentIndexSelected="wxcEpSliderCurrentIndexSelected">
+                        <div v-for="(v,index) in like_video_list"
+                             :key="index"
+                             :slot="`card${index}_${sliderId}`"
+                             :class="['slider',`slider${index}`]">
+                            <video :src="v"></video>
+                        </div>
+                    </wxc-ep-slider>
+                </div>
             </div>
         </div>
     </div>
@@ -74,12 +72,14 @@ export default {
   data () {
     return {
       name: '',
-      labels: ['北京', '20岁', '双子座', '男'],
+      labels: [],
       signature: '',
       imgurl: '',
       showVideoList: 0,
       sliderId: 1,
       cardLength: 5,
+      like_video_list: [],
+      my_video_list: [],
       cardSize: {
           width: 400,
           height: 300,
@@ -95,8 +95,9 @@ export default {
       this.labels = [data.local, data.age + '岁', data.constellation, data.sex]
       this.name = data.name
       this.signature = data.signature
-      alert(JSON.stringify(data))
       this.imgurl = data.img_portrait
+      this.like_video_list = data.like_video_list
+      this.my_video_list = data.my_video_list
     })
   },
   methods: {
@@ -107,7 +108,6 @@ export default {
           const index = e.currentIndex
       },
       changeTap () {
-          alert(this.showVideoList)
         if (this.showVideoList === 0){
             this.showVideoList = 1
         }else{
@@ -136,8 +136,14 @@ export default {
         width: 2.3rem;
         height: 2.3rem;
         border-radius: 50%;
+        overflow: hidden;
         background: white
     }
+
+    .user-img figure {
+        height: 100%;
+    }
+
     .user-name {
         color: white;
         margin-top: 25px;
@@ -210,25 +216,14 @@ export default {
         width: 5rem;
         height: 7rem;
         margin-top: 0.5rem;
-        background-color: #C3413D;
         align-items: center;
         justify-content: center;
     }
 
-    .slider1 {
-        background-color: #635147;
+    .slider video {
+        width:100%;
+        height: 100%;
     }
 
-    .slider2 {
-        background-color: #FFC302;
-    }
-
-    .slider3 {
-        background-color: #FF9090;
-    }
-
-    .slider4 {
-        background-color: #546E7A;
-    }
 
 </style>

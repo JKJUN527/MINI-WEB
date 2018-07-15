@@ -6905,12 +6905,12 @@ exports.default = {
             if (Math.abs(this.distanceX) > Math.abs(this.distanceY)) {
                 if (this.distanceX > 0) {
                     _index2.default.sendPreference({
-                        userid: this.id,
+                        user: this.id,
                         type: 'like'
                     });
                 } else {
                     _index2.default.sendPreference({
-                        userid: this.id,
+                        user: this.id,
                         type: 'like'
                     });
                 }
@@ -9514,6 +9514,7 @@ exports.default = {
       name: '',
       labels: ['北京', '20岁', '双子座', '男'],
       signature: '',
+      imgurl: '',
       showVideoList: 0,
       sliderId: 1,
       cardLength: 5,
@@ -9535,6 +9536,8 @@ exports.default = {
       _this.labels = [data.local, data.age + '岁', data.constellation, data.sex];
       _this.name = data.name;
       _this.signature = data.signature;
+      alert(JSON.stringify(data));
+      _this.imgurl = data.img_portrait;
     });
   },
 
@@ -9563,7 +9566,7 @@ exports.default = {
 /* 83 */
 /***/ (function(module, exports) {
 
-throw new Error("Module build failed: SyntaxError: Unexpected token (26:10)\n    at Parser.pp$4.raise (E:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:2610:13)\n    at Parser.pp.unexpected (E:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:637:8)\n    at Parser.pp$3.parseIdent (E:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:2565:10)\n    at Parser.pp$3.parsePropertyName (E:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:2362:105)\n    at Parser.parseObj (E:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:4463:14)\n    at Parser.pp$3.parseExprAtom (E:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:2077:17)\n    at Parser.parseExprAtom (E:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:4372:24)\n    at Parser.pp$3.parseExprSubscripts (E:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:1955:19)\n    at Parser.pp$3.parseMaybeUnary (E:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:1932:17)\n    at Parser.pp$3.parseExprOps (E:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:1874:19)\n    at Parser.pp$3.parseMaybeConditional (E:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:1857:19)\n    at Parser.pp$3.parseMaybeAssign (E:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:1832:19)\n    at Parser.pp$3.parsePropertyValue (E:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:2310:87)\n    at Parser.parseObj (E:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:4472:14)\n    at Parser.pp$3.parseExprAtom (E:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:2077:17)\n    at Parser.parseExprAtom (E:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:4372:24)");
+throw new Error("Module build failed: SyntaxError: Unexpected token (32:10)\n    at Parser.pp$4.raise (E:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:2610:13)\n    at Parser.pp.unexpected (E:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:637:8)\n    at Parser.pp$3.parseIdent (E:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:2565:10)\n    at Parser.pp$3.parsePropertyName (E:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:2362:105)\n    at Parser.parseObj (E:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:4463:14)\n    at Parser.pp$3.parseExprAtom (E:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:2077:17)\n    at Parser.parseExprAtom (E:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:4372:24)\n    at Parser.pp$3.parseExprSubscripts (E:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:1955:19)\n    at Parser.pp$3.parseMaybeUnary (E:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:1932:17)\n    at Parser.pp$3.parseExprOps (E:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:1874:19)\n    at Parser.pp$3.parseMaybeConditional (E:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:1857:19)\n    at Parser.pp$3.parseMaybeAssign (E:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:1832:19)\n    at Parser.pp$3.parsePropertyValue (E:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:2310:87)\n    at Parser.parseObj (E:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:4472:14)\n    at Parser.pp$3.parseExprAtom (E:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:2077:17)\n    at Parser.parseExprAtom (E:\\MINI-WEB\\node_modules\\vue-template-es2015-compiler\\buble.js:4372:24)");
 
 /***/ }),
 /* 84 */
@@ -14882,123 +14885,7 @@ module.exports.render._withStripped = true
 /* 143 */
 /***/ (function(module, exports) {
 
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('wxc-tab-page', {
-    ref: "wxc-tab-page",
-    attrs: {
-      "tabTitles": _vm.tabTitles,
-      "tabStyles": _vm.tabStyles,
-      "titleType": "icon",
-      "tabPageHeight": _vm.tabPageHeight
-    },
-    on: {
-      "wxcTabPageCurrentTabSelected": _vm.wxcTabPageCurrentTabSelected
-    }
-  }, [_vm._l((_vm.tabList), function(v, index) {
-    return (index === 0) ? _c('list', {
-      key: index,
-      staticClass: ["item-container"],
-      style: {
-        height: (_vm.tabPageHeight - _vm.tabStyles.height) + 'px'
-      }
-    }, [_c('cell', {
-      staticClass: ["border-cell"],
-      appendAsTree: true,
-      attrs: {
-        "append": "tree"
-      }
-    }), _vm._l((v), function(demo, key) {
-      return _c('cell', {
-        key: key,
-        staticClass: ["cell"],
-        appendAsTree: true,
-        attrs: {
-          "append": "tree"
-        }
-      }, [_c('wxc-pan-item', {
-        attrs: {
-          "extId": '1-' + (v) + '-' + (key),
-          "url": ""
-        },
-        on: {
-          "wxcPanItemPan": _vm.wxcPanItemPan
-        }
-      }, [(key % 2 === 0) ? _c('div', {
-        staticClass: ["content"]
-      }, [_c('div', {
-        staticClass: ["like-notice"]
-      }, [_c('text', [_vm._v(_vm._s(key) + "你收到一个like")])]), _c('text', {
-        staticClass: ["like-time"]
-      }, [_vm._v("13:05")])]) : _vm._e(), (key % 2 != 0) ? _c('div', {
-        staticClass: ["content-super"]
-      }, [_c('div', {
-        staticClass: ["super-like-notice"]
-      }, [_c('image', {
-        attrs: {
-          "src": "/src/asset/img/qq.jpg"
-        }
-      }), _c('text', {
-        staticClass: ["super-like-name"]
-      }, [_vm._v("jkjun")]), _c('br'), _c('br'), _c('text', {
-        staticClass: ["super-like-content"]
-      }, [_vm._v("好喜欢你的视频，超级喜欢你")]), _c('button', {
-        on: {
-          "click": _vm.handleClick
-        }
-      }, [_vm._v("发起聊天")])], 1), _c('text', {
-        staticClass: ["like-time"]
-      }, [_vm._v("13:05")])]) : _vm._e()])], 1)
-    })], 2) : _vm._e()
-  }), _vm._l((_vm.tabList), function(v, index) {
-    return (index === 1) ? _c('list', {
-      key: index,
-      staticClass: ["item-container"],
-      style: {
-        height: (_vm.tabPageHeight - _vm.tabStyles.height) + 'px'
-      }
-    }, [_c('cell', {
-      staticClass: ["border-cell"],
-      appendAsTree: true,
-      attrs: {
-        "append": "tree"
-      }
-    }), _vm._l((v), function(demo, key) {
-      return _c('cell', {
-        key: key,
-        staticClass: ["cell"],
-        appendAsTree: true,
-        attrs: {
-          "append": "tree"
-        }
-      }, [_c('wxc-pan-item', {
-        attrs: {
-          "extId": '1-' + (v) + '-' + (key),
-          "url": ""
-        },
-        on: {
-          "wxcPanItemPan": _vm.wxcPanItemPan
-        }
-      }, [_c('div', {
-        staticClass: ["content", "msg-list-content"]
-      }, [_c('div', {
-        staticClass: ["msg-list"]
-      }, [_c('image', {
-        attrs: {
-          "src": "/src/asset/img/qq.jpg"
-        }
-      }), _c('text', {
-        staticClass: ["msg-name"]
-      }, [_vm._v("大概是肖宇")]), _c('text', {
-        staticClass: ["msg-time"]
-      }, [_vm._v("12:30")]), _c('text', {
-        staticClass: ["msg-content"]
-      }, [_vm._v("你视频拍的很不错喔！想认识一下吗？")]), _c('text', {
-        staticClass: ["msg-num"]
-      }, [_vm._v("5")])])])])], 1)
-    })], 2) : _vm._e()
-  })], 2)
-},staticRenderFns: []}
-module.exports.render._withStripped = true
+module.exports={render:function(){},staticRenderFns:[]}
 
 /***/ }),
 /* 144 */
@@ -15977,8 +15864,6 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
 //
 
 //    const dom = weex.requireModule('dom');
-
-// https://github.com/alibaba/weex-ui/blob/master/example/tab-page/config.js
 
 
 exports.default = {
