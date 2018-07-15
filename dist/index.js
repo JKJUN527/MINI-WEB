@@ -15421,11 +15421,19 @@ module.exports = __vue_exports__
 /***/ (function(module, exports) {
 
 module.exports = {
+  "chat-header": {
+    "width": 100,
+    "height": 7,
+    "flexDirection": "row",
+    "alignItems": "center",
+    "justifyContent": "space-between",
+    "backgroundColor": "#161824"
+  },
   "video-wrapper": {
-    "marginTop": "60",
+    "paddingTop": "60",
+    "paddingBottom": "60",
     "width": "600",
-    "height": "500",
-    "backgroundColor": "#0000FF"
+    "height": 68
   }
 }
 
@@ -15439,6 +15447,11 @@ module.exports = {
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+//
+//
+//
+//
+//
 //
 //
 //
@@ -15463,13 +15476,27 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "id": "publish"
     }
-  }, [_c('textarea', {
+  }, [_c('div', {
+    staticClass: ["chat-header"]
+  }, [_c('text', {
+    staticClass: ["left"]
+  }), _c('text', {
+    staticClass: ["name"]
+  }, [_vm._v("发布页")]), _c('text', {
+    staticClass: ["right"]
+  }, [_vm._v("发布")])]), _c('textarea', {
     attrs: {
-      "name": ""
+      "name": "",
+      "placeholder": "写点什么吧..."
     }
   }), _c('div', {
     staticClass: ["video-wrapper"]
-  })])
+  }, [_c('video', {
+    attrs: {
+      "src": "https://mini.jkjun.cn/media/videos/8.mp4",
+      "controls": "controls"
+    }
+  })])])
 }]}
 module.exports.render._withStripped = true
 

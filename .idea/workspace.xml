@@ -2,15 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5e1848f4-07a5-4b79-82c8-6613cf3eb43a" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/asset/img/Mask.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/asset/img/righticon.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/asset/img/saveicon.png" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dist/index.js" afterPath="$PROJECT_DIR$/dist/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/weex-ui/packages/wxc-tab-page/index.vue" afterPath="$PROJECT_DIR$/node_modules/weex-ui/packages/wxc-tab-page/index.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/chat/chat.vue" afterPath="$PROJECT_DIR$/src/components/chat/chat.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/msglist.vue" afterPath="$PROJECT_DIR$/src/components/msglist.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/personalEdit.vue" afterPath="$PROJECT_DIR$/src/components/personalEdit.vue" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/publish.vue" afterPath="$PROJECT_DIR$/src/components/publish.vue" />
     </list>
     <ignored path="MINI-WEB.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -63,23 +57,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ownInfo.vue" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/ownInfo.vue">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="337">
-              <caret line="99" column="12" selection-start-line="99" selection-start-column="1" selection-end-line="99" selection-end-column="12" />
-              <folding>
-                <element signature="n#div#0;n#div#0;n#template#0;n#!!top" expanded="false" />
-                <marker date="1531560770908" expanded="true" signature="5495:5531" ph="{...}" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="chat.vue" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/chat/chat.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
+            <state relative-caret-position="399">
               <caret line="80" column="5" selection-start-line="50" selection-start-column="4" selection-end-line="80" selection-end-column="5" />
               <folding />
             </state>
@@ -126,11 +107,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="personalEdit.vue" pinned="false" current-in-tab="true">
+      <file leaf-file-name="personalEdit.vue" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/personalEdit.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="356">
-              <caret line="242" column="24" selection-start-line="242" selection-start-column="24" selection-end-line="242" selection-end-column="24" />
+            <state relative-caret-position="413">
+              <caret line="240" column="1" selection-start-line="240" selection-start-column="1" selection-end-line="240" selection-end-column="1" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="publish.vue" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/components/publish.vue">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="372">
+              <caret line="80" column="29" selection-start-line="80" selection-start-column="29" selection-end-line="80" selection-end-column="29" />
               <folding />
             </state>
           </provider>
@@ -176,6 +167,7 @@
         <option value="$PROJECT_DIR$/src/components/msglist.vue" />
         <option value="$PROJECT_DIR$/node_modules/weex-ui/packages/wxc-tab-page/index.vue" />
         <option value="$PROJECT_DIR$/src/components/personalEdit.vue" />
+        <option value="$PROJECT_DIR$/src/components/publish.vue" />
       </list>
     </option>
   </component>
@@ -550,7 +542,7 @@
       <workItem from="1531140020990" duration="26465000" />
       <workItem from="1531315158421" duration="11175000" />
       <workItem from="1531547798507" duration="5194000" />
-      <workItem from="1531559383174" duration="22947000" />
+      <workItem from="1531559383174" duration="25764000" />
     </task>
     <task id="LOCAL-00001" summary="qq登录页样式">
       <created>1531039256645</created>
@@ -636,11 +628,18 @@
       <option name="project" value="LOCAL" />
       <updated>1531580386598</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="个人编辑页面样式修改">
+      <created>1531636012856</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1531636012856</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="90151000" />
+    <option name="totallyTimeSpent" value="92968000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -738,7 +737,8 @@
     <MESSAGE value="调整msglist" />
     <MESSAGE value="调整好chat聊天界面" />
     <MESSAGE value="新增chat聊天顶部button" />
-    <option name="LAST_COMMIT_MESSAGE" value="新增chat聊天顶部button" />
+    <MESSAGE value="个人编辑页面样式修改" />
+    <option name="LAST_COMMIT_MESSAGE" value="个人编辑页面样式修改" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -747,14 +747,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/index.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="441">
-          <caret line="21" column="5" selection-start-line="21" selection-start-column="5" selection-end-line="21" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/.eslintrc.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1093,18 +1085,26 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/personalEdit.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="413">
+          <caret line="240" column="1" selection-start-line="240" selection-start-column="1" selection-end-line="240" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/chat/chat.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
+        <state relative-caret-position="399">
           <caret line="80" column="5" selection-start-line="50" selection-start-column="4" selection-end-line="80" selection-end-column="5" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/personalEdit.vue">
+    <entry file="file://$PROJECT_DIR$/src/components/publish.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="356">
-          <caret line="242" column="24" selection-start-line="242" selection-start-column="24" selection-end-line="242" selection-end-column="24" />
+        <state relative-caret-position="372">
+          <caret line="80" column="29" selection-start-line="80" selection-start-column="29" selection-end-line="80" selection-end-column="29" />
           <folding />
         </state>
       </provider>
