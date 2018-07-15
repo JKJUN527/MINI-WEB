@@ -1,8 +1,30 @@
 <template>
-    <div>
+    <div class="index-page">
+        <div class="chat-header">
+            <text class="left"></text>
+            <text class="name"></text>
+            <text class="right"></text>
+        </div>
         <video id="video2" preload='true' :src="video_2" style="width: 100%; position: absolute"></video>
         <div class="video-wrapper" @click="handleClick" @touchstart="handleTouchStart" @touchmove='handleTouchMove' @touchend="handleTouchEnd" :style="{opacity: opacity, transform: `rotate(${rotate}deg) translate(${distanceX}px, ${distanceY}px)`}">
             <video id="video1" :src="video_1" auto-play="true" play-status="play" style="width: 100%"></video>
+        </div>
+        <div class="footer">
+            <div class="photo-img">
+                <image class="person-img" src="/src/asset/img/qq.jpg"/>
+                <text class="person-name">肖宇ni嘎哈</text>
+            </div>
+            <div class="content">
+                <textarea row="3" placeholder="写的一点东东" disabled></textarea>
+            </div>
+            <!--<div class="btn-group">-->
+            <!--<div class="btn uploadFile">-->
+            <!--<label class="upload">-->
+            <!--<input type="file" id="upload" value="">-->
+            <!--</label>-->
+            <!--<label class="take_pic"></label>-->
+            <!--</div>-->
+            <!--</div>-->
         </div>
         <wxc-popup popup-color="#161824"
             :show="isBottomShow"
@@ -34,7 +56,7 @@ export default {
     data () {
         return {
             video_1: '',
-            video_2: '',
+            video_2: 'https://mini.jkjun.cn/media/videos/8.mp4',
             startX: 0,
             startY: 0,
             X: 0,
@@ -157,6 +179,46 @@ export default {
 }
 </script>
 <style scoped>
+    .index-page {
+        height: 100%;
+    }
+    .chat-header{
+        width: 100%;
+        height: 7%;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        /*background-color: #161824;*/
+        /*justify-content: center;*/
+        position: absolute;
+        z-index: 100;
+        top: 0.2rem;
+    }
+    .chat-header p{
+        /*position: absolute;*/
+        color:white;
+    }
+    .chat-header .left{
+        background: url("/src/asset/img/selficon.png");
+        background-size: cover;
+        width: 0.9rem;
+        height: 0.9rem;
+        left: 0.4rem;
+    }
+    .chat-header .right{
+        background: url("/src/asset/img/msgblog.png");
+        background-size: cover;
+        width: 0.9rem;
+        height: 0.8rem;
+        right: 0.4rem;
+        /*padding: 0.1rem 0 0.1rem 0.25rem;*/
+    }
+    .chat-header .name{
+        background: url("/src/asset/img/logo.png");
+        background-size: cover;
+        width: 0.6rem;
+        height: 1rem;
+    }
     .close-button{
         width: 1rem;
         top: 0.1rem;
@@ -231,6 +293,36 @@ export default {
         background-size: cover;
         width: 100%;
         height: 1.3rem;
+    }
+    .footer {
+        width: 86%;
+        left: 7%;
+        /*height: 23%;*/
+        position: absolute;
+        bottom: 1rem;
+        /*background: url("/src/asset/img/takephoto_bg.png");*/
+        /*background-size: cover;*/
+    }
+    .footer p{
+        position: absolute;
+        left: 20%;
+        top: 0.5rem;
+        color: white;
+        font-size: 0.5rem;
+    }
+    .photo-img figure{
+        /*background: url("/src/asset/img/takephoto.png");*/
+        /*background-size: cover;*/
+        width: 1.5rem;
+        height: 1.5rem;
+        border-radius: 50%;
+        /*margin-top: 0.2rem;*/
+    }
+    .footer textarea {
+        color: white;
+        margin-top: 0.2rem;
+        min-height: 2rem;
+        background: transparent;
     }
 </style>
 

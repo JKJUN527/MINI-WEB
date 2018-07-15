@@ -177,7 +177,8 @@ export default {
         font-size: 0.5rem;
         text-align: center;
         color: white;
-        margin-top: 0.6rem;
+        margin-top: 0.3rem;
+        margin-bottom: 0.3rem;
     }
     .msg-list-content{
         height: 3rem !important;

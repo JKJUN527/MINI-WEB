@@ -42,15 +42,16 @@ export default {
         left: 0.4rem;
     }
     .chat-header .right{
-        /*background: url("/src/asset/img/selficon.png");*/
+        background: url(/src/asset/img/saveicon.png);
         background-size: cover;
-        width: 1rem;
-        /*height: 0.7rem;*/
+        width: 1.4rem;
+        height: 0.8rem;
         right: 0.4rem;
+        padding: 0.1rem 0 0.1rem 0.25rem;
     }
     .chat-header .name{
         font-size: 0.55rem;
-        /*left:50%;*/
+        left: 5%;
     }
     #publish {
         height: 100%;

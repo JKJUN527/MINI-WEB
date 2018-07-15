@@ -6793,6 +6793,19 @@ module.exports = __vue_exports__
 /***/ (function(module, exports) {
 
 module.exports = {
+  "index-page": {
+    "height": 100
+  },
+  "chat-header": {
+    "width": 100,
+    "height": 7,
+    "flexDirection": "row",
+    "alignItems": "center",
+    "justifyContent": "space-between",
+    "position": "absolute",
+    "zIndex": 100,
+    "top": 0.2
+  },
   "close-button": {
     "width": 1,
     "top": 0.1,
@@ -6864,6 +6877,12 @@ module.exports = {
     "backgroundSize": "cover",
     "width": 100,
     "height": 1.3
+  },
+  "footer": {
+    "width": 86,
+    "left": 7,
+    "position": "absolute",
+    "bottom": 1
   }
 }
 
@@ -6893,7 +6912,7 @@ exports.default = {
     data: function data() {
         return {
             video_1: '',
-            video_2: '',
+            video_2: 'https://mini.jkjun.cn/media/videos/8.mp4',
             startX: 0,
             startY: 0,
             X: 0,
@@ -7051,6 +7070,32 @@ exports.default = {
 //
 //
 //
+<<<<<<< HEAD
+=======
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+>>>>>>> e8cfb948d3fc85cc4789145fd55816dfa0429980
 
 /***/ }),
 /* 51 */
@@ -7614,7 +7659,9 @@ module.exports.render._withStripped = true
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', [_c('video', {
+  return _c('div', {
+    staticClass: ["index-page"]
+  }, [_vm._m(0), _c('video', {
     staticStyle: {
       width: "100%",
       position: "absolute"
@@ -7646,7 +7693,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "autoPlay": "true",
       "playStatus": "play"
     }
-  })]), _c('wxc-popup', {
+  })]), _vm._m(1), _c('wxc-popup', {
     staticClass: ["super-block"],
     attrs: {
       "popupColor": "#161824",
@@ -7696,7 +7743,38 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "click": _vm.sendSuperLike
     }
   }, [_vm._v("发送")])], 1)])])], 1)
-},staticRenderFns: []}
+},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: ["chat-header"]
+  }, [_c('text', {
+    staticClass: ["left"]
+  }), _c('text', {
+    staticClass: ["name"]
+  }), _c('text', {
+    staticClass: ["right"]
+  })])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: ["footer"]
+  }, [_c('div', {
+    staticClass: ["photo-img"]
+  }, [_c('image', {
+    staticClass: ["person-img"],
+    attrs: {
+      "src": "/src/asset/img/qq.jpg"
+    }
+  }), _c('text', {
+    staticClass: ["person-name"]
+  }, [_vm._v("肖宇ni嘎哈")])]), _c('div', {
+    staticClass: ["content"]
+  }, [_c('textarea', {
+    attrs: {
+      "row": "3",
+      "placeholder": "写的一点东东",
+      "disabled": ""
+    }
+  })])])
+}]}
 module.exports.render._withStripped = true
 
 /***/ }),
@@ -9757,6 +9835,9 @@ module.exports = __vue_exports__
 /***/ (function(module, exports) {
 
 module.exports = {
+  "botttom": {
+    "left": 0
+  },
   "chat-header": {
     "height": 7,
     "width": 100,
@@ -9815,7 +9896,9 @@ module.exports = {
     "marginRight": "40"
   },
   "sex-content": {
-    "alignItems": "center"
+    "alignItems": "center",
+    "position": "absolute",
+    "right": 4.6
   },
   "btn-style": {
     "marginTop": "5",
@@ -10049,6 +10132,105 @@ exports.default = {
 //
 //
 
+<<<<<<< HEAD
+=======
+var test = weex.requireModule('picker');
+exports.default = {
+  components: { WxcCity: _wxcCity2.default, WxcPopup: _wxcPopup2.default, WxcButton: _wxcButton2.default, WxcPageCalendar: _wxcPageCalendar2.default },
+  data: function data() {
+    return {
+      name: '董宇辰',
+      animationType: 'push',
+      currentCity: '',
+      cityStyleType: 'list',
+      value: '',
+      sex: 'man',
+      imgDataUrl: '/src/asset/img/qq.jpg',
+      files: '',
+      isBottomShow: false,
+      currentDate: '',
+      selectedDate: [],
+      isRange: false,
+      calendarTitle: '选择日期',
+      dateRange: ['2017-06-10', '2018-06-10'],
+      selectedNote: ['生日'],
+      minibarCfg: {
+        title: '日期选择'
+      },
+      descList: []
+    };
+  },
+  mounted: function mounted() {
+    // 模拟定位
+  },
+
+  methods: {
+    //    uploadimg(){
+    //        alert(123)
+    //        document.getElementById('upload_file').click()
+    //    },
+    showListCity: function showListCity() {
+      this.cityStyleType = 'list';
+      this.$refs['wxcCity'].show();
+    },
+    showGroupCity: function showGroupCity() {
+      this.cityStyleType = 'group';
+      this.$refs['wxcCity'].show();
+    },
+    citySelect: function citySelect(e) {
+      this.currentCity = e.item;
+    },
+    onInput: function onInput(e) {},
+    openBottomPopup: function openBottomPopup() {
+      this.isBottomShow = true;
+    },
+    popupOverlayBottomClick: function popupOverlayBottomClick() {
+      this.isBottomShow = false;
+    },
+    handleSexChange: function handleSexChange(sex) {
+      this.sex = sex === '' ? this.sex : sex;
+      this.isBottomShow = false;
+    },
+    wxcPageCalendarDateSelected: function wxcPageCalendarDateSelected(e) {
+      this.selectedDate = e.date;
+      this.currentDate = e.date;
+    },
+    wxcPageCalendarBackClicked: function wxcPageCalendarBackClicked() {},
+    showCalendar: function showCalendar() {
+      var _this2 = this;
+
+      this.isRange = false;
+      setTimeout(function () {
+        _this2.$refs['wxcPageCalendar'].show();
+      }, 10);
+    },
+    showReturnCalendar: function showReturnCalendar() {
+      var _this3 = this;
+
+      this.isRange = true;
+      setTimeout(function () {
+        _this3.$refs['wxcPageCalendar'].show();
+      }, 10);
+    },
+    getFile: function getFile(e) {
+      var _this = this;
+      var files = e.target.files[0];
+      if (!e || !window.FileReader) return; // 看支持不支持FileReader
+      var reader = new FileReader();
+      reader.readAsDataURL(files); // 这里是最关键的一步，转换就在这里
+      reader.onloadend = function () {
+        _this.imgDataUrl = this.result;
+      };
+    }
+  },
+  filters: {
+    sexTranslate: function sexTranslate(sex) {
+      return sex === 'man' ? '男' : '女';
+    }
+  }
+};
+
+>>>>>>> e8cfb948d3fc85cc4789145fd55816dfa0429980
 /***/ }),
 /* 87 */
 /***/ (function(module, exports, __webpack_require__) {
@@ -15100,26 +15282,33 @@ module.exports = __vue_exports__
 /***/ (function(module, exports) {
 
 module.exports = {
+  "chat-header": {
+    "width": 100,
+    "height": 7,
+    "flexDirection": "row",
+    "alignItems": "center",
+    "justifyContent": "space-between",
+    "backgroundColor": "#161824"
+  },
   "video_module": {
-    "height": 77
+    "height": 93
   },
   "shoot": {
     "flexGrow": 1,
     "position": "relative",
-    "backgroundColor": "#000000"
+    "backgroundColor": "#000000",
+    "height": 100
   },
   "video": {
     "width": 100,
     "height": 100,
-    "backgroundColor": "#000000"
+    "backgroundColor": "#000000",
+    "objectFit": "fill"
   },
   "footer": {
     "width": 100,
-    "height": 23,
     "position": "absolute",
-    "bottom": "0",
-    "background": "url(\"/src/asset/img/takephoto_bg.png\")",
-    "backgroundSize": "cover"
+    "bottom": 1
   },
   "shoot-controller": {
     "marginTop": 0,
@@ -15164,11 +15353,16 @@ Object.defineProperty(exports, "__esModule", {
 //
 //
 //
+//
+//
+//
+//
+//
 
 exports.default = {
     data: function data() {
         return {
-            video_src: ""
+            video_src: "https://mini.jkjun.cn/media/videos/8.mp4"
         };
     },
 
@@ -15187,15 +15381,15 @@ exports.default = {
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
     staticClass: ["shoot"]
-  }, [_c('div', {
+  }, [_vm._m(0), _c('div', {
     staticClass: ["video_module"]
   }, [_c('video', {
     staticClass: ["video"],
     attrs: {
       "id": "video",
       "src": _vm.video_src,
-      "autoplay": "",
-      "loop": ""
+      "controls": "controls",
+      "autoplay": "autoplay"
     }
   }), _c('canvas', {
     staticStyle: {
@@ -15212,22 +15406,18 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     on: {
       "click": _vm.take_video
     }
-  })], 1), _c('div', {
-    staticClass: ["btn-group"]
-  }, [_c('div', {
-    staticClass: ["btn", "uploadFile"]
-  }, [_c('label', {
-    staticClass: ["upload"]
-  }, [_c('input', {
-    attrs: {
-      "type": "file",
-      "id": "upload",
-      "value": ""
-    }
-  })]), _c('label', {
-    staticClass: ["take_pic"]
-  })], 1)])])])
-},staticRenderFns: []}
+  })], 1)])])
+},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: ["chat-header"]
+  }, [_c('text', {
+    staticClass: ["left"]
+  }), _c('text', {
+    staticClass: ["name"]
+  }, [_vm._v("录制页")]), _c('text', {
+    staticClass: ["right"]
+  }, [_vm._v("确定")])])
+}]}
 module.exports.render._withStripped = true
 
 /***/ }),

@@ -123,7 +123,6 @@ export default {
   },
   methods: {
     handleSave () {
-      alert(JSON.stringify(this.currentCity))
       var formdata = new FormData()
       formdata.append('birth_timestamp', 1531650089047)
       formdata.append('name', this.name)
@@ -190,6 +189,9 @@ export default {
 </script>
 
 <style scoped>
+    .botttom{
+        left:0;
+    }
     .chat-header{
         height: 7%;
         width: 100%;
@@ -294,6 +296,8 @@ textarea {
 
 .sex-content {
   align-items: center;
+    position: absolute;
+    right: 4.6rem;
 }
 
 .btn-style {
