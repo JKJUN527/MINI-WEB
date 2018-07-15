@@ -1,9 +1,9 @@
 <template>
     <div class="chat-module">
         <div class="chat-header">
-            <text class="left"></text>
+            <text class="left" @click="handleGoback"></text>
             <text class="name">{{ name }}</text>
-            <text class="right"></text>
+            <router-link :to="{ name: 'otherInfo'}" class="right"></router-link>
         </div>
         <div class="chatting">
             <div v-for="(chat, index) in data" :key="index">
@@ -61,6 +61,17 @@ export default {
     }, 1000)
   },
   methods: {
+    handleGoback () {
+      this.$router.go(-1)
+    },
+    handleClick () {
+      this.$router.push({
+        name: 'otherInfo',
+        params: {
+          user: this.otherId
+        }
+      })
+    },
     handleSendMessage () {
       ajax.doSendMessage({user_id: this.otherId, text: this.text})
       this.text = ''

@@ -1,7 +1,7 @@
 <template>
     <div class="infoEdit">
         <div class="chat-header">
-            <text class="left">取消</text>
+            <text class="left" @click="handleGoBack">取消</text>
             <text class="name">资料修改</text>
             <text class="right" @click="handleSave">保存</text>
         </div>
@@ -80,17 +80,8 @@
     </div>
 </template>
 <script>
-<<<<<<< HEAD
 import ajax from '../ajax/index.js'
-import {
-  WxcCity,
-  WxcPopup,
-  WxcButton,
-  WxcPageCalendar
-} from 'weex-ui'
-=======
 import {WxcCity, WxcPopup, WxcButton, WxcPageCalendar} from 'weex-ui'
->>>>>>> 56d4ee9f7feab368848e525b371d85e229ad1a05
 export default {
   components: { WxcCity, WxcPopup, WxcButton, WxcPageCalendar },
   data: () => ({
@@ -126,7 +117,9 @@ export default {
     })
   },
   methods: {
-<<<<<<< HEAD
+    handleGoBack () {
+      this.$router.go(-1)
+    },
     handleSave () {
       var formdata = new FormData()
       formdata.append('birth_timestamp', 1531650089047)
@@ -140,8 +133,6 @@ export default {
     uploadimg(){
         document.getElementById('upload_file').click()
     },
-=======
->>>>>>> 56d4ee9f7feab368848e525b371d85e229ad1a05
     showListCity () {
       this.cityStyleType = 'list'
       this.$refs['wxcCity'].show()

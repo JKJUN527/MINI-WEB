@@ -70,7 +70,6 @@ export default {
   beforeRouteEnter (to, from, next) {
       next(vm => {
           vm.user_id = to.params.user
-        //   alert(JSON.stringify(to.params.user))
       })
   },
   mounted () {

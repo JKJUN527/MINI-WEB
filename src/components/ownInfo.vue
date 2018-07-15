@@ -20,7 +20,7 @@
             <text class="color-white" style="{text-align: center}">{{ signature }}</text>
         </div>
         <div class="edit-block">
-              <button class="edit-btn middle-font-size" @click="doEdit">
+              <button class="edit-btn middle-font-size">
                 <router-link class="color-white" :to="{name: 'personalEdit'}">
                     编辑资料
                 </router-link>
