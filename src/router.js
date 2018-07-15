@@ -19,11 +19,6 @@ module.exports = new Router({
   routes: [
     {
       path: '/',
-      name: 'HelloWorld',
-      component: HelloWorld
-    },
-    {
-      path: '/index',
       name: 'index',
       component: Index
     },

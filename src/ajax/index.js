@@ -13,6 +13,7 @@ const Count = 'getCount/'
 const DetectFace = 'detectface/'
 const PersonEdit = 'editpersoninfo/'
 const uploadVideo = 'uploadvideo/'
+const Login = 'isloggedin/'
 // const  = 'editpersoninfo/'
 
 var ax = axios.create({
@@ -92,7 +93,12 @@ function doUploadVideo (data) {
   return uploadFile(uploadVideo, data)
 }
 
+function isLogin (data) {
+  return makeGet(Login, data)
+}
+
 export default {
+  isLogin,
   getPersonInfo,
   getVideo,
   getConversationList,

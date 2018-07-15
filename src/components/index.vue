@@ -45,7 +45,6 @@
 import ajax from '../ajax/index.js'
 import { WxcPopup } from 'weex-ui'
 export default {
-<<<<<<< HEAD
     components: { WxcPopup },
     data () {
         return {
@@ -69,18 +68,25 @@ export default {
         }
     },
     mounted () {
-        ajax.getCount()
+        ajax.isLogin()
         .then(({ data }) => {
-            this.superLikeTime = data.data.superCount
-        })
-        ajax.getVideo({ count: 2 })
-        .then(({ data }) => {
-            this.video_1 = data.data[0].videourl
-            this.video_2 = data.data[1].videourl
-            this.id = data.data[0].userid
-            this.name = data.data[0].username
-            this.imgurl = data.data[0].userphoto
-            this.idea = data.data[0].idea
+            if(data.status == '403') {
+                this.$router.push({name: 'login'})
+            } else {
+                ajax.getCount()
+                .then(({ data }) => {
+                    this.superLikeTime = data.data.superCount
+                })
+                ajax.getVideo({ count: 2 })
+                .then(({ data }) => {
+                    this.video_1 = data.data[0].videourl
+                    this.video_2 = data.data[1].videourl
+                    this.id = data.data[0].userid
+                    this.name = data.data[0].username
+                    this.imgurl = data.data[0].userphoto
+                    this.idea = data.data[0].idea
+                })
+            }
         })
     },
     methods: {

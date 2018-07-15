@@ -6,20 +6,13 @@
             <text class="right" @click="handleClick">确定</text>
         </div>
         <div class="video_module">
-            <video id="video" class="video" :src="videoDataUrl" autoplay="autoplay"></video>
+            <video id="video" class="video" width="750" height="750" :src="videoDataUrl" autoplay="autoplay" preload loop muted></video>
+            <canvas id="canvas" width="375" height="620"></canvas>
         </div>
         <div class="footer">
             <div class="shoot-controller">
-                <button @click="take_video"><input type="file" @change="getFile" refs capture="camera" style="width: 100%; height: 100%; opacity: 0"></button>
+                <button @click="take_video"></button>
             </div>
-            <!--<div class="btn-group">-->
-                <!--<div class="btn uploadFile">-->
-                    <!--<label class="upload">-->
-                        <!--<input type="file" id="upload" value="">-->
-                    <!--</label>-->
-                    <!--<label class="take_pic"></label>-->
-                <!--</div>-->
-            <!--</div>-->
         </div>
     </div>
 </template>
@@ -29,8 +22,45 @@ export default {
     data () {
       return {
         videoDataUrl: '',
-        file: {}
+        file: {},
+        mediaRecorder: {},
+        chunks: [],
+        position: [],
+        blob: {},
+        isShooting: false
       }
+    },
+    mounted () {
+        var img = new Image()
+        img.src = '../asset/img/77ea2be15f2b479b2980799a61ee21ec.png'
+        var video = document.getElementById('video');
+        var canvas = document.getElementById('canvas');
+        var context = canvas.getContext('2d');
+        var tracker = new tracking.ObjectTracker('face');
+        tracker.setInitialScale(4);
+        tracker.setStepSize(2);
+        tracker.setEdgesDensity(0.1);
+        tracking.track('#video', tracker, { camera: true });
+        tracker.on('track', function(event) {
+            context.clearRect(0, 0, canvas.width, canvas.height);
+            event.data.forEach(function(rect) {
+                context.drawImage(img, rect.x, rect.y - rect.height, rect.width, rect.height);
+            });
+        });
+        navigator.getUserMedia({
+            audio: true,
+            video: true
+        }, (stream) => {
+            this.mediaRecorder = new MediaRecorder()
+            this.mediaRecorder.ondataavailable = (e) => {
+                this.chunks.push(e.data)
+            }
+            this.mediaRecorder.onstop = (e) => {
+                blob = new Blob(this.chunks, { 'type' : 'audio/ogg; codecs=opus' })
+                var formdata = new FormData()
+                formdata.append('file', blob)
+            }
+        })
     },
     methods: {
         handleClick () {
@@ -46,14 +76,9 @@ export default {
                 })
             })
         },
-        getFile (e) {
-            let _this = this
-            this.file = e.target.files[0]
-            let reader = new FileReader()
-            reader.readAsDataURL(this.file) // 这里是最关键的一步，转换就在这里
-            reader.onloadend = function () {
-                _this.videoDataUrl = this.result
-            }
+        take_video () {
+            this.isShooting === false ? this.mediaRecorder.start() : this.mediaRecorder.stop()
+            this.isShooting = !this.isShooting
         }
     }
 }
@@ -93,9 +118,22 @@ export default {
         left: 5%;
     }
     .video_module{
-        /*height: 77%;*/
+        position: relative;
         height: 93%;
     }
+
+    #video {
+        position: absolute;
+        left: 0;
+        top: 0
+    }
+
+    #canvas {
+        position: absolute;
+        left: 0;
+        top: 0
+    }
+
     .shoot {
         flex-grow: 1;
         position: relative;

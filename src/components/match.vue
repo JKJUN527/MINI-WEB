@@ -36,7 +36,6 @@ export default {
   mounted () {
     ajax.getEvent()
     .then(({data}) => {
-      data = data.data
       this.ausername = data.ausername
       this.auserphoto = data.auserphoto
       this.busername = data.busername
