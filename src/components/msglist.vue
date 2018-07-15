@@ -1,67 +1,68 @@
 <template>
-    <wxc-tab-page ref="wxc-tab-page"
-                  :tab-titles="tabTitles"
-                  :tab-styles="tabStyles"
-                  title-type="icon"
-                  :tab-page-height="tabPageHeight"
-                  @wxcTabPageCurrentTabSelected="wxcTabPageCurrentTabSelected">
-        <list v-for="(v,index) in tabList"
-              :key="index"
-              class="item-container"
-              :style="{ height: (tabPageHeight - tabStyles.height) + 'px'}"
-              v-if="index === 0">
-            <cell class="border-cell"></cell>
-            <cell v-for="(demo,key) in v"
-                  class="cell"
-                  :key="key">
-                <wxc-pan-item :ext-id="'1-' + (v) + '-' + (key)"
-                              url=""
-                              @wxcPanItemPan="wxcPanItemPan">
-                    <div class="content" v-if="key%2 === 0">
-                        <div class="like-notice">
-                            <text>{{key}}你收到一个like</text>
+        <wxc-tab-page ref="wxc-tab-page"
+                      :tab-titles="tabTitles"
+                      :tab-styles="tabStyles"
+                      :msgnum="msgnum"
+                      title-type="icon"
+                      :tab-page-height="tabPageHeight"
+                      @wxcTabPageCurrentTabSelected="wxcTabPageCurrentTabSelected">
+            <list v-for="(v,index) in tabList"
+                  :key="index"
+                  class="item-container"
+                  :style="{ height: (tabPageHeight - tabStyles.height) + 'px'}"
+                  v-if="index === 0">
+                <cell class="border-cell"></cell>
+                <cell v-for="(demo,key) in v"
+                      class="cell"
+                      :key="key">
+                    <wxc-pan-item :ext-id="'1-' + (v) + '-' + (key)"
+                                  url=""
+                                  @wxcPanItemPan="wxcPanItemPan">
+                        <div class="content" v-if="key%2 === 0">
+                            <div class="like-notice">
+                                <text>{{key}}你收到一个like</text>
+                            </div>
+                            <text class="like-time">13:05</text>
                         </div>
-                        <text class="like-time">13:05</text>
-                    </div>
-                    <div class="content-super" v-if="key%2 != 0">
-                        <div class="super-like-notice">
-                            <image src="/src/asset/img/qq.jpg" />
-                            <text class="super-like-name">jkjun</text>
-                            <br>
-                            <br>
-                            <text class="super-like-content">好喜欢你的视频，超级喜欢你</text>
-                            <button>发起聊天</button>
+                        <div class="content-super" v-if="key%2 != 0">
+                            <div class="super-like-notice">
+                                <image src="/src/asset/img/qq.jpg" />
+                                <text class="super-like-name">jkjun</text>
+                                <br>
+                                <br>
+                                <text class="super-like-content">好喜欢你的视频，超级喜欢你</text>
+                                <button>发起聊天</button>
+                            </div>
+                            <text class="like-time">13:05</text>
                         </div>
-                        <text class="like-time">13:05</text>
-                    </div>
-                </wxc-pan-item>
-            </cell>
-        </list>
-        <list v-for="(v,index) in tabList"
-              :key="index"
-              class="item-container"
-              :style="{ height: (tabPageHeight - tabStyles.height) + 'px'}"
-              v-if="index === 1">
-            <cell class="border-cell"></cell>
-            <cell v-for="(demo,key) in v"
-                  class="cell"
-                  :key="key">
-                <wxc-pan-item :ext-id="'1-' + (v) + '-' + (key)"
-                              url=""
-                              @wxcPanItemPan="wxcPanItemPan">
-                    <div class="content msg-list-content">
-                        <div class="msg-list">
-                            <image src="/src/asset/img/qq.jpg"></image>
-                            <text class="msg-name">大概是肖宇</text>
-                            <text class="msg-time">12:30</text>
-                            <text class="msg-content">你视频拍的很不错喔！想认识一下吗？</text>
-                            <text class="msg-num">5</text>
+                    </wxc-pan-item>
+                </cell>
+            </list>
+            <list v-for="(v,index) in tabList"
+                  :key="index"
+                  class="item-container"
+                  :style="{ height: (tabPageHeight - tabStyles.height) + 'px'}"
+                  v-if="index === 1">
+                <cell class="border-cell"></cell>
+                <cell v-for="(demo,key) in v"
+                      class="cell"
+                      :key="key">
+                    <wxc-pan-item :ext-id="'1-' + (v) + '-' + (key)"
+                                  url=""
+                                  @wxcPanItemPan="wxcPanItemPan">
+                        <div class="content msg-list-content">
+                            <div class="msg-list">
+                                <image src="/src/asset/img/qq.jpg"></image>
+                                <text class="msg-name">大概是肖宇</text>
+                                <text class="msg-time">12:30</text>
+                                <text class="msg-content">你视频拍的很不错喔！想认识一下吗？</text>
+                                <text class="msg-num">5</text>
+                            </div>
                         </div>
-                    </div>
-                </wxc-pan-item>
-            </cell>
-        </list>
-    </wxc-tab-page>
+                    </wxc-pan-item>
+                </cell>
+            </list>
+        </wxc-tab-page>
 </template>
 <script>
 import { WxcTabPage, WxcPanItem, Utils, BindEnv } from 'weex-ui'
@@ -73,6 +74,7 @@ export default {
   data: () => ({
     tabTitles: Config.tabTitles,
     tabStyles: Config.tabStyles,
+    msgnum:5,
     tabList: [],
     demoList: [1, 2, 3, 4, 5, 6, 7, 8, 9],
     tabPageHeight: 1334

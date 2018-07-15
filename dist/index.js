@@ -9509,6 +9509,22 @@ module.exports = __vue_exports__
 /***/ (function(module, exports) {
 
 module.exports = {
+  "chat-header": {
+    "height": 7,
+    "width": 100,
+    "flexDirection": "row",
+    "alignItems": "center",
+    "justifyContent": "space-between",
+    "backgroundColor": "#161824"
+  },
+  "right-icon": {
+    "background": "url(/src/asset/img/righticon.png)",
+    "backgroundSize": "cover",
+    "width": 0.26,
+    "height": 0.5,
+    "right": 0.7,
+    "position": "absolute"
+  },
   "upload__input": {
     "width": 2.1,
     "height": 2.1,
@@ -9520,11 +9536,22 @@ module.exports = {
     "flexGrow": 1,
     "alignItems": "center",
     "backgroundColor": "#000000",
-    "color": "#FFFFFF"
+    "color": "#FFFFFF",
+    "height": 100
+  },
+  "user-img": {
+    "background": "url(/src/asset/img/Mask.png)",
+    "backgroundSize": "cover",
+    "width": 2.3,
+    "height": 2.3,
+    "marginTop": 1
   },
   "user-info": {
     "marginTop": "30",
     "width": 100
+  },
+  "base-font-size": {
+    "fontSize": 0.5
   },
   "cell": {
     "width": 100,
@@ -9579,6 +9606,16 @@ var _wxcCity2 = _interopRequireDefault(_wxcCity);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -13508,7 +13545,7 @@ module.exports.render._withStripped = true
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
     staticClass: ["infoEdit"]
-  }, [_c('div', {
+  }, [_vm._m(0), _c('div', {
     staticClass: ["user-img"]
   }, [_c('image', {
     attrs: {
@@ -13541,7 +13578,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         _vm.name = $event.target.attr.value
       }
     }
-  })]), _c('div', {
+  }), _c('label', {
+    staticClass: ["right-icon"]
+  })], 1), _c('div', {
     staticClass: ["base-flex", "cell"],
     on: {
       "click": _vm.openBottomPopup
@@ -13552,7 +13591,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: ["base-flex"]
   }, [_c('text', {
     staticClass: ["color-gray"]
-  }, [_vm._v(_vm._s(_vm._f("sexTranslate")(_vm.sex)))])])]), _c('div', {
+  }, [_vm._v(_vm._s(_vm._f("sexTranslate")(_vm.sex)))])]), _c('label', {
+    staticClass: ["right-icon"]
+  })], 1), _c('div', {
     staticClass: ["base-flex", "cell"],
     on: {
       "click": _vm.showListCity
@@ -13563,7 +13604,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: ["btn"]
   }, [_c('text', {
     staticClass: ["btn-txt", "color-gray"]
-  }, [_vm._v(_vm._s(_vm.currentCity.cityName || '选择城市'))])])]), _c('div', {
+  }, [_vm._v(_vm._s(_vm.currentCity.cityName || '选择城市'))])]), _c('label', {
+    staticClass: ["right-icon"]
+  })], 1), _c('div', {
     staticClass: ["base-flex", "cell"],
     on: {
       "click": _vm.showCalendar
@@ -13575,7 +13618,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     on: {
       "click": _vm.showCalendar
     }
-  }, [_vm._v(_vm._s(_vm.selectedDate[0]))])]), _c('div', {
+  }, [_vm._v(_vm._s(_vm.selectedDate[0]))]), _c('label', {
+    staticClass: ["right-icon"]
+  })], 1), _c('div', {
     staticClass: ["base-flex", "cell"],
     style: {
       'align-items': 'flex-start'
@@ -13583,8 +13628,13 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_c('text', {
     staticClass: ["base-font-size", "cell-h", "color-white"]
   }, [_vm._v("签名")]), _c('textarea', {
-    staticClass: ["color-gray"]
-  })])]), _c('wxc-popup', {
+    staticClass: ["color-gray"],
+    attrs: {
+      "rows": "1"
+    }
+  }), _c('label', {
+    staticClass: ["right-icon"]
+  })], 1)]), _c('wxc-popup', {
     attrs: {
       "popupColor": "gray",
       "show": _vm.isBottomShow,
@@ -13656,7 +13706,17 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "wxcPageCalendarDateSelected": _vm.wxcPageCalendarDateSelected
     }
   })], 1)
-},staticRenderFns: []}
+},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: ["chat-header"]
+  }, [_c('text', {
+    staticClass: ["left"]
+  }, [_vm._v("取消")]), _c('text', {
+    staticClass: ["name"]
+  }, [_vm._v("资料修改")]), _c('text', {
+    staticClass: ["right"]
+  }, [_vm._v("保存")])])
+}]}
 module.exports.render._withStripped = true
 
 /***/ }),
@@ -13905,6 +13965,7 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
 //
 //
 //
+//
 
 exports.default = {
   components: { WxcTabPage: _wxcTabPage2.default, WxcPanItem: _wxcPanItem2.default },
@@ -13912,6 +13973,7 @@ exports.default = {
     return {
       tabTitles: _config2.default.tabTitles,
       tabStyles: _config2.default.tabStyles,
+      msgnum: 5,
       tabList: [],
       demoList: [1, 2, 3, 4, 5, 6, 7, 8, 9],
       tabPageHeight: 1334
@@ -14191,6 +14253,29 @@ module.exports = {
   "tab-text": {
     "lines": 1,
     "textOverflow": "ellipsis"
+  },
+  "msg-num": {
+    "background": "url(/src/asset/img/msg-num.png)",
+    "backgroundSize": "cover",
+    "position": "absolute",
+    "width": 0.7,
+    "height": 0.7,
+    "right": 1.4,
+    "top": 0.2,
+    "textAlign": "center",
+    "fontSize": 0.35,
+    "paddingTop": 0.15,
+    "color": "#FFFFFF"
+  },
+  "back": {
+    "background": "url(/src/asset/img/backicon.png)",
+    "backgroundSize": "cover",
+    "width": 0.3,
+    "height": 0.55,
+    "left": 0.4,
+    "position": "absolute",
+    "top": 0.5,
+    "zIndex": 100
   }
 }
 
@@ -14311,6 +14396,31 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 var dom = weex.requireModule('dom');
 var animation = weex.requireModule('animation');
@@ -14318,6 +14428,9 @@ var swipeBack = weex.requireModule('swipeBack');
 
 exports.default = {
   props: {
+    msgnum: {
+      type: Number
+    },
     tabTitles: {
       type: Array,
       default: function _default() {
@@ -14545,6 +14658,9 @@ exports.default = {
         timingFunction: timingFunction,
         delay: 0
       }, function () {});
+    },
+    backpage: function backpage() {
+      this.$router.go(-1);
     }
   }
 };
@@ -14573,7 +14689,12 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "scrollDirection": "horizontal",
       "dataSpm": _vm.spmC
     }
-  }, _vm._l((_vm.tabTitles), function(v, index) {
+  }, [_c('button', {
+    staticClass: ["back"],
+    on: {
+      "click": _vm.backpage
+    }
+  }), _vm._l((_vm.tabTitles), function(v, index) {
     return _c('div', {
       key: index,
       ref: 'wxc-tab-title-' + index,
@@ -14617,7 +14738,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         paddingLeft: _vm.tabStyles.textPaddingLeft + 'px',
         paddingRight: _vm.tabStyles.textPaddingRight + 'px'
       }
-    }, [_vm._v(_vm._s(v.title))]) : _vm._e(), _c('text', [_vm._v("123")]), (_vm.tabStyles.hasActiveBottom && !_vm.titleUseSlot) ? _c('div', {
+    }, [_vm._v(_vm._s(v.title))]) : _vm._e(), _c('text', {
+      staticClass: ["msg-num"]
+    }, [_vm._v(_vm._s(_vm.msgnum))]), (_vm.tabStyles.hasActiveBottom && !_vm.titleUseSlot) ? _c('div', {
       staticClass: ["border-bottom"],
       style: {
         width: _vm.tabStyles.activeBottomWidth + 'px',
@@ -14626,7 +14749,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         backgroundColor: _vm.currentPage === index ? _vm.tabStyles.activeBottomColor : 'transparent'
       }
     }) : _vm._e(), (_vm.titleUseSlot) ? _vm._t(("tab-title-" + index)) : _vm._e()], 2)
-  })), _c('div', {
+  })], 2), _c('div', {
     ref: "tab-page-wrap",
     staticClass: ["tab-page-wrap"],
     style: {
