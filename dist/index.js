@@ -6771,6 +6771,19 @@ module.exports = __vue_exports__
 /***/ (function(module, exports) {
 
 module.exports = {
+  "index-page": {
+    "height": 100
+  },
+  "chat-header": {
+    "width": 100,
+    "height": 7,
+    "flexDirection": "row",
+    "alignItems": "center",
+    "justifyContent": "space-between",
+    "position": "absolute",
+    "zIndex": 100,
+    "top": 0.2
+  },
   "close-button": {
     "width": 1,
     "top": 0.1,
@@ -6842,6 +6855,12 @@ module.exports = {
     "backgroundSize": "cover",
     "width": 100,
     "height": 1.3
+  },
+  "footer": {
+    "width": 86,
+    "left": 7,
+    "position": "absolute",
+    "bottom": 1
   }
 }
 
@@ -6871,7 +6890,7 @@ exports.default = {
     data: function data() {
         return {
             video_1: '',
-            video_2: '',
+            video_2: 'https://mini.jkjun.cn/media/videos/8.mp4',
             startX: 0,
             startY: 0,
             X: 0,
@@ -6881,7 +6900,7 @@ exports.default = {
             R: 1000,
             rotate: 0,
             opacity: 1,
-            isBottomShow: true,
+            isBottomShow: false,
             id: '',
             name: '',
             imgurl: ''
@@ -6977,6 +6996,28 @@ exports.default = {
         }
     }
 }; //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -7568,7 +7609,9 @@ module.exports.render._withStripped = true
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', [_c('video', {
+  return _c('div', {
+    staticClass: ["index-page"]
+  }, [_vm._m(0), _c('video', {
     staticStyle: {
       width: "100%",
       position: "absolute"
@@ -7600,7 +7643,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "autoPlay": "true",
       "playStatus": "play"
     }
-  })]), _c('wxc-popup', {
+  })]), _vm._m(1), _c('wxc-popup', {
     staticClass: ["super-block"],
     attrs: {
       "popupColor": "#161824",
@@ -7641,7 +7684,38 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "click": _vm.sendSuperLike
     }
   }, [_vm._v("发送")])], 1)])])], 1)
-},staticRenderFns: []}
+},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: ["chat-header"]
+  }, [_c('text', {
+    staticClass: ["left"]
+  }), _c('text', {
+    staticClass: ["name"]
+  }), _c('text', {
+    staticClass: ["right"]
+  })])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: ["footer"]
+  }, [_c('div', {
+    staticClass: ["photo-img"]
+  }, [_c('image', {
+    staticClass: ["person-img"],
+    attrs: {
+      "src": "/src/asset/img/qq.jpg"
+    }
+  }), _c('text', {
+    staticClass: ["person-name"]
+  }, [_vm._v("肖宇ni嘎哈")])]), _c('div', {
+    staticClass: ["content"]
+  }, [_c('textarea', {
+    attrs: {
+      "row": "3",
+      "placeholder": "写的一点东东",
+      "disabled": ""
+    }
+  })])])
+}]}
 module.exports.render._withStripped = true
 
 /***/ }),
