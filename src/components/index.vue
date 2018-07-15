@@ -4,7 +4,7 @@
             <text class="left" @click="handleRouter('ownInfo')"></text>
             <text class="name"></text>
             <text class="right" @click="handleRouter('msgtest')"></text>
-            <text class="header-bottom"></text>
+            <text class="header-bottom" @click="handleRouter('shoot')"></text>
         </div>
         <video id="video2" preload='true' :src="video_2" style="width: 100%; position: absolute"></video>
         <div class="video-wrapper" @click="handleClick" @touchstart="handleTouchStart" @touchmove='handleTouchMove' @touchend="handleTouchEnd" :style="{opacity: opacity, transform: `rotate(${rotate}deg) translate(${distanceX}px, ${distanceY}px)`}">
