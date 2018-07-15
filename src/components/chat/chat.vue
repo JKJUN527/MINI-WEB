@@ -77,6 +77,7 @@ export default {
         flex-direction: row;
         align-items: center;
         justify-content: space-between;
+        background-color: #161824;
         /*justify-content: center;*/
 
     }
@@ -102,9 +103,6 @@ export default {
         font-size: 0.55rem;
         /*left:50%;*/
     }
-  .chat-header{
-      background-color: #161824;
-  }
   .chatting {
       height: 93%;
     position: relative;

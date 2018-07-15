@@ -1,5 +1,10 @@
 <template>
     <div class="infoEdit">
+        <div class="chat-header">
+            <text class="left">取消</text>
+            <text class="name">资料修改</text>
+            <text class="right">保存</text>
+        </div>
         <div class="user-img">
             <image :src="imgDataUrl" />
             <input type="file" id="upload_file" class="upload__input" @change="getFile" accept="image/png,image/gif">
@@ -9,26 +14,31 @@
             <div class="base-flex cell">
                 <text class="base-font-size cell-h color-white">昵称</text>
                 <input type="text" class="color-gray" v-model="name">
+                <label class="right-icon"></label>
             </div>
             <div class="base-flex cell" @click="openBottomPopup">
                 <text class="base-font-size cell-h color-white">性别</text>
                 <div class="base-flex">
                     <text class="color-gray">{{ sex | sexTranslate }}</text>
                 </div>
+                <label class="right-icon"></label>
             </div>
             <div class="base-flex cell" @click="showListCity">
                 <text class="base-font-size cell-h color-white">坐标</text>
                 <div class="btn">
                     <text class="btn-txt color-gray">{{ currentCity.cityName || '选择城市' }}</text>
                 </div>
+                <label class="right-icon"></label>
             </div>
             <div class="base-flex cell" @click="showCalendar">
                 <text class="base-font-size cell-h color-white">生日</text>
                 <text class="base-font-size color-gray" @click="showCalendar">{{selectedDate[0]}}</text>
+                <label class="right-icon"></label>
             </div>
             <div class="base-flex cell" :style="{'align-items': 'flex-start'}">
                 <text class="base-font-size cell-h color-white">签名</text>
-                <textarea class="color-gray"></textarea>
+                <textarea class="color-gray" rows="1"></textarea>
+                <label class="right-icon"></label>
             </div>
         </div>
         <wxc-popup popup-color="gray"
@@ -167,6 +177,47 @@ export default {
 </script>
 
 <style scoped>
+    .chat-header{
+        height: 7%;
+        width: 100%;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        background-color: #161824;
+        /*justify-content: center;*/
+
+    }
+    .chat-header p{
+        /*position: absolute;*/
+        color:white;
+    }
+    .chat-header .left{
+        /*background: url("/src/asset/img/backicon.png");*/
+        /*background-size: cover;*/
+        /*width: 0.3rem;*/
+        /*height: 0.55rem;*/
+        left: 0.4rem;
+    }
+    .chat-header .right{
+        background: url("/src/asset/img/saveicon.png");
+        background-size: cover;
+        width: 1.4rem;
+        height: 0.8rem;
+        right: 0.4rem;
+        padding:0.1rem 0 0.1rem 0.25rem;
+    }
+    .chat-header .name{
+        font-size: 0.55rem;
+        /*left:50%;*/
+    }
+    .right-icon{
+        background: url(/src/asset/img/righticon.png);
+        background-size: cover;
+        width: 0.26rem;
+        height: 0.5rem;
+        right: 0.7rem;
+        position: absolute;
+    }
     .upload__input{
         width: 2.1rem;
         height: 2.1rem;
@@ -179,10 +230,17 @@ export default {
   align-items: center;
   background-color: black;
   color: white;
+    height: 100%;
 }
-
+.user-img{
+    background: url(/src/asset/img/Mask.png);
+    background-size: cover;
+    width: 2.3rem;
+    height: 2.3rem;
+    margin-top: 1rem;
+}
 .user-img figure{
-  margin: 30px 0;
+  margin: 0.1rem 0.1rem;
   width: 160px;
   height: 160px;
   border-radius: 50%;
@@ -194,7 +252,9 @@ export default {
   margin-top: 30px;
   width: 100%
 }
-
+.base-font-size{
+    font-size: 0.5rem;
+}
 .cell {
     width: 100%;
     padding: 20px 80px;
@@ -214,8 +274,8 @@ input[type="text"]{
 }
 
 textarea {
-  width: 500px;
-  height: 300px;
+  width: 5.9rem;
+  /*height: 300px;*/
   background-color: transparent
 }
 
