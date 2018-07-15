@@ -13,6 +13,7 @@ const Events = 'getevent/'
 const Count = 'getCount/'
 const DetectFace = 'detectface/'
 const PersonEdit = 'editpersoninfo/'
+const uploadVideo = 'uploadvideo/'
 // const  = 'editpersoninfo/'
 
 var ax = axios.create({
@@ -90,6 +91,9 @@ function getOtherInfo (data) {
   return makePost(OtherPerson, data)
 }
  
+function doUploadVideo (data) {
+  return uploadFile(uploadVideo, data)
+}
 
 export default {
   getPersonInfo,
@@ -103,5 +107,6 @@ export default {
   getCount,
   doDetectFace,
   doPersonEdit,
-  getOtherInfo
+  getOtherInfo,
+  doUploadVideo
 }

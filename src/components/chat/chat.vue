@@ -63,6 +63,7 @@ export default {
   methods: {
     handleSendMessage () {
       ajax.doSendMessage({user_id: this.otherId, text: this.text})
+      this.text = ''
     }
   }
 }

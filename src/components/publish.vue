@@ -4,7 +4,7 @@
         <div class="chat-header">
             <text class="left"></text>
             <text class="name">发布页</text>
-            <text class="right">发布</text>
+            <text class="right" @click="handleClick">发布</text>
         </div>
         <textarea name="" placeholder="写点什么吧..."></textarea>
         <div class="video-wrapper">
@@ -15,7 +15,11 @@
 
 <script>
 export default {
-
+    methods: {
+        handleClick () {
+            
+        }
+    }
 }
 </script>
 

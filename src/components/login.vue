@@ -12,7 +12,7 @@ export default {
   },
   methods: {
     loginEvent: function (event) {
-        window.location.href="http://mini.jkjun.cn/loginqq"
+        window.location.href="https://mini.jkjun.cn/loginqq"
 //      server.login({
 //          pic: 'test.jpg'
 //        })

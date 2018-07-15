@@ -1,9 +1,8 @@
 <template>
     <div class="index-page">
         <div class="chat-header">
-            <text class="left"></text>
-            <text class="name"></text>
-            <text class="right"></text>
+            <text class="left" @click="handleRouter('ownInfo')"></text>
+            <text class="right" @click="handleRouter('msglist')"></text>
         </div>
         <video id="video2" preload='true' :src="video_2" style="width: 100%; position: absolute"></video>
         <div class="video-wrapper" @click="handleClick" @touchstart="handleTouchStart" @touchmove='handleTouchMove' @touchend="handleTouchEnd" :style="{opacity: opacity, transform: `rotate(${rotate}deg) translate(${distanceX}px, ${distanceY}px)`}">
@@ -11,20 +10,12 @@
         </div>
         <div class="footer">
             <div class="photo-img">
-                <image class="person-img" src="/src/asset/img/qq.jpg"/>
-                <text class="person-name">肖宇ni嘎哈</text>
+                <image class="person-img" :src="imgurl" @click="handleRouter('otherInfo',{ user: id })"/>
+                <text class="person-name">{{ name }}</text>
             </div>
             <div class="content">
-                <textarea row="3" placeholder="写的一点东东" disabled></textarea>
+                <textarea row="3" :placeholder="idea" disabled></textarea>
             </div>
-            <!--<div class="btn-group">-->
-            <!--<div class="btn uploadFile">-->
-            <!--<label class="upload">-->
-            <!--<input type="file" id="upload" value="">-->
-            <!--</label>-->
-            <!--<label class="take_pic"></label>-->
-            <!--</div>-->
-            <!--</div>-->
         </div>
         <wxc-popup popup-color="#161824"
             :show="isBottomShow"
@@ -86,9 +77,16 @@ export default {
             this.id = data.data[0].userid
             this.name = data.data[0].username
             this.imgurl = data.data[0].userphoto
+            this.idea = data.data[0].idea
         })
     },
     methods: {
+        handleRouter (route, params) {
+            this.$router.push({
+                name: route,
+                params
+            })
+        },
         popupOverlayBottomClick () {
             this.isBottomShow = false
         },
@@ -117,6 +115,7 @@ export default {
                     this.id = data.data[0].userid
                     this.name = data.data[0].username
                     this.imgurl = data.data[0].userphoto
+                    this.idea = data.data[0].idea
                 })
                 if(this.distanceX > 0) {
                     ajax.sendPreference({

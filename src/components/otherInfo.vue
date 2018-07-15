@@ -67,17 +67,20 @@ export default {
   beforeRouteEnter (to, from, next) {
       next(vm => {
           vm.user_id = to.params.user
+        //   alert(JSON.stringify(to.params.user))
       })
   },
   mounted () {
-      ajax.getOtherInfo({ user_id: this.user_id })
-      .then(({data}) => {
-          data = data.data
-        this.labels = [data.local, data.age + '岁', data.constellation, data.sex]
-        this.name = data.name
-        this.signature = data.signature
-        this.imgurl = data.img_portrait
-        this.my_video_list = data.my_video_list
+      this.$nextTick(() => {
+          ajax.getOtherInfo({ user_id: this.user_id })
+          .then(({data}) => {
+              data = data.data
+            this.labels = [data.local, data.age + '岁', data.constellation, data.sex]
+            this.name = data.name
+            this.signature = data.signature
+            this.imgurl = data.img_portrait
+            this.my_video_list = data.my_video_list
+          })
       })
   },
   methods: {

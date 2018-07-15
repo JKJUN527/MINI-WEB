@@ -3,15 +3,14 @@
         <div class="chat-header">
             <text class="left"></text>
             <text class="name">录制页</text>
-            <text class="right">确定</text>
+            <text class="right" @click="handleClick">确定</text>
         </div>
         <div class="video_module">
-            <video id="video" class="video" :src="video_src"  controls="controls" autoplay="autoplay"></video>
-            <canvas id="canvas" style="display: none"></canvas>
+            <video id="video" class="video" :src="videoDataUrl" autoplay="autoplay"></video>
         </div>
         <div class="footer">
             <div class="shoot-controller">
-                <button @click="take_video"></button>
+                <button @click="take_video"><input type="file" @change="getFile" refs capture="camera" style="width: 100%; height: 100%; opacity: 0"></button>
             </div>
             <!--<div class="btn-group">-->
                 <!--<div class="btn uploadFile">-->
@@ -25,18 +24,36 @@
     </div>
 </template>
 <script>
+import ajax from '../ajax/index.js'
 export default {
     data () {
       return {
-          video_src:"https://mini.jkjun.cn/media/videos/8.mp4"
+        videoDataUrl: '',
+        file: {}
       }
     },
     methods: {
         handleClick () {
-            
+            var form = new FormData()
+            form.append('file', this.file)
+            ajax.doUploadVideo(form)
+            .then(() => {
+                this.$router.push({
+                    name: 'publish',
+                    params: {
+                        url: ''
+                    }
+                })
+            })
         },
-        take_video () {
-            alert("点击录像");
+        getFile (e) {
+            let _this = this
+            this.file = e.target.files[0]
+            let reader = new FileReader()
+            reader.readAsDataURL(this.file) // 这里是最关键的一步，转换就在这里
+            reader.onloadend = function () {
+                _this.videoDataUrl = this.result
+            }
         }
     }
 }
