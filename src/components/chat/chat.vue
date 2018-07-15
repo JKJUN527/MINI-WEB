@@ -1,14 +1,4 @@
 <template>
-<<<<<<< HEAD
-    <div class="chatting">
-        <div v-for="(chat, index) in data" :key="index">
-          <chat-own :msg='chat.test' v-if="chat.sender != otherId"></chat-own>
-          <chat-other :msg='chat.test' v-else></chat-other>
-        </div>
-        <div id="send-block" class="base-flex">
-          <input type="text" v-model="text">
-          <button @click="handleSendMessage">发送</button>
-=======
     <div class="chat-module">
         <div class="chat-header">
             <text class="left"></text>
@@ -24,7 +14,6 @@
               <input type="text" @focus="changeColor" placeholder="聊点什么吧...">
               <button @click="send_msg">发送</button>
             </div>
->>>>>>> d5f75e6c3dc497af42faa6ed36f8aa45a747a051
         </div>
     </div>
 </template>
@@ -45,12 +34,11 @@ export default {
   },
   beforeRouteEnter (to, from, next) {
     next(vm => {
-      // alert(JSON.stringify(to.params))
         vm.otherId = to.params.user
       })
   },
   beforeRouteLeave (to, from, next) {
-    clearInterval(timmer)
+    clearInterval(this.timmer)
   },
   mounted () {
     this.timmer = setInterval(() => {

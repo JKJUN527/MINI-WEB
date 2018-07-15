@@ -41,14 +41,20 @@ export default {
             R: 1000,
             rotate: 0,
             opacity: 1,
-            isBottomShow: false
+            isBottomShow: false,
+            id: '',
+            name: '',
+            imgurl: ''
         }
     },
     mounted () {
         ajax.getVideo({ count: 2 })
         .then(({ data }) => {
-            this.video_1 = data.data[0]
-            this.video_2 = data.data[1]
+            this.video_1 = data.data[0].videourl
+            this.video_2 = data.data[1].videourl
+            this.id = data.data[0].userid
+            this.name = data.data[0].username
+            this.imgurl = data.data[0].userphoto
         })
     },
     methods: {
@@ -75,15 +81,20 @@ export default {
             ajax.getVideo({ count: 1 })
             .then(({ data }) => {
                 this.video_1 = this.video_2
-                this.video_2 = data.data[0]
+                this.video_2 = data.data[0].videourl
+                this.id = data.data[0].userid
+                this.name = data.data[0].username
+                this.imgurl = data.data[0].userphoto
             })
             if(Math.abs(this.distanceX) > Math.abs(this.distanceY)) {
                 if(this.distanceX > 0) {
                     ajax.sendPreference({
+                        user: this.id,
                         type: 'like'
                     })
                 } else {
                     ajax.sendPreference({
+                        user: this.id,
                         type: 'like'
                     })
                 }

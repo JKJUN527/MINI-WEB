@@ -47,7 +47,6 @@ import ajax from '../../ajax/index.js'
 import Match from './match'
 import Msg from './msg'
 import SuperLike from './superlike'
-// https://github.com/alibaba/weex-ui/blob/master/example/tab-page/config.js
 import Config from '../config'
 
 export default {

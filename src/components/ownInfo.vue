@@ -3,7 +3,7 @@
         <!-- <div class="edit">编辑</div> -->
         <div class="user-header base-flex">
             <div class="user-img">
-                <image  />
+                <image :src="imgurl" />
             </div>
             <div class="user-base-info">
                 <text class="user-name base-font-size">{{ name }}</text>
@@ -76,6 +76,7 @@ export default {
       name: '',
       labels: ['北京', '20岁', '双子座', '男'],
       signature: '',
+      imgurl: '',
       showVideoList: 0,
       sliderId: 1,
       cardLength: 5,
@@ -94,6 +95,8 @@ export default {
       this.labels = [data.local, data.age + '岁', data.constellation, data.sex]
       this.name = data.name
       this.signature = data.signature
+      alert(JSON.stringify(data))
+      this.imgurl = data.img_portrait
     })
   },
   methods: {

@@ -121,12 +121,8 @@ export default {
         width: 80%;
         min-height: 1.7rem;
         height: auto;
-<<<<<<< HEAD
-=======
-        /*color: #ffffff;*/
         margin-top: 0.6rem;
         justify-content: center
->>>>>>> d5f75e6c3dc497af42faa6ed36f8aa45a747a051
     }
     .like-notice p{
         color: white;

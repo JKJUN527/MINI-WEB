@@ -10,6 +10,7 @@ const PushMessages = 'getPushMessages/'
 const preference = 'preference/'
 const Events = 'getevent/'
 const Count = 'getCount/'
+const DetectFace = 'detectface'
 
 var ax = axios.create({
   baseURL: 'https://mini.jkjun.cn/',
@@ -64,6 +65,10 @@ function getEvent (data) {
 
 function getCount (data) {
   return makeGet(Count, data)
+}
+
+function doDetectFace (data) {
+  return makePost(DetectFace, data)
 }
 
 
