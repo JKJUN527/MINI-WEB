@@ -2,17 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5e1848f4-07a5-4b79-82c8-6613cf3eb43a" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.eslintignore" afterPath="$PROJECT_DIR$/.eslintignore" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dist/index.js" afterPath="$PROJECT_DIR$/dist/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ajax/index.js" afterPath="$PROJECT_DIR$/src/ajax/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/HelloWorld.vue" afterPath="$PROJECT_DIR$/src/components/HelloWorld.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/login.vue" afterPath="$PROJECT_DIR$/src/components/login.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/msglist.vue" afterPath="$PROJECT_DIR$/src/components/msglist.vue" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/config.js" afterPath="$PROJECT_DIR$/src/components/config.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/msglist/match.vue" afterPath="$PROJECT_DIR$/src/components/msglist/match.vue" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/msglist/msg.vue" afterPath="$PROJECT_DIR$/src/components/msglist/msg.vue" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/msglist/msglist.vue" afterPath="$PROJECT_DIR$/src/components/msglist/msglist.vue" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/msglist/superlike.vue" afterPath="$PROJECT_DIR$/src/components/msglist/superlike.vue" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/otherInfo.vue" afterPath="$PROJECT_DIR$/src/components/otherInfo.vue" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/ownInfo.vue" afterPath="$PROJECT_DIR$/src/components/ownInfo.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/personalEdit.vue" afterPath="$PROJECT_DIR$/src/components/personalEdit.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/publish.vue" afterPath="$PROJECT_DIR$/src/components/publish.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/index.vue" afterPath="$PROJECT_DIR$/src/index.vue" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/shoot.vue" afterPath="$PROJECT_DIR$/src/components/shoot.vue" />
     </list>
     <ignored path="MINI-WEB.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -33,21 +33,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="login.vue" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/login.vue">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="126">
-              <caret line="6" column="8" selection-start-line="6" selection-start-column="8" selection-end-line="6" selection-end-column="8" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="msglist.vue" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/msglist.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="114">
-              <caret line="76" column="12" selection-start-line="76" selection-start-column="12" selection-end-line="76" selection-end-column="12" />
+            <state relative-caret-position="366">
+              <caret line="277" column="5" selection-start-line="273" selection-start-column="4" selection-end-line="277" selection-end-column="5" />
               <folding>
                 <element signature="e#3193#3257#0" expanded="true" />
               </folding>
@@ -55,83 +45,95 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ownInfo.vue" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/ownInfo.vue">
+      <file leaf-file-name="msg.vue" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/components/msglist/msg.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="252">
-              <caret line="121" column="7" selection-start-line="119" selection-start-column="6" selection-end-line="121" selection-end-column="7" />
+            <state relative-caret-position="474">
+              <caret line="80" column="5" selection-start-line="80" selection-start-column="5" selection-end-line="80" selection-end-column="5" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="msglist.vue" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/components/msglist/msglist.vue">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="306">
+              <caret line="160" column="38" selection-start-line="160" selection-start-column="38" selection-end-line="160" selection-end-column="38" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="config.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/components/config.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="42">
+              <caret line="6" column="2" selection-start-line="6" selection-start-column="2" selection-end-line="6" selection-end-column="2" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="shoot.vue" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/components/shoot.vue">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="210">
+              <caret line="30" column="6" selection-start-line="30" selection-start-column="6" selection-end-line="30" selection-end-column="6" />
               <folding>
-                <marker date="1531673396327" expanded="true" signature="6202:6238" ph="{...}" />
+                <element signature="n#style#0;n#canvas#0;n#div#1;n#div#0;n#template#0;n#!!top" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.vue" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/index.vue">
+      <file leaf-file-name="match.vue" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/components/match.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="126">
-              <caret line="6" column="8" selection-start-line="6" selection-start-column="8" selection-end-line="6" selection-end-column="8" />
+            <state relative-caret-position="137">
+              <caret line="34" column="4" selection-start-line="34" selection-start-column="4" selection-end-line="34" selection-end-column="4" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name=".eslintignore" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/.eslintignore">
+      <file leaf-file-name="match.vue" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/components/msglist/match.vue">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="116">
+              <caret line="11" column="2" selection-start-line="11" selection-start-column="2" selection-end-line="11" selection-end-column="2" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ownInfo.vue" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/components/ownInfo.vue">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="63">
-              <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="5" />
-              <folding />
+              <caret line="95" column="3" selection-start-line="95" selection-start-column="3" selection-end-line="95" selection-end-column="3" />
+              <folding>
+                <marker date="1531674509209" expanded="true" signature="6177:6213" ph="{...}" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="HelloWorld.vue" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/HelloWorld.vue">
+      <file leaf-file-name="superlike.vue" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/components/msglist/superlike.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="62">
-              <caret line="38" column="8" selection-start-line="38" selection-start-column="8" selection-end-line="38" selection-end-column="8" />
+            <state relative-caret-position="474">
+              <caret line="78" column="5" selection-start-line="78" selection-start-column="5" selection-end-line="78" selection-end-column="5" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="personalEdit.vue" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/personalEdit.vue">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="147">
-              <caret line="82" column="69" selection-start-line="82" selection-start-column="69" selection-end-line="82" selection-end-column="69" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="publish.vue" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/publish.vue">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="42" column="5" selection-start-line="22" selection-start-column="4" selection-end-line="42" selection-end-column="5" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/ajax/index.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="1" column="19" selection-start-line="1" selection-start-column="19" selection-end-line="1" selection-end-column="19" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="otherInfo.vue" pinned="false" current-in-tab="true">
+      <file leaf-file-name="otherInfo.vue" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/otherInfo.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="76" column="1" selection-start-line="76" selection-start-column="1" selection-end-line="76" selection-end-column="1" />
+            <state relative-caret-position="231">
+              <caret line="56" column="11" selection-start-line="56" selection-start-column="11" selection-end-line="56" selection-end-column="11" />
               <folding />
             </state>
           </provider>
@@ -156,18 +158,12 @@
         <option value="$PROJECT_DIR$/src/components/personalInfo.vue" />
         <option value="$PROJECT_DIR$/src/router.js" />
         <option value="$PROJECT_DIR$/src/components/match.vue" />
-        <option value="$PROJECT_DIR$/src/components/config.js" />
         <option value="$PROJECT_DIR$/package.json" />
-        <option value="$PROJECT_DIR$/src/components/msglist/match.vue" />
-        <option value="$PROJECT_DIR$/src/components/msglist/msg.vue" />
-        <option value="$PROJECT_DIR$/src/components/msglist/msglist.vue" />
-        <option value="$PROJECT_DIR$/src/components/msglist/superlike.vue" />
         <option value="$PROJECT_DIR$/node_modules/weex-ui/packages/wxc-tab-page/full-page.vue" />
         <option value="$PROJECT_DIR$/src/components/chat/chat-own.vue" />
         <option value="$PROJECT_DIR$/src/components/chat/chat-other.vue" />
         <option value="$PROJECT_DIR$/src/components/chat/chat.vue" />
         <option value="$PROJECT_DIR$/node_modules/weex-ui/packages/wxc-popup/index.vue" />
-        <option value="$PROJECT_DIR$/src/components/shoot.vue" />
         <option value="$PROJECT_DIR$/node_modules/weex-ui/packages/wxc-tab-page/index.vue" />
         <option value="$PROJECT_DIR$/src/components/index.vue" />
         <option value="$PROJECT_DIR$/src/index.vue" />
@@ -176,10 +172,16 @@
         <option value="$PROJECT_DIR$/src/components/HelloWorld.vue" />
         <option value="$PROJECT_DIR$/src/ajax/index.js" />
         <option value="$PROJECT_DIR$/src/components/publish.vue" />
-        <option value="$PROJECT_DIR$/src/components/msglist.vue" />
         <option value="$PROJECT_DIR$/.eslintignore" />
-        <option value="$PROJECT_DIR$/src/components/ownInfo.vue" />
         <option value="$PROJECT_DIR$/src/components/otherInfo.vue" />
+        <option value="$PROJECT_DIR$/src/components/msglist.vue" />
+        <option value="$PROJECT_DIR$/src/components/config.js" />
+        <option value="$PROJECT_DIR$/src/components/shoot.vue" />
+        <option value="$PROJECT_DIR$/src/components/msglist/match.vue" />
+        <option value="$PROJECT_DIR$/src/components/ownInfo.vue" />
+        <option value="$PROJECT_DIR$/src/components/msglist/superlike.vue" />
+        <option value="$PROJECT_DIR$/src/components/msglist/msg.vue" />
+        <option value="$PROJECT_DIR$/src/components/msglist/msglist.vue" />
       </list>
     </option>
   </component>
@@ -273,6 +275,28 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="components" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MINI-WEB" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MINI-WEB" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="components" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="msglist" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
@@ -590,7 +614,7 @@
       <workItem from="1531140020990" duration="26465000" />
       <workItem from="1531315158421" duration="11175000" />
       <workItem from="1531547798507" duration="5194000" />
-      <workItem from="1531559383174" duration="46498000" />
+      <workItem from="1531559383174" duration="47979000" />
     </task>
     <task id="LOCAL-00001" summary="qq登录页样式">
       <created>1531039256645</created>
@@ -718,11 +742,18 @@
       <option name="project" value="LOCAL" />
       <updated>1531669736386</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="个人主页 用户主页新增头部导航">
+      <created>1531673507663</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1531673507663</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="113702000" />
+    <option name="totallyTimeSpent" value="115183000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -745,7 +776,7 @@
       <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.78522336" sideWeight="0.4938838" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2749141" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.34364262" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -826,7 +857,8 @@
     <MESSAGE value="修改视频录制页样式" />
     <MESSAGE value="修改首页样式" />
     <MESSAGE value="首页新增拍摄按钮" />
-    <option name="LAST_COMMIT_MESSAGE" value="首页新增拍摄按钮" />
+    <MESSAGE value="个人主页 用户主页新增头部导航" />
+    <option name="LAST_COMMIT_MESSAGE" value="个人主页 用户主页新增头部导航" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -948,13 +980,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/match.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="504">
-          <caret line="24" column="7" selection-start-line="24" selection-start-column="7" selection-end-line="24" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/asset/img/msg-num.png">
       <provider selected="true" editor-type-id="images">
         <state />
@@ -1000,38 +1025,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/msglist/match.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="453">
-          <caret line="32" column="21" selection-start-line="32" selection-start-column="21" selection-end-line="32" selection-end-column="21" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/msglist/msg.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="24" column="32" selection-start-line="24" selection-start-column="32" selection-end-line="24" selection-end-column="32" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/msglist/msglist.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="201">
-          <caret line="224" column="32" selection-start-line="224" selection-start-column="32" selection-end-line="224" selection-end-column="32" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/msglist/superlike.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="27" column="32" selection-start-line="27" selection-start-column="32" selection-end-line="27" selection-end-column="32" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/node_modules/weex-ui/packages/wxc-tab-page/full-page.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="210">
@@ -1052,14 +1045,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="588">
           <caret line="28" column="21" selection-start-line="28" selection-start-column="21" selection-end-line="28" selection-end-column="21" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/config.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="273">
-          <caret line="13" column="23" selection-start-line="13" selection-start-column="23" selection-end-line="13" selection-end-column="23" />
           <folding />
         </state>
       </provider>
@@ -1091,16 +1076,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/shoot.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="118" column="5" selection-start-line="95" selection-start-column="3" selection-end-line="118" selection-end-column="5" />
-          <folding>
-            <element signature="n#style#0;n#canvas#0;n#div#1;n#div#0;n#template#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/node_modules/weex-ui/packages/wxc-tab-page/index.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="250">
@@ -1116,14 +1091,6 @@
           <folding>
             <element signature="n#style#0;n#video#0;n#div#0;n#template#0;n#!!top" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/index.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="6" column="8" selection-start-line="6" selection-start-column="8" selection-end-line="6" selection-end-column="8" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1159,24 +1126,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/msglist.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="114">
-          <caret line="76" column="12" selection-start-line="76" selection-start-column="12" selection-end-line="76" selection-end-column="12" />
-          <folding>
-            <element signature="e#3193#3257#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.eslintignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="63">
-          <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/publish.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1185,20 +1134,104 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/ownInfo.vue">
+    <entry file="file://$PROJECT_DIR$/.eslintignore">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="121" column="7" selection-start-line="119" selection-start-column="6" selection-end-line="121" selection-end-column="7" />
-          <folding>
-            <marker date="1531673396327" expanded="true" signature="6202:6238" ph="{...}" />
-          </folding>
+        <state relative-caret-position="42">
+          <caret line="2" column="5" selection-start-line="2" selection-start-column="5" selection-end-line="2" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/index.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="126">
+          <caret line="6" column="8" selection-start-line="6" selection-start-column="8" selection-end-line="6" selection-end-column="8" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/otherInfo.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="76" column="1" selection-start-line="76" selection-start-column="1" selection-end-line="76" selection-end-column="1" />
+        <state relative-caret-position="231">
+          <caret line="56" column="11" selection-start-line="56" selection-start-column="11" selection-end-line="56" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/config.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="42">
+          <caret line="6" column="2" selection-start-line="6" selection-start-column="2" selection-end-line="6" selection-end-column="2" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/shoot.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="30" column="6" selection-start-line="30" selection-start-column="6" selection-end-line="30" selection-end-column="6" />
+          <folding>
+            <element signature="n#style#0;n#canvas#0;n#div#1;n#div#0;n#template#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/match.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="137">
+          <caret line="34" column="4" selection-start-line="34" selection-start-column="4" selection-end-line="34" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/msglist/match.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="116">
+          <caret line="11" column="2" selection-start-line="11" selection-start-column="2" selection-end-line="11" selection-end-column="2" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/ownInfo.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="63">
+          <caret line="95" column="3" selection-start-line="95" selection-start-column="3" selection-end-line="95" selection-end-column="3" />
+          <folding>
+            <marker date="1531674509209" expanded="true" signature="6177:6213" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/msglist/superlike.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="474">
+          <caret line="78" column="5" selection-start-line="78" selection-start-column="5" selection-end-line="78" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/msglist/msg.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="474">
+          <caret line="80" column="5" selection-start-line="80" selection-start-column="5" selection-end-line="80" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/msglist.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="366">
+          <caret line="277" column="5" selection-start-line="273" selection-start-column="4" selection-end-line="277" selection-end-column="5" />
+          <folding>
+            <element signature="e#3193#3257#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/msglist/msglist.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="160" column="38" selection-start-line="160" selection-start-column="38" selection-end-line="160" selection-end-column="38" />
           <folding />
         </state>
       </provider>

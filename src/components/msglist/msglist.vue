@@ -67,12 +67,12 @@ export default {
     this.$set(this.tabList, 0, this.demoList)
   },
   mounted () {
-      ajax.getPushMessages({})
+    ajax.getPushMessages({})
       .then(({data}) => {
-          this.$set(this.tabList, 0, data.data)
+        this.$set(this.tabList, 0, data.data)
       })
 
-      ajax.getConversationList({})
+    ajax.getConversationList({})
       .then(({data}) => {
           this.$set(this.tabList, 1, data.data)
           this.avatar = this.avatar + '/' + data.data.avatar
@@ -106,15 +106,14 @@ export default {
 <style scoped>
     .like-notice{
         padding: 25px;
-        /*background-color:#f2f3f4;*/
         background: url("/src/asset/img/like-bg.png") no-repeat;
         background-size: cover;
         border-radius:20px;
-        /*opacity: 0.5;*/
         width: 80%;
         min-height: 1.7rem;
         height: auto;
-        /*color: #ffffff;*/
+        margin-top: 0.6rem;
+        justify-content: center
     }
     .like-notice p{
         color: white;
@@ -124,7 +123,9 @@ export default {
     .like-time{
         text-align: center;
         color: white;
-        margin-top: 0.4rem;
+        margin-top: 0.7rem;
+        font-size: 0.35rem;
+        opacity: 0.8;
     }
     .super-like-notice{
         padding: 25px;
@@ -214,25 +215,31 @@ export default {
     }
     .item-container {
         width: 750px;
+        /*background-color: #f2f3f4;*/
         background-color: #000000;
     }
 
-.border-cell {
-  background-color: #000000;
-  width: 750px;
-  align-items: center;
-  justify-content: center;
-}
+    .border-cell {
+        background-color: #000000;
+        width: 750px;
+        /*height: 24px;*/
+        align-items: center;
+        justify-content: center;
+        /*border-bottom-width: 1px;*/
+        /*border-style: solid;*/
+        /*border-color: #e0e0e0;*/
+    }
 
-.cell {
-  margin-bottom: 0;
-}
-
+    .cell {
+        /*background-color: #ffffff;*/
+        margin-bottom: 0;
+    }
     .content{
         width:750px;
         height:5rem;
+        /*border-bottom-width:1px;*/
         align-items: center;
-        justify-content: center;
+        /*justify-content: center;*/
         background-color: #000000;
     }
     .title-item .border-bottom{

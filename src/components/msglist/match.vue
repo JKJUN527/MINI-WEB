@@ -8,6 +8,7 @@
 
 <script>
 export default {
+  props: ['name']
 }
 </script>
 
@@ -20,7 +21,6 @@ export default {
         justify-content: center;
         background-color: #000000;
     }
-    
     .like-notice{
         padding: 25px;
         background: url("/src/asset/img/like-bg.png") no-repeat;
@@ -30,8 +30,8 @@ export default {
         min-height: 1.7rem;
         height: auto;
     }
-    
-    .like-notice p{
+
+    .like-notice p {
         color: white;
         font-size: 0.5rem;
         text-align: center;
