@@ -10,10 +10,10 @@ export default {
   methods: {
     otherInfo () {
       this.$router.push({
-          name: 'otherInfo',
-          params: {
-              user: this.id
-          }
+        name: 'otherInfo',
+        params: {
+          user: this.id
+        }
       })
     }
   }

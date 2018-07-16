@@ -1,7 +1,7 @@
 <template>
     <div id="personalInfo">
-        <div class="chat-header">
-            <text class="left" @click="goback"></text>
+        <div class="chat-header" @click="goback">
+            <text class="left"></text>
         </div>
         <!-- <div class="edit">编辑</div> -->
         <div class="user-header base-flex">
@@ -28,9 +28,9 @@
         </div>
         <div class="video-block">
             <div class="tab-group base-flex">
-                <text class="base-font-size color-white tab" @click="changeTap">作品</text>
+                <text class="base-font-size color-white tab" :style="{opacity: myVideo}" @click="changeTap">作品</text>
                 <text class="base-font-size color-white tab">|</text>
-                <text class="base-font-size color-white tab" @click="changeTap">Like</text>
+                <text class="base-font-size color-white tab" :style="{opacity: likeVideo}" @click="changeTap">Like</text>
             </div>
             <div v-if="showVideoList === 0" class="color-white video-list">
                 <div>
@@ -43,7 +43,7 @@
                              :key="index"
                              :slot="`card${index}_${sliderId}`"
                              :class="['slider',`slider${index}`]">
-                            <video :src="v"></video>
+                            <video :src="v" controls="controls"></video>
                         </div>
                     </wxc-ep-slider>
                 </div>
@@ -59,7 +59,7 @@
                              :key="index"
                              :slot="`card${index}_${sliderId}`"
                              :class="['slider',`slider${index}`]">
-                            <video :src="v"></video>
+                            <video :src="v" controls="controls" ></video>
                         </div>
                     </wxc-ep-slider>
                 </div>
@@ -79,6 +79,8 @@ export default {
       signature: '',
       imgurl: '',
       showVideoList: 0,
+      myVideo: 1,
+      likeVideo: 0.6,
       sliderId: 1,
       cardLength: 5,
       like_video_list: [],
@@ -113,8 +115,12 @@ export default {
     changeTap () {
         if (this.showVideoList === 0){
             this.showVideoList = 1
+            this.myVideo = 0.6
+            this.likeVideo = 1
         }else{
             this.showVideoList = 0
+            this.myVideo = 1
+            this.likeVideo = 0.6
         }
     },
     goback () {

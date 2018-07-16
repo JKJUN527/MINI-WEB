@@ -8,7 +8,7 @@
         </div>
         <video id="video2" preload='true' :src="video_2" style="width: 100%; position: absolute"></video>
         <div class="video-wrapper" @click="handleClick" @touchstart="handleTouchStart" @touchmove='handleTouchMove' @touchend="handleTouchEnd" :style="{opacity: opacity, transform: `rotate(${rotate}deg) translate(${distanceX}px, ${distanceY}px)`}">
-            <video id="video1" :src="video_1" auto-play="true" play-status="play" style="width: 100%"></video>
+            <video id="video1" :src="video_1" auto-play="true" loop="loop" play-status="play" style="width: 100%"></video>
         </div>
         <div class="footer">
             <div class="photo-img">
@@ -63,8 +63,14 @@ export default {
             id: '',
             name: '',
             imgurl: '',
+            idea: '',
+            nextid: '',
+            nextname: '',
+            nextimgurl: '',
+            nxetidea: '',
             supermsg: '',
-            superLikeTime: 1
+            superLikeTime: 1,
+            LikeTime: 5
         }
     },
     mounted () {
@@ -76,6 +82,7 @@ export default {
                 ajax.getCount()
                 .then(({ data }) => {
                     this.superLikeTime = data.data.superCount
+                    this.LikeTime = data.data.likeCount
                 })
                 ajax.getVideo({ count: 2 })
                 .then(({ data }) => {
@@ -85,6 +92,10 @@ export default {
                     this.name = data.data[0].username
                     this.imgurl = data.data[0].userphoto
                     this.idea = data.data[0].idea
+                    this.nextid = data.data[1].userid
+                    this.nextname = data.data[1].username
+                    this.nextimgurl = data.data[1].userphoto
+                    this.nextidea = data.data[1].idea
                 })
             }
         })
@@ -121,12 +132,20 @@ export default {
                 .then(({ data }) => {
                     this.video_1 = this.video_2
                     this.video_2 = data.data[0].videourl
-                    this.id = data.data[0].userid
-                    this.name = data.data[0].username
-                    this.imgurl = data.data[0].userphoto
-                    this.idea = data.data[0].idea
+                    this.id = this.nextid
+                    this.name = this.nextname
+                    this.imgurl = this.nextimgurl
+                    this.idea = this.nextidea
+                    this.nextid = data.data[0].userid
+                    this.nextname = data.data[0].username
+                    this.nextimgurl = data.data[0].userphoto
+                    this.nextidea = data.data[0].idea
                 })
                 if(this.distanceX > 0) {
+                    if (this.LikeTime <= 0 ) {
+                        alert('今日你的like次数已耗尽哟！')
+                        return
+                    }
                     ajax.sendPreference({
                         video_url: this.video_1,
                         user: this.id,
@@ -146,6 +165,7 @@ export default {
             } else {
                 if(this.distanceY > 0) {
                     console.log('下滑摄像')
+                    this.$router.push({name: 'shoot'})
                 } else {
                     this.isBottomShow = true
                 }
@@ -162,6 +182,10 @@ export default {
             this.isBottomShow = false
         },
         sendSuperLike () {
+            if(this.superLikeTime <= 0 ) {
+                alert('今日你的super like次数已耗尽哟！')
+                return
+            }
             ajax.sendPreference({
                 video_url: this.video_1,
                 user: this.id,

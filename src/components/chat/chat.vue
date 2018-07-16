@@ -1,14 +1,16 @@
 <template>
     <div class="chat-module">
         <div class="chat-header">
-            <text class="left" @click="handleGoback"></text>
+            <text class="left" @click="handleGoback('back')"></text>
             <text class="name">{{ name }}</text>
-            <router-link :to="{ name: 'otherInfo'}" class="right"></router-link>
+            <text @click="handleGoback('home')" class="right"></text>
         </div>
         <div class="chatting">
-            <div v-for="(chat, index) in data" :key="index">
-              <chat-own :imgurl="userimg" :msg='chat.test' v-if="chat.sender != otherId"></chat-own>
-              <chat-other :imgurl="otherimg" :msg='chat.test' :id="otherId" v-else></chat-other>
+            <div class="chat-content">
+                <div v-for="(chat, index) in data" :key="index">
+                  <chat-own :imgurl="userimg" :msg='chat.test' v-if="chat.sender != otherId"></chat-own>
+                  <chat-other :imgurl="otherimg" :msg='chat.test' :id="otherId" v-else></chat-other>
+                </div>
             </div>
             <div id="send-block" class="base-flex">
               <input type="text" @focus="changeColor" placeholder="聊点什么吧..." v-model="text">
@@ -61,8 +63,13 @@ export default {
     }, 1000)
   },
   methods: {
-    handleGoback () {
-      this.$router.go(-1)
+    handleGoback (e) {
+//      this.$router.go(-1)
+        if (e === 'back' ){
+            window.location.href = 'https://mini.jkjun.cn/src/index.html#/msgtest'
+        } else {
+            window.location.href = 'https://mini.jkjun.cn/src/index.html#/ownInfo'
+        }
     },
     handleClick () {
       this.$router.push({
@@ -121,6 +128,10 @@ export default {
     padding: 30px 0 0;
     flex-grow: 1;
     background-color: black;
+  }
+  .chat-content{
+      height: 93%;
+      overflow: scroll;
   }
 
   #send-block {

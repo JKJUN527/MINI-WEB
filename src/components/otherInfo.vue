@@ -1,7 +1,7 @@
 <template>
     <div id="personalInfo">
-        <div class="chat-header">
-            <text class="left" @click="goback"></text>
+        <div class="chat-header" @click="goback">
+            <text class="left"></text>
         </div>
         <!-- <div class="edit">编辑</div> -->
         <div class="user-header base">
@@ -50,40 +50,40 @@ export default {
   components: { WxcEpSlider },
   data () {
     return {
-        labels: ['北京', '20岁', '双子座', '男'],
-        showVideoList: 'works',
-        sliderId: 1,
-        cardLength: 5,
-        name: '',
-        signature: '',
-        imgurl: '',
-        my_video_list: [],
-        cardSize: {
-            width: 400,
-            height: 300,
-            spacing: 0,
-            scale: 0.8
-        },
-        user_id: 0
+      labels: ['北京', '20岁', '双子座', '男'],
+      showVideoList: 'works',
+      sliderId: 1,
+      cardLength: 5,
+      name: '',
+      signature: '',
+      imgurl: '',
+      my_video_list: [],
+      cardSize: {
+        width: 400,
+        height: 300,
+        spacing: 0,
+        scale: 0.8
+      },
+      user_id: 0
     }
   },
   beforeRouteEnter (to, from, next) {
-      next(vm => {
-          vm.user_id = to.params.user
-      })
+    next(vm => {
+      vm.user_id = to.params.user
+    })
   },
   mounted () {
-      this.$nextTick(() => {
-          ajax.getOtherInfo({ user_id: this.user_id })
-          .then(({data}) => {
-              data = data.data
-            this.labels = [data.local, data.age + '岁', data.constellation, data.sex]
-            this.name = data.name
-            this.signature = data.signature
-            this.imgurl = data.img_portrait
-            this.my_video_list = data.my_video_list
-          })
-      })
+    this.$nextTick(() => {
+      ajax.getOtherInfo({ user_id: this.user_id })
+        .then(({data}) => {
+          data = data.data
+          this.labels = [data.local, data.age + '岁', data.constellation, data.sex]
+          this.name = data.name
+          this.signature = data.signature
+          this.imgurl = data.img_portrait
+          this.my_video_list = data.my_video_list
+        })
+    })
   },
   methods: {
     doListChange (msg) {
@@ -127,7 +127,7 @@ export default {
     }
 
     .user-header {
-        margin-top: 0.5rem;
+        /*margin-top: 0.5rem;*/
         align-items: center;
     }
 
@@ -148,7 +148,7 @@ export default {
         margin-top: 20px;
     }
     .user-label {
-        margin: 0.1rem 0 1rem;
+        margin: 0.1rem 0 0.4rem;
         flex-direction: row;
         justify-content: center
     }
@@ -196,15 +196,15 @@ export default {
 
     .slider {
         width: 5rem;
-        height: 7rem;
-        margin-top: 0.5rem;
+        height: 6rem;
+        margin-top: 0.2rem;
         align-items: center;
         justify-content: center;
     }
 
     .slider video {
         width:100%;
-        height: 100%;
+        height: 90%;
     }
 
 </style>

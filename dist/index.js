@@ -783,10 +783,6 @@ function uploadFile(path, data) {
   });
 }
 
-function Test(data) {
-  return makeGet(TEST, data);
-}
-
 function getPersonInfo(data) {
   return makeGet(PersonInfo, data);
 }
@@ -7722,6 +7718,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "id": "video1",
       "src": _vm.video_1,
       "autoPlay": "true",
+      "loop": "loop",
       "playStatus": "play"
     }
   })]), _c('div', {
@@ -7898,7 +7895,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: ["login-form"]
   }, [_c('image', {
     attrs: {
-      "src": "/src/asset/img/qq.jpg"
+      "src": "/src/asset/img/qq.png"
     }
   }), _c('button', {
     on: {
@@ -8210,7 +8207,6 @@ module.exports = {
     "backgroundColor": "#161824"
   },
   "user-header": {
-    "marginTop": 0.5,
     "alignItems": "center"
   },
   "user-img": {
@@ -8227,7 +8223,7 @@ module.exports = {
   "user-label": {
     "marginTop": 0.1,
     "marginRight": 0,
-    "marginBottom": 1,
+    "marginBottom": 0.4,
     "marginLeft": 0,
     "flexDirection": "row",
     "justifyContent": "center"
@@ -8280,8 +8276,8 @@ module.exports = {
   },
   "slider": {
     "width": 5,
-    "height": 7,
-    "marginTop": 0.5,
+    "height": 6,
+    "marginTop": 0.2,
     "alignItems": "center",
     "justifyContent": "center"
   }
@@ -9773,6 +9769,8 @@ exports.default = {
       signature: '',
       imgurl: '',
       showVideoList: 0,
+      myVideo: 1,
+      likeVideo: 0.6,
       sliderId: 1,
       cardLength: 5,
       like_video_list: [],
@@ -9811,8 +9809,12 @@ exports.default = {
     changeTap: function changeTap() {
       if (this.showVideoList === 0) {
         this.showVideoList = 1;
+        this.myVideo = 0.6;
+        this.likeVideo = 1;
       } else {
         this.showVideoList = 0;
+        this.myVideo = 1;
+        this.likeVideo = 0.6;
       }
     },
     goback: function goback() {
