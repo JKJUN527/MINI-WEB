@@ -1,16 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5e1848f4-07a5-4b79-82c8-6613cf3eb43a" name="Default" comment="">
+    <list default="true" id="5e1848f4-07a5-4b79-82c8-6613cf3eb43a" name="Default" comment="修改信息页样式">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dist/index.js" afterPath="$PROJECT_DIR$/dist/index.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/release/web/index.bundle.js" afterPath="$PROJECT_DIR$/release/web/index.bundle.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/release/web/index.bundle.map" afterPath="$PROJECT_DIR$/release/web/index.bundle.map" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/release/web/vendor.bundle.map" afterPath="$PROJECT_DIR$/release/web/vendor.bundle.map" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ajax/index.js" afterPath="$PROJECT_DIR$/src/ajax/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/chat/chat-other.vue" afterPath="$PROJECT_DIR$/src/components/chat/chat-other.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/chat/chat.vue" afterPath="$PROJECT_DIR$/src/components/chat/chat.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/index.vue" afterPath="$PROJECT_DIR$/src/components/index.vue" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/otherInfo.vue" afterPath="$PROJECT_DIR$/src/components/otherInfo.vue" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/ownInfo.vue" afterPath="$PROJECT_DIR$/src/components/ownInfo.vue" />
     </list>
@@ -46,10 +42,9 @@
       <file leaf-file-name="ownInfo.vue" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/ownInfo.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="63">
-              <caret line="3" column="38" selection-start-line="3" selection-start-column="38" selection-end-line="3" selection-end-column="38" />
+            <state relative-caret-position="170">
+              <caret line="201" column="30" selection-start-line="201" selection-start-column="30" selection-end-line="201" selection-end-column="30" />
               <folding>
-                <element signature="n#div#1;n#div#4;n#div#0;n#template#0;n#!!top" expanded="false" />
                 <element signature="n#div#2;n#div#4;n#div#0;n#template#0;n#!!top" expanded="false" />
               </folding>
             </state>
@@ -66,11 +61,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="otherInfo.vue" pinned="false" current-in-tab="false">
+      <file leaf-file-name="otherInfo.vue" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/components/otherInfo.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="84">
-              <caret line="4" column="14" selection-start-line="4" selection-start-column="14" selection-end-line="4" selection-end-column="14" />
+            <state relative-caret-position="315">
+              <caret line="139" column="5" selection-start-line="139" selection-start-column="5" selection-end-line="139" selection-end-column="5" />
               <folding />
             </state>
           </provider>
@@ -128,11 +123,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.vue" pinned="false" current-in-tab="true">
+      <file leaf-file-name="index.vue" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/index.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="242">
-              <caret line="178" column="19" selection-start-line="178" selection-start-column="19" selection-end-line="178" selection-end-column="19" />
+            <state relative-caret-position="221">
+              <caret line="177" column="32" selection-start-line="177" selection-start-column="32" selection-end-line="177" selection-end-column="32" />
               <folding>
                 <element signature="n#style#0;n#video#0;n#div#0;n#template#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#video#0;n#div#1;n#div#0;n#template#0;n#!!top" expanded="true" />
@@ -181,10 +176,10 @@
         <option value="$PROJECT_DIR$/src/ajax/index.js" />
         <option value="$PROJECT_DIR$/src/components/chat/chat-other.vue" />
         <option value="$PROJECT_DIR$/.eslintignore" />
-        <option value="$PROJECT_DIR$/src/components/ownInfo.vue" />
-        <option value="$PROJECT_DIR$/src/components/otherInfo.vue" />
         <option value="$PROJECT_DIR$/src/components/chat/chat.vue" />
         <option value="$PROJECT_DIR$/src/components/index.vue" />
+        <option value="$PROJECT_DIR$/src/components/ownInfo.vue" />
+        <option value="$PROJECT_DIR$/src/components/otherInfo.vue" />
       </list>
     </option>
   </component>
@@ -539,7 +534,7 @@
       <workItem from="1531140020990" duration="26465000" />
       <workItem from="1531315158421" duration="11175000" />
       <workItem from="1531547798507" duration="5194000" />
-      <workItem from="1531559383174" duration="66072000" />
+      <workItem from="1531559383174" duration="66964000" />
     </task>
     <task id="LOCAL-00001" summary="qq登录页样式">
       <created>1531039256645</created>
@@ -709,11 +704,18 @@
       <option name="project" value="LOCAL" />
       <updated>1531699591465</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="修改部分bug&#10;待解决，聊天页面，按钮点击无效">
+      <created>1531711125687</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1531711125687</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="133276000" />
+    <option name="totallyTimeSpent" value="134168000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -734,7 +736,7 @@
       <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.78522336" sideWeight="0.4938838" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1563574" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.17182131" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3035168" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3298969" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -799,7 +801,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="qq登录页样式" />
     <MESSAGE value="消息列表样式" />
     <MESSAGE value="superlike" />
     <MESSAGE value="完成消息通知界面" />
@@ -823,7 +824,9 @@
     <MESSAGE value="xiugai" />
     <MESSAGE value="首页增加录制按钮" />
     <MESSAGE value="更换qq登陆图标&#10;" />
-    <option name="LAST_COMMIT_MESSAGE" value="更换qq登陆图标&#10;" />
+    <MESSAGE value="修改部分bug&#10;待解决，聊天页面，按钮点击无效" />
+    <MESSAGE value="修改信息页样式" />
+    <option name="LAST_COMMIT_MESSAGE" value="修改信息页样式" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1114,25 +1117,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/ownInfo.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="63">
-          <caret line="3" column="38" selection-start-line="3" selection-start-column="38" selection-end-line="3" selection-end-column="38" />
-          <folding>
-            <element signature="n#div#1;n#div#4;n#div#0;n#template#0;n#!!top" expanded="false" />
-            <element signature="n#div#2;n#div#4;n#div#0;n#template#0;n#!!top" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/otherInfo.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="84">
-          <caret line="4" column="14" selection-start-line="4" selection-start-column="14" selection-end-line="4" selection-end-column="14" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/msglist/msg.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="147">
@@ -1193,13 +1177,31 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/index.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="242">
-          <caret line="178" column="19" selection-start-line="178" selection-start-column="19" selection-end-line="178" selection-end-column="19" />
+        <state relative-caret-position="221">
+          <caret line="177" column="32" selection-start-line="177" selection-start-column="32" selection-end-line="177" selection-end-column="32" />
           <folding>
             <element signature="n#style#0;n#video#0;n#div#0;n#template#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#video#0;n#div#1;n#div#0;n#template#0;n#!!top" expanded="true" />
             <element signature="e#2200#2235#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/ownInfo.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="201" column="30" selection-start-line="201" selection-start-column="30" selection-end-line="201" selection-end-column="30" />
+          <folding>
+            <element signature="n#div#2;n#div#4;n#div#0;n#template#0;n#!!top" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/otherInfo.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="139" column="5" selection-start-line="139" selection-start-column="5" selection-end-line="139" selection-end-column="5" />
+          <folding />
         </state>
       </provider>
     </entry>

@@ -198,12 +198,13 @@ export default {
     }
 
     .edit-block {
-        margin: 20px 0;
+        /*margin: 20px 0;*/
+        margin-bottom: 0.2rem;
         align-items: flex-end
     }
 
     .edit-btn {
-        margin-top: 30px;
+        /*margin-top: 30px;*/
         margin-right: 20px;
         padding: 0 10px;
         border-radius: 10px;

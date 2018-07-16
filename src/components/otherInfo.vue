@@ -31,7 +31,7 @@
                              :key="index"
                              :slot="`card${index}_${sliderId}`"
                              :class="['slider',`slider${index}`]">
-                            <video :src="v"></video>
+                            <video :src="v" controls="controls"></video>
                         </div>
                     </wxc-ep-slider>
                 </div>
@@ -132,8 +132,8 @@ export default {
     }
 
     .user-img {
-        width: 3rem;
-        height: 3rem;
+        width: 2.5rem;
+        height: 2.5rem;
         border-radius: 50%;
         background: white;
         overflow: hidden;

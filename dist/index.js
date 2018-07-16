@@ -5666,8 +5666,14 @@ exports.default = {
             id: '',
             name: '',
             imgurl: '',
+            idea: '',
+            nextid: '',
+            nextname: '',
+            nextimgurl: '',
+            nxetidea: '',
             supermsg: '',
-            superLikeTime: 1
+            superLikeTime: 1,
+            LikeTime: 5
         };
     },
     mounted: function mounted() {
@@ -5683,6 +5689,7 @@ exports.default = {
                     var data = _ref2.data;
 
                     _this.superLikeTime = data.data.superCount;
+                    _this.LikeTime = data.data.likeCount;
                 });
                 _index2.default.getVideo({ count: 2 }).then(function (_ref3) {
                     var data = _ref3.data;
@@ -5693,6 +5700,10 @@ exports.default = {
                     _this.name = data.data[0].username;
                     _this.imgurl = data.data[0].userphoto;
                     _this.idea = data.data[0].idea;
+                    _this.nextid = data.data[1].userid;
+                    _this.nextname = data.data[1].username;
+                    _this.nextimgurl = data.data[1].userphoto;
+                    _this.nextidea = data.data[1].idea;
                 });
             }
         });
@@ -5733,12 +5744,20 @@ exports.default = {
 
                     _this2.video_1 = _this2.video_2;
                     _this2.video_2 = data.data[0].videourl;
-                    _this2.id = data.data[0].userid;
-                    _this2.name = data.data[0].username;
-                    _this2.imgurl = data.data[0].userphoto;
-                    _this2.idea = data.data[0].idea;
+                    _this2.id = _this2.nextid;
+                    _this2.name = _this2.nextname;
+                    _this2.imgurl = _this2.nextimgurl;
+                    _this2.idea = _this2.nextidea;
+                    _this2.nextid = data.data[0].userid;
+                    _this2.nextname = data.data[0].username;
+                    _this2.nextimgurl = data.data[0].userphoto;
+                    _this2.nextidea = data.data[0].idea;
                 });
                 if (this.distanceX > 0) {
+                    if (this.LikeTime <= 0) {
+                        alert('今日你的like次数已耗尽哟！');
+                        return;
+                    }
                     _index2.default.sendPreference({
                         video_url: this.video_1,
                         user: this.id,
@@ -5758,6 +5777,7 @@ exports.default = {
             } else {
                 if (this.distanceY > 0) {
                     console.log('下滑摄像');
+                    this.$router.push({ name: 'shoot' });
                 } else {
                     this.isBottomShow = true;
                 }
@@ -5776,6 +5796,10 @@ exports.default = {
         sendSuperLike: function sendSuperLike() {
             var _this3 = this;
 
+            if (this.superLikeTime <= 0) {
+                alert('今日你的super like次数已耗尽哟！');
+                return;
+            }
             _index2.default.sendPreference({
                 video_url: this.video_1,
                 user: this.id,
@@ -9612,14 +9636,10 @@ module.exports = {
     "marginTop": 0.3
   },
   "edit-block": {
-    "marginTop": "20",
-    "marginRight": 0,
-    "marginBottom": "20",
-    "marginLeft": 0,
+    "marginBottom": 0.2,
     "alignItems": "flex-end"
   },
   "edit-btn": {
-    "marginTop": "30",
     "marginRight": "20",
     "paddingTop": 0,
     "paddingRight": "10",
@@ -15499,6 +15519,9 @@ module.exports = {
     "paddingLeft": 0,
     "flexGrow": 1,
     "backgroundColor": "#000000"
+  },
+  "chat-content": {
+    "height": 93
   }
 }
 
@@ -15572,8 +15595,13 @@ exports.default = {
   },
 
   methods: {
-    handleGoback: function handleGoback() {
-      this.$router.go(-1);
+    handleGoback: function handleGoback(e) {
+      //      this.$router.go(-1)
+      if (e === 'back') {
+        window.location.href = 'https://mini.jkjun.cn/src/index.html#/msgtest';
+      } else {
+        window.location.href = 'https://mini.jkjun.cn/src/index.html#/ownInfo';
+      }
     },
     handleClick: function handleClick() {
       this.$router.push({
@@ -15589,6 +15617,8 @@ exports.default = {
     }
   }
 }; //
+//
+//
 //
 //
 //
@@ -15872,20 +15902,24 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_c('text', {
     staticClass: ["left"],
     on: {
-      "click": _vm.handleGoback
+      "click": function($event) {
+        _vm.handleGoback('back')
+      }
     }
   }), _c('text', {
     staticClass: ["name"]
-  }, [_vm._v(_vm._s(_vm.name))]), _c('router-link', {
+  }, [_vm._v(_vm._s(_vm.name))]), _c('text', {
     staticClass: ["right"],
-    attrs: {
-      "to": {
-        name: 'otherInfo'
+    on: {
+      "click": function($event) {
+        _vm.handleGoback('home')
       }
     }
-  })], 1), _c('div', {
+  })]), _c('div', {
     staticClass: ["chatting"]
-  }, [_vm._l((_vm.data), function(chat, index) {
+  }, [_c('div', {
+    staticClass: ["chat-content"]
+  }, _vm._l((_vm.data), function(chat, index) {
     return _c('div', {
       key: index
     }, [(chat.sender != _vm.otherId) ? _c('chat-own', {
@@ -15900,7 +15934,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         "id": _vm.otherId
       }
     })], 1)
-  }), _c('div', {
+  })), _c('div', {
     staticClass: ["base-flex"],
     attrs: {
       "id": "send-block"
@@ -15921,7 +15955,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     on: {
       "click": _vm.handleSendMessage
     }
-  }, [_vm._v("发送")])], 1)], 2)])
+  }, [_vm._v("发送")])], 1)])])
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 
