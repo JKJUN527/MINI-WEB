@@ -29,16 +29,12 @@ function makeGet (path, params) {
   return ax.get(path, { params })
 }
 
-function uploadFile(path, data) {
+function uploadFile (path, data) {
   return ax.post(path, data, {
     headers: {
       'Content-Type': 'multipart/form-data'
     }
   })
-}
-
-function Test (data) {
-  return makeGet(TEST, data)
 }
 
 function getPersonInfo (data) {
@@ -88,7 +84,7 @@ function doPersonEdit (data) {
 function getOtherInfo (data) {
   return makePost(OtherPerson, data)
 }
- 
+
 function doUploadVideo (data) {
   return uploadFile(uploadVideo, data)
 }
