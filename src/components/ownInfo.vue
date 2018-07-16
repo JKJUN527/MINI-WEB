@@ -137,6 +137,7 @@ export default {
         align-items: center;
         justify-content: space-between;
         background-color: #161824;
+        position: absolute;
         /*justify-content: center;*/
 
     }
@@ -198,12 +199,13 @@ export default {
     }
 
     .edit-block {
-        margin: 20px 0;
+        /*margin: 20px 0;*/
+        margin-bottom: 0.2rem;
         align-items: flex-end
     }
 
     .edit-btn {
-        margin-top: 30px;
+        /*margin-top: 30px;*/
         margin-right: 20px;
         padding: 0 10px;
         border-radius: 10px;
@@ -244,8 +246,8 @@ export default {
 
     .slider {
         width: 5rem;
-        height: 7rem;
-        margin-top: 0.5rem;
+        height: 6rem;
+        margin-top: 0.2rem;
         align-items: center;
         justify-content: center;
     }
