@@ -6,18 +6,32 @@
             <text class="name">发布页</text>
             <text class="right" @click="handleClick">发布</text>
         </div>
-        <textarea name="" placeholder="写点什么吧..."></textarea>
+        <textarea name="" placeholder="写点什么吧..." v-model="idea"></textarea>
         <div class="video-wrapper">
-            <video src="https://mini.jkjun.cn/media/videos/8.mp4" controls="controls"></video>
+            <video :src="url || 'https://mini.jkjun.cn/media/videos/8.mp4'" controls="controls"></video>
         </div>
     </div>
 </template>
 
 <script>
+import ajax from '../ajax/index.js'
 export default {
+    beforeRouteEnter (to, from, next) {
+        next((vm) => {
+            vm.url = to.params.url
+        })
+    },
+    data () {
+        return {
+            idea: '写点什么吧...'
+        }
+    },
     methods: {
         handleClick () {
-            
+            ajax.doPublishVideo({ url: this.url, idea: this.idea })
+            .then(({data}) => {
+                this.$router.push({ name: 'index' })
+            })
         }
     }
 }

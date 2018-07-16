@@ -8,7 +8,7 @@
         </div>
         <video id="video2" preload='true' :src="video_2" style="width: 100%; position: absolute"></video>
         <div class="video-wrapper" @click="handleClick" @touchstart="handleTouchStart" @touchmove='handleTouchMove' @touchend="handleTouchEnd" :style="{opacity: opacity, transform: `rotate(${rotate}deg) translate(${distanceX}px, ${distanceY}px)`}">
-            <video id="video1" :src="video_1" auto-play="true" loop="loop" play-status="play" style="width: 100%"></video>
+            <video id="video1" :src="video_1" controls="controls" auto-play="true" loop="loop" play-status="play" style="width: 100%"></video>
         </div>
         <div class="footer">
             <div class="photo-img">
@@ -96,6 +96,7 @@ export default {
                     this.nextname = data.data[1].username
                     this.nextimgurl = data.data[1].userphoto
                     this.nextidea = data.data[1].idea
+                    document.getElementById('video').play()
                 })
             }
         })
@@ -140,10 +141,10 @@ export default {
                     this.nextname = data.data[0].username
                     this.nextimgurl = data.data[0].userphoto
                     this.nextidea = data.data[0].idea
+                    document.getElementById('video1').play()
                 })
                 if(this.distanceX > 0) {
                     if (this.LikeTime <= 0 ) {
-                        alert('今日你的like次数已耗尽哟！')
                         return
                     }
                     ajax.sendPreference({
@@ -183,7 +184,6 @@ export default {
         },
         sendSuperLike () {
             if(this.superLikeTime <= 0 ) {
-                alert('今日你的super like次数已耗尽哟！')
                 return
             }
             ajax.sendPreference({

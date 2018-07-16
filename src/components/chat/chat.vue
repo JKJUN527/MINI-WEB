@@ -3,11 +3,7 @@
         <div class="chat-header">
             <text class="left" @click="handleGoback('back')"></text>
             <text class="name">{{ name }}</text>
-<<<<<<< HEAD
             <text class="right" @click="handleClick"></text>
-=======
-            <text @click="handleGoback('home')" class="right"></text>
->>>>>>> edaa6208f391557cf7e04b892c06dd5f8fc36a65
         </div>
         <div class="chatting">
             <div class="chat-content">
@@ -67,11 +63,6 @@ export default {
     }, 1000)
   },
   methods: {
-<<<<<<< HEAD
-    handleGoback () {
-      clearInterval(this.timmer)
-      this.$router.go(-1)
-=======
     handleGoback (e) {
 //      this.$router.go(-1)
         if (e === 'back' ){
@@ -79,7 +70,6 @@ export default {
         } else {
             window.location.href = 'https://mini.jkjun.cn/src/index.html#/ownInfo'
         }
->>>>>>> edaa6208f391557cf7e04b892c06dd5f8fc36a65
     },
     handleClick () {
       clearInterval(this.timmer)

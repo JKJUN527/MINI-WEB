@@ -7,11 +7,10 @@
         </div>
         <div class="video_module">
             <video id="video" class="video" width="750" height="750" :src="videoDataUrl" autoplay="autoplay" preload loop muted></video>
-            <canvas id="canvas" width="375" height="620"></canvas>
         </div>
         <div class="footer">
             <div class="shoot-controller">
-                <button @click="take_video"></button>
+                <button><input type="file"  capture="camera" style="width: 100%; height: 100%; opacity: 0" @change="handleFileupload"></button>
             </div>
         </div>
     </div>
@@ -47,38 +46,20 @@ export default {
                 context.drawImage(img, rect.x, rect.y - rect.height, rect.width, rect.height);
             });
         });
-        navigator.getUserMedia({
-            audio: true,
-            video: true
-        }, (stream) => {
-            this.mediaRecorder = new MediaRecorder()
-            this.mediaRecorder.ondataavailable = (e) => {
-                this.chunks.push(e.data)
-            }
-            this.mediaRecorder.onstop = (e) => {
-                blob = new Blob(this.chunks, { 'type' : 'audio/ogg; codecs=opus' })
-                var formdata = new FormData()
-                formdata.append('file', blob)
-            }
-        })
     },
     methods: {
-        handleClick () {
+        handleFileupload (e) {
             var form = new FormData()
-            form.append('file', this.file)
+            form.append('file', e.target.files[0])
             ajax.doUploadVideo(form)
-            .then(() => {
+            .then(({ data }) => {
                 this.$router.push({
                     name: 'publish',
                     params: {
-                        url: ''
+                        url: data.url
                     }
                 })
             })
-        },
-        take_video () {
-            this.isShooting === false ? this.mediaRecorder.start() : this.mediaRecorder.stop()
-            this.isShooting = !this.isShooting
         }
     }
 }
@@ -128,17 +109,11 @@ export default {
         top: 0
     }
 
-    #canvas {
-        position: absolute;
-        left: 0;
-        top: 0
-    }
 
     .shoot {
         flex-grow: 1;
         position: relative;
         background-color: black;
-        height: 100%;
     }
 
     .video {

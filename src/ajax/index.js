@@ -14,6 +14,7 @@ const DetectFace = 'detectface/'
 const PersonEdit = 'editpersoninfo/'
 const uploadVideo = 'uploadvideo/'
 const Login = 'isloggedin/'
+const Publish = 'publishvideo/'
 // const  = 'editpersoninfo/'
 
 var ax = axios.create({
@@ -93,6 +94,10 @@ function isLogin (data) {
   return makeGet(Login, data)
 }
 
+function doPublishVideo (data) {
+  return makePost(Publish, data)
+}
+
 export default {
   isLogin,
   getPersonInfo,
@@ -107,5 +112,6 @@ export default {
   doDetectFace,
   doPersonEdit,
   getOtherInfo,
-  doUploadVideo
+  doUploadVideo,
+  doPublishVideo
 }

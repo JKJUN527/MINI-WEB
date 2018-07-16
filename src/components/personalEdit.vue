@@ -87,7 +87,7 @@ export default {
   data: () => ({
     name: '',
     animationType: 'push',
-    currentCity: '',
+    currentCity: {},
     cityStyleType: 'list',
     value: '',
     sex: '',
@@ -110,8 +110,9 @@ export default {
     ajax.getPersonInfo({})
     .then(({ data }) => {
       data = data.data
-      this.currentCity = data.local
       this.name = data.name
+      this.sex = data.sex
+      this.currentCity.cityName = data.local
       this.signature = data.signature
       this.imgDataUrl = data.img_portrait
     })
@@ -130,7 +131,6 @@ export default {
       formdata.append('img_portrait', this.files)
       ajax.doPersonEdit(formdata)
          .then(({ data }) => {
-             alert('保存成功')
              this.$router.push({name: 'ownInfo'})
          })
     },
