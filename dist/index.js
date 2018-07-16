@@ -759,6 +759,7 @@ var Count = 'getCount/';
 var DetectFace = 'detectface/';
 var PersonEdit = 'editpersoninfo/';
 var uploadVideo = 'uploadvideo/';
+var Login = 'isloggedin/';
 // const  = 'editpersoninfo/'
 
 var ax = _axios2.default.create({
@@ -838,7 +839,12 @@ function doUploadVideo(data) {
   return uploadFile(uploadVideo, data);
 }
 
+function isLogin(data) {
+  return makeGet(Login, data);
+}
+
 exports.default = {
+  isLogin: isLogin,
   getPersonInfo: getPersonInfo,
   getVideo: getVideo,
   getConversationList: getConversationList,
@@ -2610,10 +2616,6 @@ Vue.use(_vueRouter2.default); /* global Vue */
 module.exports = new _vueRouter2.default({
   routes: [{
     path: '/',
-    name: 'HelloWorld',
-    component: _HelloWorld2.default
-  }, {
-    path: '/index',
     name: 'index',
     component: _index2.default
   }, {
@@ -5675,20 +5677,28 @@ exports.default = {
     mounted: function mounted() {
         var _this = this;
 
-        _index2.default.getCount().then(function (_ref) {
+        _index2.default.isLogin().then(function (_ref) {
             var data = _ref.data;
 
-            _this.superLikeTime = data.data.superCount;
-        });
-        _index2.default.getVideo({ count: 2 }).then(function (_ref2) {
-            var data = _ref2.data;
+            if (data.status == '403') {
+                _this.$router.push({ name: 'login' });
+            } else {
+                _index2.default.getCount().then(function (_ref2) {
+                    var data = _ref2.data;
 
-            _this.video_1 = data.data[0].videourl;
-            _this.video_2 = data.data[1].videourl;
-            _this.id = data.data[0].userid;
-            _this.name = data.data[0].username;
-            _this.imgurl = data.data[0].userphoto;
-            _this.idea = data.data[0].idea;
+                    _this.superLikeTime = data.data.superCount;
+                });
+                _index2.default.getVideo({ count: 2 }).then(function (_ref3) {
+                    var data = _ref3.data;
+
+                    _this.video_1 = data.data[0].videourl;
+                    _this.video_2 = data.data[1].videourl;
+                    _this.id = data.data[0].userid;
+                    _this.name = data.data[0].username;
+                    _this.imgurl = data.data[0].userphoto;
+                    _this.idea = data.data[0].idea;
+                });
+            }
         });
     },
 
@@ -5722,8 +5732,8 @@ exports.default = {
                 return;
             }
             if (Math.abs(this.distanceX) > Math.abs(this.distanceY)) {
-                _index2.default.getVideo({ count: 1 }).then(function (_ref3) {
-                    var data = _ref3.data;
+                _index2.default.getVideo({ count: 1 }).then(function (_ref4) {
+                    var data = _ref4.data;
 
                     _this2.video_1 = _this2.video_2;
                     _this2.video_2 = data.data[0].videourl;
@@ -7676,7 +7686,12 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       }
     }
   }), _c('text', {
-    staticClass: ["header-bottom"]
+    staticClass: ["header-bottom"],
+    on: {
+      "click": function($event) {
+        _vm.handleRouter('shoot')
+      }
+    }
   })]), _c('video', {
     staticStyle: {
       width: "100%",
@@ -8042,7 +8057,6 @@ exports.default = {
     _index2.default.getEvent().then(function (_ref) {
       var data = _ref.data;
 
-      data = data.data;
       _this.ausername = data.ausername;
       _this.auserphoto = data.auserphoto;
       _this.busername = data.busername;
@@ -8118,7 +8132,10 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     },
     attrs: {
       "to": {
-        name: 'chat'
+        name: 'chat',
+        params: {
+          user: _vm.buserid
+        }
       }
     }
   }, [_vm._v(" 去聊天嘛 ")]), _c('router-link', {
@@ -9983,7 +10000,7 @@ exports.default = {
       signature: '',
       isRange: false,
       calendarTitle: '选择日期',
-      dateRange: ['2017-06-10', '2018-06-10'],
+      dateRange: ['1990-06-10', '2018-06-10'],
       selectedNote: ['生日'],
       minibarCfg: {
         title: '日期选择'
@@ -10010,6 +10027,8 @@ exports.default = {
       this.$router.go(-1);
     },
     handleSave: function handleSave() {
+      var _this3 = this;
+
       var formdata = new FormData();
       formdata.append('birth_timestamp', 1531650089047);
       formdata.append('name', this.name);
@@ -10017,7 +10036,12 @@ exports.default = {
       formdata.append('local', this.currentCity.cityName);
       formdata.append('signature', this.signature);
       formdata.append('img_portrait', this.files);
-      _index2.default.doPersonEdit(formdata);
+      _index2.default.doPersonEdit(formdata).then(function (_ref2) {
+        var data = _ref2.data;
+
+        alert('保存成功');
+        _this3.$router.push({ name: 'ownInfo' });
+      });
     },
     uploadimg: function uploadimg() {
       document.getElementById('upload_file').click();
@@ -10050,19 +10074,19 @@ exports.default = {
     },
     wxcPageCalendarBackClicked: function wxcPageCalendarBackClicked() {},
     showCalendar: function showCalendar() {
-      var _this3 = this;
+      var _this4 = this;
 
       this.isRange = false;
       setTimeout(function () {
-        _this3.$refs['wxcPageCalendar'].show();
+        _this4.$refs['wxcPageCalendar'].show();
       }, 10);
     },
     showReturnCalendar: function showReturnCalendar() {
-      var _this4 = this;
+      var _this5 = this;
 
       this.isRange = true;
       setTimeout(function () {
-        _this4.$refs['wxcPageCalendar'].show();
+        _this5.$refs['wxcPageCalendar'].show();
       }, 10);
     },
     getFile: function getFile(e) {
@@ -15219,6 +15243,7 @@ module.exports = {
     "backgroundColor": "#161824"
   },
   "video_module": {
+    "position": "relative",
     "height": 93
   },
   "shoot": {
@@ -15271,8 +15296,47 @@ exports.default = {
     data: function data() {
         return {
             videoDataUrl: '',
-            file: {}
+            file: {},
+            mediaRecorder: {},
+            chunks: [],
+            position: [],
+            blob: {},
+            isShooting: false
         };
+    },
+    mounted: function mounted() {
+        var _this = this;
+
+        var img = new Image();
+        img.src = '../asset/img/77ea2be15f2b479b2980799a61ee21ec.png';
+        var video = document.getElementById('video');
+        var canvas = document.getElementById('canvas');
+        var context = canvas.getContext('2d');
+        var tracker = new tracking.ObjectTracker('face');
+        tracker.setInitialScale(4);
+        tracker.setStepSize(2);
+        tracker.setEdgesDensity(0.1);
+        tracking.track('#video', tracker, { camera: true });
+        tracker.on('track', function (event) {
+            context.clearRect(0, 0, canvas.width, canvas.height);
+            event.data.forEach(function (rect) {
+                context.drawImage(img, rect.x, rect.y - rect.height, rect.width, rect.height);
+            });
+        });
+        navigator.getUserMedia({
+            audio: true,
+            video: true
+        }, function (stream) {
+            _this.mediaRecorder = new MediaRecorder();
+            _this.mediaRecorder.ondataavailable = function (e) {
+                _this.chunks.push(e.data);
+            };
+            _this.mediaRecorder.onstop = function (e) {
+                blob = new Blob(_this.chunks, { 'type': 'audio/ogg; codecs=opus' });
+                var formdata = new FormData();
+                formdata.append('file', blob);
+            };
+        });
     },
 
     methods: {
@@ -15290,24 +15354,12 @@ exports.default = {
                 });
             });
         },
-        getFile: function getFile(e) {
-            var _this = this;
-            this.file = e.target.files[0];
-            var reader = new FileReader();
-            reader.readAsDataURL(this.file); // 这里是最关键的一步，转换就在这里
-            reader.onloadend = function () {
-                _this.videoDataUrl = this.result;
-            };
+        take_video: function take_video() {
+            this.isShooting === false ? this.mediaRecorder.start() : this.mediaRecorder.stop();
+            this.isShooting = !this.isShooting;
         }
     }
 }; //
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -15350,8 +15402,19 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: ["video"],
     attrs: {
       "id": "video",
+      "width": "750",
+      "height": "750",
       "src": _vm.videoDataUrl,
-      "autoplay": "autoplay"
+      "autoplay": "autoplay",
+      "preload": "",
+      "loop": "",
+      "muted": ""
+    }
+  }), _c('canvas', {
+    attrs: {
+      "id": "canvas",
+      "width": "375",
+      "height": "620"
     }
   })]), _c('div', {
     staticClass: ["footer"]
@@ -15361,21 +15424,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     on: {
       "click": _vm.take_video
     }
-  }, [_c('input', {
-    staticStyle: {
-      width: "100%",
-      height: "100%",
-      opacity: "0"
-    },
-    attrs: {
-      "type": "file",
-      "refs": "",
-      "capture": "camera"
-    },
-    on: {
-      "change": _vm.getFile
-    }
-  })])], 1)])])
+  })], 1)])])
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 

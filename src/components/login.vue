@@ -1,6 +1,6 @@
 <template>
     <div class="login-form">
-        <image src="/src/asset/img/qq.jpg"></image>
+        <image src="/src/asset/img/qq.png"></image>
         <button v-on:click="loginEvent">QQ一键登录</button>
     </div>
 </template>
