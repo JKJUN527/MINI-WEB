@@ -137,6 +137,7 @@ export default {
         align-items: center;
         justify-content: space-between;
         background-color: #161824;
+        position: absolute;
         /*justify-content: center;*/
 
     }
@@ -245,8 +246,8 @@ export default {
 
     .slider {
         width: 5rem;
-        height: 7rem;
-        margin-top: 0.5rem;
+        height: 6rem;
+        margin-top: 0.2rem;
         align-items: center;
         justify-content: center;
     }

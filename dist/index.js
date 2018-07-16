@@ -8234,8 +8234,8 @@ module.exports = {
     "alignItems": "center"
   },
   "user-img": {
-    "width": 3,
-    "height": 3,
+    "width": 2.5,
+    "height": 2.5,
     "borderRadius": 50,
     "background": "white",
     "overflow": "hidden"
