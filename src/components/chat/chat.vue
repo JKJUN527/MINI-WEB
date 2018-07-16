@@ -3,7 +3,7 @@
         <div class="chat-header">
             <text class="left" @click="handleGoback"></text>
             <text class="name">{{ name }}</text>
-            <router-link :to="{ name: 'otherInfo'}" class="right"></router-link>
+            <text class="right" @click="handleClick"></text>
         </div>
         <div class="chatting">
             <div v-for="(chat, index) in data" :key="index">
@@ -62,9 +62,11 @@ export default {
   },
   methods: {
     handleGoback () {
+      clearInterval(this.timmer)
       this.$router.go(-1)
     },
     handleClick () {
+      clearInterval(this.timmer)
       this.$router.push({
         name: 'otherInfo',
         params: {
